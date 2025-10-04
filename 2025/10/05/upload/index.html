@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>qexo-图床配置 | 学习Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="图床配置从 2.0.0 开始, Qexo 支持了模块化的图床接入方法, 先前的 S3、FTP、Custom 文档合并至此 远程 APIQexo 提供了自定义 API 图床功能, 在配置完成图床设置后即可在文章&#x2F;页面编辑界面上传图片 API 地址图床图片上传的 API 1https:&#x2F;&#x2F;7bu.top&#x2F;api&#x2F;upload  POST 参数名图床图片上传 API 参数中图片文件的参数名 1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="qexo-图床配置">
+<meta property="og:url" content="https://xfm0797.github.io/2025/10/05/upload/index.html">
+<meta property="og:site_name" content="学习Hexo">
+<meta property="og:description" content="图床配置从 2.0.0 开始, Qexo 支持了模块化的图床接入方法, 先前的 S3、FTP、Custom 文档合并至此 远程 APIQexo 提供了自定义 API 图床功能, 在配置完成图床设置后即可在文章&#x2F;页面编辑界面上传图片 API 地址图床图片上传的 API 1https:&#x2F;&#x2F;7bu.top&#x2F;api&#x2F;upload  POST 参数名图床图片上传 API 参数中图片文件的参数名 1">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/07/19/9IJXAxzrCcKvs3Y.png">
+<meta property="article:published_time" content="2025-10-04T19:07:10.515Z">
+<meta property="article:modified_time" content="2025-10-04T19:06:17.240Z">
+<meta property="article:author" content="xfm">
+<meta property="article:tag" content="qexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/07/19/9IJXAxzrCcKvs3Y.png">
+  
+    <link rel="alternate" href="/atom.xml" title="学习Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">学习Hexo</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">blog.xfm.qzz.io</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://xfm0797.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-upload" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/10/05/upload/" class="article-date">
+  <time class="dt-published" datetime="2025-10-04T19:07:10.515Z" itemprop="datePublished">2025-10-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      qexo-图床配置
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="图床配置"><a href="#图床配置" class="headerlink" title="图床配置"></a>图床配置</h1><p>从 2.0.0 开始, Qexo 支持了模块化的图床接入方法, 先前的 S3、FTP、Custom 文档合并至此</p>
+<h2 id="远程-API"><a href="#远程-API" class="headerlink" title="远程 API"></a>远程 API</h2><p>Qexo 提供了自定义 API 图床功能, 在配置完成图床设置后即可在文章&#x2F;页面编辑界面上传图片</p>
+<h3 id="API-地址"><a href="#API-地址" class="headerlink" title="API 地址"></a>API 地址</h3><p>图床图片上传的 API</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://7bu.top/api/upload</span><br></pre></td></tr></table></figure>
+
+<h3 id="POST-参数名"><a href="#POST-参数名" class="headerlink" title="POST 参数名"></a>POST 参数名</h3><p>图床图片上传 API 参数中图片文件的参数名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">image</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.loli.net/2024/07/19/9IJXAxzrCcKvs3Y.png"></p>
+<h3 id="JSON-路径"><a href="#JSON-路径" class="headerlink" title="JSON 路径"></a>JSON 路径</h3><p>图床 API 返回数据中 <strong>图片 URL</strong> 所在的路径, 若为整个返回值请留空<br>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.url</span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义请求头"><a href="#自定义请求头" class="headerlink" title="自定义请求头"></a>自定义请求头</h3><p>POST 请求时附带的请求头, 需要标准 JSON 格式, 若不需要请留空</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span><span class="attr">&quot;key&quot;</span><span class="punctuation">:</span><span class="string">&quot;value&quot;</span><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义-BODY"><a href="#自定义-BODY" class="headerlink" title="自定义 BODY"></a>自定义 BODY</h3><p>POST 请求时额外的请求主体, 需要标准 JSON 格式, 若不需要请留空</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span><span class="attr">&quot;key&quot;</span><span class="punctuation">:</span><span class="string">&quot;value&quot;</span><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义前缀"><a href="#自定义前缀" class="headerlink" title="自定义前缀"></a>自定义前缀</h3><p>返回 URL 所需要添加的前缀, 若不需要请留空</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">some_text_or_url</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除-API"><a href="#删除-API" class="headerlink" title="删除 API"></a>删除 API</h3><p>图床 API 返回数据中 <strong>删除图片 URL</strong> 所在的路径, 若为不存在请留空<br>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.delete_url</span><br></pre></td></tr></table></figure>
+
+<h2 id="S3协议"><a href="#S3协议" class="headerlink" title="S3协议"></a>S3协议</h2><p>Qexo 为 S3 存储桶提供了支持, 在配置完成 S3 存储桶设置后即可在文章&#x2F;页面编辑界面上传图片</p>
+<h3 id="应用密钥-ID"><a href="#应用密钥-ID" class="headerlink" title="应用密钥 ID"></a>应用密钥 ID</h3><p>S3 应用程序的 Access Key ID</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1000000000000080000000000</span><br></pre></td></tr></table></figure>
+
+<h3 id="应用密钥"><a href="#应用密钥" class="headerlink" title="应用密钥"></a>应用密钥</h3><p>S3 应用程序的 Access Key</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">S12******************6129E</span><br></pre></td></tr></table></figure>
+
+<h3 id="存储桶名"><a href="#存储桶名" class="headerlink" title="存储桶名"></a>存储桶名</h3><p>S3 Bucket 名称</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Bucket</span><br></pre></td></tr></table></figure>
+
+<h3 id="边缘节点"><a href="#边缘节点" class="headerlink" title="边缘节点"></a>边缘节点</h3><p>S3 Endpoint</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://s3.us-west-002.backblazeb2.com</span><br></pre></td></tr></table></figure>
+
+<h3 id="保存路径"><a href="#保存路径" class="headerlink" title="保存路径"></a>保存路径</h3><p>文件上传后保存的路径 包含文件名</p>
+<table>
+<thead>
+<tr>
+<th>关键词</th>
+<th>意义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><em>{year}</em></td>
+<td>当前年份</td>
+<td>21</td>
+</tr>
+<tr>
+<td><em>{month}</em></td>
+<td>当前月份</td>
+<td>1</td>
+</tr>
+<tr>
+<td><em>{day}</em></td>
+<td>当前日份</td>
+<td>2</td>
+</tr>
+<tr>
+<td><em>{YEAR}</em></td>
+<td>当前年份</td>
+<td>2021</td>
+</tr>
+<tr>
+<td><em>{MONTH}</em></td>
+<td>当前月份</td>
+<td>01</td>
+</tr>
+<tr>
+<td><em>{DAY}</em></td>
+<td>当前日份</td>
+<td>02</td>
+</tr>
+<tr>
+<td><em>{filename}</em></td>
+<td>无后缀的文件名</td>
+<td>image</td>
+</tr>
+<tr>
+<td><em>{time}</em></td>
+<td>时间戳</td>
+<td>1640186955.4339228</td>
+</tr>
+<tr>
+<td><em>{extName}</em></td>
+<td>文件后缀名</td>
+<td>png</td>
+</tr>
+<tr>
+<td><em>{md5}</em></td>
+<td>图片的 Md5-Hash</td>
+<td>0c8bfe6821a91c3d96b25e2ea2dcf827</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Qexo/&#123;year&#125;/&#123;month&#125;/&#123;md5&#125;.&#123;extName&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义域名"><a href="#自定义域名" class="headerlink" title="自定义域名"></a>自定义域名</h3><p>返回文件链接的 URL 最终返回的链接, 支持关键词同上</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://file.example.com/file/CDN/Qexo/&#123;year&#125;/&#123;month&#125;/&#123;md5&#125;.&#123;extName&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="FTP-协议"><a href="#FTP-协议" class="headerlink" title="FTP 协议"></a>FTP 协议</h2><p>你可以借助这个模块将图片上传至远程 FTP 位置</p>
+<h3 id="FTP-主机"><a href="#FTP-主机" class="headerlink" title="FTP 主机"></a>FTP 主机</h3><p>所连接的 FTP 主机</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1</span><br></pre></td></tr></table></figure>
+
+<h3 id="FTP-端口"><a href="#FTP-端口" class="headerlink" title="FTP 端口"></a>FTP 端口</h3><p>FTP 连接端口 通常为 <strong>21</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">21</span><br></pre></td></tr></table></figure>
+
+<h3 id="用户名"><a href="#用户名" class="headerlink" title="用户名"></a>用户名</h3><p>FTP 登录用户名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username</span><br></pre></td></tr></table></figure>
+
+<h3 id="密码"><a href="#密码" class="headerlink" title="密码"></a>密码</h3><p>FTP 登录密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">password</span><br></pre></td></tr></table></figure>
+
+<h3 id="保存路径-1"><a href="#保存路径-1" class="headerlink" title="保存路径"></a>保存路径</h3><p>文件上传后保存的路径 包含文件名</p>
+<table>
+<thead>
+<tr>
+<th>关键词</th>
+<th>意义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><em>{year}</em></td>
+<td>当前年份</td>
+<td>21</td>
+</tr>
+<tr>
+<td><em>{month}</em></td>
+<td>当前月份</td>
+<td>1</td>
+</tr>
+<tr>
+<td><em>{day}</em></td>
+<td>当前日份</td>
+<td>2</td>
+</tr>
+<tr>
+<td><em>{YEAR}</em></td>
+<td>当前年份</td>
+<td>2021</td>
+</tr>
+<tr>
+<td><em>{MONTH}</em></td>
+<td>当前月份</td>
+<td>01</td>
+</tr>
+<tr>
+<td><em>{DAY}</em></td>
+<td>当前日份</td>
+<td>02</td>
+</tr>
+<tr>
+<td><em>{filename}</em></td>
+<td>无后缀的文件名</td>
+<td>image</td>
+</tr>
+<tr>
+<td><em>{time}</em></td>
+<td>时间戳</td>
+<td>1640186955.4339228</td>
+</tr>
+<tr>
+<td><em>{md5}</em></td>
+<td>图片的 Md5-Hash</td>
+<td>0c8bfe6821a91c3d96b25e2ea2dcf827</td>
+</tr>
+<tr>
+<td><em>{extName}</em></td>
+<td>文件后缀名</td>
+<td>png</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Qexo/&#123;year&#125;/&#123;month&#125;/&#123;time&#125;.&#123;extName&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义域名-1"><a href="#自定义域名-1" class="headerlink" title="自定义域名"></a>自定义域名</h3><p>返回文件链接的 URL 最终返回的链接, 支持关键词同上</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://file.example.com/file/CDN/Qexo/&#123;year&#125;/&#123;month&#125;/&#123;time&#125;.&#123;extName&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><p>(不建议)将图片上传至 Github 仓库以借助 Github Action 进行进一步操作</p>
+<h3 id="Github仓库"><a href="#Github仓库" class="headerlink" title="Github仓库"></a>Github仓库</h3><p>您图片上传到的仓库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username/repo</span><br></pre></td></tr></table></figure>
+
+<h3 id="项目分支"><a href="#项目分支" class="headerlink" title="项目分支"></a>项目分支</h3><p>您图片需要上传仓库的分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">master</span><br></pre></td></tr></table></figure>
+
+<h3 id="Github-密钥"><a href="#Github-密钥" class="headerlink" title="Github 密钥"></a>Github 密钥</h3><p>于 <a target="_blank" rel="noopener" href="https://github.com/settings/tokens">Github 设置</a> 生成的 Token<br>需要 Repo 下的至少读取和写入权限 <em>不建议给出所有权限</em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wrq_P8sYPlYA9fjMlOPEYSKA84xxxxxxxxxxxxxx</span><br></pre></td></tr></table></figure>
+
+<h3 id="保存路径-2"><a href="#保存路径-2" class="headerlink" title="保存路径"></a>保存路径</h3><p>文件上传后保存的路径 包含文件名</p>
+<table>
+<thead>
+<tr>
+<th>关键词</th>
+<th>意义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><em>{year}</em></td>
+<td>当前年份</td>
+<td>21</td>
+</tr>
+<tr>
+<td><em>{month}</em></td>
+<td>当前月份</td>
+<td>1</td>
+</tr>
+<tr>
+<td><em>{day}</em></td>
+<td>当前日份</td>
+<td>2</td>
+</tr>
+<tr>
+<td><em>{YEAR}</em></td>
+<td>当前年份</td>
+<td>2021</td>
+</tr>
+<tr>
+<td><em>{MONTH}</em></td>
+<td>当前月份</td>
+<td>01</td>
+</tr>
+<tr>
+<td><em>{DAY}</em></td>
+<td>当前日份</td>
+<td>02</td>
+</tr>
+<tr>
+<td><em>{filename}</em></td>
+<td>无后缀的文件名</td>
+<td>image</td>
+</tr>
+<tr>
+<td><em>{time}</em></td>
+<td>时间戳</td>
+<td>1640186955.4339228</td>
+</tr>
+<tr>
+<td><em>{md5}</em></td>
+<td>文件 MD5-Hash</td>
+<td>0c8bfe6821a91c3d96b25e2ea2dcf827</td>
+</tr>
+<tr>
+<td><em>{extName}</em></td>
+<td>文件后缀名</td>
+<td>png</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Qexo/&#123;year&#125;/&#123;month&#125;/&#123;filename&#125;_&#123;md5&#125;.&#123;extName&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义域名-2"><a href="#自定义域名-2" class="headerlink" title="自定义域名"></a>自定义域名</h3><p>返回文件链接的 URL 最终返回的链接, 支持关键词同上</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/username/repo/raw/master/Qexo/&#123;year&#125;/&#123;month&#125;/&#123;filename&#125;_&#123;md5&#125;.&#123;extName&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xfm0797.github.io/2025/10/05/upload/" data-id="cmgcoor6j000gmow5a6c39al6" data-title="qexo-图床配置" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/qexo/" rel="tag">qexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/10/05/hexo-setup/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          hexo-如何安装
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/10/05/provider/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">qexo博客设置</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/qexo/" rel="tag">qexo</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/qexo/" style="font-size: 10px;">qexo</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/10/">十月 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/10/05/hexo-setup/">hexo-如何安装</a>
+          </li>
+        
+          <li>
+            <a href="/2025/10/05/upload/">qexo-图床配置</a>
+          </li>
+        
+          <li>
+            <a href="/2025/10/05/provider/">qexo博客设置</a>
+          </li>
+        
+          <li>
+            <a href="/2025/10/05/vercel/">Vercel配置</a>
+          </li>
+        
+          <li>
+            <a href="/2025/10/05/questions/">qexo常见问题解答</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 xfm<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
