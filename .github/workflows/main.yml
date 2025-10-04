@@ -37,7 +37,7 @@ jobs:
         working-directory: ./blog
 
       - name: Generate static pages
-        run: hexo generate
+        run: hexo cl && hexo g && hexo d
         working-directory: ./blog
 
       - name: Deploy to GitHub Pages
