@@ -1,8 +1,8 @@
 ---
 abbrlink: qexo-bulid
-categories: []
+categories: [Hexo]
 date: '2025-10-05T01:05:49.502077+08:00'
-tags: []
+tags: [qexo]
 title: qexo项目的部署
 updated: '2025-10-05T01:05:15.068+08:00'
 ---
