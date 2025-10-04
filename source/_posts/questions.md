@@ -1,8 +1,8 @@
 ---
 abbrlink: questions
-categories: []
+categories: [Hexo]
 date: '2025-10-05T01:18:20.518804+08:00'
-tags: []
+tags: [qexo]
 title: qexo常见问题解答
 updated: '2025-10-05T01:17:27.162+08:00'
 ---
