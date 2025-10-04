@@ -1,11 +1,10 @@
 ---
-abbrlink: qexo-bulid
+title: qexo项目的部署
 categories: [Hexo]
 date: '2025-10-05T01:05:49.502077+08:00'
 tags: [qexo]
-title: qexo项目的部署
-updated: '2025-10-05T01:05:15.068+08:00'
 ---
+
 # 部署程序
 
 得益于 Python 强大的跨平台功能, Qexo 支持在各种平台进行部署, 受支持的部署方式为 Vercel 或 Docker 部署。本地源码部署只建议高级用户使用。
