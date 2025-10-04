@@ -1,6 +1,10 @@
 ---
-title: Hello World
+title: hexo静态博客快速开始
+categories: [Hexo]
+date: '2025-10-05T00:47:02.380367+08:00'
+tags: [qexo]
 ---
+
 Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
 
 ## Quick Start
