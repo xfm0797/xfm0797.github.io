@@ -1,8 +1,8 @@
 ---
 abbrlink: qexo
-categories: []
+categories: [Hexo]
 date: '2025-10-05T00:47:02.380367+08:00'
-tags: []
+tags: [qexo]
 title: hexo静态博客后端管理--qexo
 updated: '2025-10-05T00:46:29.299+08:00'
 ---
