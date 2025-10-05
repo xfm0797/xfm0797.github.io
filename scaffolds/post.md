@@ -1,6 +1,6 @@
 ---
 title: {{ title }} #【必需】页面标题
-date: #【必需】页面创建日期
+date: {{ date }} #【必需】页面创建日期
 updated: #【可选】页面更新日期
 tags: #【可选】文章标签
 categories: #【可选】文章分类
@@ -10,7 +10,7 @@ top: # 1 置顶
 top_img: #【可选】文章顶部图片
 comments: #【可选】显示文章评论模块(默认 true)
 cover: https://img.lovou.eu.org/file/1759567275346_cover.png #【可选】文章缩略图
-toc: #【可选】显示文章 TOC
+toc: true #【可选】显示文章 TOC
 toc_number: #【可选】显示 toc_number
 toc_style_simple: #【可选】显示 toc 简洁模式
 copyright: #【可选】显示文章版权模块
