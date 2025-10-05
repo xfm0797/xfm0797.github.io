@@ -40,7 +40,7 @@ nav:
 # mourn （哀悼日，指定日期网站简单变灰，不包括滚动条）
 # 注意： 仅网站首页变灰，其他页面正常显示
 mourn:
-  enable: true
+  enable: false
   days: [4-5, 5-12, 7-7, 9-18, 12-13]
 
 # Code Blocks (代码相关)
@@ -460,31 +460,31 @@ footer:
     enable: false
     centerImg:
     left:
-      # - title: email
-      #   link: mailto:anzhiyu-c@qq.com
-      #   icon: anzhiyu-icon-envelope
-      # - title: 微博
-      #   link: https://weibo.com/u/6378063631
-      #   icon: anzhiyu-icon-weibo
-      # - title: facebook
-      #   link: https://www.facebook.com/profile.php?id=100092208016287&sk=about
-      #   icon: anzhiyu-icon-facebook1
-      # - title: RSS
-      #   link: atom.xml
-      #   icon: anzhiyu-icon-rss
+       - title: email
+         link: mailto:admin@xfm.qzz.io
+         icon: anzhiyu-icon-envelope
+       - title: 微博
+         link: https://weibo.com/u/6378063631
+         icon: anzhiyu-icon-weibo
+       - title: facebook
+         link: https://www.facebook.com/profile.php?id=100092208016287&sk=about
+         icon: anzhiyu-icon-facebook1
+       - title: RSS
+         link: atom.xml
+         icon: anzhiyu-icon-rss
     right:
-      # - title: Github
-      #   link: https://github.com/anzhiyu-c
-      #   icon: anzhiyu-icon-github
-      # - title: Bilibili
-      #   link: https://space.bilibili.com/372204786
-      #   icon: anzhiyu-icon-bilibili
-      # - title: 抖音
-      #   link: https://v.douyin.com/DwCpMEy/
-      #   icon: anzhiyu-icon-tiktok
-      # - title: CC
-      #   link: /copyright
-      #   icon: anzhiyu-icon-copyright-line
+       - title: Github
+         link: https://github.com/xfm0797
+         icon: anzhiyu-icon-github
+       - title: Bilibili
+         link: https://space.bilibili.com/491135347
+         icon: anzhiyu-icon-bilibili
+       - title: 抖音
+         link: https://v.douyin.com/peaTJ0JDR3I
+         icon: anzhiyu-icon-tiktok
+       - title: CC
+         link: /copyright
+         icon: anzhiyu-icon-copyright-line
   list:
     enable: false
     randomFriends: 3
@@ -530,10 +530,10 @@ footer:
     linkList:
       - link: https://github.com/anzhiyu-c/hexo-theme-anzhiyu
         text: 主题
-      # - link: https://image.anheyu.com
-      #   text: 图床
-      # - link: https://beian.miit.gov.cn/
-      #   text: 湘ICP备-xxxxxxx号
+      - link: https://img.lovou.eu.org
+        text: 图床
+      - link: https://beian.miit.gov.cn/
+        text: 赣ICP备-xxxxxxx号
     subTitle:
       enable: false
       # Typewriter Effect (打字效果)
@@ -860,7 +860,7 @@ busuanzi:
 # Formal: Month/Day/Year Time or Year/Month/Day Time
 runtimeshow:
   enable: true
-  publish_date: 4/1/2021 00:00:00
+  publish_date: 10/1/2025 00:00:00
 
 # Console - Newest Comments
 newest_comments:
@@ -1052,20 +1052,20 @@ home_top:
   timemode: date #date/updated
   title: 生活明朗
   subTitle: 万物可爱。
-  siteText: anheyu.com
+  siteText: xfm.qzz.io
   category:
     - name: 前端
-      path: /categories/前端开发/
+      path: /categories/hexo/
       shadow: var(--anzhiyu-shadow-blue)
       class: blue
       icon: anzhiyu-icon-dove
-    - name: 大学
-      path: /categories/大学生涯/
+    - name: 主题
+      path: /categories/theme/
       shadow: var(--anzhiyu-shadow-red)
       class: red
       icon: anzhiyu-icon-fire
     - name: 生活
-      path: /categories/生活日常/
+      path: /categories/shenghuo/
       shadow: var(--anzhiyu-shadow-green)
       class: green
       icon: anzhiyu-icon-book
@@ -1075,10 +1075,10 @@ home_top:
     swiper_css: https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css #swiper css依赖
     swiper_js: https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.js #swiper js依赖
   banner:
-    tips: 新品主题
+    tips: 采用主题
     title: Theme-AnZhiYu
     image: https://bu.dusays.com/2023/05/13/645fa3cf90d70.webp
-    link: https://docs.anheyu.com/
+    link: https://xfm0797.github.io/
 
 # 朋友圈配置
 friends_vue:
