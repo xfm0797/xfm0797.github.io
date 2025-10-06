@@ -7,6 +7,7 @@ tags:
 - qexo
 title: qexo-图床配置
 updated: '2025-10-05T03:06:17.240+08:00'
+cover: 'https://img.lovou.eu.org/file/1759567275346_cover.png'
 ---
 # 图床配置
 

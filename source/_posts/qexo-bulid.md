@@ -3,6 +3,7 @@ title: qexo项目的部署
 categories: [Hexo]
 date: '2025-10-05T01:05:49.502077+08:00'
 tags: [qexo]
+cover: 'https://img.lovou.eu.org/file/1759567275346_cover.png'
 ---
 
 # 部署程序

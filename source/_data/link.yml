@@ -23,14 +23,46 @@
       siteshot: https://npm.elemecdn.com/anzhiyu-theme-static@1.1.6/img/hexo.anheyu.com.jpg
       color: vip
       tag: 技术
+    - name: Mige笔记本
+      link: https://blog.lovou.pw/
+      avatar: https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg
+      descr: 生活明朗，万物可爱
+      siteshot: https://img.lovou.eu.org/file/1759735207059_blog.lovou.pw.png
+      color: vip
+      tag: 技术
 
 - class_name: 小伙伴
   class_desc: 那些人，那些事
   flink_style: anzhiyu
   hundredSuffix: ""
   link_list:
-    - name: 安知鱼
-      link: https://hexo.anheyu.com/
+    - name: 枫铃网络
+      link: https://host.xongyi.com/
       avatar: https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg
-      descr: 生活明朗，万物可爱
+      descr: 域名主机邮箱VPS找我就对了
+      recommend: true
+    - name: XFM Vlog
+      link: https://xfm.dpdns.org/
+      avatar: https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg
+      descr: 发的都是一些生活日常，记录
+      recommend: true
+    - name: 枫铃DNS
+      link: https://dns.lovou.pw/
+      avatar: https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg
+      descr: 六趣DNS二级域名分发系统
+      recommend: true
+    - name: O520
+      link: https://0520.eu.org/
+      avatar: https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg
+      descr: O520加油吧，曾经的少年
+      recommend: true
+    - name: 枫铃社区
+      link: https://lovou.dpdns.org/
+      avatar: https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg
+      descr: 没事无聊有空的都来啊
+      recommend: true
+    - name: 学习Hexo
+      link: https://blog.xfm.qzz.io/
+      avatar: https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg
+      descr: 学习Hexo的产品，记录自己的学习过程
       recommend: true

@@ -464,10 +464,10 @@ footer:
          link: mailto:admin@xfm.qzz.io
          icon: anzhiyu-icon-envelope
        - title: 微博
-         link: https://weibo.com/u/6378063631
+         link: https://weibo.com/u/1650282117
          icon: anzhiyu-icon-weibo
-       - title: facebook
-         link: https://www.facebook.com/profile.php?id=100092208016287&sk=about
+       - title: zhihu
+         link: https://www.zhihu.com/people/82-20-42-63
          icon: anzhiyu-icon-facebook1
        - title: RSS
          link: atom.xml
@@ -816,8 +816,8 @@ aside:
     content: 欢迎来看我的博客鸭~
   card_weixin:
     enable: true
-    face: https://bu.dusays.com/2023/01/13/63c02edf44033.png
-    backFace: https://bu.dusays.com/2023/05/13/645fa415e8694.png
+    face: https://img.lovou.eu.org/file/1759738870306_face.png
+    backFace: https://img.lovou.eu.org/file/1759738871758_backface.png
   card_recent_post:
     enable: true
     limit: 5 # if set 0 will show all

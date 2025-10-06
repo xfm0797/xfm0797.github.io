@@ -3,6 +3,7 @@ title: hexo静态博客后端管理--qexo
 categories: [Hexo]
 date: '2025-10-05T00:47:02.380367+08:00'
 tags: [qexo]
+cover: 'https://img.lovou.eu.org/file/1759567275346_cover.png'
 ---
 
 

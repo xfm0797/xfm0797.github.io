@@ -7,6 +7,7 @@ tags:
 - qexo
 title: qexo博客设置
 updated: '2025-10-05T02:31:26.268+08:00'
+cover: 'https://img.lovou.eu.org/file/1759567275346_cover.png'
 ---
 # 服务商设置
 

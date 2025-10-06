@@ -5,8 +5,10 @@
   buttonLink: /about/
   limit: 30
   home_essay: true
-  top_background: https://img02.anheyu.com/adminuploads/1/2022/08/21/630249e2df20f.jpg
+  top_background: https://img.lovou.eu.org/file/1759736021939_630249e2df20f.jpg
   essay_list:
+    - content: 安装安知鱼主题好多设置还在调整，学习研究中，不过网站还是上线了，慢慢来
+      date: 2025/10/06
     - content: 安知鱼主题指南
       date: 2023/09/09
       video:

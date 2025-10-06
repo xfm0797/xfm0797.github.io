@@ -3,6 +3,7 @@ title: qexo常见问题解答
 categories: [Hexo]
 date: '2025-10-05T01:18:20.518804+08:00'
 tags: [qexo]
+cover: 'https://img.lovou.eu.org/file/1759567275346_cover.png'
 ---
 
 # 常见问题

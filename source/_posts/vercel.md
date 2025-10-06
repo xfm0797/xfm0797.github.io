@@ -7,6 +7,7 @@ tags:
 - qexo
 title: Vercel配置
 updated: '2025-10-05T02:17:55.190+08:00'
+cover: 'https://img.lovou.eu.org/file/1759567275346_cover.png'
 ---
 # Vercel 配置
 

@@ -1,8 +1,9 @@
 ---
 title: hexo-如何安装
 date: 2025-10-05 03:24:57
-categories:
-tags:
+categories: Hexo
+tags: hexo
+cover: 'https://img.lovou.eu.org/file/1759567275346_cover.png'
 ---
 # 安装
 安装 Hexo 完成后，请执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。
