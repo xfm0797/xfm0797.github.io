@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>那些年创建的网站</title>
+      <link href="/2025/10/06/website-1/"/>
+      <url>/2025/10/06/website-1/</url>
+      
+        <content type="html"><![CDATA[<h1 id="我是-XFM"><a href="#我是-XFM" class="headerlink" title="我是 XFM"></a>我是 XFM</h1><ul><li>热爱生活</li><li>向往远方</li><li>宅男一枚</li><li>喜爱上网</li></ul><h1 id="学习历程"><a href="#学习历程" class="headerlink" title="学习历程"></a>学习历程</h1><blockquote><p>正在学习Hexo建站的旅程中，加油，老男人</p></blockquote><h1 id="这些年学习路程中建立的网站"><a href="#这些年学习路程中建立的网站" class="headerlink" title="这些年学习路程中建立的网站"></a>这些年学习路程中建立的网站</h1><ul><li>博客：<ul><li>O520博客：<a href="https://0520.eu.org/">https://0520.eu.org</a></li><li>XFM Vlog：<a href="https://xfm.dpdns.org/">https://xfm.dpdns.org</a></li><li>枫铃博客：<a href="https://blog.lovou.pw/">https://blog.lovou.pw</a></li></ul></li><li>论坛：<ul><li>枫铃社区：<a href="https://lovou.dpdns.org/">https://lovou.dpdns.org</a></li><li>Free社区：<a href="http://free.lovou.pw/bbs">http://free.lovou.pw/bbs</a></li></ul></li><li>其它：<ul><li>域名主机：<a href="https://host.xongyi.com/">https://host.xongyi.com</a></li><li>DNS服务：<a href="https://dns.lovou.pw/">https://dns.lovou.pw</a></li></ul></li></ul><h1 id="与我联系"><a href="#与我联系" class="headerlink" title="与我联系"></a>与我联系</h1><ul><li>Telegram: <a href="https://t.me/lovoup">https://t.me/lovoup</a></li><li>Telegram Group: <a href="https://t.me/lovoupw">https://t.me/lovoupw</a></li><li>Telegram Group: <a href="https://t.me/lovouchat333">https://t.me/lovouchat333</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> shenghuo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> site </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>hexo-如何安装</title>
       <link href="/2025/10/05/hexo-setup/"/>
       <url>/2025/10/05/hexo-setup/</url>
@@ -11,6 +36,18 @@
         <content type="html"><![CDATA[<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>安装 Hexo 完成后，请执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure><p>初始化后，您的项目文件夹将如下所示：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">|   ├── _drafts</span><br><span class="line">|   └── _posts</span><br><span class="line">└── themes</span><br><span class="line">_config.yml</span><br></pre></td></tr></table></figure><p>网站的 配置 文件。 您可以在此配置大部分的参数。</p><h1 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h1><p>应用程序的信息。 EJS, Stylus 和 Markdown 渲染引擎 已默认安装，您可以自由移除。 如果您想，可以稍后卸载它们。</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">package.json</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;hexo-site&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;private&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;hexo&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;dependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;hexo&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^7.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hexo-generator-archive&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hexo-generator-category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hexo-generator-index&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hexo-generator-tag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hexo-renderer-ejs&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hexo-renderer-stylus&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hexo-renderer-marked&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^6.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hexo-server&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hexo-theme-landscape&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.0.0&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure><h1 id="scaffolds"><a href="#scaffolds" class="headerlink" title="scaffolds"></a>scaffolds</h1><p>模版 文件夹。 当您新建文章时，Hexo 会根据 scaffold 来创建文件。</p><h1 id="source"><a href="#source" class="headerlink" title="source"></a>source</h1><p>资源文件夹。 是存放用户资源的地方。 除 _posts 文件夹之外，开头命名为 _ (下划线)的文件 &#x2F; 文件夹和隐藏的文件将会被忽略。 Markdown 和 HTML 文件会被解析并放到 public 文件夹，而其他文件会被拷贝过去。</p><h1 id="themes"><a href="#themes" class="headerlink" title="themes"></a>themes</h1><p>主题 文件夹。 Hexo 会根据主题来生成静态页面。</p>]]></content>
       
       
+      <categories>
+          
+          <category> Hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
       
     </entry>
     
