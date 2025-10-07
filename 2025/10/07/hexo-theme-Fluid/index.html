@@ -1,0 +1,588 @@
+<!DOCTYPE html><html lang="zh_CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>hexo-theme-Fluid主题安装及配置方法 | 学习Hexo</title><meta name="keywords" content="hexo-theme-Fluid主题安装及配置方法"><meta name="author" content="xfm"><meta name="copyright" content="xfm"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="hexo-theme-Fluid主题安装及配置方法"><meta name="application-name" content="hexo-theme-Fluid主题安装及配置方法"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="hexo-theme-Fluid主题安装及配置方法"><meta property="og:url" content="https://xfm0797.github.io/2025/10/07/hexo-theme-Fluid/index.html"><meta property="og:site_name" content="学习Hexo"><meta property="og:description" content="hexo-theme-Fluid主题安装及配置方法"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://img.lovou.eu.org/file/1759567275346_cover.png"><meta property="article:author" content="xfm"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://img.lovou.eu.org/file/1759567275346_cover.png"><meta name="description" content="hexo-theme-Fluid主题安装及配置方法"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://xfm0797.github.io/2025/10/07/hexo-theme-Fluid/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: xfm","link":"链接: ","source":"来源: 学习Hexo","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: '学习Hexo',
+  title: 'hexo-theme-Fluid主题安装及配置方法',
+  postAI: '',
+  pageFillDescription: '一、安装前的准备, 二、安装 Fluid 主题, 1. 克隆主题到本地, 2. 安装主题依赖, 三、启用主题, 四、核心配置（关键步骤）, 1. 复制配置文件（推荐）, （2）导航菜单, （3）首页设置, （4）URL 配置（影响资源加载）, 3. 功能配置（按需开启）, （1）评论系统（以 Waline 为例轻量且支持匿名）, （2）代码高亮, （3）社交链接（显示在侧边栏或底部）, （4）文章版权声明, 五、本地预览效果, 一、安装前的准备, 二、安装 Fluid 主题, 1. 克隆主题到本地, 2. 安装主题依赖, 三、启用主题, 四、核心配置（关键步骤）, 1. 复制配置文件（推荐）, （2）导航菜单, （3）首页设置, （4）URL 配置（影响资源加载）, 3. 功能配置（按需开启）, （1）评论系统（以 Waline 为例轻量且支持匿名）, （2）代码高亮, （3）社交链接（显示在侧边栏或底部）, （4）文章版权声明, 五、本地预览效果, 七、常见问题是一款以内容优先为核心的极简风格主题设计简洁加载快速且配置轻量化非常适合文字类博客如随笔笔记散文等以下是详细的安装及配置步骤一安装前的准备确保环境正常已安装并初始化博客若未初始化参考之前的教程检查版本要求版本终端执行确认版本若低于要求升级二安装主题克隆主题到本地进入博客根目录如执行以下命令克隆主题到文件夹安装主题依赖依赖部分插件需手动安装三启用主题编辑根目录的全局配置文件将字段改为替换默认主题如四核心配置关键步骤的配置通过两个文件实现主题默认配置存放主题默认设置不建议直接修改用户自定义配置建议复制主题配置文件到根目录命名为优先级更高且更新主题时不会被覆盖复制配置文件推荐在博客根目录执行后续所有配置均在中修改基础配置必改项打开修改以下核心配置网站基本信息网站标题副标题显示在首页顶部你的博客名称副标题一句话描述作者信息显示在侧边栏底部你的名字头像路径图片需放在文件夹导航菜单配置顶部导航栏的菜单如首页分类标签等首页分类标签关于可选添加自定义页面如归档归档菜单对应的页面需要手动创建例如关于页在中编辑内容首页设置首页默认显示文章列表可配置顶部图和描述首页顶部图建议尺寸图片放文件夹首页描述文字显示在标题下方一行描述文字可换行显示支持语法如加粗配置影响资源加载确保根目录中的配置正确部署后的博客地址根目录中替换为你的博客地址如地址功能配置按需开启评论系统以为例轻量且支持匿名先去官网注册并获取评论后台地址在中配置你的服务地址来说点什么吧评论框提示文字代码高亮内置代码高亮支持多种主题如代码高亮主题显示行号代码过长时自动换行社交链接显示在侧边栏或底部知乎邮箱图标来自可自行添加其他平台文章版权声明自动在文章末尾添加版权信息版权声明内容支持本文采用许可协议转载请注明出处五本地预览效果配置完成后执行以下命令本地预览清理缓存确保新配置生效生成静态文件启动本地服务器浏览器访问确认主题样式菜单功能是否正常六更新主题若发布新版本可更新主题文件不影响中的自定义配置进入主题目录拉取最新代码返回根目录重新生成是一款以内容优先为核心的极简风格主题设计简洁加载快速且配置轻量化非常适合文字类博客如随笔笔记散文等以下是详细的安装及配置步骤一安装前的准备确保环境正常已安装并初始化博客若未初始化参考之前的教程检查版本要求版本终端执行确认版本若低于要求升级二安装主题克隆主题到本地进入博客根目录如执行以下命令克隆主题到文件夹安装主题依赖依赖部分插件需手动安装三启用主题编辑根目录的全局配置文件将字段改为替换默认主题如四核心配置关键步骤的配置通过两个文件实现主题默认配置存放主题默认设置不建议直接修改用户自定义配置建议复制主题配置文件到根目录命名为优先级更高且更新主题时不会被覆盖复制配置文件推荐在博客根目录执行后续所有配置均在中修改基础配置必改项打开修改以下核心配置网站基本信息网站标题副标题显示在首页顶部你的博客名称副标题一句话描述作者信息显示在侧边栏底部你的名字头像路径图片需放在文件夹导航菜单配置顶部导航栏的菜单如首页分类标签等首页分类标签关于可选添加自定义页面如归档归档菜单对应的页面需要手动创建例如关于页在中编辑内容首页设置首页默认显示文章列表可配置顶部图和描述首页顶部图建议尺寸图片放文件夹首页描述文字显示在标题下方一行描述文字可换行显示支持语法如加粗配置影响资源加载确保根目录中的配置正确部署后的博客地址根目录中替换为你的博客地址如地址功能配置按需开启评论系统以为例轻量且支持匿名先去官网注册并获取评论后台地址在中配置你的服务地址来说点什么吧评论框提示文字代码高亮内置代码高亮支持多种主题如代码高亮主题显示行号代码过长时自动换行社交链接显示在侧边栏或底部知乎邮箱图标来自可自行添加其他平台文章版权声明自动在文章末尾添加版权信息版权声明内容支持本文采用许可协议转载请注明出处五本地预览效果配置完成后执行以下命令本地预览清理缓存确保新配置生效生成静态文件启动本地服务器浏览器访问确认主题样式菜单功能是否正常六更新主题若发布新版本可更新主题文件不影响中的自定义配置进入主题目录拉取最新代码返回根目录重新生成七常见问题首页图片不显示检查图片路径是否正确需放在下配置中用文件名引用确保配置正确根目录避免路径拼接错误评论系统不生效确认正确等服务是否正常运行执行后重新生成避免缓存导致配置未加载导航菜单点击确保对应页面已创建如且页面文件分类存在主题的核心优势是简约而不简单通过以上配置即可满足多数博客的需求如需更详细的功能如自定义优化可参考官方文档',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-10-07 14:30:25',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.lovou.pw/" title="枫铃博客"><img class="back-menu-item-icon" src="/img/favicon.ico" alt="枫铃博客"/><span class="back-menu-item-text">枫铃博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://img.lovou.eu.org/" title="在线图床"><img class="back-menu-item-icon" src="https://img.lovou.eu.org/favicon.ico" alt="在线图床"/><span class="back-menu-item-text">在线图床</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">学习Hexo</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://img.lovou.eu.org/file/1759551870950_wechat.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://img.lovou.eu.org/file/1759551870950_wechat.jpg"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://img.lovou.eu.org/file/1759551870164_alipay.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://img.lovou.eu.org/file/1759551870164_alipay.jpg"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/hexo/" style="font-size: 1.05rem;">hexo<sup>1</sup></a><a href="/tags/hexo-theme/" style="font-size: 1.05rem;">hexo-theme<sup>2</sup></a><a href="/tags/hexo-theme-fluid/" style="font-size: 1.05rem;">hexo-theme-fluid<sup>1</sup></a><a href="/tags/qexo/" style="font-size: 1.05rem;">qexo<sup>7</sup></a><a href="/tags/site/" style="font-size: 1.05rem;">site<sup>1</sup></a><a href="/tags/%E6%95%A3%E6%96%87/" style="font-size: 1.05rem;">散文<sup>2</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">14</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/theme/" itemprop="url">theme</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/hexo-theme-fluid/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>hexo-theme-fluid</span></a></span></div></div><h1 class="post-title" itemprop="name headline">hexo-theme-Fluid主题安装及配置方法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-10-07T06:24:55.000Z" title="发表于 2025-10-07 14:24:55">2025-10-07</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-10-07T06:30:25.889Z" title="更新于 2025-10-07 14:30:25">2025-10-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">2.5k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为赣州"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>赣州</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://img.lovou.eu.org/file/1759818579600_hexo-theme-Fluid.png"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://xfm0797.github.io/2025/10/07/hexo-theme-Fluid/"><header><a class="post-meta-categories" href="/categories/theme/" itemprop="url">theme</a><a href="/tags/hexo-theme-fluid/" tabindex="-1" itemprop="url">hexo-theme-fluid</a><h1 id="CrawlerTitle" itemprop="name headline">hexo-theme-Fluid主题安装及配置方法</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">xfm</span><time itemprop="dateCreated datePublished" datetime="2025-10-07T06:24:55.000Z" title="发表于 2025-10-07 14:24:55">2025-10-07</time><time itemprop="dateCreated datePublished" datetime="2025-10-07T06:30:25.889Z" title="更新于 2025-10-07 14:30:25">2025-10-07</time></header><p>hexo-theme-Fluid 是一款以「内容优先」为核心的极简风格 Hexo 主题，设计简洁、加载快速，且配置轻量化，非常适合文字类博客（如随笔、笔记、散文等）。以下是详细的安装及配置步骤：</p>
+<h3 id="一、安装前的准备"><a href="#一、安装前的准备" class="headerlink" title="一、安装前的准备"></a><strong>一、安装前的准备</strong></h3><ol>
+<li><strong>确保 Hexo 环境正常</strong><br>已安装 Node.js、Git，并初始化 Hexo 博客（若未初始化，参考之前的教程：<code>hexo init myblog &amp;&amp; cd myblog &amp;&amp; npm install</code>）。  </li>
+<li><strong>检查 Hexo 版本</strong><br>Fluid 要求 Hexo 版本 ≥ 5.0.0，终端执行 <code>hexo -v</code> 确认版本，若低于要求，升级 Hexo：  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo@latest --save</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="二、安装-Fluid-主题"><a href="#二、安装-Fluid-主题" class="headerlink" title="二、安装 Fluid 主题"></a><strong>二、安装 Fluid 主题</strong></h3><h4 id="1-克隆主题到本地"><a href="#1-克隆主题到本地" class="headerlink" title="1. 克隆主题到本地"></a>1. 克隆主题到本地</h4><p>进入 Hexo 博客根目录（如 <code>myblog</code>），执行以下命令克隆 Fluid 主题到 <code>themes/fluid</code> 文件夹：  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/fluid-dev/hexo-theme-fluid.git themes/fluid</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-安装主题依赖"><a href="#2-安装主题依赖" class="headerlink" title="2. 安装主题依赖"></a>2. 安装主题依赖</h4><p>Fluid 依赖部分插件，需手动安装：  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-theme-fluid@latest --save</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="三、启用主题"><a href="#三、启用主题" class="headerlink" title="三、启用主题"></a><strong>三、启用主题</strong></h3><p>编辑 Hexo 根目录的 <strong>全局配置文件</strong> <code>_config.yml</code>，将 <code>theme</code> 字段改为 <code>fluid</code>：  </p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">fluid</span>  <span class="comment"># 替换默认主题（如 landscape）</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="四、核心配置（关键步骤）"><a href="#四、核心配置（关键步骤）" class="headerlink" title="四、核心配置（关键步骤）"></a><strong>四、核心配置（关键步骤）</strong></h3><p>Fluid 的配置通过两个文件实现：  </p>
+<ul>
+<li><strong>主题默认配置</strong>：<code>themes/fluid/_config.yml</code>（存放主题默认设置，不建议直接修改）。  </li>
+<li><strong>用户自定义配置</strong>：建议复制主题配置文件到根目录，命名为 <code>_config.fluid.yml</code>（优先级更高，且更新主题时不会被覆盖）。</li>
+</ul>
+<h4 id="1-复制配置文件（推荐）"><a href="#1-复制配置文件（推荐）" class="headerlink" title="1. 复制配置文件（推荐）"></a>1. 复制配置文件（推荐）</h4><p>在博客根目录执行：  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> themes/fluid/_config.yml _config.fluid.yml</span><br><span class="line">```  </span><br><span class="line">后续所有配置均在 `_config.fluid.yml` 中修改。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#### 2. 基础配置（必改项）  </span></span><br><span class="line">打开 `_config.fluid.yml`，修改以下核心配置：  </span><br><span class="line"></span><br><span class="line"><span class="comment">##### （1）网站基本信息  </span></span><br><span class="line">```yaml</span><br><span class="line"><span class="comment"># 网站标题、副标题（显示在首页顶部）</span></span><br><span class="line">title: 你的博客名称  </span><br><span class="line">subtitle: <span class="string">&quot;副标题/一句话描述&quot;</span>  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 作者信息（显示在侧边栏/底部）</span></span><br><span class="line">author: 你的名字  </span><br><span class="line">avatar: /img/avatar.jpg  <span class="comment"># 头像路径（图片需放在 source/img/ 文件夹）</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="（2）导航菜单"><a href="#（2）导航菜单" class="headerlink" title="（2）导航菜单"></a>（2）导航菜单</h5><p>配置顶部导航栏的菜单（如首页、分类、标签等）：  </p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="string">首页:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-home</span></span><br><span class="line">  <span class="string">分类:</span> <span class="string">/categories/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-th</span></span><br><span class="line">  <span class="string">标签:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-tags</span></span><br><span class="line">  <span class="string">关于:</span> <span class="string">/about/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-user</span></span><br><span class="line">  <span class="comment"># 可选：添加自定义页面（如“归档”）</span></span><br><span class="line">  <span class="comment"># 归档: /archives/ || fa fa-archive</span></span><br><span class="line"><span class="string">```</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">菜单对应的页面需要手动创建（例如「关于页」）：</span>  </span><br><span class="line">  <span class="string">```bash</span></span><br><span class="line">  <span class="string">hexo</span> <span class="string">new</span> <span class="string">page</span> <span class="string">&quot;about&quot;</span>  <span class="comment"># 在 source/about/index.md 中编辑内容</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="（3）首页设置"><a href="#（3）首页设置" class="headerlink" title="（3）首页设置"></a>（3）首页设置</h5><p>Fluid 首页默认显示文章列表，可配置顶部图和描述：  </p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">index:</span></span><br><span class="line">  <span class="comment"># 首页顶部图（建议尺寸 1920×1080）</span></span><br><span class="line">  <span class="attr">top_img:</span> <span class="string">/img/index_top.jpg</span>  <span class="comment"># 图片放 source/img/ 文件夹</span></span><br><span class="line">  <span class="comment"># 首页描述文字（显示在标题下方）</span></span><br><span class="line">  <span class="attr">description:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">一行描述文字</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">可换行显示</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">支持</span> <span class="string">Markdown</span> <span class="string">语法（如</span> <span class="string">**加粗**）</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="（4）URL-配置（影响资源加载）"><a href="#（4）URL-配置（影响资源加载）" class="headerlink" title="（4）URL 配置（影响资源加载）"></a>（4）URL 配置（影响资源加载）</h5><p>确保 Hexo 根目录 <code>_config.yml</code> 中的 <code>url</code> 配置正确（部署后的博客地址）：  </p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 根目录 _config.yml 中</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">https://yourname.github.io</span>  <span class="comment"># 替换为你的博客地址（如 GitHub Pages 地址）</span></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="3-功能配置（按需开启）"><a href="#3-功能配置（按需开启）" class="headerlink" title="3. 功能配置（按需开启）"></a>3. 功能配置（按需开启）</h4><h5 id="（1）评论系统（以-Waline-为例，轻量且支持匿名）"><a href="#（1）评论系统（以-Waline-为例，轻量且支持匿名）" class="headerlink" title="（1）评论系统（以 Waline 为例，轻量且支持匿名）"></a>（1）评论系统（以 Waline 为例，轻量且支持匿名）</h5><ol>
+<li>先去 <a target="_blank" rel="noopener" href="https://waline.js.org/">Waline 官网</a> 注册并获取 <code>serverURL</code>（评论后台地址）。  </li>
+<li>在 <code>_config.fluid.yml</code> 中配置：  <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">comments:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">waline</span></span><br><span class="line">  <span class="attr">waline:</span></span><br><span class="line">    <span class="attr">serverURL:</span> <span class="string">https://your-waline-server.example.com</span>  <span class="comment"># 你的 Waline 服务地址</span></span><br><span class="line">    <span class="attr">placeholder:</span> <span class="string">来说点什么吧~</span>  <span class="comment"># 评论框提示文字</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h5 id="（2）代码高亮"><a href="#（2）代码高亮" class="headerlink" title="（2）代码高亮"></a>（2）代码高亮</h5><p>Fluid 内置代码高亮，支持多种主题（如 <code>atom-one-dark</code>、<code>github</code>）：  </p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">code:</span></span><br><span class="line">  <span class="attr">highlight:</span></span><br><span class="line">    <span class="attr">theme:</span> <span class="string">atom-one-dark</span>  <span class="comment"># 代码高亮主题</span></span><br><span class="line">    <span class="attr">line_number:</span> <span class="literal">true</span>     <span class="comment"># 显示行号</span></span><br><span class="line">    <span class="attr">wrap:</span> <span class="literal">true</span>            <span class="comment"># 代码过长时自动换行</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="（3）社交链接（显示在侧边栏或底部）"><a href="#（3）社交链接（显示在侧边栏或底部）" class="headerlink" title="（3）社交链接（显示在侧边栏或底部）"></a>（3）社交链接（显示在侧边栏或底部）</h5><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">social:</span></span><br><span class="line">  <span class="attr">GitHub:</span> <span class="string">https://github.com/yourname</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-github</span></span><br><span class="line">  <span class="string">知乎:</span> <span class="string">https://zhihu.com/people/yourname</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-book</span></span><br><span class="line">  <span class="string">邮箱:</span> <span class="string">mailto:your@email.com</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-envelope</span></span><br><span class="line">  <span class="comment"># 图标来自 Font Awesome，可自行添加其他平台</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="（4）文章版权声明"><a href="#（4）文章版权声明" class="headerlink" title="（4）文章版权声明"></a>（4）文章版权声明</h5><p>自动在文章末尾添加版权信息：  </p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">copyright:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># 版权声明内容（支持 Markdown）</span></span><br><span class="line">  <span class="attr">content:</span> <span class="string">&quot;本文采用 &lt;a href=&#x27;https://creativecommons.org/licenses/by-nc-sa/4.0/&#x27;&gt;CC BY-NC-SA 4.0&lt;/a&gt; 许可协议，转载请注明出处。&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="五、本地预览效果"><a href="#五、本地预览效果" class="headerlink" title="五、本地预览效果"></a><strong>五、本地预览效果</strong></h3><p>配置完成后，执行以下命令本地预览：  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">hexo clean  <span class="comment"># 清理缓存（确保新配置生效）</span></span><br><span class="line">hexo g      <span class="comment"># 生成静态文件</span></span><br><span class="line">hexo s      <span class="comment"># 启动本地服务器</span></span><br><span class="line">```  </span><br><span class="line">浏览器访问 `http://localhost:4000`，确认主题样式、菜单、功能是否正常。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">### **六、更新主题**</span></span><br><span class="line">若 Fluid 发布新版本，可更新主题文件（不影响 `_config.fluid.yml` 中的自定义配置）：  </span><br><span class="line">```bash</span><br><span class="line"><span class="comment"># 进入主题目录</span></span><br><span class="line"><span class="built_in">cd</span> themes/fluid</span><br><span class="line"><span class="comment"># 拉取最新代码</span></span><br><span class="line">git pull</span><br><span class="line"><span class="comment"># 返回根目录，重新生成</span></span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line">hexo clean &amp;&amp; hexo g</span><br></pre></td></tr></table></figure>
+
+
+<p>hexo-theme-Fluid 是一款以「内容优先」为核心的极简风格 Hexo 主题，设计简洁、加载快速，且配置轻量化，非常适合文字类博客（如随笔、笔记、散文等）。以下是详细的安装及配置步骤：</p>
+<h3 id="一、安装前的准备-1"><a href="#一、安装前的准备-1" class="headerlink" title="一、安装前的准备"></a><strong>一、安装前的准备</strong></h3><ol>
+<li><strong>确保 Hexo 环境正常</strong><br>已安装 Node.js、Git，并初始化 Hexo 博客（若未初始化，参考之前的教程：<code>hexo init myblog &amp;&amp; cd myblog &amp;&amp; npm install</code>）。  </li>
+<li><strong>检查 Hexo 版本</strong><br>Fluid 要求 Hexo 版本 ≥ 5.0.0，终端执行 <code>hexo -v</code> 确认版本，若低于要求，升级 Hexo：  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo@latest --save</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="二、安装-Fluid-主题-1"><a href="#二、安装-Fluid-主题-1" class="headerlink" title="二、安装 Fluid 主题"></a><strong>二、安装 Fluid 主题</strong></h3><h4 id="1-克隆主题到本地-1"><a href="#1-克隆主题到本地-1" class="headerlink" title="1. 克隆主题到本地"></a>1. 克隆主题到本地</h4><p>进入 Hexo 博客根目录（如 <code>myblog</code>），执行以下命令克隆 Fluid 主题到 <code>themes/fluid</code> 文件夹：  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/fluid-dev/hexo-theme-fluid.git themes/fluid</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-安装主题依赖-1"><a href="#2-安装主题依赖-1" class="headerlink" title="2. 安装主题依赖"></a>2. 安装主题依赖</h4><p>Fluid 依赖部分插件，需手动安装：  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-theme-fluid@latest --save</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="三、启用主题-1"><a href="#三、启用主题-1" class="headerlink" title="三、启用主题"></a><strong>三、启用主题</strong></h3><p>编辑 Hexo 根目录的 <strong>全局配置文件</strong> <code>_config.yml</code>，将 <code>theme</code> 字段改为 <code>fluid</code>：  </p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">fluid</span>  <span class="comment"># 替换默认主题（如 landscape）</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="四、核心配置（关键步骤）-1"><a href="#四、核心配置（关键步骤）-1" class="headerlink" title="四、核心配置（关键步骤）"></a><strong>四、核心配置（关键步骤）</strong></h3><p>Fluid 的配置通过两个文件实现：  </p>
+<ul>
+<li><strong>主题默认配置</strong>：<code>themes/fluid/_config.yml</code>（存放主题默认设置，不建议直接修改）。  </li>
+<li><strong>用户自定义配置</strong>：建议复制主题配置文件到根目录，命名为 <code>_config.fluid.yml</code>（优先级更高，且更新主题时不会被覆盖）。</li>
+</ul>
+<h4 id="1-复制配置文件（推荐）-1"><a href="#1-复制配置文件（推荐）-1" class="headerlink" title="1. 复制配置文件（推荐）"></a>1. 复制配置文件（推荐）</h4><p>在博客根目录执行：  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> themes/fluid/_config.yml _config.fluid.yml</span><br><span class="line">```  </span><br><span class="line">后续所有配置均在 `_config.fluid.yml` 中修改。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#### 2. 基础配置（必改项）  </span></span><br><span class="line">打开 `_config.fluid.yml`，修改以下核心配置：  </span><br><span class="line"></span><br><span class="line"><span class="comment">##### （1）网站基本信息  </span></span><br><span class="line">```yaml</span><br><span class="line"><span class="comment"># 网站标题、副标题（显示在首页顶部）</span></span><br><span class="line">title: 你的博客名称  </span><br><span class="line">subtitle: <span class="string">&quot;副标题/一句话描述&quot;</span>  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 作者信息（显示在侧边栏/底部）</span></span><br><span class="line">author: 你的名字  </span><br><span class="line">avatar: /img/avatar.jpg  <span class="comment"># 头像路径（图片需放在 source/img/ 文件夹）</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="（2）导航菜单-1"><a href="#（2）导航菜单-1" class="headerlink" title="（2）导航菜单"></a>（2）导航菜单</h5><p>配置顶部导航栏的菜单（如首页、分类、标签等）：  </p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="string">首页:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-home</span></span><br><span class="line">  <span class="string">分类:</span> <span class="string">/categories/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-th</span></span><br><span class="line">  <span class="string">标签:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-tags</span></span><br><span class="line">  <span class="string">关于:</span> <span class="string">/about/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-user</span></span><br><span class="line">  <span class="comment"># 可选：添加自定义页面（如“归档”）</span></span><br><span class="line">  <span class="comment"># 归档: /archives/ || fa fa-archive</span></span><br><span class="line"><span class="string">```</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">菜单对应的页面需要手动创建（例如「关于页」）：</span>  </span><br><span class="line">  <span class="string">```bash</span></span><br><span class="line">  <span class="string">hexo</span> <span class="string">new</span> <span class="string">page</span> <span class="string">&quot;about&quot;</span>  <span class="comment"># 在 source/about/index.md 中编辑内容</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="（3）首页设置-1"><a href="#（3）首页设置-1" class="headerlink" title="（3）首页设置"></a>（3）首页设置</h5><p>Fluid 首页默认显示文章列表，可配置顶部图和描述：  </p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">index:</span></span><br><span class="line">  <span class="comment"># 首页顶部图（建议尺寸 1920×1080）</span></span><br><span class="line">  <span class="attr">top_img:</span> <span class="string">/img/index_top.jpg</span>  <span class="comment"># 图片放 source/img/ 文件夹</span></span><br><span class="line">  <span class="comment"># 首页描述文字（显示在标题下方）</span></span><br><span class="line">  <span class="attr">description:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">一行描述文字</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">可换行显示</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">支持</span> <span class="string">Markdown</span> <span class="string">语法（如</span> <span class="string">**加粗**）</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="（4）URL-配置（影响资源加载）-1"><a href="#（4）URL-配置（影响资源加载）-1" class="headerlink" title="（4）URL 配置（影响资源加载）"></a>（4）URL 配置（影响资源加载）</h5><p>确保 Hexo 根目录 <code>_config.yml</code> 中的 <code>url</code> 配置正确（部署后的博客地址）：  </p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 根目录 _config.yml 中</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">https://yourname.github.io</span>  <span class="comment"># 替换为你的博客地址（如 GitHub Pages 地址）</span></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="3-功能配置（按需开启）-1"><a href="#3-功能配置（按需开启）-1" class="headerlink" title="3. 功能配置（按需开启）"></a>3. 功能配置（按需开启）</h4><h5 id="（1）评论系统（以-Waline-为例，轻量且支持匿名）-1"><a href="#（1）评论系统（以-Waline-为例，轻量且支持匿名）-1" class="headerlink" title="（1）评论系统（以 Waline 为例，轻量且支持匿名）"></a>（1）评论系统（以 Waline 为例，轻量且支持匿名）</h5><ol>
+<li>先去 <a target="_blank" rel="noopener" href="https://waline.js.org/">Waline 官网</a> 注册并获取 <code>serverURL</code>（评论后台地址）。  </li>
+<li>在 <code>_config.fluid.yml</code> 中配置：  <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">comments:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">waline</span></span><br><span class="line">  <span class="attr">waline:</span></span><br><span class="line">    <span class="attr">serverURL:</span> <span class="string">https://your-waline-server.example.com</span>  <span class="comment"># 你的 Waline 服务地址</span></span><br><span class="line">    <span class="attr">placeholder:</span> <span class="string">来说点什么吧~</span>  <span class="comment"># 评论框提示文字</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h5 id="（2）代码高亮-1"><a href="#（2）代码高亮-1" class="headerlink" title="（2）代码高亮"></a>（2）代码高亮</h5><p>Fluid 内置代码高亮，支持多种主题（如 <code>atom-one-dark</code>、<code>github</code>）：  </p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">code:</span></span><br><span class="line">  <span class="attr">highlight:</span></span><br><span class="line">    <span class="attr">theme:</span> <span class="string">atom-one-dark</span>  <span class="comment"># 代码高亮主题</span></span><br><span class="line">    <span class="attr">line_number:</span> <span class="literal">true</span>     <span class="comment"># 显示行号</span></span><br><span class="line">    <span class="attr">wrap:</span> <span class="literal">true</span>            <span class="comment"># 代码过长时自动换行</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="（3）社交链接（显示在侧边栏或底部）-1"><a href="#（3）社交链接（显示在侧边栏或底部）-1" class="headerlink" title="（3）社交链接（显示在侧边栏或底部）"></a>（3）社交链接（显示在侧边栏或底部）</h5><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">social:</span></span><br><span class="line">  <span class="attr">GitHub:</span> <span class="string">https://github.com/yourname</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-github</span></span><br><span class="line">  <span class="string">知乎:</span> <span class="string">https://zhihu.com/people/yourname</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-book</span></span><br><span class="line">  <span class="string">邮箱:</span> <span class="string">mailto:your@email.com</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-envelope</span></span><br><span class="line">  <span class="comment"># 图标来自 Font Awesome，可自行添加其他平台</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="（4）文章版权声明-1"><a href="#（4）文章版权声明-1" class="headerlink" title="（4）文章版权声明"></a>（4）文章版权声明</h5><p>自动在文章末尾添加版权信息：  </p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">copyright:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># 版权声明内容（支持 Markdown）</span></span><br><span class="line">  <span class="attr">content:</span> <span class="string">&quot;本文采用 &lt;a href=&#x27;https://creativecommons.org/licenses/by-nc-sa/4.0/&#x27;&gt;CC BY-NC-SA 4.0&lt;/a&gt; 许可协议，转载请注明出处。&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="五、本地预览效果-1"><a href="#五、本地预览效果-1" class="headerlink" title="五、本地预览效果"></a><strong>五、本地预览效果</strong></h3><p>配置完成后，执行以下命令本地预览：  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">hexo clean  <span class="comment"># 清理缓存（确保新配置生效）</span></span><br><span class="line">hexo g      <span class="comment"># 生成静态文件</span></span><br><span class="line">hexo s      <span class="comment"># 启动本地服务器</span></span><br><span class="line">```  </span><br><span class="line">浏览器访问 `http://localhost:4000`，确认主题样式、菜单、功能是否正常。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">### **六、更新主题**</span></span><br><span class="line">若 Fluid 发布新版本，可更新主题文件（不影响 `_config.fluid.yml` 中的自定义配置）：  </span><br><span class="line">```bash</span><br><span class="line"><span class="comment"># 进入主题目录</span></span><br><span class="line"><span class="built_in">cd</span> themes/fluid</span><br><span class="line"><span class="comment"># 拉取最新代码</span></span><br><span class="line">git pull</span><br><span class="line"><span class="comment"># 返回根目录，重新生成</span></span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line">hexo clean &amp;&amp; hexo g</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="七、常见问题"><a href="#七、常见问题" class="headerlink" title="七、常见问题"></a><strong>七、常见问题</strong></h3><ol>
+<li><p><strong>首页图片不显示？</strong>  </p>
+<ul>
+<li>检查图片路径是否正确（需放在 <code>source/img/</code> 下，配置中用 <code>/img/文件名</code> 引用）。  </li>
+<li>确保 <code>url</code> 配置正确（根目录 <code>_config.yml</code>），避免路径拼接错误。</li>
+</ul>
+</li>
+<li><p><strong>评论系统不生效？</strong>  </p>
+<ul>
+<li>确认 <code>serverURL</code> 正确（Waline&#x2F;Valine 等服务是否正常运行）。  </li>
+<li>执行 <code>hexo clean</code> 后重新生成，避免缓存导致配置未加载。</li>
+</ul>
+</li>
+<li><p><strong>导航菜单点击 404？</strong>  </p>
+<ul>
+<li>确保对应页面已创建（如 <code>hexo new page &quot;categories&quot;</code>），且页面文件 <code>source/分类/index.md</code> 存在。</li>
+</ul>
+</li>
+</ol>
+<p>Fluid 主题的核心优势是「简约而不简单」，通过以上配置即可满足多数博客的需求。如需更详细的功能（如自定义 CSS、SEO 优化），可参考 <a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/">Fluid 官方文档</a>。</p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">xfm</div><div class="post-copyright__author_desc">blog.xfm.qzz.io</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://xfm0797.github.io/2025/10/07/hexo-theme-Fluid/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://xfm0797.github.io/2025/10/07/hexo-theme-Fluid/')">hexo-theme-Fluid主题安装及配置方法</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://img.lovou.eu.org/file/1759551870950_wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.lovou.eu.org/file/1759551870950_wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://img.lovou.eu.org/file/1759551870164_alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.lovou.eu.org/file/1759551870164_alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://xfm0797.github.io/2025/10/07/hexo-theme-Fluid/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=hexo-theme-Fluid主题安装及配置方法&amp;url=https://xfm0797.github.io/2025/10/07/hexo-theme-Fluid/&amp;pic=https://img.lovou.eu.org/file/1759818579600_hexo-theme-Fluid.png" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xfm0797.github.io" target="_blank">学习Hexo</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/hexo-theme-fluid/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>hexo-theme-fluid<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://img.lovou.eu.org/file/1759567275346_cover.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2025/10/07/shangchaxiang/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.lovou.eu.org/file/1759567275346_cover.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">山径上的木子香</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">xfm</h1><div class="author-info__desc">blog.xfm.qzz.io</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/xfm0797" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/372204786" target="_blank" title="BiliBili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://img.lovou.eu.org/file/1759738870306_face.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://img.lovou.eu.org/file/1759738871758_backface.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85%E5%89%8D%E7%9A%84%E5%87%86%E5%A4%87"><span class="toc-text">一、安装前的准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85-Fluid-%E4%B8%BB%E9%A2%98"><span class="toc-text">二、安装 Fluid 主题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%85%8B%E9%9A%86%E4%B8%BB%E9%A2%98%E5%88%B0%E6%9C%AC%E5%9C%B0"><span class="toc-text">1. 克隆主题到本地</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98%E4%BE%9D%E8%B5%96"><span class="toc-text">2. 安装主题依赖</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%90%AF%E7%94%A8%E4%B8%BB%E9%A2%98"><span class="toc-text">三、启用主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%A0%B8%E5%BF%83%E9%85%8D%E7%BD%AE%EF%BC%88%E5%85%B3%E9%94%AE%E6%AD%A5%E9%AA%A4%EF%BC%89"><span class="toc-text">四、核心配置（关键步骤）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%A4%8D%E5%88%B6%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="toc-text">1. 复制配置文件（推荐）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95"><span class="toc-text">（2）导航菜单</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%883%EF%BC%89%E9%A6%96%E9%A1%B5%E8%AE%BE%E7%BD%AE"><span class="toc-text">（3）首页设置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%884%EF%BC%89URL-%E9%85%8D%E7%BD%AE%EF%BC%88%E5%BD%B1%E5%93%8D%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD%EF%BC%89"><span class="toc-text">（4）URL 配置（影响资源加载）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%8A%9F%E8%83%BD%E9%85%8D%E7%BD%AE%EF%BC%88%E6%8C%89%E9%9C%80%E5%BC%80%E5%90%AF%EF%BC%89"><span class="toc-text">3. 功能配置（按需开启）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%BB%A5-Waline-%E4%B8%BA%E4%BE%8B%EF%BC%8C%E8%BD%BB%E9%87%8F%E4%B8%94%E6%94%AF%E6%8C%81%E5%8C%BF%E5%90%8D%EF%BC%89"><span class="toc-text">（1）评论系统（以 Waline 为例，轻量且支持匿名）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE"><span class="toc-text">（2）代码高亮</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%883%EF%BC%89%E7%A4%BE%E4%BA%A4%E9%93%BE%E6%8E%A5%EF%BC%88%E6%98%BE%E7%A4%BA%E5%9C%A8%E4%BE%A7%E8%BE%B9%E6%A0%8F%E6%88%96%E5%BA%95%E9%83%A8%EF%BC%89"><span class="toc-text">（3）社交链接（显示在侧边栏或底部）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%884%EF%BC%89%E6%96%87%E7%AB%A0%E7%89%88%E6%9D%83%E5%A3%B0%E6%98%8E"><span class="toc-text">（4）文章版权声明</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88%E6%95%88%E6%9E%9C"><span class="toc-text">五、本地预览效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85%E5%89%8D%E7%9A%84%E5%87%86%E5%A4%87-1"><span class="toc-text">一、安装前的准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85-Fluid-%E4%B8%BB%E9%A2%98-1"><span class="toc-text">二、安装 Fluid 主题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%85%8B%E9%9A%86%E4%B8%BB%E9%A2%98%E5%88%B0%E6%9C%AC%E5%9C%B0-1"><span class="toc-text">1. 克隆主题到本地</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98%E4%BE%9D%E8%B5%96-1"><span class="toc-text">2. 安装主题依赖</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%90%AF%E7%94%A8%E4%B8%BB%E9%A2%98-1"><span class="toc-text">三、启用主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%A0%B8%E5%BF%83%E9%85%8D%E7%BD%AE%EF%BC%88%E5%85%B3%E9%94%AE%E6%AD%A5%E9%AA%A4%EF%BC%89-1"><span class="toc-text">四、核心配置（关键步骤）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%A4%8D%E5%88%B6%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89-1"><span class="toc-text">1. 复制配置文件（推荐）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95-1"><span class="toc-text">（2）导航菜单</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%883%EF%BC%89%E9%A6%96%E9%A1%B5%E8%AE%BE%E7%BD%AE-1"><span class="toc-text">（3）首页设置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%884%EF%BC%89URL-%E9%85%8D%E7%BD%AE%EF%BC%88%E5%BD%B1%E5%93%8D%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD%EF%BC%89-1"><span class="toc-text">（4）URL 配置（影响资源加载）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%8A%9F%E8%83%BD%E9%85%8D%E7%BD%AE%EF%BC%88%E6%8C%89%E9%9C%80%E5%BC%80%E5%90%AF%EF%BC%89-1"><span class="toc-text">3. 功能配置（按需开启）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%BB%A5-Waline-%E4%B8%BA%E4%BE%8B%EF%BC%8C%E8%BD%BB%E9%87%8F%E4%B8%94%E6%94%AF%E6%8C%81%E5%8C%BF%E5%90%8D%EF%BC%89-1"><span class="toc-text">（1）评论系统（以 Waline 为例，轻量且支持匿名）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE-1"><span class="toc-text">（2）代码高亮</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%883%EF%BC%89%E7%A4%BE%E4%BA%A4%E9%93%BE%E6%8E%A5%EF%BC%88%E6%98%BE%E7%A4%BA%E5%9C%A8%E4%BE%A7%E8%BE%B9%E6%A0%8F%E6%88%96%E5%BA%95%E9%83%A8%EF%BC%89-1"><span class="toc-text">（3）社交链接（显示在侧边栏或底部）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%884%EF%BC%89%E6%96%87%E7%AB%A0%E7%89%88%E6%9D%83%E5%A3%B0%E6%98%8E-1"><span class="toc-text">（4）文章版权声明</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88%E6%95%88%E6%9E%9C-1"><span class="toc-text">五、本地预览效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-text">七、常见问题</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/10/07/hexo-theme-Fluid/" title="hexo-theme-Fluid主题安装及配置方法"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.lovou.eu.org/file/1759567275346_cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo-theme-Fluid主题安装及配置方法"/></a><div class="content"><a class="title" href="/2025/10/07/hexo-theme-Fluid/" title="hexo-theme-Fluid主题安装及配置方法">hexo-theme-Fluid主题安装及配置方法</a><time datetime="2025-10-07T06:24:55.000Z" title="发表于 2025-10-07 14:24:55">2025-10-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/07/shangchaxiang/" title="山径上的木子香"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.lovou.eu.org/file/1759567275346_cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="山径上的木子香"/></a><div class="content"><a class="title" href="/2025/10/07/shangchaxiang/" title="山径上的木子香">山径上的木子香</a><time datetime="2025-10-07T06:10:59.000Z" title="发表于 2025-10-07 14:10:59">2025-10-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/07/zhongqiuyehua/" title="中秋夜话"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.lovou.eu.org/file/1759567275346_cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="中秋夜话"/></a><div class="content"><a class="title" href="/2025/10/07/zhongqiuyehua/" title="中秋夜话">中秋夜话</a><time datetime="2025-10-07T06:04:08.000Z" title="发表于 2025-10-07 14:04:08">2025-10-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/06/website-1/" title="那些年创建的网站"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.lovou.eu.org/file/1759567275346_cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="那些年创建的网站"/></a><div class="content"><a class="title" href="/2025/10/06/website-1/" title="那些年创建的网站">那些年创建的网站</a><time datetime="2025-10-06T07:48:23.000Z" title="发表于 2025-10-06 15:48:23">2025-10-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/05/hexo-setup/" title="hexo-如何安装"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.lovou.eu.org/file/1759567275346_cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo-如何安装"/></a><div class="content"><a class="title" href="/2025/10/05/hexo-setup/" title="hexo-如何安装">hexo-如何安装</a><time datetime="2025-10-04T19:24:57.000Z" title="发表于 2025-10-05 03:24:57">2025-10-05</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2025 By <a class="footer-bar-link" href="/" title="xfm" target="_blank">xfm</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a><a class="footer-bar-link" target="_blank" rel="noopener" href="https://img.lovou.eu.org" title="图床">图床</a><a class="footer-bar-link" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/" title="赣ICP备-xxxxxxx号">赣ICP备-xxxxxxx号</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">3</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.lovou.pw/" title="枫铃博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="枫铃博客"/><span class="back-menu-item-text">枫铃博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://img.lovou.eu.org/" title="在线图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.lovou.eu.org/favicon.ico" alt="在线图床"/><span class="back-menu-item-text">在线图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/hexo/" style="font-size: 0.88rem;">hexo<sup>1</sup></a><a href="/tags/hexo-theme/" style="font-size: 0.88rem;">hexo-theme<sup>2</sup></a><a href="/tags/hexo-theme-fluid/" style="font-size: 0.88rem;">hexo-theme-fluid<sup>1</sup></a><a href="/tags/qexo/" style="font-size: 0.88rem;">qexo<sup>7</sup></a><a href="/tags/site/" style="font-size: 0.88rem;">site<sup>1</sup></a><a href="/tags/%E6%95%A3%E6%96%87/" style="font-size: 0.88rem;">散文<sup>2</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("10/01/2025 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2025 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 xfm 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(() => {
+  let initFn = window.walineFn || null
+
+  const initWaline = (Fn) => {
+    const waline = Fn(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://waline.xfm.qzz.io',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: false,
+      imageUploader: true,
+    }, null))
+
+    const destroyWaline = () => {
+      waline.destroy()
+    }
+
+    anzhiyu.addGlobalFn('pjax', destroyWaline, 'destroyWaline')
+  }
+
+  const loadWaline = async () => {
+    if (initFn) initWaline(initFn)
+    else {
+      await getCSS('https://cdn.cbd.int/@waline/client@3.1.3/dist/waline.css')
+      if (false) await getCSS('https://cdn.cbd.int/@waline/client@3.1.3/dist/waline-meta.css')
+      const { init } = await import('https://cdn.cbd.int/@waline/client@3.1.3/dist/waline.js')
+      initFn = init || Waline.init
+      initWaline(initFn)
+      window.walineFn = initFn
+    }
+  }
+
+  if ('Waline' === 'Waline' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = content => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = async () => {
+    try {
+      const res = await fetch('https://waline.xfm.qzz.io/api/comment?type=recent&count=6', { method: 'GET' })
+      const result = await res.json()
+      const walineArray = result.data.map(e => {
+        return {
+          'content': changeContent(e.comment),
+          'avatar': e.avatar,
+          'nick': e.nick,
+          'url': e.url + '#' + e.objectId,
+          'date': e.time || e.insertedAt
+        }
+      })
+      saveToLocal.set('waline-newest-comments', JSON.stringify(walineArray), 10/(60*24))
+      generateHtml(walineArray)
+    } catch (err) {
+      console.error(err)
+      const $dom = document.querySelector('#card-newest-comments .aside-list')
+      $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+    }
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('waline-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
