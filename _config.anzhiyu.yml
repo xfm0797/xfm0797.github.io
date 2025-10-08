@@ -1055,7 +1055,7 @@ home_top:
   siteText: xfm.qzz.io
   category:
     - name: 前端
-      path: /categories/hexo/
+      path: /categories/Hexo/
       shadow: var(--anzhiyu-shadow-blue)
       class: blue
       icon: anzhiyu-icon-dove
