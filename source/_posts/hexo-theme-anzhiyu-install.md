@@ -160,6 +160,7 @@ hexo s
 2. 选择自己的安装方式升级
 
 `Github`：重新重新执行安装命令即可
+
 ```bash 
 git clone -b main https://github.com/anzhiyu-c/hexo-theme-anzhiyu.git themes/anzhiyu
 ```
