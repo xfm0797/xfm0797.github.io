@@ -28,14 +28,44 @@ nav:
   menu:
     - title: 网页
       item:
-        - name: 枫铃博客
+        - name: Mige笔记
           link: https://blog.lovou.pw/
+          icon: /img/favicon.ico
+        - name: 枫铃网络
+          link: https://host.xongyi.com/
+          icon: /img/favicon.ico
+        - name: 枫铃社区
+          link: https://bbs.lovou.pw/
+          icon: /img/favicon.ico
+        - name: 枫铃博客
+          link: https://blog.xongyi.com/
+          icon: /img/favicon.ico
+        - name: Mige博客
+          link: https://mige.eu.org/
+          icon: /img/favicon.ico
+        - name: O520博客
+          link: https://0520.eu.org/
           icon: /img/favicon.ico
     - title: 项目
       item:
         - name: 在线图床
           link: https://img.lovou.eu.org/
           icon: https://img.lovou.eu.org/favicon.ico
+        - name: 在线网盘
+          link: https://one.mige.eu.org/
+          icon: /img/favicon.ico
+        - name: 在线webVM
+          link: https://web.lovou.pw/
+          icon: https://web.lovou.pw/tower.ico
+        - name: 枫铃DNS
+          link: https://dns.lovou.pw/
+          icon: /img/favicon.ico
+        - name: 枫铃文档
+          link: https://doc.lovou.pw/
+          icon: /img/favicon.ico
+        - name: WebSSH
+          link: https://webssh.lovou.pw/
+          icon: /img/favicon.ico
 
 # mourn （哀悼日，指定日期网站简单变灰，不包括滚动条）
 # 注意： 仅网站首页变灰，其他页面正常显示
