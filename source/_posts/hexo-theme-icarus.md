@@ -7,7 +7,10 @@ top_group_index: 10
 background: '#fff'
 date: 2025-10-25 15:10:58
 updated:
-tags: hexo-theme-icarus,theme
+tags:
+- hexo-theme-icarus
+- theme
+- hexo-theme
 categories: theme
 keywords: hexo-theme-icarus
 description: hexo-theme-icarus主题安装教程

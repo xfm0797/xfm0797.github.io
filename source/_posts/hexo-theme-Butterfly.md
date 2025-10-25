@@ -6,10 +6,13 @@ top_group_index: 10
 background: '#fff'
 date: 2025-10-5
 updated:
-tags: hexo-theme
-categories: Hexo
-keywords:
-description:
+tags: 
+- hexo-theme
+- theme
+- hexo-theme-Butterfly
+categories: theme
+keywords: hexo-theme-Butterfly 主题安装与基础配置操作教程
+description: hexo-theme-Butterfly 主题安装与基础配置操作教程
 top:
 top_img:
 comments:

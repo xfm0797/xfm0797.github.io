@@ -6,8 +6,11 @@ top_group_index: 10
 background: '#fff'
 date: 2025-10-05
 updated:
-tags: hexo-theme
-categories: Hexo
+tags:
+- hexo-theme
+- theme
+- hexo-theme-anzhiyu
+categories: theme
 keywords: 安知鱼主题安装
 description: 一款基于hexo-theme-butterfly修改的主題
 top:

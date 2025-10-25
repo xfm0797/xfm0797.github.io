@@ -7,7 +7,11 @@ top_group_index: 10
 background: '#fff'
 date: 2025-10-25 15:09:03
 updated:
-tags: hexo
+tags:
+- hexo
+- Icarus
+- 用户指南
+- 主题配置
 categories: Hexo
 keywords: Icarus用户指南 - 主题配置
 description: Icarus用户指南 - 主题配置

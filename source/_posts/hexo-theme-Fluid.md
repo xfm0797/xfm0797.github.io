@@ -7,7 +7,10 @@ top_group_index: 10
 background: '#fff'
 date: 2025-10-07 14:24:55
 updated:
-tags: hexo-theme-fluid
+tags:
+- hexo-theme-fluid
+- theme
+- hexo-theme
 categories: theme
 keywords: hexo-theme-Fluid主题安装及配置方法
 description: hexo-theme-Fluid主题安装及配置方法
