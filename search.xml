@@ -20,7 +20,11 @@
       
         <tags>
             
-            <tag> hexo-theme-icarus,theme </tag>
+            <tag> hexo-theme </tag>
+            
+            <tag> theme </tag>
+            
+            <tag> hexo-theme-icarus </tag>
             
         </tags>
       
@@ -47,6 +51,12 @@
             
             <tag> hexo </tag>
             
+            <tag> Icarus </tag>
+            
+            <tag> 用户指南 </tag>
+            
+            <tag> 主题配置 </tag>
+            
         </tags>
       
     </entry>
@@ -69,6 +79,10 @@
       
       
         <tags>
+            
+            <tag> hexo-theme </tag>
+            
+            <tag> theme </tag>
             
             <tag> hexo-theme-fluid </tag>
             
@@ -363,7 +377,7 @@
       
       <categories>
           
-          <category> Hexo </category>
+          <category> theme </category>
           
       </categories>
       
@@ -371,6 +385,10 @@
         <tags>
             
             <tag> hexo-theme </tag>
+            
+            <tag> theme </tag>
+            
+            <tag> hexo-theme-Butterfly </tag>
             
         </tags>
       
@@ -388,7 +406,7 @@
       
       <categories>
           
-          <category> Hexo </category>
+          <category> theme </category>
           
       </categories>
       
@@ -396,6 +414,10 @@
         <tags>
             
             <tag> hexo-theme </tag>
+            
+            <tag> theme </tag>
+            
+            <tag> hexo-theme-anzhiyu </tag>
             
         </tags>
       
