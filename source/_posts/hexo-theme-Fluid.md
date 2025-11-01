@@ -8,7 +8,6 @@ background: '#fff'
 date: 2025-10-07 14:24:55
 updated:
 tags:
-- hexo-theme-fluid
 - theme
 - hexo-theme
 categories: theme

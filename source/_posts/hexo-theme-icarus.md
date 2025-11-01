@@ -8,7 +8,6 @@ background: '#fff'
 date: 2025-10-25 15:10:58
 updated:
 tags:
-- hexo-theme-icarus
 - theme
 - hexo-theme
 categories: theme
