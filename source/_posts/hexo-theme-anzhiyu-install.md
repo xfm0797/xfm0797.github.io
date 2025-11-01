@@ -9,7 +9,6 @@ updated:
 tags:
 - hexo-theme
 - theme
-- hexo-theme-anzhiyu
 categories: theme
 keywords: 安知鱼主题安装
 description: 一款基于hexo-theme-butterfly修改的主題
