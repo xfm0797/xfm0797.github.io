@@ -1,8 +1,8 @@
 # 学习Hexo建站
 
-    > 搭建在Github Pages的小破站 [学习Hexo](https://xfm0797.github.io)
-    > 记录些Hexo建站过程中遇到的问题，学习如何解决方法，优化思路
-    > 本站有使用 * CloudFlare Pages * 托管，保证在任何地方都可以访问
+- 搭建在Github Pages的小破站 [学习Hexo](https://xfm0797.github.io)
+- 记录些Hexo建站过程中遇到的问题，学习如何解决方法，优化思路
+- 本站有使用 **CloudFlare Pages** 托管，保证在任何地方都可以访问
 
 
 # 什么是 Hexo？
@@ -29,8 +29,8 @@ Windows：下载并安装 git。
 Mac：使用 Homebrew, MacPorts 或者下载 安装程序。
 Linux (Ubuntu, Debian)：sudo apt-get install git-core
 Linux (Fedora, Red Hat, CentOS)：sudo yum install git-core
-    > Mac 用户
-    > 如果在编译时可能会遇到问题。 请先到 App Store 安装 Xcode。 Xcode 完成后，启动并进入 Preferences -> Download -> Command Line Tools -> Install 安装命令行工具。
+> Mac 用户
+> 如果在编译时可能会遇到问题。 请先到 App Store 安装 Xcode。 Xcode 完成后，启动并进入 Preferences -> Download -> Command Line Tools -> Install 安装命令行工具。
 
 # 安装 Node.js
 ---
@@ -44,15 +44,15 @@ Linux（DEB/RPM-based）：从 NodeSource 安装。
 其它：使用相应的软件包管理器进行安装。 可以参考由 Node.js 提供的 指导。
 对于 Mac 和 Linux 同样建议使用 nvs 或者 nvm，以避免可能会出现的权限问题。
 
-    > Windows
-    > 使用 Node.js 官方安装程序时，请确保勾选 Add to PATH 选项（默认已勾选）
+> Windows
+> 使用 Node.js 官方安装程序时，请确保勾选 Add to PATH 选项（默认已勾选）
 
 
-    > Mac / Linux
-    > 如果在尝试安装 Hexo 的过程中出现 EACCES 权限错误，请遵循 由 npmjs 发布的指导 修复该问题。
+> Mac / Linux
+> 如果在尝试安装 Hexo 的过程中出现 EACCES 权限错误，请遵循 由 npmjs 发布的指导 修复该问题。
 
-    > Linux
-    > 如果您使用 Snap 来安装 Node.js，在 初始化 博客时您可能需要手动在目标文件夹中执行 npm install。
+> Linux
+> 如果您使用 Snap 来安装 Node.js，在 初始化 博客时您可能需要手动在目标文件夹中执行 npm install。
 
 # 安装 Hexo
 ---
@@ -99,12 +99,12 @@ echo 'PATH="$PATH:./node_modules/.bin"' >> ~/.profile
 
 # Hexo 常用命令
 ---
-    1. 清除缓存文件 (db.json) 和已生成的静态文件 (public)。
-        > $ hexo clean
+1. 清除缓存文件 (db.json) 和已生成的静态文件 (public)。
+> $ hexo clean
 
-    2. 生成静态文件。
-        > $ hexo generate
+2. 生成静态文件。
+> $ hexo generate
 
-    3. 启动服务器。 默认情况下，访问网址为： http://localhost:4000/。
-        > $ hexo server
+3. 启动服务器。 默认情况下，访问网址为： http://localhost:4000/。
+> $ hexo server
 
