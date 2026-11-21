@@ -114,17 +114,17 @@ module.exports = () => ({
     ctx.postsZh = zh;
     ctx.postsEn = en;
 
-    // 按语言拆分 taxonomy 清单（侧栏/云标签用），url 带上语言前缀
+    // 按语言拆分 taxonomy 清单（侧栏/云标签用）
+    // 仅英文的词条：英文页接管原 URL，侧栏链接须与实际路径一致
     const splitTerms = (list, enSide) =>
       (list || [])
         .map((item) => {
-          const items = (item.items || []).filter(enSide ? isEn : (p) => !isEn(p));
-          if (!items.length) return null;
-          return {
-            name: item.name,
-            url: (enSide ? '/en' : '') + item.url,
-            count: items.length,
-          };
+          const items = item.items || [];
+          const hasZh = items.some((p) => !isEn(p));
+          const mine = items.filter(enSide ? isEn : (p) => !isEn(p));
+          if (!mine.length) return null;
+          const url = enSide && hasZh ? '/en' + item.url : item.url;
+          return { name: item.name, url, count: mine.length };
         })
         .filter(Boolean)
         .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
@@ -158,7 +158,7 @@ module.exports = () => ({
     if (homeEn) generated.push(...chunkPages('/en/page/', '/en/', en, perPage, EN, 'home').pages);
 
     // ---- 4. 重建 taxonomy 聚合页（tags / categories / series），中文原 URL + 英文 /en/ 孪生 ----
-        const groups = [
+            const groups = [
       ['tags', ctx.tags || []],
       ['categories', ctx.categories || []],
       ['series', ctx.series || []],
@@ -174,9 +174,13 @@ module.exports = () => ({
         const enPosts = items.filter(isEn);
         for (const [lang, posts] of [[ZH, zhPosts], [EN, enPosts]]) {
           if (!posts.length) continue;
-          // 英文接管：该词没有中文文章时，英文页直接用原 URL（避免原地址 404）
-          const takeover = lang === EN && !zhPosts.length;
-          const base = lang === EN && !takeover ? `/en${item.url}` : item.url;
+          // 中文：原 URL；英文：有中文文章时用 /en/ 孪生，否则接管原 URL
+          // （接管时原 URL 与 /en/ 孪生都生成，兜底旧链接）
+          const enTwin = `/en${item.url}`;
+          const bases = lang === EN
+            ? (zhPosts.length ? [enTwin] : [enTwin, item.url])
+            : [item.url];
+          for (const base of bases) {
           const total = posts.length;
           const totalPages = Math.max(1, Math.ceil(total / perPage));
           const pageUrl = (n) => (n === 1 ? base : `${base.replace(/\/$/, '')}/page/${n}/`);
@@ -196,7 +200,7 @@ module.exports = () => ({
               posts: chunk,
             };
             generated.push({
-              key: `langsplit:taxonomy:${kind}:${item.name}:${lang}${i === 1 ? '' : `:${i}`}`,
+              key: `langsplit:taxonomy:${kind}:${item.name}:${lang}:${base}${i === 1 ? '' : `:${i}`}`,
               rel: '',
               url,
               layout: 'taxonomy.html',
@@ -218,9 +222,10 @@ module.exports = () => ({
               ext: '.html',
               excerpt: '',
               readTime: 0,
-              raw: `langsplit|taxonomy|${kind}|${item.name}|${lang}|${i}|${chunk.map((p) => p.url).join(',')}`,
+              raw: `langsplit|taxonomy|${kind}|${item.name}|${lang}|${base}|${i}|${chunk.map((p) => p.url).join(',')}`,
               taxonomy: true,
             });
+          }
           }
         }
       }
