@@ -2,7 +2,7 @@
 lang: zh-CN
 translationKey: xfmpress-plugin-comments
 title: 评论系统：十家评论服务一个开关
-date: 2026-11-21 22:05:00
+date: 2026-11-21 14:03:00
 description: xfm-plugin-comments 把 giscus、beaudar、waline、twikoo、disqus 等十家评论服务收进一个 comments.provider 开关，按 provider 校验必填项，只挂文章页，换服务不改模板
 category: 官方插件
 tags: [xfmpress, 插件]

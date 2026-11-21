@@ -2,7 +2,7 @@
 lang: zh-CN
 translationKey: xfmpress-v0-4-17
 title: xfmpress v0.4.17：多语言站文章流按语言拆分，译文不再重复出现在列表和订阅里
-date: 2026-11-21 21:00:00
+date: 2026-11-21 12:50:00
 description: 多语言站点上 site.posts 现在只含默认语言文章，归档、标签统计、prev/next 与 RSS/JSON Feed 同步过滤，并为每个非默认语言生成独立列表页，单语言站点输出保持逐字节不变。
 category: 更新日志
 tags: [xfmpress, 更新日志]

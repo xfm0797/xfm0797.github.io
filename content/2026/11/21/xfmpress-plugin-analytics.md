@@ -2,7 +2,7 @@
 lang: zh-CN
 translationKey: xfmpress-plugin-analytics
 title: 访问统计：一行配置接入五类统计服务
-date: 2026-11-21 22:00:00
+date: 2026-11-21 14:00:00
 description: xfm-plugin-analytics 在构建时往每页 body 结束前注入统计脚本，内置 umami、plausible、google、baidu 与自定义片段五种 provider，支持数组并行埋点、按路径排除、单页关闭
 category: 官方插件
 tags: [xfmpress, 插件]

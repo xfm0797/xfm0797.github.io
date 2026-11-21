@@ -2,7 +2,7 @@
 lang: en
 translationKey: xfmpress-theme-docs
 title: "The `docs` theme: turn a content folder into a documentation site"
-date: 2026-11-21 20:10:00
+date: 2026-11-21 13:10:00
 description: themes/docs — top nav, grouped sidebar, wide body and a right-hand TOC; the sidebar is generated from `group` and `weight`
 category: themes
 tags: [xfmpress, theme]

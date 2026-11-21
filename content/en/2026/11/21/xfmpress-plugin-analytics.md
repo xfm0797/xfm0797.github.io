@@ -2,7 +2,7 @@
 lang: en
 translationKey: xfmpress-plugin-analytics
 title: "analytics: page-view tracking with one config key"
-date: 2026-11-21 22:00:00
+date: 2026-11-21 14:00:00
 description: xfm-plugin-analytics injects a tracking snippet before the closing body tag on every page, with five built-in providers and per-page opt-out.
 category: plugins
 tags: [xfmpress, plugin]

@@ -2,7 +2,7 @@
 lang: zh-CN
 translationKey: xfmpress-plugin-redirect
 title: 跳转插件：旧地址生成跳转页，链接永不 404
-date: 2026-11-21 23:15:00
+date: 2026-11-21 14:33:00
 description: 在每个旧地址生成极小的跳转页，meta refresh、JS 跳转与可见链接三条腿走路，带 rel=canonical 与 noindex,follow
 category: 官方插件
 tags: [xfmpress, 插件]

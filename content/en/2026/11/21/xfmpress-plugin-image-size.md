@@ -2,7 +2,7 @@
 lang: en
 translationKey: xfmpress-plugin-image-size
 title: "image-size plugin: width and height attributes with no layout shift"
-date: 2026-11-21 23:00:00
+date: 2026-11-21 14:12:00
 description: Reads local image headers at build time to add width and height attributes to img tags, eliminating layout shift and adding loading="lazy" by default
 category: plugins
 tags: [xfmpress, plugin]

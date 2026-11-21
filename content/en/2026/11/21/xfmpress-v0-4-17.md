@@ -2,7 +2,7 @@
 lang: en
 translationKey: xfmpress-v0-4-17
 title: "xfmpress v0.4.17: per-language post streams, no more duplicated translations"
-date: 2026-11-21 21:00:00
+date: 2026-11-21 12:50:00
 description: On multilingual sites, site.posts now holds only default-language posts; archives, tag counts, prev/next and feeds filter the same way, and each non-default language gets its own list pages.
 category: changelog
 tags: [xfmpress, changelog]

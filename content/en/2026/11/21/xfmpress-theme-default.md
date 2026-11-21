@@ -2,7 +2,7 @@
 lang: en
 translationKey: xfmpress-theme-default
 title: "The built-in blog theme `default`: clean reading, zero setup"
-date: 2026-11-21 20:00:00
+date: 2026-11-21 13:00:00
 description: themes/default ships with xfmpress — jade palette, hero plus card grid, sidebar, scroll-synced table of contents, light/dark toggle
 category: themes
 tags: [xfmpress, theme]

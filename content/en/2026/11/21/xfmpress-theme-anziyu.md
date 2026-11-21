@@ -2,7 +2,7 @@
 lang: en
 translationKey: xfmpress-theme-anziyu
 title: "xfmpress-theme-anziyu: the Anzhiyu-flavoured theme this site runs on"
-date: 2026-11-21 20:20:00
+date: 2026-11-21 13:20:00
 description: Glass nav, hero banner, cover cards, sidebar widgets and Waline comments — how a seven-layout, six-partial private theme was built
 category: themes
 tags: [xfmpress, theme]

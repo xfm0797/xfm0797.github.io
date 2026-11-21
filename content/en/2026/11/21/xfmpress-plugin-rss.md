@@ -2,7 +2,7 @@
 lang: en
 translationKey: xfmpress-plugin-rss
 title: "rss: a full-text RSS 2.0 feed with one dependency"
-date: 2026-11-21 22:20:00
+date: 2026-11-21 14:39:00
 description: Install-and-done RSS 2.0 output with full post bodies in content:encoded, absolute links from site.url, and a single limit option
 category: plugins
 tags: [xfmpress, plugin]

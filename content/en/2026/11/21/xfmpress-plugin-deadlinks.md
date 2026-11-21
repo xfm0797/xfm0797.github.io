@@ -2,7 +2,7 @@
 lang: en
 translationKey: xfmpress-plugin-deadlinks
 title: "deadlinks: catch broken internal links at build time"
-date: 2026-11-21 22:10:00
+date: 2026-11-21 14:06:00
 description: xfm-plugin-deadlinks resolves every internal href and src against the real output set after a build and lists whatever points nowhere in the console.
 category: plugins
 tags: [xfmpress, plugin]

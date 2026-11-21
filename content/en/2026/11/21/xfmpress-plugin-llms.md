@@ -2,7 +2,7 @@
 lang: en
 translationKey: xfmpress-plugin-llms
 title: "llms: llms.txt and llms-full.txt for large language models"
-date: 2026-11-21 22:40:00
+date: 2026-11-21 14:15:00
 description: Generates an llmstxt.org-compliant plain-text index of your site — grouped links with one-line summaries, plus an optional full-text version with tags stripped
 category: plugins
 tags: [xfmpress, plugin]

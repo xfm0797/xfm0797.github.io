@@ -2,7 +2,7 @@
 lang: en
 translationKey: xfmpress-plugin-search
 title: "search: build-time search index with a Ctrl/⌘+K panel"
-date: 2026-11-21 23:05:00
+date: 2026-11-21 14:42:00
 description: Compresses every page into a single search.json at build time; the browser filters it client-side, with no server and no dependencies
 category: plugins
 tags: [xfmpress, plugin]

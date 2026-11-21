@@ -2,7 +2,7 @@
 lang: zh-CN
 translationKey: xfmpress-plugin-llms
 title: llms 插件：给大模型读的 llms.txt 与 llms-full.txt
-date: 2026-11-21 22:40:00
+date: 2026-11-21 14:15:00
 description: 按 llmstxt.org 约定生成纯文本索引：分组文章清单带一句话描述，可选全文版附剥离标签后的正文纯文本，多语言站收录所有语言页面
 category: 官方插件
 tags: [xfmpress, 插件]

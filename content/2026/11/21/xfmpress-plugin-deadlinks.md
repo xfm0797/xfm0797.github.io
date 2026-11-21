@@ -2,7 +2,7 @@
 lang: zh-CN
 translationKey: xfmpress-plugin-deadlinks
 title: 死链检查：构建时揪出站内坏链接
-date: 2026-11-21 22:10:00
+date: 2026-11-21 14:06:00
 description: xfm-plugin-deadlinks 在构建收尾时扫描每个成品页面，把站内 href 和 src 对着真实产物清单核对，指不上的链接直接在终端列出，可产出 deadlinks.json 或让构建失败
 category: 官方插件
 tags: [xfmpress, 插件]

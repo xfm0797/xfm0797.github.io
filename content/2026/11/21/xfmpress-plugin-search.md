@@ -2,7 +2,7 @@
 lang: zh-CN
 translationKey: xfmpress-plugin-search
 title: 站内搜索插件：构建期生成索引，Ctrl/⌘+K 全站检索
-date: 2026-11-21 23:05:00
+date: 2026-11-21 14:42:00
 description: 构建期把全站压缩成一份 search.json，纯前端筛选，没有服务端、不引入依赖；主题自带 Ctrl/⌘+K 搜索面板
 category: 官方插件
 tags: [xfmpress, 插件]

@@ -2,7 +2,7 @@
 lang: zh-CN
 translationKey: xfmpress-plugin-related
 title: 相关文章插件：按标签、分类与系列加权推荐
-date: 2026-11-21 23:10:00
+date: 2026-11-21 14:36:00
 description: 渲染前为每篇文章算出相关推荐，标签 3 分、分类 2 分、系列 3 分加权打分，0.4.17 起只推荐同语言文章
 category: 官方插件
 tags: [xfmpress, 插件]

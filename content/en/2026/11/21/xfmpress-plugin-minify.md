@@ -2,7 +2,7 @@
 lang: en
 translationKey: xfmpress-plugin-minify
 title: "minify plugin: production-only HTML minification that skips code blocks"
-date: 2026-11-21 22:55:00
+date: 2026-11-21 14:24:00
 description: Strips HTML comments, trailing whitespace and indentation from built pages in production builds only, leaving pre, code, textarea, script and style untouched
 category: plugins
 tags: [xfmpress, plugin]

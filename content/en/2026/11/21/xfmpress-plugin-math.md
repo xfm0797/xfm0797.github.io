@@ -2,7 +2,7 @@
 lang: en
 translationKey: xfmpress-plugin-math
 title: "math plugin: build-time KaTeX rendering with zero client-side JS"
-date: 2026-11-21 22:45:00
+date: 2026-11-21 14:18:00
 description: Renders LaTeX math to HTML with KaTeX at build time, so pages ship plain HTML plus self-hosted CSS with no client-side JavaScript and no CDN requests
 category: plugins
 tags: [xfmpress, plugin]

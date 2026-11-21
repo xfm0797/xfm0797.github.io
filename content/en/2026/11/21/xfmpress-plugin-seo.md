@@ -2,7 +2,7 @@
 lang: en
 translationKey: xfmpress-plugin-seo
 title: "seo: canonical, Open Graph, Twitter Card and JSON-LD per page"
-date: 2026-11-21 22:30:00
+date: 2026-11-21 14:45:00
 description: Injects the head markup crawlers and social cards need, typed per page — Article for posts, WebSite plus SearchAction for the home page, hreflang on multilingual sites
 category: plugins
 tags: [xfmpress, plugin]

@@ -2,7 +2,7 @@
 lang: en
 translationKey: xfmpress-plugin-sitemap
 title: "sitemap: sitemap.xml and robots.txt from one build"
-date: 2026-11-21 22:25:00
+date: 2026-11-21 14:48:00
 description: Zero-option sitemap.xml generated from site.documents with lastmod and priority, plus a robots.txt that points at the sitemap once site.url is set
 category: plugins
 tags: [xfmpress, plugin]

@@ -2,7 +2,7 @@
 lang: en
 translationKey: xfmpress-plugin-pwa
 title: "pwa: manifest, service worker, and offline page"
-date: 2026-11-21 23:20:00
+date: 2026-11-21 14:27:00
 description: Generates manifest.webmanifest, sw.js and offline.html at build time, and an icon.svg from the site title when you bring no icons of your own
 category: plugins
 tags: [xfmpress, plugin]

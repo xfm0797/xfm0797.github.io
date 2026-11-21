@@ -2,7 +2,7 @@
 lang: zh-CN
 translationKey: xfmpress-plugin-mermaid
 title: 图表插件：mermaid 代码块变图表，按页注入
-date: 2026-11-21 22:50:00
+date: 2026-11-21 14:21:00
 description: xfm-plugin-mermaid 把 ```mermaid 围栏代码块变成流程图、时序图等 SVG 图表，渲染脚本只在真正含图表的页面注入，默认本地自托管
 category: 官方插件
 tags: [xfmpress, 插件]

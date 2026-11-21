@@ -2,7 +2,7 @@
 lang: en
 translationKey: xfmpress-plugin-mermaid
 title: "mermaid plugin: fenced code blocks become diagrams, injected per page"
-date: 2026-11-21 22:50:00
+date: 2026-11-21 14:21:00
 description: Turns mermaid fenced code blocks into browser-rendered SVG diagrams and injects the renderer script only on pages that actually contain a diagram
 category: plugins
 tags: [xfmpress, plugin]

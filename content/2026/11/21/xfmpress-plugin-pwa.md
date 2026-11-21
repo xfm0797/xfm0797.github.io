@@ -2,7 +2,7 @@
 lang: zh-CN
 translationKey: xfmpress-plugin-pwa
 title: PWA 插件：manifest、Service Worker 与离线页
-date: 2026-11-21 23:20:00
+date: 2026-11-21 14:27:00
 description: 构建期生成 manifest.webmanifest、sw.js 与 offline.html，没准备图标时自动用站点标题首字生成 icon.svg
 category: 官方插件
 tags: [xfmpress, 插件]

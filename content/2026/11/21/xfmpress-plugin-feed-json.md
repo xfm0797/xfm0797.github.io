@@ -2,7 +2,7 @@
 lang: zh-CN
 translationKey: xfmpress-plugin-feed-json
 title: feed-json 插件：JSON Feed 1.1 格式的 feed.json
-date: 2026-11-21 22:35:00
+date: 2026-11-21 14:09:00
 description: 与 rss 插件互补的 JSON 订阅源：content_html 全文、发布与修改时间、标签与作者齐备，前端 fetch 一行即得，rss: false 一个开关同时管住两个 feed
 category: 官方插件
 tags: [xfmpress, 插件]

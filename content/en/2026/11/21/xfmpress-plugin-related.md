@@ -2,7 +2,7 @@
 lang: en
 translationKey: xfmpress-plugin-related
 title: "related: weighted related posts by tags, category, and series"
-date: 2026-11-21 23:10:00
+date: 2026-11-21 14:36:00
 description: Scores every post by shared tags (3), category (2) and series (3) before rendering; from 0.4.17 it only recommends posts in the same language
 category: plugins
 tags: [xfmpress, plugin]

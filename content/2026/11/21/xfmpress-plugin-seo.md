@@ -2,7 +2,7 @@
 lang: zh-CN
 translationKey: xfmpress-plugin-seo
 title: SEO 插件：canonical、Open Graph、Twitter Card 与 JSON-LD
-date: 2026-11-21 22:30:00
+date: 2026-11-21 14:45:00
 description: 按页面类型注入爬虫与社交平台需要的 head 标记：文章得 Article 结构化数据，首页得 WebSite 与 SearchAction，多语言站自动补 hreflang，手写标签永不重复
 category: 官方插件
 tags: [xfmpress, 插件]

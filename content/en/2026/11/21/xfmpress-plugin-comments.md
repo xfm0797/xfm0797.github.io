@@ -2,7 +2,7 @@
 lang: en
 translationKey: xfmpress-plugin-comments
 title: "comments: ten comment providers behind one switch"
-date: 2026-11-21 22:05:00
+date: 2026-11-21 14:03:00
 description: xfm-plugin-comments unifies giscus, waline, twikoo, disqus and six more providers behind a single comments.provider key, with per-provider validation.
 category: plugins
 tags: [xfmpress, plugin]

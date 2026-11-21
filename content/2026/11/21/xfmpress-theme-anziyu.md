@@ -2,7 +2,7 @@
 lang: zh-CN
 translationKey: xfmpress-theme-anziyu
 title: 本站主题 xfmpress-theme-anziyu：照着安知鱼写的博客皮肤
-date: 2026-11-21 20:20:00
+date: 2026-11-21 13:20:00
 description: 玻璃导航、Hero 横幅、封面卡片流、右侧栏与 Waline 评论——这套 7 布局 6 片段的站点私有主题是怎么搭起来的
 category: 主题模板
 tags: [xfmpress, 主题]

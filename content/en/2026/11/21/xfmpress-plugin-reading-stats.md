@@ -2,7 +2,7 @@
 lang: en
 translationKey: xfmpress-plugin-reading-stats
 title: "reading-stats: word counts and reading time, zero config"
-date: 2026-11-21 22:15:00
+date: 2026-11-21 14:30:00
 description: xfm-plugin-reading-stats counts words per page at build time (CJK by character, Latin by word), estimates reading minutes, and writes stats.json.
 category: plugins
 tags: [xfmpress, plugin]

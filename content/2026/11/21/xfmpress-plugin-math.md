@@ -2,7 +2,7 @@
 lang: zh-CN
 translationKey: xfmpress-plugin-math
 title: 数学公式插件：构建期 KaTeX 渲染，零客户端 JS
-date: 2026-11-21 22:45:00
+date: 2026-11-21 14:18:00
 description: xfm-plugin-math 在构建时用 KaTeX 把 LaTeX 公式渲染成 HTML，页面只有静态 HTML 与本地 CSS，无客户端 JS、无 CDN 请求，代码块与美元转义不受影响
 category: 官方插件
 tags: [xfmpress, 插件]

@@ -2,7 +2,7 @@
 lang: zh-CN
 translationKey: xfmpress-plugin-image-size
 title: 图片尺寸插件：补全宽高属性，消除布局抖动
-date: 2026-11-21 23:00:00
+date: 2026-11-21 14:12:00
 description: xfm-plugin-image-size 构建时读取本地图片文件头，为 img 补上 width 与 height 属性并默认加 loading="lazy"，消除图片加载引起的布局抖动
 category: 官方插件
 tags: [xfmpress, 插件]

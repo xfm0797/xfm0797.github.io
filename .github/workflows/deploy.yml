@@ -15,6 +15,10 @@ concurrency:
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+    env:
+      # 与本地保持一致：文章 front-matter 里的时间按北京时间解析，
+      # 否则 UTC 的 runner 会把「今天晚些时候」的文章当成定时稿跳过。
+      TZ: Asia/Shanghai
     steps:
       - uses: actions/checkout@v4
 

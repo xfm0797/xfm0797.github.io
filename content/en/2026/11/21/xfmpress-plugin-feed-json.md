@@ -2,7 +2,7 @@
 lang: en
 translationKey: xfmpress-plugin-feed-json
 title: "feed-json: a JSON Feed 1.1 file your scripts can read"
-date: 2026-11-21 22:35:00
+date: 2026-11-21 14:09:00
 description: A JSON Feed 1.1 companion to the RSS plugin with full content_html, publish and modified dates, tags and authors — consumable with a single fetch call
 category: plugins
 tags: [xfmpress, plugin]

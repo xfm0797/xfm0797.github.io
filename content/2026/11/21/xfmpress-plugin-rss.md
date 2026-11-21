@@ -2,7 +2,7 @@
 lang: zh-CN
 translationKey: xfmpress-plugin-rss
 title: RSS 插件：一个依赖生成全文订阅源 feed.xml
-date: 2026-11-21 22:20:00
+date: 2026-11-21 14:39:00
 description: 安装即生效的 RSS 2.0 输出：content:encoded 打包全文、标签进 category、链接全绝对化，多语言站默认只收默认语言的流，limit 可调收录条数
 category: 官方插件
 tags: [xfmpress, 插件]

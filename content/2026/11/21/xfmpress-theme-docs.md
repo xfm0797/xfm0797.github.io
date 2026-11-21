@@ -2,7 +2,7 @@
 lang: zh-CN
 translationKey: xfmpress-theme-docs
 title: docs 主题：把内容站变成带侧栏的文档站
-date: 2026-11-21 20:10:00
+date: 2026-11-21 13:10:00
 description: themes/docs —— 顶部导航 + 左侧分组目录 + 正文 + 右侧 TOC 的三栏文档骨架，靠 group 与 weight 自动长出侧栏
 category: 主题模板
 tags: [xfmpress, 主题]

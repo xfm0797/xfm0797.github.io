@@ -2,7 +2,7 @@
 lang: zh-CN
 translationKey: xfmpress-plugin-minify
 title: HTML 压缩插件：只删安全空白，代码块原样保留
-date: 2026-11-21 22:55:00
+date: 2026-11-21 14:24:00
 description: xfm-plugin-minify 在生产构建时删除 HTML 注释、行尾空白与缩进，pre、code、textarea、script、style 整体跳过，dev 模式不压缩
 category: 官方插件
 tags: [xfmpress, 插件]

@@ -2,7 +2,7 @@
 lang: en
 translationKey: xfmpress-plugin-redirect
 title: "redirect: alias pages so old URLs never 404"
-date: 2026-11-21 23:15:00
+date: 2026-11-21 14:33:00
 description: Writes a tiny redirect page at every old address — meta refresh, JS replace and a visible link, with rel=canonical and noindex,follow
 category: plugins
 tags: [xfmpress, plugin]

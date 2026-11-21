@@ -2,7 +2,7 @@
 lang: zh-CN
 translationKey: xfmpress-theme-default
 title: 内置博客主题 default：开箱即用的清雅阅读风
-date: 2026-11-21 20:00:00
+date: 2026-11-21 13:00:00
 description: 仓库 themes/default —— 青玉配色、Hero + 卡片流 + 侧栏、右侧目录跟随、深浅色切换，装完 xfmpress 就能用的博客皮
 category: 主题模板
 tags: [xfmpress, 主题]

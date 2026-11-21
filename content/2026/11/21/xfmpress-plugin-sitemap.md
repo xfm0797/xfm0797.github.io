@@ -2,7 +2,7 @@
 lang: zh-CN
 translationKey: xfmpress-plugin-sitemap
 title: Sitemap 插件：sitemap.xml 与 robots.txt 一次生成
-date: 2026-11-21 22:25:00
+date: 2026-11-21 14:48:00
 description: 零配置遍历全部文档生成 sitemap.xml，updated 字段转 lastmod、weight 可调 priority，robots.txt 自动指向站点地图，sitemap: false 逐页排除
 category: 官方插件
 tags: [xfmpress, 插件]

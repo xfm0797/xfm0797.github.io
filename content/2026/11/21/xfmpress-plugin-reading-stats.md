@@ -2,7 +2,7 @@
 lang: zh-CN
 translationKey: xfmpress-plugin-reading-stats
 title: 阅读统计：字数与时长零配置生成
-date: 2026-11-21 22:15:00
+date: 2026-11-21 14:30:00
 description: xfm-plugin-reading-stats 在构建时为每页统计字数（中文按字、英文按词）并估算阅读分钟数，生成 stats.json 供榜单或报告使用，同时注入 site.stats 模板变量
 category: 官方插件
 tags: [xfmpress, 插件]
