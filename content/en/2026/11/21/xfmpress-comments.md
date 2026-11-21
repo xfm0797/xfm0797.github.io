@@ -74,7 +74,34 @@ comments: false   # no comment section on this page (about / links pages)
 
 # Theme mounting point
 
-The convention: post templates check `page.data.comments`. Our theme (xfmpress-theme-anziyu) mounts the comment section below the post card — enabling it is one config block away.
+By default the plugin injects the whole section before `</article>`. To choose the position yourself, leave an empty container carrying `data-xfm-comments` in the template — the plugin then only adds the scripts and never builds a second container:
+
+```html
+{% if site.comments %}
+<section class="post-comments">
+  <h2 class="section-title">{{ page.lang == 'en' ? 'Comments' : '评论' }}</h2>
+  <!-- Waline looks for #waline, so a custom container needs the id -->
+  <div id="waline" data-xfm-comments></div>
+</section>
+{% endif %}
+```
+
+This site (xfmpress-theme-anziyu) mounts it under the post card; the config lives in the `comments` block of `xfm.config.mjs`:
+
+```js
+comments: {
+  provider: 'waline',
+  serverURL: 'https://waline.xfm.qzz.io',   // no trailing slash — a "/" yields //api/... and a 308 redirect
+  lang: 'zh-CN',
+  login: 'enable',
+  requiredMeta: ['nick', 'mail'],
+  commentSorting: 'newest',
+}
+```
+
+::: tip Multilingual sites
+`comments.lang` is a site-wide constant, so English pages do not switch the widget's UI by themselves. This site ships a dozen-line local plugin (`plugins/comments-lang.js`) that rewrites `lang` inside `init({...})` to `page.lang` during `transformHtml`; threads still stay separate because they are keyed by path (`/xxx/` vs `/en/xxx/`).
+:::
 
 ::: tip
 Coming from `xfm-plugin-giscus`? No config changes needed — the package was renamed but the `provider: 'giscus'` config key is unchanged; just install `xfm-plugin-comments`.

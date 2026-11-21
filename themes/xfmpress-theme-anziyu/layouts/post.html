@@ -50,6 +50,14 @@
         </div>
       </section>
       {% endif %}
+
+      {# 评论区：挂载点交给 xfm-plugin-comments，插件只补脚本与样式 #}
+      {% if site.comments %}
+      <section class="post-comments" id="comments">
+        <h2 class="section-title">{{ page.lang == 'en' ? 'Comments' : '评论' }}</h2>
+        <div class="post-comments-body"{% if site.comments.provider == 'waline' %} id="waline"{% endif %} data-xfm-comments></div>
+      </section>
+      {% endif %}
     </div>
 
     {% if headings.length > 0 %}
