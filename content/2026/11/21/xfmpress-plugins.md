@@ -3,7 +3,7 @@ lang: zh-CN
 translationKey: xfmpress-plugins
 title: 插件系统：钩子、官方插件与自定义插件
 date: 2026-11-21 09:20:00
-description: 内核不带插件——四种加载方式、六个钩子的语义与并行取舍、15 个官方插件、十分钟写一个自己的插件
+description: 内核不带插件——四种加载方式、六个钩子的语义与并行取舍、17 个官方插件、十分钟写一个自己的插件
 category: xfmpress
 tags: [xfmpress, 教程]
 series: xfmpress使用教程
@@ -42,11 +42,13 @@ npm i -D xfm-plugin-sitemap xfm-plugin-rss xfm-plugin-search
 - 注册了 `markdown` 钩子的站点**不启用 worker 池**（钩子跑在单页解析阶段，进线程来回序列化得不偿失）；`transformHtml` 不受影响
 - 跨页计算（如相关文章）放 `afterCollect` 只算一次；放单页钩子里 1000 页就要算 1000 次全站相似度
 
-## 15 个官方插件
+## 17 个官方插件
 
 **站点产物**：`sitemap`（sitemap.xml + robots.txt）、`rss`（feed.xml 全文）、`feed-json`（JSON Feed 1.1）、`llms`（llms.txt / llms-full.txt）、`search`（search.json + Ctrl/⌘+K 面板）、`pwa`（manifest + sw.js）、`redirect`（旧地址跳转页）、`reading-stats`
 
-**页面增强**：`seo`（canonical / Open Graph / Twitter Card / JSON-LD）、`related`（相关文章）、`minify`（HTML 压缩，跳过 pre/code/script/style）、`image-size`（给 img 补宽高，改善 CLS）、`deadlinks`（死链检查，strict 模式可让 CI 失败）、`giscus`（GitHub Discussions 评论）、`analytics`（Umami / Plausible / GA / 百度统计）
+**内容增强**：`math`（构建期 KaTeX 公式）、`mermaid`（图表，见[第 13 章](/2026/11/21/xfmpress-math-mermaid/)）
+
+**页面增强**：`seo`（canonical / Open Graph / Twitter Card / JSON-LD）、`related`（相关文章）、`minify`（HTML 压缩，跳过 pre/code/script/style）、`image-size`（给 img 补宽高，改善 CLS）、`deadlinks`（死链检查，strict 模式可让 CI 失败）、`comments`（十家评论系统：giscus / waline / twikoo / disqus 等，见[第 12 章](/2026/11/21/xfmpress-comments/)）、`analytics`（Umami / Plausible / GA / 百度统计）
 
 ## 页面级开关
 

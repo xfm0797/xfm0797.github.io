@@ -103,4 +103,6 @@ Set `site.base` to `'/blog/'` (leading and trailing slashes are required), and t
 - **Slow builds are almost entirely disk writes**: filesystem metadata operations on Windows / NTFS are the bottleneck — build on Linux instead
 - **Changed templates but output didn't change**: run `xfm clean` and rebuild
 
-This is the last chapter of the [xfmpress guide](/series/xfmpress%20guide/) series — happy site building.
+---
+
+**Next**: [Comments](/en/2026/11/21/xfmpress-comments/) — one plugin, ten comment services.

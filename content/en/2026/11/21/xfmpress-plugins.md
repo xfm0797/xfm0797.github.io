@@ -3,7 +3,7 @@ lang: en
 translationKey: xfmpress-plugins
 title: The Plugin System: Hooks, Official Plugins, and Custom Plugins
 date: 2026-11-21 09:20:00
-description: The core ships no plugins — four ways to load them, the semantics of six hooks and their concurrency trade-offs, 15 official plugins, and writing your own in ten minutes
+description: The core ships no plugins — four ways to load them, the semantics of six hooks and their concurrency trade-offs, 17 official plugins, and writing your own in ten minutes
 category: xfmpress
 tags: [xfmpress, tutorial]
 series: xfmpress guide
@@ -42,11 +42,13 @@ Two trade-offs worth knowing:
 - Sites registering a `markdown` hook **disable the worker pool** (the hook runs during single-page parsing, and serializing in and out of threads costs more than it saves); `transformHtml` is unaffected
 - Cross-page computation (like related posts) belongs in `afterCollect`, where it runs once; putting it in a per-page hook means 1000 pages trigger 1000 rounds of site-wide similarity computation
 
-## The 15 official plugins
+## The 17 official plugins
 
 **Site outputs**: `sitemap` (sitemap.xml + robots.txt), `rss` (full-text feed.xml), `feed-json` (JSON Feed 1.1), `llms` (llms.txt / llms-full.txt), `search` (search.json + Ctrl/⌘+K panel), `pwa` (manifest + sw.js), `redirect` (jump pages for old URLs), `reading-stats`
 
-**Page enhancements**: `seo` (canonical / Open Graph / Twitter Card / JSON-LD), `related` (related posts), `minify` (HTML minification, skipping pre/code/script/style), `image-size` (adds width/height to img tags, improving CLS), `deadlinks` (broken link checking; strict mode can fail CI), `giscus` (GitHub Discussions comments), `analytics` (Umami / Plausible / GA / Baidu Analytics)
+**Content enhancements**: `math` (build-time KaTeX), `mermaid` (diagrams — see [Chapter 13](/en/2026/11/21/xfmpress-math-mermaid/))
+
+**Page enhancements**: `seo` (canonical / Open Graph / Twitter Card / JSON-LD), `related` (related posts), `minify` (HTML minification, skipping pre/code/script/style), `image-size` (adds width/height to img tags, improving CLS), `deadlinks` (broken link checking; strict mode can fail CI), `comments` (ten comment services: giscus / waline / twikoo / disqus and more — see [Chapter 12](/en/2026/11/21/xfmpress-comments/)), `analytics` (Umami / Plausible / GA / Baidu Analytics)
 
 ## Per-page switches
 
