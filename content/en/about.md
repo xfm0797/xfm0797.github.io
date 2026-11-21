@@ -13,7 +13,8 @@ This is the official website of **XFMpress** — a zero-dependency static site g
 ## What you'll find here
 
 - **xfmpress tutorials**: 13 articles broken down by topic, covering installation, configuration, theming, plugins, and deployment. Read them in order via the series page or the Chinese tutorials section
-- **Setup notes**: a few early tooling notes (Qexo image hosting, Vercel deployment)
+
+The site now carries only this tutorial set — the Hexo-era build logs have been retired, and their lessons folded into the tutorials.
 
 ## About the author
 
