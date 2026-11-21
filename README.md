@@ -8,7 +8,7 @@
 - 收录 xfmpress 的使用教程，按知识点拆分为 13 篇，[按顺序阅读](https://xfm0797.github.io/series/xfmpress%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/)
 - 中文（`/`）与英文（`/en/`）双语，两套列表页各自只收本语言文章
 - 站内搜索（`xfm-plugin-search`）、RSS 与 sitemap，评论使用自托管的 [Waline](https://waline.xfm.qzz.io)（`xfm-plugin-comments`）
-- 同时保留历史文章（Hexo 建站、主题配置等），文章永久链接格式 `/YYYY/MM/DD/<slug>/`
+- 保留少量早期配置笔记（Qexo 图床、Vercel 部署），文章永久链接格式 `/YYYY/MM/DD/<slug>/`
 - 部署在 GitHub Pages，并通过 **Cloudflare Pages** 双线托管，保证在任何地方都可以访问
 
 ## 目录结构
