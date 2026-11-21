@@ -537,3 +537,29 @@ html.xfm-no-scroll { overflow: hidden; }
 /* ---------- 语言切换按钮 ---------- */
 .nav-lang-btn { min-width: 34px; text-align: center; text-decoration: none; }
 .nav-lang-text { font-size: .72rem; font-weight: 700; letter-spacing: .02em; }
+
+/* ---------- 页脚版本号 ---------- */
+.powered-version {
+  padding: 0 .32rem; border-radius: 5px; background: var(--soft); color: var(--ac);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .76rem;
+}
+
+/* ---------- 评论区（Waline） ---------- */
+.post-comments { margin-top: 32px; }
+.post-comments .section-title { margin-bottom: 16px; }
+.post-comments-body { min-height: 40px; }
+/* 让 Waline 跟随站点配色与明暗主题 */
+#waline {
+  --waline-theme-color: var(--ac);
+  --waline-active-color: var(--ac);
+  --waline-color: var(--text);
+  --waline-bg-color: var(--card);
+  --waline-bg-color-light: var(--soft);
+  --waline-bg-color-hover: var(--soft);
+  --waline-border-color: var(--line);
+  --waline-disable-bg-color: var(--soft);
+  --waline-info-bg-color: var(--soft);
+  --waline-info-color: var(--muted);
+  --waline-font-size: 15px;
+}
+#waline .wl-panel { border-radius: var(--radius); }
