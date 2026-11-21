@@ -1,7 +1,7 @@
 export default {
   site: {
-    title: '学习Hexo',
-    description: 'xfm 的博客',
+    title: 'XFMpress',
+    description: '静态站点生成器XFMpress的官方网站',
     url: 'https://xfm0797.github.io',
     lang: 'zh-CN',
     author: 'xfm',
