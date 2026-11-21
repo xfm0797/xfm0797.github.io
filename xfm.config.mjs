@@ -8,7 +8,7 @@ export default {
     author: 'xfm',
     base: '/',
     favicon: '/assets/favicon.svg',
-    announcement: '欢迎来到 XFMpress 官网：13 篇使用教程、22 个版本的更新日志、3 套主题介绍，欢迎按顺序阅读！',
+    announcement: '欢迎来到 XFMpress 官网：使用教程 13 篇、更新日志 22 篇、主题 3 篇、官方插件 17 篇，欢迎按顺序阅读！',
     nav: [
       { title: '首页', url: '/', translations: { en: { title: 'Home', url: '/en/' } } },
       { title: '分类', url: '/categories/', translations: { en: { title: 'Categories', url: '/en/categories/' } } },

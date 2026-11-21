@@ -5,7 +5,7 @@
 ## 关于本站
 
 - 由 [xfmpress](https://github.com/xfm0797/xfm)（命令 `xfm`）构建——一个零依赖的 Node.js 静态站点生成器
-- 三个分类：`xfmpress`（13 篇使用教程，[按顺序阅读](https://xfm0797.github.io/series/xfmpress%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/)）、`更新日志`（v0.1.1 → v0.4.17 每个发布标签一篇）、`主题模板`（`default`、`docs` 与本站主题各一篇）
+- 四个分类：`xfmpress`（13 篇使用教程，[按顺序阅读](https://xfm0797.github.io/series/xfmpress%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/)）、`更新日志`（v0.1.1 → v0.4.17 每个发布标签一篇）、`主题模板`（`default`、`docs` 与本站主题各一篇）、`官方插件`（17 个官方插件各一篇）
 - 中文（`/`）与英文（`/en/`）双语，两套列表页各自只收本语言文章
 - 站内搜索（`xfm-plugin-search`）、RSS 与 sitemap，评论使用自托管的 [Waline](https://waline.xfm.qzz.io)（`xfm-plugin-comments`）
 - 带一个双语 404 页（`dist/404.html`），GitHub Pages 与 Cloudflare Pages 都会自动接管不存在的路径
