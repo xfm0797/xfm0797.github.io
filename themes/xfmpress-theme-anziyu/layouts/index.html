@@ -5,37 +5,37 @@
     {# 安知鱼风格 Hero 横幅 #}
     <section class="hero-banner">
       <div class="hero-text">
-        <p class="hero-hello">你好，我是 <span class="hero-name">{{ site.author | default(site.title) }}</span> <span class="hero-emoji">🙋‍♂️</span></p>
+        <p class="hero-hello">{{ page.lang == 'en' ? 'Hi, I am' : '你好，我是' }} <span class="hero-name">{{ site.author | default(site.title) }}</span> <span class="hero-emoji">🙋‍♂️</span></p>
         <h1 class="hero-title">{{ site.title }}</h1>
         {% if site.description %}<p class="hero-desc">{{ site.description }}</p>{% endif %}
         <div class="hero-links">
           <a class="hero-btn" href="/archives/">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 7h18M3 12h18M3 17h10"/></svg>
-            全部文章
+            {{ page.lang == 'en' ? 'All Posts' : '全部文章' }}
           </a>
           <a class="hero-btn ghost" href="/about/">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg>
-            关于
+            {{ page.lang == 'en' ? 'About' : '关于' }}
           </a>
         </div>
       </div>
       <div class="hero-deco" aria-hidden="true">
         <span class="hero-deco-a"></span><span class="hero-deco-b"></span>
-        <span class="hero-big">{{ site.posts.length }}<small>篇文章</small></span>
+        <span class="hero-big">{{ site.posts.length }}<small>{{ page.lang == 'en' ? 'posts' : '篇文章' }}</small></span>
       </div>
     </section>
 
     {# 分类快捷栏 #}
     {% if site.categories.length %}
     <div class="cat-bar">
-      <a class="cat-chip{% if page.url == '/' %} active{% endif %}" href="/">全部</a>
+      <a class="cat-chip{% if page.url == '/' %} active{% endif %}" href="/">{{ page.lang == 'en' ? 'All' : '全部' }}</a>
       {% for c in site.categories %}<a class="cat-chip" href="{{ c.url }}">{{ c.name }}</a>{% endfor %}
     </div>
     {% endif %}
 
     <div class="section-head">
-      <h2 class="section-title">文章推荐</h2>
-      <span class="section-sub">共 {{ site.posts.length }} 篇</span>
+      <h2 class="section-title">{{ page.lang == 'en' ? 'Recommended' : '文章推荐' }}</h2>
+      <span class="section-sub">{{ page.lang == 'en' ? site.posts.length + ' posts' : '共 ' + site.posts.length + ' 篇' }}</span>
     </div>
 
     <div class="post-grid">

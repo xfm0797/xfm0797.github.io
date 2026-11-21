@@ -1,6 +1,6 @@
 {# 安知鱼风格文章卡片流：首页传 posts，聚合页传 page.data.posts，片段内自行解析 #}
 {% set items = posts or page.data.posts %}
-{% for post in items %}<article class="post-card">
+{% for post in items %}{% if (page.url.startsWith('/en/') ? post.lang == 'en' : post.lang != 'en') %}<article class="post-card">
   <div class="card-cover">
     <a href="{{ post.url }}" class="card-cover-link">
       <img src="{{ post.data.cover || site.assets + 'cover-default.png' }}" alt="{{ post.title }}" loading="lazy">
@@ -22,5 +22,5 @@
       {% if post.tags %}{% for t in post.tags %}{% if loop.index <= 2 %}<a class="card-tag" href="/tags/{{ t }}/"># {{ t }}</a>{% endif %}{% endfor %}{% endif %}
     </div>
   </div>
-</article>{% else %}<p class="empty">还没有文章。</p>
+</article>{% endif %}{% else %}<p class="empty">还没有文章。</p>
 {% endfor %}

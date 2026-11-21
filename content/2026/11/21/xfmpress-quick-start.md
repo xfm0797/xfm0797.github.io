@@ -1,4 +1,6 @@
 ---
+lang: zh-CN
+translationKey: xfmpress-quick-start
 title: 快速上手：30 秒创建你的第一个 xfmpress 站点
 date: 2026-11-21 10:30:00
 description: 从 xfm create 到 xfm dev，最快速度跑起一个带热更新的博客站点

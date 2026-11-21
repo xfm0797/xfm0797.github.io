@@ -490,3 +490,50 @@ a.pn-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); col
 }
 .img-mask.show { display: flex; }
 .img-mask img { max-width: 100%; max-height: 92vh; border-radius: 10px; box-shadow: var(--shadow-lg); }
+
+/* ---------- 站内搜索面板（Ctrl/⌘+K） ---------- */
+.xfm-search {
+  position: fixed; inset: 0; z-index: 120; display: none;
+  padding: 11vh 1rem 1rem; background: rgba(20, 24, 44, .42);
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+}
+.xfm-search.is-open { display: block; }
+.xfm-search-box {
+  display: flex; align-items: center; gap: .6rem; max-width: 640px; margin: 0 auto;
+  padding: .55rem .8rem; background: var(--card);
+  border: 1px solid var(--line); border-radius: 14px;
+  box-shadow: var(--shadow-lg);
+}
+.xfm-search-input {
+  flex: 1; min-width: 0; border: 0; outline: 0; background: transparent;
+  font: inherit; font-size: 1rem; color: var(--text);
+}
+.xfm-search-input::placeholder { color: var(--muted); }
+.xfm-search-kbd {
+  font-size: .68rem; color: var(--muted);
+  border: 1px solid var(--line); border-radius: 4px; padding: 0 .28rem;
+}
+.xfm-search-list {
+  max-width: 640px; max-height: 54vh; overflow-y: auto; margin: .45rem auto 0; padding: .35rem;
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+  box-shadow: var(--shadow-lg);
+}
+.xfm-hit {
+  display: grid; grid-template-columns: 1fr auto; gap: .12rem .8rem;
+  padding: .55rem .7rem; border-radius: 10px; color: var(--text);
+}
+.xfm-hit:hover, .xfm-hit.is-active { background: var(--soft); text-decoration: none; }
+.xfm-hit-title { font-weight: 600; font-size: .95rem; }
+.xfm-hit-date { font-size: .74rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.xfm-hit-desc { grid-column: 1 / -1; font-size: .83rem; line-height: 1.6; color: var(--muted); }
+.xfm-hit mark { background: rgba(66, 90, 239, .26); color: inherit; border-radius: 3px; }
+.xfm-search-empty { margin: 0; padding: 1rem; text-align: center; font-size: .9rem; color: var(--muted); }
+.xfm-search-foot {
+  display: flex; justify-content: space-between; max-width: 640px; margin: .4rem auto 0;
+  font-size: .74rem; color: var(--muted);
+}
+html.xfm-no-scroll { overflow: hidden; }
+
+/* ---------- 语言切换按钮 ---------- */
+.nav-lang-btn { min-width: 34px; text-align: center; text-decoration: none; }
+.nav-lang-text { font-size: .72rem; font-weight: 700; letter-spacing: .02em; }

@@ -1,4 +1,6 @@
 ---
+lang: zh-CN
+translationKey: about
 title: 关于
 date: 2021-03-30 15:57:51
 updated: 2026-11-21 19:05:00

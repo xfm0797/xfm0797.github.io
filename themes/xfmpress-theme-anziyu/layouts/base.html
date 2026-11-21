@@ -16,6 +16,10 @@
   <meta property="og:image" content="{{ page.data.cover || site.url + site.assets + 'cover-default.png' }}">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/feed.xml">
+  {% if site.languages.length > 1 %}
+  <link rel="alternate" hreflang="{{ page.lang || site.defaultLang }}" href="{{ site.url }}{{ page.url }}">
+  {% for t in page.translations %}{% if t.lang != page.lang %}<link rel="alternate" hreflang="{{ t.lang }}" href="{{ site.url }}{{ t.url }}">
+  {% endif %}{% endfor %}{% endif %}
   <link rel="stylesheet" href="{{ site.assets }}style.css">
   {% block head %}{% endblock %}
 </head>
@@ -36,6 +40,7 @@
   <div class="img-mask" id="img-mask" aria-hidden="true"><img src="" alt=""></div>
 
   <script src="{{ site.assets }}main.js" defer></script>
+  {% if site.search %}<script src="{{ site.assets }}search.js" defer data-index="{{ site.search.url }}"></script>{% endif %}
   <script>
     (function(){
       var k='xfm-theme', r=document.documentElement;
