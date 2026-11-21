@@ -12,6 +12,6 @@
     "xfm-plugin-rss": "^0.4.2",
     "xfm-plugin-search": "^0.4.2",
     "xfm-plugin-sitemap": "^0.4.2",
-    "xfmpress": "^0.4.14"
+    "xfmpress": "^0.4.16"
   }
 }
