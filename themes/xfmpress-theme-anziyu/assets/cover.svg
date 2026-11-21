@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a2148"/>
+      <stop offset="1" stop-color="#0e1233"/>
+    </linearGradient>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#425aef"/>
+      <stop offset="1" stop-color="#56c9f4"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#425aef" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#425aef" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#56c9f4" stop-opacity=".4"/>
+      <stop offset="1" stop-color="#56c9f4" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="2" fill="#ffffff" opacity=".08"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+  <circle cx="1060" cy="80" r="340" fill="url(#glow1)"/>
+  <circle cx="120" cy="580" r="300" fill="url(#glow2)"/>
+  <path d="M0 500 C 300 430, 700 560, 1200 470 L1200 630 L0 630 Z" fill="#425aef" opacity=".12"/>
+
+  <!-- 品牌徽标 -->
+  <g transform="translate(96,96)">
+    <rect x="0" y="0" width="112" height="112" rx="28" fill="url(#brand)"/>
+    <path d="M34 30 L78 82 M78 30 L34 82" stroke="#ffffff" stroke-width="13" stroke-linecap="round" fill="none"/>
+    <circle cx="86" cy="26" r="8" fill="#ffffff" opacity=".9"/>
+  </g>
+
+  <!-- 主标题 -->
+  <text x="96" y="330" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="108" font-weight="700" fill="#ffffff" letter-spacing="2">XFM<tspan fill="#56c9f4">press</tspan></text>
+  <!-- 副标题 -->
+  <text x="100" y="405" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="36" font-weight="400" fill="#ffffff" opacity=".82">静态站点生成器 · Static Site Generator</text>
+
+  <!-- 特性标签 -->
+  <g font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="26" fill="#ffffff">
+    <rect x="100" y="452" width="150" height="52" rx="26" fill="#ffffff" opacity=".1"/>
+    <text x="175" y="487" text-anchor="middle" opacity=".92">零依赖</text>
+    <rect x="266" y="452" width="176" height="52" rx="26" fill="#ffffff" opacity=".1"/>
+    <text x="354" y="487" text-anchor="middle" opacity=".92">目录即 URL</text>
+    <rect x="458" y="452" width="150" height="52" rx="26" fill="#ffffff" opacity=".1"/>
+    <text x="533" y="487" text-anchor="middle" opacity=".92">插件系统</text>
+  </g>
+
+  <!-- 右下角域名 -->
+  <text x="1104" y="576" text-anchor="end" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="26" fill="#56c9f4" opacity=".85">xfm0797.github.io</text>
+</svg>
