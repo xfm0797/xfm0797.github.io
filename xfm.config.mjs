@@ -17,6 +17,6 @@ export default {
   },
   theme: 'themes/xfmpress-theme-anziyu',
   defaults: { layout: 'post.html' },
-  pagination: { perPage: 9 },
+  pagination: { perPage: 10 },
   server: { port: 4173 },
 };
