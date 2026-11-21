@@ -1,4 +1,6 @@
 ---
+lang: zh-CN
+translationKey: hexo-theme-yilia
 title: hexo-theme-yilia 一个简洁优雅的hexo主题
 date: 2025-11-01 21:31:20
 description: hexo-theme-yilia 一个简洁优雅的hexo主题

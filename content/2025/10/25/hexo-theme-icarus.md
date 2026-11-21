@@ -1,4 +1,6 @@
 ---
+lang: zh-CN
+translationKey: hexo-theme-icarus
 title: hexo-theme-icarus 主题安装教程
 date: 2025-10-25 15:10:58
 description: hexo-theme-icarus主题安装教程

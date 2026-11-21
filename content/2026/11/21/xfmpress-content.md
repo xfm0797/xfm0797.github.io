@@ -1,4 +1,6 @@
 ---
+lang: zh-CN
+translationKey: xfmpress-content
 title: 内容组织：目录即 URL 与 front-matter
 date: 2026-11-21 10:00:00
 description: content 目录与 URL 的对应规则、front-matter 全部字段、文章页面草稿三种角色、Page Bundle 与定时发布

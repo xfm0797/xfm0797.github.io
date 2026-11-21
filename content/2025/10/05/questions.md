@@ -1,4 +1,6 @@
 ---
+lang: zh-CN
+translationKey: questions
 title: qexo常见问题解答
 date: 2025-10-05 01:18:20
 cover: https://img.lovou.eu.org/file/1759567275346_cover.png

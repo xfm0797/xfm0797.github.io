@@ -1,4 +1,6 @@
 ---
+lang: zh-CN
+translationKey: qexo-bulid
 title: qexo项目的部署
 date: 2025-10-05 01:05:49
 cover: https://img.lovou.eu.org/file/1759567275346_cover.png

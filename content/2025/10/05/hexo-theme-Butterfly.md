@@ -1,4 +1,6 @@
 ---
+lang: zh-CN
+translationKey: hexo-theme-Butterfly
 title: hexo-theme-Butterfly 主题安装与基础配置操作教程
 date: 2025-10-05 00:00:00
 description: hexo-theme-Butterfly 主题安装与基础配置操作教程

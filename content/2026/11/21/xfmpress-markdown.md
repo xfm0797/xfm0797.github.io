@@ -1,4 +1,6 @@
 ---
+lang: zh-CN
+translationKey: xfmpress-markdown
 title: Markdown 扩展语法：容器、脚注与代码高亮
 date: 2026-11-21 09:50:00
 description: xfmpress 在 GFM 之上的扩展——提示容器、代码块标题、引用式链接、脚注、Setext 标题与中文锚点

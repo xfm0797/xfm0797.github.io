@@ -1,4 +1,6 @@
 ---
+lang: zh-CN
+translationKey: xfmpress-seo-search
 title: SEO 与站内搜索：sitemap / RSS / search / related
 date: 2026-11-21 09:10:00
 description: 用官方插件组合补齐 SEO 与阅读体验——站点地图、全文 RSS、Ctrl+K 搜索、相关文章与 AI 友好输出

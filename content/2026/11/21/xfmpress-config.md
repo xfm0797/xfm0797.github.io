@@ -1,4 +1,6 @@
 ---
+lang: zh-CN
+translationKey: xfmpress-config
 title: 配置详解：xfm.config.mjs 所有字段
 date: 2026-11-21 10:10:00
 description: 配置文件查找顺序、site 字段默认值、构建行为、分页与索引页、环境变量注入

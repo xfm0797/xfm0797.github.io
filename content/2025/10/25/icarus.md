@@ -1,4 +1,6 @@
 ---
+lang: zh-CN
+translationKey: icarus
 title: Icarus用户指南 - 主题配置
 date: 2025-10-25 15:09:03
 description: Icarus用户指南 - 主题配置

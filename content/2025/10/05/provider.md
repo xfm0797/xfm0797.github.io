@@ -1,4 +1,6 @@
 ---
+lang: zh-CN
+translationKey: provider
 title: qexo博客设置
 date: 2025-10-05 02:32:19
 cover: https://img.lovou.eu.org/file/1759567275346_cover.png

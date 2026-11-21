@@ -1,4 +1,6 @@
 ---
+lang: zh-CN
+translationKey: upload
 title: qexo-图床配置
 date: 2025-10-05 03:07:10
 cover: https://img.lovou.eu.org/file/1759567275346_cover.png

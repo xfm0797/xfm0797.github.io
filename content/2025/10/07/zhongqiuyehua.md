@@ -1,4 +1,6 @@
 ---
+lang: zh-CN
+translationKey: zhongqiuyehua
 title: 中秋夜话
 date: 2025-10-07 14:04:08
 description: 中秋佳节写的散文

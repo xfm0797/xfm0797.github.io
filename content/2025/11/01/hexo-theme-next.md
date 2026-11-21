@@ -1,4 +1,6 @@
 ---
+lang: zh-CN
+translationKey: hexo-theme-next
 title: hexo-theme-next 是一款风格优雅的高质量 Hexo 主题
 date: 2025-11-01 21:26:36
 description: hexo-theme-next 是一款风格优雅的高质量 Hexo 主题

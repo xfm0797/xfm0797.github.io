@@ -1,4 +1,6 @@
 ---
+lang: zh-CN
+translationKey: xfmpress-theme
 title: 主题开发：从零写一个自己的主题
 date: 2026-11-21 09:30:00
 description: 主题目录结构、布局清单与选择顺序、四个文件写出最小可用主题、资源打包与调试要点

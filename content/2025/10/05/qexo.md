@@ -1,4 +1,6 @@
 ---
+lang: zh-CN
+translationKey: qexo
 title: hexo静态博客后端管理--qexo
 date: 2025-10-05 00:47:02
 cover: https://img.lovou.eu.org/file/1759567275346_cover.png

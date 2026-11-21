@@ -1,4 +1,6 @@
 ---
+lang: zh-CN
+translationKey: xfmpress-plugins
 title: 插件系统：钩子、官方插件与自定义插件
 date: 2026-11-21 09:20:00
 description: 内核不带插件——四种加载方式、六个钩子的语义与并行取舍、15 个官方插件、十分钟写一个自己的插件

@@ -1,4 +1,6 @@
 ---
+lang: zh-CN
+translationKey: xfmpress-cli
 title: 命令行完全指南：create / dev / build / new / clean / info
 date: 2026-11-21 10:20:00
 description: xfmpress 全部六个命令的选项、别名与典型用法

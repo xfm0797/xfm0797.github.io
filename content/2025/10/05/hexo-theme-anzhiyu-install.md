@@ -1,4 +1,6 @@
 ---
+lang: zh-CN
+translationKey: hexo-theme-anzhiyu-install
 title: hexo-theme-anzhiyu 安知鱼主题安装
 date: 2025-10-05 08:00:00
 description: 一款基于hexo-theme-butterfly修改的主題

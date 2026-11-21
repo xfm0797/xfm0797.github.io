@@ -1,4 +1,6 @@
 ---
+lang: zh-CN
+translationKey: hexo-github-basic-config
 title: hexo+github博客快速搭建基础步骤及设置
 date: 2025-11-04 14:51:20
 description: hexo+github博客快速搭建基础步骤及设置

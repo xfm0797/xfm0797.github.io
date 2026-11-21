@@ -1,4 +1,6 @@
 ---
+lang: zh-CN
+translationKey: hexo-setup
 title: hexo-如何安装
 date: 2025-10-05 03:24:57
 cover: https://img.lovou.eu.org/file/1759567275346_cover.png

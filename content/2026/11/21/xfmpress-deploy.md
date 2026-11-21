@@ -1,4 +1,6 @@
 ---
+lang: zh-CN
+translationKey: xfmpress-deploy
 title: 构建与部署：GitHub Pages、Netlify 与 Nginx
 date: 2026-11-21 09:00:00
 description: 产物结构、增量缓存原理、GitHub Pages / Netlify / Vercel / Nginx / 对象存储部署与子路径方案、上线检查清单

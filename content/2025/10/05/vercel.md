@@ -1,4 +1,6 @@
 ---
+lang: zh-CN
+translationKey: vercel
 title: Vercel配置
 date: 2025-10-05 02:18:48
 cover: https://img.lovou.eu.org/file/1759567275346_cover.png

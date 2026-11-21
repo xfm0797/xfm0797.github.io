@@ -1,4 +1,6 @@
 ---
+lang: zh-CN
+translationKey: hexo-theme-Fluid
 title: hexo-theme-Fluid主题安装及配置方法
 date: 2025-10-07 14:24:55
 description: hexo-theme-Fluid主题安装及配置方法

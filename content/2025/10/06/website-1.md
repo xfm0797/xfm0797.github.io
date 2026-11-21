@@ -1,4 +1,6 @@
 ---
+lang: zh-CN
+translationKey: website-1
 title: 那些年创建的网站
 date: 2025-10-06 15:48:23
 cover: https://img.lovou.eu.org/file/1759567275346_cover.png

@@ -1,4 +1,6 @@
 ---
+lang: zh-CN
+translationKey: hexo-theme-matery
 title: hexo-theme-matery一个基于材料设计和响应式设计而成的全面、美观的Hexo主题
 date: 2025-11-01 21:40:45
 description: hexo-theme-matery一个基于材料设计和响应式设计而成的全面、美观的Hexo主题

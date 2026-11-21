@@ -1,4 +1,6 @@
 ---
+lang: zh-CN
+translationKey: xfmpress-templates
 title: 模板语法：变量、过滤器与模板继承
 date: 2026-11-21 09:40:00
 description: Nunjucks 风格的模板语法——输出转义、六种过滤器、条件循环、include 片段、extend/block 继承与完整模板上下文

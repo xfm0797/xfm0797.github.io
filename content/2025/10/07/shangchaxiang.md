@@ -1,4 +1,6 @@
 ---
+lang: zh-CN
+translationKey: shangchaxiang
 title: 山径上的木子香
 date: 2025-10-07 14:10:59
 description: 日常生活摘木子散文
