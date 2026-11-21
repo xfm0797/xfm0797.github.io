@@ -11,8 +11,8 @@ export default {
     announcement: '欢迎来到 XFMpress 官网，使用教程已收录 11 篇，欢迎按顺序阅读！',
     nav: [
       { title: '首页', url: '/', translations: { en: { title: 'Home', url: '/en/' } } },
-      { title: '分类', url: '/categories/', translations: { en: { title: 'Categories', url: '/categories/' } } },
-      { title: '归档', url: '/archives/', translations: { en: { title: 'Archives', url: '/archives/' } } },
+      { title: '分类', url: '/categories/', translations: { en: { title: 'Categories', url: '/en/categories/' } } },
+      { title: '归档', url: '/archives/', translations: { en: { title: 'Archives', url: '/en/archives/' } } },
       { title: '关于', url: '/about/', translations: { en: { title: 'About', url: '/en/about/' } } },
     ],
   },

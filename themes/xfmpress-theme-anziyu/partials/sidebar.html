@@ -9,9 +9,9 @@
       </div>
     </div>
     <div class="side-author-stats">
-      <div class="stat"><span class="stat-num">{{ site.posts.length }}</span><span class="stat-label">{{ page.lang == 'en' ? 'Posts' : '文章' }}</span></div>
-      <div class="stat"><span class="stat-num">{{ site.categories.length }}</span><span class="stat-label">{{ page.lang == 'en' ? 'Categories' : '分类' }}</span></div>
-      <div class="stat"><span class="stat-num">{{ site.tags.length }}</span><span class="stat-label">{{ page.lang == 'en' ? 'Tags' : '标签' }}</span></div>
+      <div class="stat"><span class="stat-num">{{ page.lang == 'en' ? site.langCounts.en : site.langCounts.zh }}</span><span class="stat-label">{{ page.lang == 'en' ? 'Posts' : '文章' }}</span></div>
+      <div class="stat"><span class="stat-num">{{ page.lang == 'en' ? site.categoriesEn.length : site.categoriesZh.length }}</span><span class="stat-label">{{ page.lang == 'en' ? 'Categories' : '分类' }}</span></div>
+      <div class="stat"><span class="stat-num">{{ page.lang == 'en' ? site.tagsEn.length : site.tagsZh.length }}</span><span class="stat-label">{{ page.lang == 'en' ? 'Tags' : '标签' }}</span></div>
     </div>
     {% if site.announcement %}<div class="side-notice">{{ page.lang == 'en' ? 'Welcome to the official XFMpress site! 11 tutorials are available.' : site.announcement }}</div>{% endif %}
   </section>
@@ -19,7 +19,7 @@
   <section class="side-card">
     <h3 class="side-title">{{ page.lang == 'en' ? 'Recent Posts' : '最近文章' }}</h3>
     <ul class="side-recent">
-      {% for post in site.posts %}{% if loop.index <= 5 and (page.url.startsWith('/en/') ? post.lang == 'en' : post.lang != 'en') %}
+      {% set recents = page.lang == 'en' ? site.postsEn : site.postsZh %}{% for post in recents %}{% if loop.index <= 5 %}
       <li><a href="{{ post.url }}">{{ post.title }}</a><time>{{ post.date }}</time></li>
       {% endif %}{% endfor %}
     </ul>
@@ -29,11 +29,11 @@
   <section class="side-card">
     <h3 class="side-title">{{ page.lang == 'en' ? 'Categories' : '分类' }}</h3>
     <ul class="side-list">
-      {% for c in site.categories %}{% if loop.index <= 6 %}
+      {% for c in (page.lang == 'en' ? site.categoriesEn : site.categoriesZh) %}{% if loop.index <= 6 %}
       <li><a href="{{ c.url }}">{{ c.name }}</a><span class="side-count">{{ c.count }}</span></li>
       {% endif %}{% endfor %}
     </ul>
-    {% if site.categories.length > 6 %}<a class="side-more" href="/categories/">{{ page.lang == 'en' ? 'All categories →' : '全部分类 →' }}</a>{% endif %}
+    {% set catCount = page.lang == 'en' ? site.categoriesEn.length : site.categoriesZh.length %}{% if catCount > 6 %}<a class="side-more" href="{{ page.lang == 'en' ? '/en/categories/' : '/categories/' }}">{{ page.lang == 'en' ? 'All categories →' : '全部分类 →' }}</a>{% endif %}
   </section>
   {% endif %}
 
@@ -41,7 +41,7 @@
   <section class="side-card">
     <h3 class="side-title">{{ page.lang == 'en' ? 'Tag Cloud' : '标签云' }}</h3>
     <div class="side-tags">
-      {% for t in site.tags %}{% if loop.index <= 16 %}<a class="side-tag" href="{{ t.url }}">{{ t.name }}</a>{% endif %}{% endfor %}
+      {% for t in (page.lang == 'en' ? site.tagsEn : site.tagsZh) %}{% if loop.index <= 16 %}<a class="side-tag" href="{{ t.url }}">{{ t.name }}</a>{% endif %}{% endfor %}
     </div>
   </section>
   {% endif %}

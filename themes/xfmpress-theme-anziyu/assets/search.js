@@ -136,15 +136,21 @@
 
   function run(query) {
     if (!state.items) return;
+    // 按当前页面语言分流：/en/ 页面只搜英文文章，其他页面只搜中文文章
+    var wantEn = ZH === false;
+    var pool = state.items.filter(function (it) {
+      var u = String(it.url || '');
+      return wantEn ? u.indexOf('/en/') === 0 : u.indexOf('/en/') !== 0;
+    });
     var terms = String(query || '').toLowerCase().split(/\s+/).filter(Boolean);
     var results = terms.length
-      ? state.items
+      ? pool
           .map(function (it) { return { it: it, s: score(it, terms) }; })
           .filter(function (x) { return x.s > 0; })
           .sort(function (a, b) { return b.s - a.s || String(b.it.date).localeCompare(String(a.it.date)); })
           .slice(0, 12)
           .map(function (x) { return x.it; })
-      : state.items.slice().sort(function (a, b) { return String(b.date).localeCompare(String(a.date)); }).slice(0, 8);
+      : pool.slice().sort(function (a, b) { return String(b.date).localeCompare(String(a.date)); }).slice(0, 8);
 
     state.results = results;
     state.active = results.length ? 0 : -1;

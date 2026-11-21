@@ -3,7 +3,7 @@
 <div class="layout-two">
   <div class="layout-main">
     <section class="page-banner">
-      <p class="banner-eyebrow">{% if page.url.startsWith('/tags/') %}标签{% else %}分类{% endif %}</p>
+      <p class="banner-eyebrow">{{ page.data.taxonomy == 'tags' ? (page.lang == 'en' ? 'Tag' : '标签') : page.data.taxonomy == 'series' ? (page.lang == 'en' ? 'Series' : '系列') : (page.lang == 'en' ? 'Category' : '分类') }}</p>
       <h1 class="banner-title">{{ page.title }}</h1>
       {% if page.description %}<p class="banner-desc">{{ page.description }}</p>{% endif %}
     </section>

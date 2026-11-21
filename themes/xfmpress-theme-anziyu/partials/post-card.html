@@ -1,11 +1,11 @@
 {# 安知鱼风格文章卡片流：首页传 posts，聚合页传 page.data.posts，片段内自行解析 #}
-{% set items = posts or page.data.posts %}
-{% for post in items %}{% if (page.url.startsWith('/en/') ? post.lang == 'en' : post.lang != 'en') %}<article class="post-card">
+{% set items = page.data.pagination ? page.data.pagination.posts : (posts or page.data.posts) %}
+{% for post in items %}{% if (page.lang == 'en' ? post.lang == 'en' : post.lang != 'en') %}<article class="post-card">
   <div class="card-cover">
     <a href="{{ post.url }}" class="card-cover-link">
       <img src="{{ post.data.cover || site.assets + 'cover-default.png' }}" alt="{{ post.title }}" loading="lazy">
     </a>
-    {% if post.category %}<a class="card-cat" href="/categories/{{ post.category }}/">{{ post.category }}</a>{% endif %}
+    {% if post.category %}<a class="card-cat" href="{{ page.lang == 'en' ? '/en/categories/' : '/categories/' }}{{ post.category }}/">{{ post.category }}</a>{% endif %}
   </div>
   <div class="card-body">
     <a class="card-title" href="{{ post.url }}">{{ post.title }}</a>
@@ -19,7 +19,7 @@
         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
         {{ post.readTime }} {{ page.lang == 'en' ? 'min' : '分钟' }}
       </span>{% endif %}
-      {% if post.tags %}{% for t in post.tags %}{% if loop.index <= 2 %}<a class="card-tag" href="/tags/{{ t }}/"># {{ t }}</a>{% endif %}{% endfor %}{% endif %}
+      {% if post.tags %}{% for t in post.tags %}{% if loop.index <= 2 %}<a class="card-tag" href="{{ page.lang == 'en' ? '/en/tags/' : '/tags/' }}{{ t }}/"># {{ t }}</a>{% endif %}{% endfor %}{% endif %}
     </div>
   </div>
 </article>{% endif %}{% else %}<p class="empty">{{ page.lang == 'en' ? 'No posts yet.' : '还没有文章。' }}</p>

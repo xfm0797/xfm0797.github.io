@@ -5,7 +5,7 @@
     <section class="page-banner">
       <p class="banner-eyebrow">Categories</p>
       <h1 class="banner-title">文章分类</h1>
-      <p class="banner-desc">共 {{ page.data.terms.length }} 个分类 · {{ site.posts.length }} 篇文章</p>
+      <p class="banner-desc">{{ page.lang == 'en' ? page.data.terms.length + ' categories · ' + page.data.total + ' posts' : '共 ' + page.data.terms.length + ' 个分类 · ' + page.data.total + ' 篇文章' }}</p>
     </section>
     <div class="term-grid">
       {% for t in page.data.terms %}<a class="term-card" href="{{ t.url }}">
@@ -13,8 +13,8 @@
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1h-8L9.4 4.6A1.5 1.5 0 0 0 8.4 4H4a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1z"/></svg>
         </span>
         <span class="term-name">{{ t.name }}</span>
-        <span class="term-count">{{ t.count }} 篇</span>
-        {% if t.latest %}<span class="term-latest">最新 · {{ t.latest.title }}</span>{% endif %}
+        <span class="term-count">{{ t.count }} {{ page.lang == 'en' ? 'posts' : '篇' }}</span>
+        {% if t.latest %}<span class="term-latest">{{ page.lang == 'en' ? 'Latest · ' : '最新 · ' }}{{ t.latest.title }}</span>{% endif %}
       </a>
       {% else %}<p class="empty">还没有分类。</p>{% endfor %}
     </div>

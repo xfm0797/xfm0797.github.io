@@ -21,7 +21,7 @@
       </div>
       <div class="hero-deco" aria-hidden="true">
         <span class="hero-deco-a"></span><span class="hero-deco-b"></span>
-        <span class="hero-big">{{ site.posts.length }}<small>{{ page.lang == 'en' ? 'posts' : '篇文章' }}</small></span>
+        <span class="hero-big">{{ page.lang == 'en' ? site.langCounts.en : site.langCounts.zh }}<small>{{ page.lang == 'en' ? 'posts' : '篇文章' }}</small></span>
       </div>
     </section>
 
@@ -29,13 +29,13 @@
     {% if site.categories.length %}
     <div class="cat-bar">
       <a class="cat-chip{% if page.url == '/' %} active{% endif %}" href="/">{{ page.lang == 'en' ? 'All' : '全部' }}</a>
-      {% for c in site.categories %}<a class="cat-chip" href="{{ c.url }}">{{ c.name }}</a>{% endfor %}
+      {% for c in (page.lang == 'en' ? site.categoriesEn : site.categoriesZh) %}<a class="cat-chip" href="{{ c.url }}">{{ c.name }}</a>{% endfor %}
     </div>
     {% endif %}
 
     <div class="section-head">
       <h2 class="section-title">{{ page.lang == 'en' ? 'Recommended' : '文章推荐' }}</h2>
-      <span class="section-sub">{{ page.lang == 'en' ? site.posts.length + ' posts' : '共 ' + site.posts.length + ' 篇' }}</span>
+      <span class="section-sub">{{ page.lang == 'en' ? site.langCounts.en + ' posts' : '共 ' + site.langCounts.zh + ' 篇' }}</span>
     </div>
 
     <div class="post-grid">
