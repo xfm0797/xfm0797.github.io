@@ -6,9 +6,14 @@ date: 2026-11-21 20:20:00
 description: 玻璃导航、Hero 横幅、封面卡片流、右侧栏与 Waline 评论——这套 7 布局 6 片段的站点私有主题是怎么搭起来的
 category: 主题模板
 tags: [xfmpress, 主题]
+cover: /assets/theme-anziyu.png
 ---
 
 你现在看到的这个站点，用的不是官方 `default`，而是仓库 `themes/` 下的站点私有主题 `xfmpress-theme-anziyu`。起因很简单：从 Hexo 迁过来时最舍不得的是 [hexo-theme-anzhiyu](https://github.com/anzhiyu-c/hexo-theme-anzhiyu) 那套观感——固定玻璃导航、顶部横幅、带封面的卡片流、右侧挂件——于是用 xfmpress 的模板语法重写了一遍，顺手把不需要的部分全砍掉。
+
+![xfmpress-theme-anziyu 首页：玻璃导航、Hero 横幅、分类快捷条与封面卡片流](/assets/theme-anziyu.png)
+
+上图就是本站首页的真实截图（1200×630）：左侧是文章流，右侧是三组挂件（站点简介 + 语言统计、分类、最近文章）。封面缺失时卡片落回统一的兜底图，所以列表永远是整齐的。
 
 ## 七个布局，六个片段
 

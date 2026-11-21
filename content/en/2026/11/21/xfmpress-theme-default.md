@@ -6,9 +6,14 @@ date: 2026-11-21 20:00:00
 description: themes/default ships with xfmpress — jade palette, hero plus card grid, sidebar, scroll-synced table of contents, light/dark toggle
 category: themes
 tags: [xfmpress, theme]
+cover: /assets/theme-default.png
 ---
 
 `default` is the blog theme among the two official themes in the xfmpress repository, and the one you get right after `npm i xfmpress`: no plugins, no CSS of your own, just `theme: 'default'` and you have a complete personal blog. It does not chase visual drama — low-saturation jade, generous whitespace, reading first.
+
+![The default theme's home page: hero, two-column card grid, sidebar widgets](/assets/theme-default.png)
+
+The image above is the theme rendered as-is at 1200×630: horizontal nav on top, a hero with the site title and description, a two-column card grid in the middle, and a sidebar with an intro card, categories, tags and an archive link. Every colour, radius and gap comes from the theme's own stylesheet — no extra customisation.
 
 ## Layout map
 

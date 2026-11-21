@@ -6,9 +6,14 @@ date: 2026-11-21 20:00:00
 description: 仓库 themes/default —— 青玉配色、Hero + 卡片流 + 侧栏、右侧目录跟随、深浅色切换，装完 xfmpress 就能用的博客皮
 category: 主题模板
 tags: [xfmpress, 主题]
+cover: /assets/theme-default.png
 ---
 
 `default` 是 xfmpress 仓库里两套官方主题中的博客主题，也是 `npm i xfmpress` 之后默认能用的那一套：不装任何插件、不写一行 CSS，`theme: 'default'` 就能得到一个结构完整的个人博客。它不追求视觉冲击，走的是低饱和青玉色 + 大留白的阅读路线。
+
+![default 主题首页：Hero 标题、双列卡片流与右侧挂件栏](/assets/theme-default.png)
+
+上图是这套主题的实际渲染效果（1200×630）：顶部是水平导航，左侧 Hero 写站名与描述，中间两列文章卡片，右侧依次是站点简介、分类、标签与归档入口。配色、圆角与留白都是主题自带的，没有额外的自定义样式。
 
 ## 目录结构与布局分工
 

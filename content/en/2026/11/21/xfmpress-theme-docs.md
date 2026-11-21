@@ -6,9 +6,14 @@ date: 2026-11-21 20:10:00
 description: themes/docs — top nav, grouped sidebar, wide body and a right-hand TOC; the sidebar is generated from `group` and `weight`
 category: themes
 tags: [xfmpress, theme]
+cover: /assets/theme-docs.png
 ---
 
 The other official theme, `docs`, solves a different problem: a blog wants a reverse-chronological stream, documentation wants a knowledge tree. The same content rendered with `default` reads like a blog; with `docs` it reads like a manual — a sidebar that never leaves, a wider measure, and browsing that feels like *looking things up* rather than *scrolling through*.
+
+![The docs theme's article page: grouped sidebar, wide body, generous margins](/assets/theme-docs.png)
+
+The screenshot above is the real render at 1200×630: site name and global links on top, a sidebar grouping entries under "Getting started / Content & templates / Extending" with the current page highlighted, and the article with title, meta, prose and a code block. No cards, no covers — everything is there to be scanned.
 
 ## The three-column shell
 

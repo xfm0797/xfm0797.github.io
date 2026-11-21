@@ -6,9 +6,14 @@ date: 2026-11-21 20:20:00
 description: Glass nav, hero banner, cover cards, sidebar widgets and Waline comments — how a seven-layout, six-partial private theme was built
 category: themes
 tags: [xfmpress, theme]
+cover: /assets/theme-anziyu.png
 ---
 
 The site you are reading does not run on the official `default` theme. It runs on a site-private theme under `themes/`, `xfmpress-theme-anziyu`. The reason was simple: when migrating off Hexo, the thing worth keeping was the look of [hexo-theme-anzhiyu](https://github.com/anzhiyu-c/hexo-theme-anzhiyu) — sticky glass navigation, a hero banner, cover cards, a right-hand widget column — so it was rewritten in xfmpress template syntax, with everything unnecessary dropped.
+
+![The xfmpress-theme-anziyu home page: glass nav, hero banner, category chips, cover cards](/assets/theme-anziyu.png)
+
+The picture above is an actual screenshot of this site's home page at 1200×630: post stream on the left, three widget groups on the right (site intro with language counts, categories, recent posts). When a post has no cover, the card falls back to a shared default image, so the grid never looks ragged.
 
 ## Seven layouts, six partials
 
