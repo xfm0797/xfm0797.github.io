@@ -14,5 +14,8 @@
     "xfm-plugin-search": "^0.4.2",
     "xfm-plugin-sitemap": "^0.4.2",
     "xfmpress": "^0.4.17"
+  },
+  "dependencies": {
+    "xfm-plugin-share": "^0.4.18"
   }
 }
