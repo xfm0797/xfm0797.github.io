@@ -1,0 +1,45 @@
+{% extend "base.html" %}
+{% block title %}404 · {{ site.title }}{% endblock %}
+{% block main %}
+<section class="error-page">
+  <div class="error-card">
+    <p class="error-code" aria-hidden="true">404</p>
+    <h1 class="error-title" data-zh="页面走丢了" data-en="This page got lost">页面走丢了</h1>
+    <p class="error-text"
+       data-zh="这个地址没有对应的页面——可能链接写错了，也可能是旧文章已经下线。"
+       data-en="No page lives at this address — the link may be mistyped, or the post has been retired.">这个地址没有对应的页面——可能链接写错了，也可能是旧文章已经下线。</p>
+
+    <div class="error-actions">
+      <a class="error-btn primary" href="/" data-href-en="/en/">
+        <span data-zh="回到首页" data-en="Back home">回到首页</span>
+      </a>
+      <a class="error-btn" href="/archives/" data-href-en="/en/archives/">
+        <span data-zh="归档" data-en="Archives">归档</span>
+      </a>
+      <a class="error-btn" href="/categories/" data-href-en="/en/categories/">
+        <span data-zh="分类" data-en="Categories">分类</span>
+      </a>
+      {% if site.search %}<button class="error-btn" type="button" data-search-open>
+        <span data-zh="搜索站内" data-en="Search">搜索站内</span>
+      </button>{% endif %}
+    </div>
+
+    <p class="error-hint"
+       data-zh="提示：本站文章永久链接形如 /2026/11/21/xfmpress-install/，可以直接改地址栏试试。"
+       data-en="Tip: permalinks here look like /en/2026/11/21/xfmpress-install/ — try editing the address bar.">提示：本站文章永久链接形如 <code>/2026/11/21/xfmpress-install/</code>，可以直接改地址栏试试。</p>
+  </div>
+</section>
+<script>
+  (function () {
+    var isEn = location.pathname.indexOf('/en/') === 0;
+    if (!isEn) return;
+    document.documentElement.lang = 'en';
+    document.querySelectorAll('[data-href-en]').forEach(function (a) {
+      a.setAttribute('href', a.getAttribute('data-href-en'));
+    });
+    document.querySelectorAll('[data-en]').forEach(function (el) {
+      el.textContent = el.getAttribute('data-en');
+    });
+  })();
+</script>
+{% endblock %}
