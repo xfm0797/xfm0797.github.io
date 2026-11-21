@@ -321,12 +321,14 @@ time { color: var(--muted); font-size: .85rem; }
 .post-hero {
   position: relative; border-radius: 18px; overflow: hidden;
   background: var(--grad); background-size: cover; background-position: center;
-  min-height: 240px; display: flex; align-items: flex-end;
+  min-height: 240px; display: flex; align-items: stretch;
   box-shadow: var(--shadow-lg); margin-bottom: 20px;
 }
 .post-hero-mask {
-  position: relative; width: 100%; padding: 34px 32px;
-  background: linear-gradient(180deg, rgba(20, 24, 44, 0) 0%, rgba(20, 24, 44, .72) 70%);
+  position: relative; width: 100%; display: flex; flex-direction: column; justify-content: flex-end;
+  min-height: 240px; padding: 96px 32px 34px;
+  background: linear-gradient(180deg, rgba(14, 18, 34, .45) 0%, rgba(14, 18, 34, .75) 55%, rgba(14, 18, 34, .93) 100%);
+  backdrop-filter: blur(2px) saturate(1.05);
   color: #fff;
 }
 .post-hero-crumbs { display: flex; gap: 14px; font-size: .85rem; opacity: .92; flex-wrap: wrap; }
