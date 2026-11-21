@@ -5,7 +5,6 @@ description: xfmpress 在 GFM 之上的扩展——提示容器、代码块标�
 category: xfmpress
 tags: [xfmpress, 教程]
 series: xfmpress使用教程
-weight: 6
 ---
 
 # 内置 Markdown 能力

@@ -1,11 +1,10 @@
 ---
 title: 快速上手：30 秒创建你的第一个 xfmpress 站点
-date: 2026-11-21 09:10:00
+date: 2026-11-21 10:30:00
 description: 从 xfm create 到 xfm dev，最快速度跑起一个带热更新的博客站点
 category: xfmpress
 tags: [xfmpress, 教程]
 series: xfmpress使用教程
-weight: 2
 ---
 
 # 30 秒创建站点

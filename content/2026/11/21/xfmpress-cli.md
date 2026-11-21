@@ -1,11 +1,10 @@
 ---
 title: 命令行完全指南：create / dev / build / new / clean / info
-date: 2026-11-21 09:20:00
+date: 2026-11-21 10:20:00
 description: xfmpress 全部六个命令的选项、别名与典型用法
 category: xfmpress
 tags: [xfmpress, 教程]
 series: xfmpress使用教程
-weight: 3
 ---
 
 # 命令行一览

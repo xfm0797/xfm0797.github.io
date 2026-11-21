@@ -1,11 +1,10 @@
 ---
 title: SEO 与站内搜索：sitemap / RSS / search / related
-date: 2026-11-21 10:30:00
+date: 2026-11-21 09:10:00
 description: 用官方插件组合补齐 SEO 与阅读体验——站点地图、全文 RSS、Ctrl+K 搜索、相关文章与 AI 友好输出
 category: xfmpress
 tags: [xfmpress, 教程]
 series: xfmpress使用教程
-weight: 10
 ---
 
 # 一次装齐

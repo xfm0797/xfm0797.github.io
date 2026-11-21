@@ -1,11 +1,10 @@
 ---
 title: 配置详解：xfm.config.mjs 所有字段
-date: 2026-11-21 09:30:00
+date: 2026-11-21 10:10:00
 description: 配置文件查找顺序、site 字段默认值、构建行为、分页与索引页、环境变量注入
 category: xfmpress
 tags: [xfmpress, 教程]
 series: xfmpress使用教程
-weight: 4
 ---
 
 # 配置文件

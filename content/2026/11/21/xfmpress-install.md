@@ -1,11 +1,10 @@
 ---
 title: xfmpress 是什么：安装与升级
-date: 2026-11-21 09:00:00
+date: 2026-11-21 10:40:00
 description: 认识 xfmpress——一个零依赖的 Node.js 静态站点生成器，以及三种安装方式与升级方法
 category: xfmpress
 tags: [xfmpress, 教程]
 series: xfmpress使用教程
-weight: 1
 ---
 
 # xfmpress 是什么

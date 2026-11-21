@@ -1,11 +1,10 @@
 ---
 title: 构建与部署：GitHub Pages、Netlify 与 Nginx
-date: 2026-11-21 10:40:00
+date: 2026-11-21 09:00:00
 description: 产物结构、增量缓存原理、GitHub Pages / Netlify / Vercel / Nginx / 对象存储部署与子路径方案、上线检查清单
 category: xfmpress
 tags: [xfmpress, 教程]
 series: xfmpress使用教程
-weight: 11
 ---
 
 # 产物是纯静态文件
