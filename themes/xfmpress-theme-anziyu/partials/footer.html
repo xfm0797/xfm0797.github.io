@@ -9,6 +9,6 @@
       </a>
     </div>
     <p class="copyright">© {{ site.title }}{% if site.author %} · {{ site.author }}{% endif %}</p>
-    <p class="powered">由 <a href="https://github.com/xfm0797/xfm" target="_blank" rel="noopener">xfmpress</a> 强力驱动</p>
+    <p class="powered">{{ page.lang == 'en' ? 'Powered by' : '由' }} <a href="https://github.com/xfm0797/xfm" target="_blank" rel="noopener">xfmpress</a>{{ page.lang == 'en' ? '' : ' 强力驱动' }}</p>
   </div>
 </footer>

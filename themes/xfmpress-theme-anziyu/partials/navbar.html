@@ -5,7 +5,7 @@
       <span class="nav-title">{{ site.title }}</span>
     </a>
     <nav class="nav-links" id="nav-links">
-      {% for item in site.nav %}<a href="{{ item.url }}"{% if page.url == item.url %} class="active"{% endif %}>{{ item.title }}</a>
+      {% for item in nav %}<a href="{{ item.url }}"{% if page.url == item.url %} class="active"{% endif %}>{{ item.title }}</a>
       {% endfor %}
     </nav>
     <div class="nav-actions">
@@ -23,7 +23,7 @@
     </div>
   </div>
   <nav class="nav-drawer" id="nav-drawer">
-    {% for item in site.nav %}<a href="{{ item.url }}"{% if page.url == item.url %} class="active"{% endif %}>{{ item.title }}</a>
+    {% for item in nav %}<a href="{{ item.url }}"{% if page.url == item.url %} class="active"{% endif %}>{{ item.title }}</a>
     {% endfor %}
   </nav>
 </header>

@@ -5,13 +5,13 @@
       <span class="side-avatar" aria-hidden="true">{{ site.author | default(site.title) }}</span>
       <div class="side-author-info">
         <span class="side-author-name">{{ site.author | default(site.title) }}</span>
-        <span class="side-author-desc">{{ site.description }}</span>
+        <span class="side-author-desc">{{ page.lang == 'en' ? 'The official website of XFMpress' : site.description }}</span>
       </div>
     </div>
     <div class="side-author-stats">
-      <div class="stat"><span class="stat-num">{{ site.posts.length }}</span><span class="stat-label">文章</span></div>
-      <div class="stat"><span class="stat-num">{{ site.categories.length }}</span><span class="stat-label">分类</span></div>
-      <div class="stat"><span class="stat-num">{{ site.tags.length }}</span><span class="stat-label">标签</span></div>
+      <div class="stat"><span class="stat-num">{{ site.posts.length }}</span><span class="stat-label">{{ page.lang == 'en' ? 'Posts' : '文章' }}</span></div>
+      <div class="stat"><span class="stat-num">{{ site.categories.length }}</span><span class="stat-label">{{ page.lang == 'en' ? 'Categories' : '分类' }}</span></div>
+      <div class="stat"><span class="stat-num">{{ site.tags.length }}</span><span class="stat-label">{{ page.lang == 'en' ? 'Tags' : '标签' }}</span></div>
     </div>
     {% if site.announcement %}<div class="side-notice">{{ page.lang == 'en' ? 'Welcome to the official XFMpress site! 11 tutorials are available.' : site.announcement }}</div>{% endif %}
   </section>
@@ -27,19 +27,19 @@
 
   {% if site.categories.length %}
   <section class="side-card">
-    <h3 class="side-title">分类</h3>
+    <h3 class="side-title">{{ page.lang == 'en' ? 'Categories' : '分类' }}</h3>
     <ul class="side-list">
       {% for c in site.categories %}{% if loop.index <= 6 %}
       <li><a href="{{ c.url }}">{{ c.name }}</a><span class="side-count">{{ c.count }}</span></li>
       {% endif %}{% endfor %}
     </ul>
-    {% if site.categories.length > 6 %}<a class="side-more" href="/categories/">全部分类 →</a>{% endif %}
+    {% if site.categories.length > 6 %}<a class="side-more" href="/categories/">{{ page.lang == 'en' ? 'All categories →' : '全部分类 →' }}</a>{% endif %}
   </section>
   {% endif %}
 
   {% if site.tags.length %}
   <section class="side-card">
-    <h3 class="side-title">标签云</h3>
+    <h3 class="side-title">{{ page.lang == 'en' ? 'Tag Cloud' : '标签云' }}</h3>
     <div class="side-tags">
       {% for t in site.tags %}{% if loop.index <= 16 %}<a class="side-tag" href="{{ t.url }}">{{ t.name }}</a>{% endif %}{% endfor %}
     </div>

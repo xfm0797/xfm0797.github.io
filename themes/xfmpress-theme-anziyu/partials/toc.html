@@ -1,8 +1,8 @@
 {% if headings and headings.length %}
-<nav class="toc" id="toc" aria-label="目录">
+<nav class="toc" id="toc" aria-label="{{ page.lang == 'en' ? 'Table of contents' : '目录' }}">
   <div class="toc-title">
     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
-    文章目录
+    {{ page.lang == 'en' ? 'On This Page' : '文章目录' }}
   </div>
   <ul>
     {% for h in headings %}<li class="toc-h{{ h.level }}"><a href="#{{ h.id }}">{{ h.text }}</a></li>

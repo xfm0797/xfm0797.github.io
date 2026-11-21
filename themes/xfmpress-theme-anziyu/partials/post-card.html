@@ -17,10 +17,10 @@
       </span>
       {% if post.readTime %}<span class="card-meta-item">
         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-        {{ post.readTime }} 分钟
+        {{ post.readTime }} {{ page.lang == 'en' ? 'min' : '分钟' }}
       </span>{% endif %}
       {% if post.tags %}{% for t in post.tags %}{% if loop.index <= 2 %}<a class="card-tag" href="/tags/{{ t }}/"># {{ t }}</a>{% endif %}{% endfor %}{% endif %}
     </div>
   </div>
-</article>{% endif %}{% else %}<p class="empty">还没有文章。</p>
+</article>{% endif %}{% else %}<p class="empty">{{ page.lang == 'en' ? 'No posts yet.' : '还没有文章。' }}</p>
 {% endfor %}

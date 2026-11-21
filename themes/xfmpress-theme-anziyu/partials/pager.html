@@ -1,11 +1,11 @@
 {% if pagination and pagination.totalPages > 1 %}
-<nav class="pager" aria-label="分页">
+<nav class="pager" aria-label="{{ page.lang == 'en' ? 'Pagination' : '分页' }}">
   {% if pagination.prev %}
   <a class="pager-step" href="{{ pagination.prev }}" rel="prev">
     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-    上一页
+    {{ page.lang == 'en' ? 'Prev' : '上一页' }}
   </a>
-  {% else %}<span class="pager-step is-disabled">上一页</span>{% endif %}
+  {% else %}<span class="pager-step is-disabled">{{ page.lang == 'en' ? 'Prev' : '上一页' }}</span>{% endif %}
 
   <span class="pager-nums">
     {% for p in pagination.links %}
@@ -17,9 +17,9 @@
 
   {% if pagination.next %}
   <a class="pager-step" href="{{ pagination.next }}" rel="next">
-    下一页
+    {{ page.lang == 'en' ? 'Next' : '下一页' }}
     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
   </a>
-  {% else %}<span class="pager-step is-disabled">下一页</span>{% endif %}
+  {% else %}<span class="pager-step is-disabled">{{ page.lang == 'en' ? 'Next' : '下一页' }}</span>{% endif %}
 </nav>
 {% endif %}
