@@ -1,0 +1,27 @@
+{% extend "base.html" %}
+{% block main %}
+<div class="layout-two">
+  <div class="layout-main">
+    <section class="page-banner">
+      <p class="banner-eyebrow">Archives</p>
+      <h1 class="banner-title">文章归档</h1>
+      <p class="banner-desc">共 {{ site.posts.length }} 篇文章，按年份整理</p>
+    </section>
+    <div class="timeline">
+      {% for y in page.data.years %}
+      <section class="tl-year">
+        <h2 class="tl-year-title"><span class="tl-badge">{{ y.year }}</span><span class="tl-count">{{ y.posts.length }} 篇</span></h2>
+        {% for post in y.posts %}
+        <a class="tl-item" href="{{ post.url }}">
+          <span class="tl-dot" aria-hidden="true"></span>
+          <time class="tl-date">{{ post.date }}</time>
+          <span class="tl-title">{{ post.title }}</span>
+        </a>
+        {% endfor %}
+      </section>
+      {% else %}<p class="empty">还没有文章。</p>{% endfor %}
+    </div>
+  </div>
+  {% include "sidebar.html" %}
+</div>
+{% endblock %}

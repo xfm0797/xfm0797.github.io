@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang || site.lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{% block title %}{% if page.url == '/' %}{{ site.title }}{% else %}{{ page.title }} · {{ site.title }}{% endif %}{% endblock %}</title>
+  <meta name="description" content="{{ page.desc || site.description }}">
+  <meta name="theme-color" content="#425aef">
+  {% if site.favicon %}<link rel="icon" href="{{ site.favicon }}">{% endif %}
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/feed.xml">
+  <link rel="stylesheet" href="{{ site.assets }}style.css">
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <div class="progress-bar" id="progress-bar" aria-hidden="true"></div>
+  {% include "navbar.html" %}
+
+  <main class="site-main">
+    {% block main %}{{ content }}{% endblock %}
+  </main>
+
+  {% include "footer.html" %}
+
+  <button class="back-top" id="back-top" type="button" aria-label="回到顶部">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <div class="img-mask" id="img-mask" aria-hidden="true"><img src="" alt=""></div>
+
+  <script src="{{ site.assets }}main.js" defer></script>
+  <script>
+    (function(){
+      var k='xfm-theme', r=document.documentElement;
+      var s=localStorage.getItem(k);
+      if(s) r.dataset.theme=s;
+      else if(window.matchMedia('(prefers-color-scheme: dark)').matches) r.dataset.theme='dark';
+    })();
+  </script>
+</body>
+</html>

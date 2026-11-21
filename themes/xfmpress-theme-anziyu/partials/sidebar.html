@@ -1,0 +1,48 @@
+{# 右侧边栏：作者卡 / 最近文章 / 分类 / 标签云 #}
+<aside class="sidebar">
+  <section class="side-card side-author">
+    <div class="side-author-top">
+      <span class="side-avatar" aria-hidden="true">{{ site.author | default(site.title) }}</span>
+      <div class="side-author-info">
+        <span class="side-author-name">{{ site.author | default(site.title) }}</span>
+        <span class="side-author-desc">{{ site.description }}</span>
+      </div>
+    </div>
+    <div class="side-author-stats">
+      <div class="stat"><span class="stat-num">{{ site.posts.length }}</span><span class="stat-label">文章</span></div>
+      <div class="stat"><span class="stat-num">{{ site.categories.length }}</span><span class="stat-label">分类</span></div>
+      <div class="stat"><span class="stat-num">{{ site.tags.length }}</span><span class="stat-label">标签</span></div>
+    </div>
+    {% if site.announcement %}<div class="side-notice">{{ site.announcement }}</div>{% endif %}
+  </section>
+
+  <section class="side-card">
+    <h3 class="side-title">最近文章</h3>
+    <ul class="side-recent">
+      {% for post in site.posts %}{% if loop.index <= 5 %}
+      <li><a href="{{ post.url }}">{{ post.title }}</a><time>{{ post.date }}</time></li>
+      {% endif %}{% endfor %}
+    </ul>
+  </section>
+
+  {% if site.categories.length %}
+  <section class="side-card">
+    <h3 class="side-title">分类</h3>
+    <ul class="side-list">
+      {% for c in site.categories %}{% if loop.index <= 6 %}
+      <li><a href="{{ c.url }}">{{ c.name }}</a><span class="side-count">{{ c.count }}</span></li>
+      {% endif %}{% endfor %}
+    </ul>
+    {% if site.categories.length > 6 %}<a class="side-more" href="/categories/">全部分类 →</a>{% endif %}
+  </section>
+  {% endif %}
+
+  {% if site.tags.length %}
+  <section class="side-card">
+    <h3 class="side-title">标签云</h3>
+    <div class="side-tags">
+      {% for t in site.tags %}{% if loop.index <= 16 %}<a class="side-tag" href="{{ t.url }}">{{ t.name }}</a>{% endif %}{% endfor %}
+    </div>
+  </section>
+  {% endif %}
+</aside>

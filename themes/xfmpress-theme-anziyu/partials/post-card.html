@@ -1,0 +1,30 @@
+{# 安知鱼风格文章卡片流：首页传 posts，聚合页传 page.data.posts，片段内自行解析 #}
+{% set items = posts or page.data.posts %}
+{% for post in items %}<article class="post-card">
+  <div class="card-cover{% if not post.data.cover %} no-cover{% endif %}">
+    {% if post.data.cover %}
+    <a href="{{ post.url }}" class="card-cover-link">
+      <img src="{{ post.data.cover }}" alt="{{ post.title }}" loading="lazy">
+    </a>
+    {% else %}
+    <a href="{{ post.url }}" class="card-cover-link card-cover-fallback" aria-hidden="true" tabindex="-1"></a>
+    {% endif %}
+    {% if post.category %}<a class="card-cat" href="/categories/{{ post.category }}/">{{ post.category }}</a>{% endif %}
+  </div>
+  <div class="card-body">
+    <a class="card-title" href="{{ post.url }}">{{ post.title }}</a>
+    {% if post.desc %}<p class="card-desc">{{ post.desc }}</p>{% endif %}
+    <div class="card-meta">
+      <span class="card-meta-item">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4m8-4v4M3 10h18"/></svg>
+        <time>{{ post.date }}</time>
+      </span>
+      {% if post.readTime %}<span class="card-meta-item">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        {{ post.readTime }} 分钟
+      </span>{% endif %}
+      {% if post.tags %}{% for t in post.tags %}{% if loop.index <= 2 %}<a class="card-tag" href="/tags/{{ t }}/"># {{ t }}</a>{% endif %}{% endfor %}{% endif %}
+    </div>
+  </div>
+</article>{% else %}<p class="empty">还没有文章。</p>
+{% endfor %}

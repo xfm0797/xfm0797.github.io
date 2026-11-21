@@ -1,0 +1,62 @@
+{% extend "base.html" %}
+{% block main %}
+<article class="post-page">
+  {# 安知鱼风格文章头部横幅：封面模糊背景 + 标题浮层 #}
+  <header class="post-hero{% if not page.data.cover %} no-cover{% endif %}"{% if page.data.cover %} style="background-image:url('{{ page.data.cover }}')"{% endif %}>
+    <div class="post-hero-mask">
+      <div class="post-hero-crumbs">
+        {% if page.category %}<a href="/categories/{{ page.category }}/">{{ page.category }}</a>{% endif %}
+        <span>发布于 {{ page.date }}</span>
+      </div>
+      <h1 class="post-hero-title">{{ page.title }}</h1>
+      <div class="post-hero-meta">
+        {% if page.data.cover %}<span class="meta-chip">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 15 4-4 4 4 5-5 5 5"/></svg>
+          封面图
+        </span>{% endif %}
+        {% if page.readTime %}<span class="meta-chip">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          {{ page.readTime }} 分钟阅读
+        </span>{% endif %}
+        {% for t in page.tags %}<a class="meta-chip" href="/tags/{{ t }}/"># {{ t }}</a>{% endfor %}
+      </div>
+    </div>
+  </header>
+
+  <div class="post-layout">
+    <div class="post-content-wrap">
+      <div class="post-content-card">
+        <div class="prose">{{ content | safe }}</div>
+      </div>
+
+      {# 上一篇 / 下一篇 #}
+      <nav class="post-pn">
+        {% if page.data.prev %}<a class="pn-card prev" href="{{ page.data.prev.url }}"><span class="pn-label">上一篇</span><span class="pn-title">{{ page.data.prev.title }}</span></a>
+        {% else %}<span class="pn-card is-empty"></span>{% endif %}
+        {% if page.data.next %}<a class="pn-card next" href="{{ page.data.next.url }}"><span class="pn-label">下一篇</span><span class="pn-title">{{ page.data.next.title }}</span></a>
+        {% else %}<span class="pn-card is-empty"></span>{% endif %}
+      </nav>
+
+      {% if page.data.related.length %}
+      <section class="post-related">
+        <h2 class="section-title">相关推荐</h2>
+        <div class="post-grid related-grid">
+          {% for item in page.data.related %}
+          <a class="related-item" href="{{ item.url }}">
+            <span class="related-title">{{ item.title }}</span>
+            {% if item.date %}<time>{{ item.date }}</time>{% endif %}
+          </a>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+    </div>
+
+    {% if headings.length > 0 %}
+    <aside class="post-toc-wrap">
+      {% include "toc.html" %}
+    </aside>
+    {% endif %}
+  </div>
+</article>
+{% endblock %}
