@@ -2,7 +2,7 @@
 {% block main %}
 <article class="post-page">
   {# 安知鱼风格文章头部横幅：封面模糊背景 + 标题浮层 #}
-  <header class="post-hero{% if not page.data.cover %} no-cover{% endif %}"{% if page.data.cover %} style="background-image:url('{{ page.data.cover }}')"{% endif %}>
+  <header class="post-hero" style="background-image:url('{{ page.data.cover || site.assets + 'cover-default.png' }}')">
     <div class="post-hero-mask">
       <div class="post-hero-crumbs">
         {% if page.category %}<a href="/categories/{{ page.category }}/">{{ page.category }}</a>{% endif %}

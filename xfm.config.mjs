@@ -6,6 +6,7 @@ export default {
     lang: 'zh-CN',
     author: 'xfm',
     base: '/',
+    favicon: '/assets/favicon.svg',
     announcement: '欢迎来到 XFMpress 官网，使用教程已收录 11 篇，欢迎按顺序阅读！',
     nav: [
       { title: '首页', url: '/' },
