@@ -9,6 +9,8 @@
     "info": "xfm info"
   },
   "devDependencies": {
+    "xfm-plugin-rss": "^0.4.2",
+    "xfm-plugin-sitemap": "^0.4.2",
     "xfmpress": "^0.4.14"
   }
 }
