@@ -13,7 +13,7 @@
     "xfm-plugin-rss": "^0.4.3",
     "xfm-plugin-search": "^0.4.2",
     "xfm-plugin-sitemap": "^0.4.2",
-    "xfmpress": "^0.4.17"
+    "xfmpress": "^0.4.18"
   },
   "dependencies": {
     "xfm-plugin-share": "^0.4.18"
