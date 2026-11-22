@@ -29,20 +29,36 @@ xfm create my-blog --template=blog --title=My Blog
 - `--title=`: site title
 - Alias: `xfm init`
 
-The generated directory looks like this:
+What you get is a **source skeleton**, laid out like this:
 
 ```
 my-blog/
+├── README.md           # getting-started notes
 ├── xfm.config.mjs      # site config
 ├── package.json        # xfmpress in devDependencies
 ├── content/            # content directory
+│   ├── index.md        # home page
+│   ├── about.md        # about page
 │   └── posts/          # posts
 ├── scaffolds/          # templates used by xfm new
 │   ├── post.md
 │   ├── page.md
 │   └── draft.md
-└── public/             # static files copied as-is to the output root
+├── plugins/            # site-local plugins
+└── public/             # static files (just a .gitkeep placeholder by default)
 ```
+
+Note that `xfm create` produces no build output — `dist/` only appears after `xfm build`:
+
+```
+my-blog/dist/           # build output (exists only after xfm build)
+├── index.html
+├── posts/              # one directory per post
+├── assets/             # theme assets + static files from public
+└── ...                 # feed.xml / sitemap.xml / search.json and other plugin extras
+```
+
+`public/` and `dist/` are two different things: `public/` lives in the source tree and anything you put there is **copied as-is** to the root of `dist/` (drop `favicon.ico`, `CNAME`, `robots.txt` in it); `dist/` is the finished site and can be deleted and rebuilt at any time.
 
 ## xfm dev: the dev server
 

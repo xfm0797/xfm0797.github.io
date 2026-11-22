@@ -29,20 +29,36 @@ xfm create my-blog --template=blog --title=我的博客
 - `--title=`：站点名称
 - 别名 `xfm init`
 
-生成出来的目录长这样：
+生成出来的是一套**源码骨架**，目录长这样：
 
 ```
 my-blog/
+├── README.md           # 起步说明
 ├── xfm.config.mjs      # 站点配置
 ├── package.json        # devDependencies 里有 xfmpress
 ├── content/            # 内容目录
+│   ├── index.md        # 首页
+│   ├── about.md        # 关于页
 │   └── posts/          # 文章
 ├── scaffolds/          # xfm new 的脚手架模板
 │   ├── post.md
 │   ├── page.md
 │   └── draft.md
-└── public/             # 原样拷贝到产物根目录的静态文件
+├── plugins/            # 站点本地插件目录
+└── public/             # 静态文件（默认只有一个 .gitkeep 占位）
 ```
+
+注意 `xfm create` 不会生成任何构建产物，`dist/` 是 `xfm build` 之后才出现的输出目录：
+
+```
+my-blog/dist/           # 构建产物（执行 xfm build 后才存在）
+├── index.html
+├── posts/              # 每篇文章一个目录
+├── assets/             # 主题资源 + public 里的静态文件
+└── ...                 # feed.xml / sitemap.xml / search.json 等由插件追加
+```
+
+`public/` 和 `dist/` 是两回事：`public/` 在源码里，你往里放的东西会被**原样拷贝**到 `dist/` 根目录（放 `favicon.ico`、`CNAME`、`robots.txt` 这类文件）；`dist/` 是整个站点构建出来的最终成品，随时可以删掉重建。
 
 ## xfm dev：开发服务器
 
