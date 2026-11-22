@@ -3,7 +3,7 @@ lang: zh-CN
 translationKey: about
 title: 关于
 date: 2021-03-30 15:57:51
-updated: 2026-11-21 19:05:00
+updated: 2026-11-22 13:30:00
 layout: page.html
 type: page
 ---
@@ -14,7 +14,7 @@ type: page
 
 - **xfmpress 使用教程**：按知识点拆分的 13 篇教程，从安装、配置一路讲到主题开发、插件系统与部署上线，可在「分类 → xfmpress」或系列页按顺序阅读
 - **更新日志**：从 v0.1.1 到 v0.4.17，每个发布标签一篇，讲清一版解决了什么问题、行为有什么变化、升级要不要动手
-- **主题模板**：仓库自带的 `default`（博客）与 `docs`（文档）两套官方主题各一篇，外加本站正在使用的 `xfmpress-theme-anziyu`
+- **主题模板**：仓库 `themes/` 下的四套主题各一篇——官方 `default`（博客）、`docs`（文档）与新增的 `butterfly`（毛玻璃卡片风），外加本站正在使用的 `xfmpress-theme-anziyu`
 - **官方插件**：仓库 `packages/` 下 18 个官方插件各一篇，从统计、评论、搜索到 RSS、sitemap、PWA、分享，讲清配置项与产物
 
 ## 关于作者

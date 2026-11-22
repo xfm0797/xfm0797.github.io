@@ -14,7 +14,7 @@ This is the official website of **XFMpress** — a zero-dependency static site g
 
 - **xfmpress tutorials**: 13 articles broken down by topic, covering installation, configuration, theming, plugins, and deployment. Read them in order via the series page or the Chinese tutorials section
 - **Changelog**: one article per release tag from v0.1.1 to v0.4.17 — what the version solved, what changed behaviour, and whether an upgrade needs work
-- **Themes**: one article each for the bundled `default` (blog) and `docs` (documentation) themes, plus `xfmpress-theme-anziyu`, the theme this site runs on
+- **Themes**: one article for each of the four themes under `themes/` — the official `default` (blog), `docs` (documentation) and the new `butterfly` (frosted cards), plus `xfmpress-theme-anziyu`, the theme this site runs on
 - **Official plugins**: one article for each of the 18 packages under `packages/`, from analytics and comments to search, RSS, sitemap, PWA and sharing — configuration keys and generated output included
 
 ## About the author
