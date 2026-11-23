@@ -40,7 +40,8 @@
   var drawer = doc.getElementById('nav-drawer');
   if (menuBtn && drawer) {
     menuBtn.addEventListener('click', function () {
-      drawer.style.display = drawer.style.display === 'flex' ? 'none' : 'flex';
+      var open = drawer.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
   }
 
