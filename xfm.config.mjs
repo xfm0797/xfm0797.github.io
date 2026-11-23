@@ -1,7 +1,7 @@
 export default {
   site: {
     title: 'XFMpress',
-    description: '静态站点生成器XFMpress的官方网站',
+    description: '极致性能的静态站点生成器 —— 零运行时依赖、多线程渲染、Nunjucks 风格模板、即插即用的主题与插件',
     url: 'https://xfm0797.github.io',
     lang: 'zh-CN',
     languages: ['zh-CN', 'en'],
