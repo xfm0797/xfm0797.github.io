@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  
+  
+  
+  <title>配置详解：xfm.config.mjs 所有字段 · XFMpress</title>
+  <meta name="description" content="配置文件查找顺序、site 字段默认值、构建行为、分页与索引页、环境变量注入">
+  <meta name="theme-color" content="#425aef">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/favicon-512.png">
+  <meta property="og:site_name" content="XFMpress">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="配置详解：xfm.config.mjs 所有字段 · XFMpress">
+  <meta property="og:description" content="配置文件查找顺序、site 字段默认值、构建行为、分页与索引页、环境变量注入">
+  <meta property="og:url" content="https://xfm0797.github.io/2026/11/21/xfmpress-config/">
+  <meta property="og:image" content="https://xfm0797.github.io/assets/cover-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="alternate" type="application/rss+xml" title="XFMpress" href="/feed.xml">
+  
+  <link rel="alternate" hreflang="zh-CN" href="https://xfm0797.github.io/2026/11/21/xfmpress-config/">
+  <link rel="alternate" hreflang="en" href="https://xfm0797.github.io/en/2026/11/21/xfmpress-config/">
+  
+  <link rel="stylesheet" href="/assets/style.css">
+  
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css">
+<style>
+.xfm-share{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem;margin:2.5rem 0 0;padding-top:1.25rem;border-top:1px solid var(--border,#e6e6e6)}
+.xfm-share-label{font-size:.88rem;color:var(--muted,#888)}
+.xfm-share a{display:inline-block;padding:.22rem .85rem;border:1px solid var(--border,#d9d9d9);border-radius:999px;font-size:.85rem;line-height:1.5;color:inherit;text-decoration:none;transition:color .15s,border-color .15s}
+.xfm-share a:hover{color:var(--c);border-color:var(--c)}
+.xfm-share-toast{position:fixed;left:50%;bottom:2.5rem;transform:translateX(-50%);background:#333;color:#fff;padding:.4rem 1rem;border-radius:6px;font-size:.85rem;opacity:0;transition:opacity .25s;pointer-events:none;z-index:9999}
+.xfm-share-toast.show{opacity:.92}
+@media (prefers-color-scheme:dark){.xfm-share{border-top-color:var(--border,#333)}.xfm-share a{border-color:var(--border,#3a3a3a)}}
+</style>
+</head>
+<body>
+  <div class="progress-bar" id="progress-bar" aria-hidden="true"></div>
+  <header class="site-nav" id="site-nav">
+  <div class="nav-wrap">
+    <a class="nav-brand" href="/">
+      <span class="nav-avatar" aria-hidden="true">xfm</span>
+      <span class="nav-title">XFMpress</span>
+    </a>
+    <nav class="nav-links" id="nav-links">
+      <a href="/">首页</a>
+      <a href="/categories/">分类</a>
+      <a href="/archives/">归档</a>
+      <a href="/about/">关于</a>
+      
+    </nav>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="nav-menu-btn" type="button" aria-label="菜单" aria-controls="nav-drawer" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <button class="nav-icon-btn" type="button" data-search-open aria-label="搜索" title="搜索（Ctrl+K）">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <a class="nav-icon-btn nav-lang-btn" href="/en/2026/11/21/xfmpress-config/" title="Switch to English"><span class="nav-lang-text">EN</span></a>
+      <button class="nav-icon-btn" id="theme-toggle" type="button" aria-label="切换深浅色" title="切换深浅色">
+        <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="nav-drawer" id="nav-drawer">
+    <a href="/">首页</a>
+    <a href="/categories/">分类</a>
+    <a href="/archives/">归档</a>
+    <a href="/about/">关于</a>
+    
+  </nav>
+</header>
+
+
+  <main class="site-main">
+    
+<article class="post-page">
+  
+  <header class="post-hero" style="background-image:url('/assets/cover-default.png')">
+    <div class="post-hero-mask">
+      <div class="post-hero-crumbs">
+        <a href="/categories/xfmpress/">xfmpress</a>
+        <span>发布于 2026-11-21</span>
+      </div>
+      <h1 class="post-hero-title">配置详解：xfm.config.mjs 所有字段</h1>
+      <div class="post-hero-meta">
+        
+        <span class="meta-chip">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          3 分钟阅读
+        </span>
+        <a class="meta-chip" href="/tags/xfmpress/"># xfmpress</a><a class="meta-chip" href="/tags/教程/"># 教程</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="post-layout">
+    <div class="post-content-wrap">
+      <div class="post-content-card">
+        <div class="prose"><h1 id="配置文件">配置文件</h1>
+<p>配置就是一个普通 JS 对象，导出即生效。<strong>所有字段都有默认值</strong>，一个空的 <code>xfm.config.mjs</code> 也能构建出站点。</p>
+<h2 id="查找顺序">查找顺序</h2>
+<p>按顺序找，命中第一个就停：</p>
+<ol><li><code>xfm.config.mjs</code> —— 推荐，ESM，支持 <code>process.env</code></li><li><code>xfm.config.js</code> —— 视 <code>package.json</code> 的 <code>type</code> 决定模块格式</li><li><code>xfm.config.cjs</code> —— 强制 CommonJS</li><li><code>xfm.config.json</code> —— 纯数据</li><li><code>config.js</code> —— 早期版本兼容</li><li><code>package.json</code> 的 <code>xfm</code> 字段</li></ol>
+<p>拿不准就跑 <code>xfm info</code>，它会直接告诉你最终读的是哪个文件。</p>
+<h2 id="合并规则">合并规则</h2>
+<p>用户配置与默认值<strong>深合并</strong>，只写关心的字段即可：</p>
+<ul class="md-list"><li>对象逐键递归合并；</li><li><strong>数组是整体替换</strong>——写 <code>nav</code> 就得写全量；</li><li>值为 <code>undefined</code> 的键被忽略。</li></ul>
+<h2 id="site-字段">site 字段</h2>
+<div class="code-block"><pre class="language-js"><code><span class="hl-k">export</span> <span class="hl-k">default</span> {
+  site: {
+    title: <span class="hl-s">'XFMpress'</span>,            <span class="hl-c">// 站点名，进 &lt;title&gt;、页脚、品牌位</span>
+    description: <span class="hl-s">'站点描述'</span>,       <span class="hl-c">// 列表页与 meta 的兜底</span>
+    url: <span class="hl-s">'https://xfm0797.github.io'</span>, <span class="hl-c">// sitemap / RSS 输出绝对链接必须配</span>
+    lang: <span class="hl-s">'zh-CN'</span>,                <span class="hl-c">// &lt;html lang&gt;</span>
+    author: <span class="hl-s">'xfm'</span>,                <span class="hl-c">// 供插件与主题使用</span>
+    base: <span class="hl-s">'/'</span>,                    <span class="hl-c">// 子路径部署，如 '/blog/'</span>
+    assets: <span class="hl-s">'/assets/'</span>,           <span class="hl-c">// 主题资源前缀</span>
+    nav: [                        <span class="hl-c">// 导航（数组整体替换）</span>
+      { title: <span class="hl-s">'首页'</span>, url: <span class="hl-s">'/'</span> },
+      { title: <span class="hl-s">'归档'</span>, url: <span class="hl-s">'/archives/'</span> },
+    ],
+  },
+};</code></pre></div>
+<p><code>site</code> 下没列出的键也会原样进入模板上下文，比如 <code>site.copyright</code> 可以直接在模板里用。</p>
+<h2 id="构建行为">构建行为</h2>
+<div class="table-wrap"><table><thead><tr><th>字段</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>buildDrafts</code></td><td><code>false</code></td><td>生产构建是否包含草稿</td></tr><tr><td><code>workerThreshold</code></td><td><code>40</code></td><td>页面数达到该值才启用 worker 池</td></tr><tr><td><code>workers</code></td><td><code>0</code></td><td>并发数，0 表示自动按任务量标定</td></tr><tr><td><code>markdown.highlight</code></td><td><code>true</code></td><td>代码块语法高亮</td></tr></tbody></table></div>
+<h2 id="分页与索引页">分页与索引页</h2>
+<div class="code-block"><pre class="language-js"><code>pagination: { enabled: <span class="hl-k">true</span>, perPage: <span class="hl-n">9</span>, url: <span class="hl-s">'/page/'</span> },
+indexes: {
+  categories: { enabled: <span class="hl-k">true</span>, url: <span class="hl-s">'/categories/'</span> },  <span class="hl-c">// 分类索引页</span>
+  archives: { enabled: <span class="hl-k">true</span>, url: <span class="hl-s">'/archives/'</span> },      <span class="hl-c">// 按年归档页</span>
+},</code></pre></div>
+<p>分页是<strong>真实静态页</strong>（<code>/page/2/</code>），每页有自己的 HTML 与标题，对 SEO 友好。索引页的前提是主题提供了对应布局——缺布局时静默不生成，不报错。</p>
+<h2 id="目录与主题">目录与主题</h2>
+<div class="table-wrap"><table><thead><tr><th>字段</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>contentDir</code></td><td><code>'content'</code></td><td>Markdown 源目录</td></tr><tr><td><code>outDir</code></td><td><code>'dist'</code></td><td>产物目录</td></tr><tr><td><code>publicDir</code></td><td><code>'public'</code></td><td>原样拷贝的静态目录</td></tr><tr><td><code>theme</code></td><td><code>'themes/default'</code></td><td><code>'default'</code> / <code>'docs'</code> / 主题路径</td></tr><tr><td><code>defaults.layout</code></td><td><code>'page.html'</code></td><td>无 layout 字段时的兜底</td></tr></tbody></table></div>
+<h2 id="环境变量与多环境">环境变量与多环境</h2>
+<p>配置文件是 ESM，可以读环境变量，这是 CI 里的标准做法：</p>
+<div class="code-block"><pre class="language-js"><code><span class="hl-k">export</span> <span class="hl-k">default</span> {
+  site: {
+    base: process.env.SITE_BASE || <span class="hl-s">'/'</span>,
+    url: process.env.SITE_URL || <span class="hl-s">''</span>,
+  },
+};</code></pre></div>
+<p>本地构建用默认值，CI 里注入 <code>SITE_BASE</code> 与 <code>SITE_URL</code>，同一份配置覆盖两种环境。</p>
+<p>下一篇：<a href="/2026/11/21/xfmpress-content/">内容组织：目录即 URL 与 front-matter</a>。</p></div>
+      </div>
+
+      
+      <section class="xfm-share" data-share-networks="weibo,wechat,qq,qzone,twitter,telegram,copy" aria-label="分享"><span class="xfm-share-label">分享到</span><a href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F21%2Fxfmpress-config%2F&amp;title=%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3%EF%BC%9Axfm.config.mjs%20%E6%89%80%E6%9C%89%E5%AD%97%E6%AE%B5" style="--c:#e6162d" target="_blank" rel="noopener" title="分享到微博"><span>微博</span></a>
+<a href="#" style="--c:#07c160" data-share-copy data-share-url="https://xfm0797.github.io/2026/11/21/xfmpress-config/" data-share-msg="链接已复制，可在微信中粘贴分享" title="微信"><span>微信</span></a>
+<a href="https://connect.qq.com/widget/shareqq/index.html?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F21%2Fxfmpress-config%2F&amp;title=%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3%EF%BC%9Axfm.config.mjs%20%E6%89%80%E6%9C%89%E5%AD%97%E6%AE%B5&amp;summary=" style="--c:#12b7f5" target="_blank" rel="noopener" title="分享到QQ 好友"><span>QQ 好友</span></a>
+<a href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F21%2Fxfmpress-config%2F&amp;title=%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3%EF%BC%9Axfm.config.mjs%20%E6%89%80%E6%9C%89%E5%AD%97%E6%AE%B5" style="--c:#f5b60d" target="_blank" rel="noopener" title="分享到QQ 空间"><span>QQ 空间</span></a>
+<a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F21%2Fxfmpress-config%2F&amp;text=%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3%EF%BC%9Axfm.config.mjs%20%E6%89%80%E6%9C%89%E5%AD%97%E6%AE%B5" style="--c:#1da1f2" target="_blank" rel="noopener" title="分享到X"><span>X</span></a>
+<a href="https://t.me/share/url?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F21%2Fxfmpress-config%2F&amp;text=%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3%EF%BC%9Axfm.config.mjs%20%E6%89%80%E6%9C%89%E5%AD%97%E6%AE%B5" style="--c:#26a5e4" target="_blank" rel="noopener" title="分享到Telegram"><span>Telegram</span></a>
+<a href="#" style="--c:#5f6368" data-share-copy data-share-url="https://xfm0797.github.io/2026/11/21/xfmpress-config/" data-share-msg="链接已复制" title="复制链接"><span>复制链接</span></a></section>
+      <nav class="post-pn">
+        <a class="pn-card prev" href="/2026/11/21/xfmpress-content/"><span class="pn-label">上一篇</span><span class="pn-title">内容组织：目录即 URL 与 front-matter</span></a>
+        
+        <a class="pn-card next" href="/2026/11/21/xfmpress-cli/"><span class="pn-label">下一篇</span><span class="pn-title">命令行完全指南：create / dev / build / new / clean / info</span></a>
+        
+      </nav>
+
+      
+
+      
+      
+      <section class="post-comments" id="comments">
+        <h2 class="section-title">评论</h2>
+        <div class="post-comments-body" id="waline" data-xfm-comments></div>
+      </section>
+      
+    </div>
+
+    
+    <aside class="post-toc-wrap">
+      
+<nav class="toc" id="toc" aria-label="目录">
+  <div class="toc-title">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+    文章目录
+  </div>
+  <ul>
+    <li class="toc-h2"><a href="#查找顺序">查找顺序</a></li>
+    <li class="toc-h2"><a href="#合并规则">合并规则</a></li>
+    <li class="toc-h2"><a href="#site-字段">site 字段</a></li>
+    <li class="toc-h2"><a href="#构建行为">构建行为</a></li>
+    <li class="toc-h2"><a href="#分页与索引页">分页与索引页</a></li>
+    <li class="toc-h2"><a href="#目录与主题">目录与主题</a></li>
+    <li class="toc-h2"><a href="#环境变量与多环境">环境变量与多环境</a></li>
+    
+  </ul>
+</nav>
+
+
+    </aside>
+    
+  </div>
+<script type="module">import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';init({"el":"#waline","serverURL":"https://waline.xfm.qzz.io","path":"/2026/11/21/xfmpress-config/","lang":"zh-CN","dark":"html[data-theme=\"dark\"]","requiredMeta":["nick","mail"],"login":"enable","commentSorting":"newest"});</script>
+
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-icons">
+      <a href="/feed.xml" aria-label="RSS" title="RSS 订阅">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M4 11a9 9 0 0 1 9 9h3A12 12 0 0 0 4 8v3zm0-7a16 16 0 0 1 16 16h3A19 19 0 0 0 4 1v3zm2 13a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>
+      </a>
+      <a href="https://github.com/xfm0797/xfm" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C17 4.7 18 5 18 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6a11.5 11.5 0 0 0 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+    <p class="copyright">© XFMpress · xfm</p>
+    <p class="powered">由 <a href="https://github.com/xfm0797/xfm" target="_blank" rel="noopener">xfmpress</a> <span class="powered-version">0.4.18</span> 强力驱动</p>
+  </div>
+</footer>
+
+
+  <button class="back-top" id="back-top" type="button" aria-label="回到顶部">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <div class="img-mask" id="img-mask" aria-hidden="true"><img src="" alt=""></div>
+
+  <script src="/assets/main.js" defer></script>
+  <script src="/assets/search.js" defer data-index="/search.json"></script>
+  <script>
+    (function(){
+      var k='xfm-theme', r=document.documentElement;
+      var s=localStorage.getItem(k);
+      if(s) r.dataset.theme=s;
+      else if(window.matchMedia('(prefers-color-scheme: dark)').matches) r.dataset.theme='dark';
+    })();
+  </script>
+</body>
+</html>
+<script>
+(function(){
+  function toast(msg){
+    var t=document.querySelector('.xfm-share-toast');
+    if(!t){t=document.createElement('div');t.className='xfm-share-toast';document.body.appendChild(t);}
+    t.textContent=msg;t.classList.add('show');
+    clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('show');},2000);
+  }
+  function legacyCopy(text){
+    var ta=document.createElement('textarea');
+    ta.value=text;ta.setAttribute('readonly','');
+    ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');}catch(e){}
+    document.body.removeChild(ta);
+  }
+  document.addEventListener('click',function(e){
+    var el=e.target.closest('[data-share-copy]');
+    if(!el)return;
+    e.preventDefault();
+    var url=el.getAttribute('data-share-url')||location.href;
+    var done=function(){toast(el.getAttribute('data-share-msg')||'已复制');};
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(done,function(){legacyCopy(url);done();});
+    }else{legacyCopy(url);done();}
+  });
+})();
+</script>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  
+  
+  
+  <title>命令行完全指南：create / dev / build / new / clean / info · XFMpress</title>
+  <meta name="description" content="xfmpress 全部六个命令的选项、别名与典型用法">
+  <meta name="theme-color" content="#425aef">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/favicon-512.png">
+  <meta property="og:site_name" content="XFMpress">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="命令行完全指南：create / dev / build / new / clean / info · XFMpress">
+  <meta property="og:description" content="xfmpress 全部六个命令的选项、别名与典型用法">
+  <meta property="og:url" content="https://xfm0797.github.io/2026/11/21/xfmpress-cli/">
+  <meta property="og:image" content="https://xfm0797.github.io/assets/cover-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="alternate" type="application/rss+xml" title="XFMpress" href="/feed.xml">
+  
+  <link rel="alternate" hreflang="zh-CN" href="https://xfm0797.github.io/2026/11/21/xfmpress-cli/">
+  <link rel="alternate" hreflang="en" href="https://xfm0797.github.io/en/2026/11/21/xfmpress-cli/">
+  
+  <link rel="stylesheet" href="/assets/style.css">
+  
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css">
+<style>
+.xfm-share{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem;margin:2.5rem 0 0;padding-top:1.25rem;border-top:1px solid var(--border,#e6e6e6)}
+.xfm-share-label{font-size:.88rem;color:var(--muted,#888)}
+.xfm-share a{display:inline-block;padding:.22rem .85rem;border:1px solid var(--border,#d9d9d9);border-radius:999px;font-size:.85rem;line-height:1.5;color:inherit;text-decoration:none;transition:color .15s,border-color .15s}
+.xfm-share a:hover{color:var(--c);border-color:var(--c)}
+.xfm-share-toast{position:fixed;left:50%;bottom:2.5rem;transform:translateX(-50%);background:#333;color:#fff;padding:.4rem 1rem;border-radius:6px;font-size:.85rem;opacity:0;transition:opacity .25s;pointer-events:none;z-index:9999}
+.xfm-share-toast.show{opacity:.92}
+@media (prefers-color-scheme:dark){.xfm-share{border-top-color:var(--border,#333)}.xfm-share a{border-color:var(--border,#3a3a3a)}}
+</style>
+</head>
+<body>
+  <div class="progress-bar" id="progress-bar" aria-hidden="true"></div>
+  <header class="site-nav" id="site-nav">
+  <div class="nav-wrap">
+    <a class="nav-brand" href="/">
+      <span class="nav-avatar" aria-hidden="true">xfm</span>
+      <span class="nav-title">XFMpress</span>
+    </a>
+    <nav class="nav-links" id="nav-links">
+      <a href="/">首页</a>
+      <a href="/categories/">分类</a>
+      <a href="/archives/">归档</a>
+      <a href="/about/">关于</a>
+      
+    </nav>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="nav-menu-btn" type="button" aria-label="菜单" aria-controls="nav-drawer" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <button class="nav-icon-btn" type="button" data-search-open aria-label="搜索" title="搜索（Ctrl+K）">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <a class="nav-icon-btn nav-lang-btn" href="/en/2026/11/21/xfmpress-cli/" title="Switch to English"><span class="nav-lang-text">EN</span></a>
+      <button class="nav-icon-btn" id="theme-toggle" type="button" aria-label="切换深浅色" title="切换深浅色">
+        <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="nav-drawer" id="nav-drawer">
+    <a href="/">首页</a>
+    <a href="/categories/">分类</a>
+    <a href="/archives/">归档</a>
+    <a href="/about/">关于</a>
+    
+  </nav>
+</header>
+
+
+  <main class="site-main">
+    
+<article class="post-page">
+  
+  <header class="post-hero" style="background-image:url('/assets/cover-default.png')">
+    <div class="post-hero-mask">
+      <div class="post-hero-crumbs">
+        <a href="/categories/xfmpress/">xfmpress</a>
+        <span>发布于 2026-11-21</span>
+      </div>
+      <h1 class="post-hero-title">命令行完全指南：create / dev / build / new / clean / info</h1>
+      <div class="post-hero-meta">
+        
+        <span class="meta-chip">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          2 分钟阅读
+        </span>
+        <a class="meta-chip" href="/tags/xfmpress/"># xfmpress</a><a class="meta-chip" href="/tags/教程/"># 教程</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="post-layout">
+    <div class="post-content-wrap">
+      <div class="post-content-card">
+        <div class="prose"><h1 id="命令行一览">命令行一览</h1>
+<div class="table-wrap"><table><thead><tr><th>命令</th><th>说明</th></tr></thead><tbody><tr><td><code>xfm create [目录]</code></td><td>创建站点，别名 <code>init</code></td></tr><tr><td><code>xfm dev [目录]</code></td><td>开发服务器，别名 <code>serve</code> / <code>server</code> / <code>preview</code></td></tr><tr><td><code>xfm build [目录]</code></td><td>生产构建，别名 <code>generate</code> / <code>gen</code></td></tr><tr><td><code>xfm new [布局] &quot;标题&quot;</code></td><td>新建内容：文章 / 页面 / 草稿</td></tr><tr><td><code>xfm clean</code></td><td>清理产物与缓存</td></tr><tr><td><code>xfm info</code></td><td>查看最终生效的配置</td></tr></tbody></table></div>
+<p>每个命令都接受 <code>[目录]</code> 参数指定站点路径，不传就是当前目录。</p>
+<h2 id="create-创建站点">create：创建站点</h2>
+<div class="code-block"><pre class="language-bash"><code>xfm create my-blog --template=blog --title=站点名</code></pre></div>
+<ul class="md-list"><li><code>--template=blog|docs</code>：blog 是博客模板，docs 是侧栏文档模板</li><li>判断「目录已是站点」的依据是配置文件存在，所以用 <code>.js</code> / <code>.cjs</code> / <code>.json</code> 配置的老站点不会被误覆盖</li></ul>
+<h2 id="dev-开发服务器">dev：开发服务器</h2>
+<div class="code-block"><pre class="language-bash"><code>xfm dev --port=<span class="hl-n">4173</span> --host=<span class="hl-n">127.0</span>.<span class="hl-n">0.1</span></code></pre></div>
+<ul class="md-list"><li><code>--port</code>：端口，默认 4173（也可在配置 <code>server.port</code> 里改）</li><li><code>--host=0.0.0.0</code>：让同网段设备访问</li><li>配置文件本身也在监听范围内，改 <code>xfm.config.mjs</code> 保存即重建，不需要重启</li></ul>
+<h2 id="build-生产构建">build：生产构建</h2>
+<div class="code-block"><pre class="language-bash"><code>xfm build --incremental    <span class="hl-c"># 启用缓存（.xfm/cache.json）</span>
+xfm build --drafts         <span class="hl-c"># 包含草稿（覆盖 buildDrafts 配置）</span>
+xfm build --no-drafts      <span class="hl-c"># 排除草稿</span>
+xfm build --scheduled      <span class="hl-c"># 强制发布 date 在未来的文章</span>
+xfm build --no-scheduled   <span class="hl-c"># 排除未来文章（默认行为）</span></code></pre></div>
+<p>注意：<code>date</code> 在未来的文章默认会被<strong>暂缓发布</strong>——不进页面、RSS、sitemap 与文章列表计数，到点自动发布；<code>dev</code> 模式下依然可见方便预览。</p>
+<h2 id="new-新建内容">new：新建内容</h2>
+<div class="code-block"><pre class="language-bash"><code>xfm new <span class="hl-s">&quot;标题&quot;</span>                  <span class="hl-c"># 文章（默认）</span>
+xfm new post <span class="hl-s">&quot;标题&quot;</span>             <span class="hl-c"># 同上，显式写</span>
+xfm new page 标题               <span class="hl-c"># 页面，自动写 layout: page.html 与 type: page</span>
+xfm new draft <span class="hl-s">&quot;标题&quot;</span>            <span class="hl-c"># 草稿，自动写 draft: true</span>
+xfm new <span class="hl-s">&quot;标题&quot;</span> --dir=notes      <span class="hl-c"># 指定子目录</span>
+xfm new <span class="hl-s">&quot;标题&quot;</span> --slug=my-post   <span class="hl-c"># 指定 slug</span>
+xfm new <span class="hl-s">&quot;标题&quot;</span> --force          <span class="hl-c"># 同名覆盖</span></code></pre></div>
+<p>规则：</p>
+<ul class="md-list"><li><strong>只给一个参数时它一定是标题</strong>——<code>xfm new page</code> 建的是一篇标题叫 &quot;page&quot; 的文章，不是页面</li><li>多个参数不会截断，<code>xfm new 我的 文章</code> 标题就是「我的 文章」</li><li>同名文件自动追加编号，不怕覆盖</li></ul>
+<h2 id="clean-与-info">clean 与 info</h2>
+<div class="code-block"><pre class="language-bash"><code>xfm clean    <span class="hl-c"># 删除 dist/ 与 .xfm/ 缓存</span>
+xfm info     <span class="hl-c"># 显示配置查找命中了哪个文件、主题、插件</span></code></pre></div>
+<p>排查「配置没生效」「插件没加载」时，第一步永远是 <code>xfm info</code>。</p>
+<p>下一篇：<a href="/2026/11/21/xfmpress-config/">配置详解</a>。</p></div>
+      </div>
+
+      
+      <section class="xfm-share" data-share-networks="weibo,wechat,qq,qzone,twitter,telegram,copy" aria-label="分享"><span class="xfm-share-label">分享到</span><a href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F21%2Fxfmpress-cli%2F&amp;title=%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%EF%BC%9Acreate%20%2F%20dev%20%2F%20build%20%2F%20new%20%2F%20clean%20%2F%20info" style="--c:#e6162d" target="_blank" rel="noopener" title="分享到微博"><span>微博</span></a>
+<a href="#" style="--c:#07c160" data-share-copy data-share-url="https://xfm0797.github.io/2026/11/21/xfmpress-cli/" data-share-msg="链接已复制，可在微信中粘贴分享" title="微信"><span>微信</span></a>
+<a href="https://connect.qq.com/widget/shareqq/index.html?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F21%2Fxfmpress-cli%2F&amp;title=%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%EF%BC%9Acreate%20%2F%20dev%20%2F%20build%20%2F%20new%20%2F%20clean%20%2F%20info&amp;summary=" style="--c:#12b7f5" target="_blank" rel="noopener" title="分享到QQ 好友"><span>QQ 好友</span></a>
+<a href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F21%2Fxfmpress-cli%2F&amp;title=%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%EF%BC%9Acreate%20%2F%20dev%20%2F%20build%20%2F%20new%20%2F%20clean%20%2F%20info" style="--c:#f5b60d" target="_blank" rel="noopener" title="分享到QQ 空间"><span>QQ 空间</span></a>
+<a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F21%2Fxfmpress-cli%2F&amp;text=%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%EF%BC%9Acreate%20%2F%20dev%20%2F%20build%20%2F%20new%20%2F%20clean%20%2F%20info" style="--c:#1da1f2" target="_blank" rel="noopener" title="分享到X"><span>X</span></a>
+<a href="https://t.me/share/url?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F21%2Fxfmpress-cli%2F&amp;text=%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%EF%BC%9Acreate%20%2F%20dev%20%2F%20build%20%2F%20new%20%2F%20clean%20%2F%20info" style="--c:#26a5e4" target="_blank" rel="noopener" title="分享到Telegram"><span>Telegram</span></a>
+<a href="#" style="--c:#5f6368" data-share-copy data-share-url="https://xfm0797.github.io/2026/11/21/xfmpress-cli/" data-share-msg="链接已复制" title="复制链接"><span>复制链接</span></a></section>
+      <nav class="post-pn">
+        <a class="pn-card prev" href="/2026/11/21/xfmpress-config/"><span class="pn-label">上一篇</span><span class="pn-title">配置详解：xfm.config.mjs 所有字段</span></a>
+        
+        <a class="pn-card next" href="/2026/11/21/xfmpress-quick-start/"><span class="pn-label">下一篇</span><span class="pn-title">快速上手：30 秒创建你的第一个 xfmpress 站点</span></a>
+        
+      </nav>
+
+      
+
+      
+      
+      <section class="post-comments" id="comments">
+        <h2 class="section-title">评论</h2>
+        <div class="post-comments-body" id="waline" data-xfm-comments></div>
+      </section>
+      
+    </div>
+
+    
+    <aside class="post-toc-wrap">
+      
+<nav class="toc" id="toc" aria-label="目录">
+  <div class="toc-title">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+    文章目录
+  </div>
+  <ul>
+    <li class="toc-h2"><a href="#create-创建站点">create：创建站点</a></li>
+    <li class="toc-h2"><a href="#dev-开发服务器">dev：开发服务器</a></li>
+    <li class="toc-h2"><a href="#build-生产构建">build：生产构建</a></li>
+    <li class="toc-h2"><a href="#new-新建内容">new：新建内容</a></li>
+    <li class="toc-h2"><a href="#clean-与-info">clean 与 info</a></li>
+    
+  </ul>
+</nav>
+
+
+    </aside>
+    
+  </div>
+<script type="module">import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';init({"el":"#waline","serverURL":"https://waline.xfm.qzz.io","path":"/2026/11/21/xfmpress-cli/","lang":"zh-CN","dark":"html[data-theme=\"dark\"]","requiredMeta":["nick","mail"],"login":"enable","commentSorting":"newest"});</script>
+
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-icons">
+      <a href="/feed.xml" aria-label="RSS" title="RSS 订阅">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M4 11a9 9 0 0 1 9 9h3A12 12 0 0 0 4 8v3zm0-7a16 16 0 0 1 16 16h3A19 19 0 0 0 4 1v3zm2 13a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>
+      </a>
+      <a href="https://github.com/xfm0797/xfm" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C17 4.7 18 5 18 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6a11.5 11.5 0 0 0 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+    <p class="copyright">© XFMpress · xfm</p>
+    <p class="powered">由 <a href="https://github.com/xfm0797/xfm" target="_blank" rel="noopener">xfmpress</a> <span class="powered-version">0.4.18</span> 强力驱动</p>
+  </div>
+</footer>
+
+
+  <button class="back-top" id="back-top" type="button" aria-label="回到顶部">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <div class="img-mask" id="img-mask" aria-hidden="true"><img src="" alt=""></div>
+
+  <script src="/assets/main.js" defer></script>
+  <script src="/assets/search.js" defer data-index="/search.json"></script>
+  <script>
+    (function(){
+      var k='xfm-theme', r=document.documentElement;
+      var s=localStorage.getItem(k);
+      if(s) r.dataset.theme=s;
+      else if(window.matchMedia('(prefers-color-scheme: dark)').matches) r.dataset.theme='dark';
+    })();
+  </script>
+</body>
+</html>
+<script>
+(function(){
+  function toast(msg){
+    var t=document.querySelector('.xfm-share-toast');
+    if(!t){t=document.createElement('div');t.className='xfm-share-toast';document.body.appendChild(t);}
+    t.textContent=msg;t.classList.add('show');
+    clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('show');},2000);
+  }
+  function legacyCopy(text){
+    var ta=document.createElement('textarea');
+    ta.value=text;ta.setAttribute('readonly','');
+    ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');}catch(e){}
+    document.body.removeChild(ta);
+  }
+  document.addEventListener('click',function(e){
+    var el=e.target.closest('[data-share-copy]');
+    if(!el)return;
+    e.preventDefault();
+    var url=el.getAttribute('data-share-url')||location.href;
+    var done=function(){toast(el.getAttribute('data-share-msg')||'已复制');};
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(done,function(){legacyCopy(url);done();});
+    }else{legacyCopy(url);done();}
+  });
+})();
+</script>

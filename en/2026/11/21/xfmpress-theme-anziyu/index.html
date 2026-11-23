@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  
+  
+  
+  <title>xfmpress-theme-anziyu: the Anzhiyu-flavoured theme this site runs on · XFMpress</title>
+  <meta name="description" content="Glass nav, hero banner, cover cards, sidebar widgets and Waline comments — how a seven-layout, six-partial private theme was built">
+  <meta name="theme-color" content="#425aef">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/favicon-512.png">
+  <meta property="og:site_name" content="XFMpress">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="xfmpress-theme-anziyu: the Anzhiyu-flavoured theme this site runs on · XFMpress">
+  <meta property="og:description" content="Glass nav, hero banner, cover cards, sidebar widgets and Waline comments — how a seven-layout, six-partial private theme was built">
+  <meta property="og:url" content="https://xfm0797.github.io/en/2026/11/21/xfmpress-theme-anziyu/">
+  <meta property="og:image" content="/assets/theme-anziyu.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="alternate" type="application/rss+xml" title="XFMpress" href="/feed.xml">
+  
+  <link rel="alternate" hreflang="en" href="https://xfm0797.github.io/en/2026/11/21/xfmpress-theme-anziyu/">
+  <link rel="alternate" hreflang="zh-CN" href="https://xfm0797.github.io/2026/11/21/xfmpress-theme-anziyu/">
+  
+  <link rel="stylesheet" href="/assets/style.css">
+  
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css">
+<style>
+.xfm-share{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem;margin:2.5rem 0 0;padding-top:1.25rem;border-top:1px solid var(--border,#e6e6e6)}
+.xfm-share-label{font-size:.88rem;color:var(--muted,#888)}
+.xfm-share a{display:inline-block;padding:.22rem .85rem;border:1px solid var(--border,#d9d9d9);border-radius:999px;font-size:.85rem;line-height:1.5;color:inherit;text-decoration:none;transition:color .15s,border-color .15s}
+.xfm-share a:hover{color:var(--c);border-color:var(--c)}
+.xfm-share-toast{position:fixed;left:50%;bottom:2.5rem;transform:translateX(-50%);background:#333;color:#fff;padding:.4rem 1rem;border-radius:6px;font-size:.85rem;opacity:0;transition:opacity .25s;pointer-events:none;z-index:9999}
+.xfm-share-toast.show{opacity:.92}
+@media (prefers-color-scheme:dark){.xfm-share{border-top-color:var(--border,#333)}.xfm-share a{border-color:var(--border,#3a3a3a)}}
+</style>
+</head>
+<body>
+  <div class="progress-bar" id="progress-bar" aria-hidden="true"></div>
+  <header class="site-nav" id="site-nav">
+  <div class="nav-wrap">
+    <a class="nav-brand" href="/">
+      <span class="nav-avatar" aria-hidden="true">xfm</span>
+      <span class="nav-title">XFMpress</span>
+    </a>
+    <nav class="nav-links" id="nav-links">
+      <a href="/en/">Home</a>
+      <a href="/en/categories/">Categories</a>
+      <a href="/en/archives/">Archives</a>
+      <a href="/en/about/">About</a>
+      
+    </nav>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="nav-menu-btn" type="button" aria-label="菜单" aria-controls="nav-drawer" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <button class="nav-icon-btn" type="button" data-search-open aria-label="搜索" title="搜索（Ctrl+K）">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <a class="nav-icon-btn nav-lang-btn" href="/2026/11/21/xfmpress-theme-anziyu/" title="切换到中文"><span class="nav-lang-text">中文</span></a>
+      <button class="nav-icon-btn" id="theme-toggle" type="button" aria-label="切换深浅色" title="切换深浅色">
+        <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="nav-drawer" id="nav-drawer">
+    <a href="/en/">Home</a>
+    <a href="/en/categories/">Categories</a>
+    <a href="/en/archives/">Archives</a>
+    <a href="/en/about/">About</a>
+    
+  </nav>
+</header>
+
+
+  <main class="site-main">
+    
+<article class="post-page">
+  
+  <header class="post-hero" style="background-image:url('/assets/theme-anziyu.png')">
+    <div class="post-hero-mask">
+      <div class="post-hero-crumbs">
+        <a href="/categories/themes/">themes</a>
+        <span>Published on 2026-11-21</span>
+      </div>
+      <h1 class="post-hero-title">xfmpress-theme-anziyu: the Anzhiyu-flavoured theme this site runs on</h1>
+      <div class="post-hero-meta">
+        <span class="meta-chip">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 15 4-4 4 4 5-5 5 5"/></svg>
+          Cover
+        </span>
+        <span class="meta-chip">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          12 min read
+        </span>
+        <a class="meta-chip" href="/tags/xfmpress/"># xfmpress</a><a class="meta-chip" href="/tags/theme/"># theme</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="post-layout">
+    <div class="post-content-wrap">
+      <div class="post-content-card">
+        <div class="prose"><p>The site you are reading does not run on the official <code>default</code> theme. It runs on a site-private theme under <code>themes/</code>, <code>xfmpress-theme-anziyu</code>. The reason was simple: when migrating off Hexo, the thing worth keeping was the look of <a href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" target="_blank" rel="noopener">hexo-theme-anzhiyu</a> — sticky glass navigation, a hero banner, cover cards, a right-hand widget column — so it was rewritten in xfmpress template syntax, with everything unnecessary dropped.</p>
+<p><img src="/assets/theme-anziyu.png" alt="The xfmpress-theme-anziyu home page: glass nav, hero banner, category chips, cover cards" loading="lazy" decoding="async"></p>
+<p>The picture above is an actual screenshot of this site's home page at 1200×630: post stream on the left, three widget groups on the right (site intro with language counts, categories, recent posts). When a post has no cover, the card falls back to a shared default image, so the grid never looks ragged.</p>
+<h2 id="seven-layouts-six-partials">Seven layouts, six partials</h2>
+<div class="code-block"><pre class="language-text"><code>themes/xfmpress-theme-anziyu/
+├── layouts/
+│   ├── base.html        # shell: progress bar, nav, main, footer, back-to-top, image mask
+│   ├── index.html       # home: hero + category chips + card grid + sidebar
+│   ├── post.html        # post: cover banner, body card, TOC, comments, related
+│   ├── page.html        # standalone page (about)
+│   ├── taxonomy.html    # tag / category / series listings
+│   ├── categories.html  # category index
+│   └── archives.html    # archive
+├── partials/            # navbar / footer / post-card / pager / sidebar / toc
+└── assets/              # style.css (~31KB) / main.js / search.js / covers and icons</code></pre></div>
+<p>There is no <code>collection.html</code> — this site has no custom collections; it can be added when needed.</p>
+<h2 id="four-visual-signatures">Four visual signatures</h2>
+<p><strong>Glass navigation.</strong> <code>backdrop-filter: blur()</code> over a translucent background, with the surface becoming more opaque and picking up a shadow on scroll; on narrow screens it collapses into a drawer.</p>
+<p><strong>Hero banner.</strong> On the left a small &quot;hi, I am&quot; line, then the site title and description, plus two buttons (all posts, about). On the right, decorative shapes and a post count from <code>site.langCounts</code> — on <code>/en/</code> that number is the English post count automatically.</p>
+<p><strong>Category chips.</strong> A row of rounded chips under the banner, walking <code>site.categoriesZh</code> / <code>site.categoriesEn</code>, one tap to the category page.</p>
+<p><strong>Cover cards.</strong> Each card opens with a 16:9 cover; posts without a <code>cover</code> fall back to <code>assets/cover-default.png</code> (1200×630, the same image used for OG tags), so the list never shows an empty block. Card text uses <code>post.desc</code>, whose length the engine controls.</p>
+<h2 id="the-post-page-the-cover-becomes-the-background">The post page: the cover becomes the background</h2>
+<p>The header is not a white title block. The cover fills it, a gradient mask sits on top, and the title floats there together with breadcrumbs (category + publish date), reading time and tags. Body text lives in a white card, with <code>toc.html</code> on the right — <code>main.js</code> uses an <code>IntersectionObserver</code> to highlight the section currently on screen.</p>
+<p>Below the body: the Waline comment section (<code>#waline</code> mount, posts only), related posts from the <code>related</code> plugin, and prev/next links.</p>
+<h2 id="sidebar-and-footer">Sidebar and footer</h2>
+<p>Four widget groups: post stats (total plus per-language split), categories (per language), a tag cloud, and recent posts. Every label switches on <code>page.lang === 'en'</code>, so English pages never show Chinese strings.</p>
+<p>The footer has a copyright line and a &quot;Powered by xfmpress 0.4.17&quot; line — the version is not hard-coded. <code>plugins/engine-version.js</code> reads <code>node_modules/xfmpress/package.json</code> on every build, so upgrading the dependency updates the footer by itself.</p>
+<h2 id="all-interactions-live-in-3-8kb">All interactions live in 3.8KB</h2>
+<p><code>main.js</code> does six things: reading progress bar, back-to-top, mobile menu drawer, TOC scroll highlight, copy buttons on code blocks, and click-to-zoom images via an <code>#img-mask</code> overlay. No framework, loaded with <code>defer</code>, never blocking first paint.</p>
+<h2 id="where-to-start-editing">Where to start editing</h2>
+<ul class="md-list"><li><strong>Recolour</strong> — <code>--ac</code> (the Anzhiyu blue, <code>#425aef</code>) and <code>--grad</code> at the top of <code>style.css</code>, once for light and once for dark; two lines change the whole site.</li><li><strong>Add a widget</strong> — append a <code>section.widget</code> block in <code>partials/sidebar.html</code> and reuse the existing classes.</li><li><strong>Change the card</strong> — <code>partials/post-card.html</code> is the only place a list item is rendered; home, category, tag and archive all share it.</li><li><strong>Swap the fallback cover</strong> — replace <code>assets/cover-default.png</code>, keeping it 1200×630.</li></ul>
+<p>One trap is worth recording: a <code>{% include %}</code> partial cannot see variables from the parent template's <code>for</code> loop, nor anything set with <code>set</code>. So <code>post-card.html</code> cannot be handed a <code>post</code>; it resolves the list itself (<code>page.data.pagination.posts</code> or <code>posts</code>), which works on both kinds of listing pages.</p>
+<h2 id="what-it-is">What it is</h2>
+<p>Not an npm package, but a <strong>private skin that grows with the site</strong>: change whatever you like, no backwards compatibility to worry about, and no ambition to be universal — that is <code>default</code>'s and <code>docs</code>' job. If you want this look, copy the directory into your own <code>themes/</code> and change the palette; the template syntax is identical to the official themes.</p></div>
+      </div>
+
+      
+      <section class="xfm-share" data-share-networks="weibo,wechat,qq,qzone,twitter,telegram,copy" aria-label="分享"><span class="xfm-share-label">Share to</span><a href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fxfm0797.github.io%2Fen%2F2026%2F11%2F21%2Fxfmpress-theme-anziyu%2F&amp;title=xfmpress-theme-anziyu%3A%20the%20Anzhiyu-flavoured%20theme%20this%20site%20runs%20on" style="--c:#e6162d" target="_blank" rel="noopener" title="Share to Weibo"><span>Weibo</span></a>
+<a href="#" style="--c:#07c160" data-share-copy data-share-url="https://xfm0797.github.io/en/2026/11/21/xfmpress-theme-anziyu/" data-share-msg="Link copied — paste it in WeChat to share" title="微信"><span>WeChat</span></a>
+<a href="https://connect.qq.com/widget/shareqq/index.html?url=https%3A%2F%2Fxfm0797.github.io%2Fen%2F2026%2F11%2F21%2Fxfmpress-theme-anziyu%2F&amp;title=xfmpress-theme-anziyu%3A%20the%20Anzhiyu-flavoured%20theme%20this%20site%20runs%20on&amp;summary=" style="--c:#12b7f5" target="_blank" rel="noopener" title="Share to QQ"><span>QQ</span></a>
+<a href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https%3A%2F%2Fxfm0797.github.io%2Fen%2F2026%2F11%2F21%2Fxfmpress-theme-anziyu%2F&amp;title=xfmpress-theme-anziyu%3A%20the%20Anzhiyu-flavoured%20theme%20this%20site%20runs%20on" style="--c:#f5b60d" target="_blank" rel="noopener" title="Share to Qzone"><span>Qzone</span></a>
+<a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fxfm0797.github.io%2Fen%2F2026%2F11%2F21%2Fxfmpress-theme-anziyu%2F&amp;text=xfmpress-theme-anziyu%3A%20the%20Anzhiyu-flavoured%20theme%20this%20site%20runs%20on" style="--c:#1da1f2" target="_blank" rel="noopener" title="Share to X"><span>X</span></a>
+<a href="https://t.me/share/url?url=https%3A%2F%2Fxfm0797.github.io%2Fen%2F2026%2F11%2F21%2Fxfmpress-theme-anziyu%2F&amp;text=xfmpress-theme-anziyu%3A%20the%20Anzhiyu-flavoured%20theme%20this%20site%20runs%20on" style="--c:#26a5e4" target="_blank" rel="noopener" title="Share to Telegram"><span>Telegram</span></a>
+<a href="#" style="--c:#5f6368" data-share-copy data-share-url="https://xfm0797.github.io/en/2026/11/21/xfmpress-theme-anziyu/" data-share-msg="Link copied" title="复制链接"><span>Copy link</span></a></section>
+      <nav class="post-pn">
+        <a class="pn-card prev" href="/en/2026/11/21/xfmpress-theme-docs/"><span class="pn-label">Previous</span><span class="pn-title">The `docs` theme: turn a content folder into a documentation site</span></a>
+        
+        <a class="pn-card next" href="/en/2026/11/21/xfmpress-plugin-analytics/"><span class="pn-label">Next</span><span class="pn-title">analytics: page-view tracking with one config key</span></a>
+        
+      </nav>
+
+      
+
+      
+      
+      <section class="post-comments" id="comments">
+        <h2 class="section-title">Comments</h2>
+        <div class="post-comments-body" id="waline" data-xfm-comments></div>
+      </section>
+      
+    </div>
+
+    
+    <aside class="post-toc-wrap">
+      
+<nav class="toc" id="toc" aria-label="Table of contents">
+  <div class="toc-title">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+    On This Page
+  </div>
+  <ul>
+    <li class="toc-h2"><a href="#seven-layouts-six-partials">Seven layouts, six partials</a></li>
+    <li class="toc-h2"><a href="#four-visual-signatures">Four visual signatures</a></li>
+    <li class="toc-h2"><a href="#the-post-page-the-cover-becomes-the-background">The post page: the cover becomes the background</a></li>
+    <li class="toc-h2"><a href="#sidebar-and-footer">Sidebar and footer</a></li>
+    <li class="toc-h2"><a href="#all-interactions-live-in-3-8kb">All interactions live in 3.8KB</a></li>
+    <li class="toc-h2"><a href="#where-to-start-editing">Where to start editing</a></li>
+    <li class="toc-h2"><a href="#what-it-is">What it is</a></li>
+    
+  </ul>
+</nav>
+
+
+    </aside>
+    
+  </div>
+<script type="module">import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';init({"el":"#waline","serverURL":"https://waline.xfm.qzz.io","path":"/en/2026/11/21/xfmpress-theme-anziyu/","lang":"en","dark":"html[data-theme=\"dark\"]","requiredMeta":["nick","mail"],"login":"enable","commentSorting":"newest"});</script>
+
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-icons">
+      <a href="/feed.xml" aria-label="RSS" title="RSS 订阅">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M4 11a9 9 0 0 1 9 9h3A12 12 0 0 0 4 8v3zm0-7a16 16 0 0 1 16 16h3A19 19 0 0 0 4 1v3zm2 13a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>
+      </a>
+      <a href="https://github.com/xfm0797/xfm" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C17 4.7 18 5 18 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6a11.5 11.5 0 0 0 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+    <p class="copyright">© XFMpress · xfm</p>
+    <p class="powered">Powered by <a href="https://github.com/xfm0797/xfm" target="_blank" rel="noopener">xfmpress</a> <span class="powered-version">0.4.18</span></p>
+  </div>
+</footer>
+
+
+  <button class="back-top" id="back-top" type="button" aria-label="回到顶部">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <div class="img-mask" id="img-mask" aria-hidden="true"><img src="" alt=""></div>
+
+  <script src="/assets/main.js" defer></script>
+  <script src="/assets/search.js" defer data-index="/search.json"></script>
+  <script>
+    (function(){
+      var k='xfm-theme', r=document.documentElement;
+      var s=localStorage.getItem(k);
+      if(s) r.dataset.theme=s;
+      else if(window.matchMedia('(prefers-color-scheme: dark)').matches) r.dataset.theme='dark';
+    })();
+  </script>
+</body>
+</html>
+<script>
+(function(){
+  function toast(msg){
+    var t=document.querySelector('.xfm-share-toast');
+    if(!t){t=document.createElement('div');t.className='xfm-share-toast';document.body.appendChild(t);}
+    t.textContent=msg;t.classList.add('show');
+    clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('show');},2000);
+  }
+  function legacyCopy(text){
+    var ta=document.createElement('textarea');
+    ta.value=text;ta.setAttribute('readonly','');
+    ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');}catch(e){}
+    document.body.removeChild(ta);
+  }
+  document.addEventListener('click',function(e){
+    var el=e.target.closest('[data-share-copy]');
+    if(!el)return;
+    e.preventDefault();
+    var url=el.getAttribute('data-share-url')||location.href;
+    var done=function(){toast(el.getAttribute('data-share-msg')||'已复制');};
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(done,function(){legacyCopy(url);done();});
+    }else{legacyCopy(url);done();}
+  });
+})();
+</script>

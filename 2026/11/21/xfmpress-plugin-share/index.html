@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  
+  
+  
+  <title>分享插件：一篇文章十二个转发入口，不加载任何第三方脚本 · XFMpress</title>
+  <meta name="description" content="微博、微信、QQ、X、Telegram、邮件、复制链接等十二个渠道，按钮只是普通链接加本地复制，零依赖、零外部请求，按语言自动切换文案">
+  <meta name="theme-color" content="#425aef">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/favicon-512.png">
+  <meta property="og:site_name" content="XFMpress">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="分享插件：一篇文章十二个转发入口，不加载任何第三方脚本 · XFMpress">
+  <meta property="og:description" content="微博、微信、QQ、X、Telegram、邮件、复制链接等十二个渠道，按钮只是普通链接加本地复制，零依赖、零外部请求，按语言自动切换文案">
+  <meta property="og:url" content="https://xfm0797.github.io/2026/11/21/xfmpress-plugin-share/">
+  <meta property="og:image" content="https://xfm0797.github.io/assets/cover-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="alternate" type="application/rss+xml" title="XFMpress" href="/feed.xml">
+  
+  <link rel="alternate" hreflang="zh-CN" href="https://xfm0797.github.io/2026/11/21/xfmpress-plugin-share/">
+  <link rel="alternate" hreflang="en" href="https://xfm0797.github.io/en/2026/11/21/xfmpress-plugin-share/">
+  
+  <link rel="stylesheet" href="/assets/style.css">
+  
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css">
+<style>
+.xfm-share{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem;margin:2.5rem 0 0;padding-top:1.25rem;border-top:1px solid var(--border,#e6e6e6)}
+.xfm-share-label{font-size:.88rem;color:var(--muted,#888)}
+.xfm-share a{display:inline-block;padding:.22rem .85rem;border:1px solid var(--border,#d9d9d9);border-radius:999px;font-size:.85rem;line-height:1.5;color:inherit;text-decoration:none;transition:color .15s,border-color .15s}
+.xfm-share a:hover{color:var(--c);border-color:var(--c)}
+.xfm-share-toast{position:fixed;left:50%;bottom:2.5rem;transform:translateX(-50%);background:#333;color:#fff;padding:.4rem 1rem;border-radius:6px;font-size:.85rem;opacity:0;transition:opacity .25s;pointer-events:none;z-index:9999}
+.xfm-share-toast.show{opacity:.92}
+@media (prefers-color-scheme:dark){.xfm-share{border-top-color:var(--border,#333)}.xfm-share a{border-color:var(--border,#3a3a3a)}}
+</style>
+</head>
+<body>
+  <div class="progress-bar" id="progress-bar" aria-hidden="true"></div>
+  <header class="site-nav" id="site-nav">
+  <div class="nav-wrap">
+    <a class="nav-brand" href="/">
+      <span class="nav-avatar" aria-hidden="true">xfm</span>
+      <span class="nav-title">XFMpress</span>
+    </a>
+    <nav class="nav-links" id="nav-links">
+      <a href="/">首页</a>
+      <a href="/categories/">分类</a>
+      <a href="/archives/">归档</a>
+      <a href="/about/">关于</a>
+      
+    </nav>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="nav-menu-btn" type="button" aria-label="菜单" aria-controls="nav-drawer" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <button class="nav-icon-btn" type="button" data-search-open aria-label="搜索" title="搜索（Ctrl+K）">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <a class="nav-icon-btn nav-lang-btn" href="/en/2026/11/21/xfmpress-plugin-share/" title="Switch to English"><span class="nav-lang-text">EN</span></a>
+      <button class="nav-icon-btn" id="theme-toggle" type="button" aria-label="切换深浅色" title="切换深浅色">
+        <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="nav-drawer" id="nav-drawer">
+    <a href="/">首页</a>
+    <a href="/categories/">分类</a>
+    <a href="/archives/">归档</a>
+    <a href="/about/">关于</a>
+    
+  </nav>
+</header>
+
+
+  <main class="site-main">
+    
+<article class="post-page">
+  
+  <header class="post-hero" style="background-image:url('/assets/cover-default.png')">
+    <div class="post-hero-mask">
+      <div class="post-hero-crumbs">
+        <a href="/categories/官方插件/">官方插件</a>
+        <span>发布于 2026-11-21</span>
+      </div>
+      <h1 class="post-hero-title">分享插件：一篇文章十二个转发入口，不加载任何第三方脚本</h1>
+      <div class="post-hero-meta">
+        
+        <span class="meta-chip">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          4 分钟阅读
+        </span>
+        <a class="meta-chip" href="/tags/xfmpress/"># xfmpress</a><a class="meta-chip" href="/tags/插件/"># 插件</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="post-layout">
+    <div class="post-content-wrap">
+      <div class="post-content-card">
+        <div class="prose"><p>读者想转发一篇文章时，卡点往往不是「愿不愿意」，而是「找不到按钮」。<code>xfm-plugin-share</code> 在每篇文章结尾加一排分享按钮，十二个渠道可选，全部用原生的分享地址实现——不引 SDK、不加载统计脚本，连复制链接都不依赖任何第三方服务。</p>
+<h2 id="它解决什么">它解决什么</h2>
+<ul class="md-list"><li>一次交互相当于「读者帮你分发」，比任何 SEO 手段都直接，但很多静态站根本没有分享入口</li><li>不用接入 Jiathis、AddThis 这类聚合服务，也就没有外部脚本、没有隐私争议、没有第三方挂了按钮跟着失效</li><li>所有按钮都是普通 <code>&lt;a&gt;</code> 链接，微信这种「不能直接分享」的渠道改为复制链接 + 提示文案，不依赖二维码服务</li></ul>
+<h2 id="支持的渠道">支持的渠道</h2>
+<div class="table-wrap"><table><thead><tr><th>网络</th><th>标签</th><th>说明</th></tr></thead><tbody><tr><td><code>weibo</code></td><td>微博</td><td>微博分享地址</td></tr><tr><td><code>wechat</code></td><td>微信</td><td>复制链接后提示去微信粘贴，不需要二维码服务</td></tr><tr><td><code>qq</code></td><td>QQ 好友</td><td>QQ 好友分享</td></tr><tr><td><code>qzone</code></td><td>QQ 空间</td><td>QQ 空间分享</td></tr><tr><td><code>twitter</code></td><td>X</td><td>推特/X intent，别名 <code>x</code></td></tr><tr><td><code>facebook</code> / <code>linkedin</code></td><td>—</td><td>sharer / share-offsite</td></tr><tr><td><code>telegram</code></td><td>Telegram</td><td>t.me 分享</td></tr><tr><td><code>whatsapp</code> / <code>reddit</code></td><td>—</td><td>各自官方分享地址</td></tr><tr><td><code>email</code></td><td>邮件</td><td><code>mailto:</code> 链接，别名 <code>mail</code></td></tr><tr><td><code>copy</code></td><td>复制链接</td><td>Clipboard API，失败回退 <code>execCommand</code>，附两秒提示</td></tr></tbody></table></div>
+<h2 id="安装与配置">安装与配置</h2>
+<div class="code-block"><pre class="language-bash"><code>npm i -D xfm-plugin-share</code></pre></div>
+<p>生成器会自动加载 <code>package.json</code> 里所有 <code>xfm-plugin-*</code> 依赖；如果 <code>xfm dev</code> 正在运行，重启一下。</p>
+<div class="code-block"><pre class="language-js"><code><span class="hl-c">// xfm.config.mjs</span>
+<span class="hl-k">export</span> <span class="hl-k">default</span> {
+  share: {
+    <span class="hl-c">// 顺序即渲染顺序，默认：weibo, wechat, qq, twitter, telegram, copy</span>
+    networks: [<span class="hl-s">'weibo'</span>, <span class="hl-s">'wechat'</span>, <span class="hl-s">'qq'</span>, <span class="hl-s">'qzone'</span>, <span class="hl-s">'twitter'</span>, <span class="hl-s">'telegram'</span>, <span class="hl-s">'copy'</span>],
+    title: <span class="hl-s">'分享到'</span>, <span class="hl-c">// 按钮前的文案，'' 则隐藏</span>
+    dev: <span class="hl-k">false</span>,     <span class="hl-c">// 开发模式下也渲染，默认只在生产构建出现</span>
+  },
+};</code></pre></div>
+<p>不写这段配置也能用，默认六个渠道。<code>site.url</code> 必须配置——分享链接要是完整地址，否则插件只能给出相对路径，并在构建时提醒一次。</p>
+<h2 id="挂载规则">挂载规则</h2>
+<p>默认挂在<strong>文章</strong>结尾：有 <code>date</code>、且不是 <code>type: page</code> 的页面。首页、归档页、分类/标签页、关于页这类独立页面一律跳过。单篇不想出现分享栏，在 front-matter 写 <code>share: false</code> 即可。</p>
+<p>样式只有几行内联 CSS，注入在有分享栏的页面 <code>&lt;head&gt;</code> 里，跟随主题的 <code>--border</code> / <code>--muted</code> 变量。主题若只定义了 <code>--line</code> 之类的命名，补一行 <code>--border: var(--line)</code> 就能对上色。</p>
+<h2 id="复制类按钮怎么工作">复制类按钮怎么工作</h2>
+<p><code>copy</code> 与 <code>wechat</code> 两个按钮不会跳转，它们把完整地址写进 <code>data-share-url</code>，点击时先试 <code>navigator.clipboard</code>，再回退到 <code>document.execCommand('copy')</code>，成功后弹一个两秒消失的提示（文案在 <code>data-share-msg</code>）。整个过程没有网络请求，断网也能用。</p>
+<h2 id="模板接管与本站做法">模板接管与本站做法</h2>
+<p>模板里放一个 <code>&lt;div data-xfm-share&gt;&lt;/div&gt;</code> 可以让插件只注入样式与脚本、不自动插入分享栏，由主题自己渲染——适合想把分享栏做进卡片侧边或浮动条的场景。</p>
+<p>本站没有走这条路：直接让插件自动挂载，再用本地插件 <code>plugins/share-lang.js</code> 做两件事——把分享栏从 <code>&lt;/article&gt;</code> 前挪到正文结尾（插件默认落点在文章卡片之外），以及按 <code>page.lang</code> 把中文标签换成英文。因为插件的标签是站点级常量，多语言站点若不做这一步，英文页会出现「微博」「复制链接」。</p>
+<h2 id="注意事项">注意事项</h2>
+<ul class="md-list"><li>微信没有网页分享接口，只能复制链接，这是平台限制而非实现取巧；想要扫码分享得自己接第三方二维码服务</li><li>分享数、点击量这类统计不在插件范围内，需要的话配合 <code>analytics</code> 插件用事件埋点</li><li>渠道并非越多越好：中英混排的站建议按主要读者选 5–7 个，铺满十二个反而稀释点击</li></ul>
+<p>插件系统怎么加载、配置文件的完整写法，分别见<a href="/2026/11/21/xfmpress-plugins/">插件系统总览</a>与<a href="/2026/11/21/xfmpress-config/">配置指南</a>。</p></div>
+      </div>
+
+      
+      <section class="xfm-share" data-share-networks="weibo,wechat,qq,qzone,twitter,telegram,copy" aria-label="分享"><span class="xfm-share-label">分享到</span>
+<a href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F21%2Fxfmpress-plugin-share%2F&amp;title=%E5%88%86%E4%BA%AB%E6%8F%92%E4%BB%B6%EF%BC%9A%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%8D%81%E4%BA%8C%E4%B8%AA%E8%BD%AC%E5%8F%91%E5%85%A5%E5%8F%A3%EF%BC%8C%E4%B8%8D%E5%8A%A0%E8%BD%BD%E4%BB%BB%E4%BD%95%E7%AC%AC%E4%B8%89%E6%96%B9%E8%84%9A%E6%9C%AC" style="--c:#e6162d" target="_blank" rel="noopener" title="分享到微博"><span>微博</span></a>
+<a href="#" style="--c:#07c160" data-share-copy data-share-url="https://xfm0797.github.io/2026/11/21/xfmpress-plugin-share/" data-share-msg="链接已复制，可在微信中粘贴分享" title="分享到微信"><span>微信</span></a>
+<a href="https://connect.qq.com/widget/shareqq/index.html?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F21%2Fxfmpress-plugin-share%2F&amp;title=%E5%88%86%E4%BA%AB%E6%8F%92%E4%BB%B6%EF%BC%9A%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%8D%81%E4%BA%8C%E4%B8%AA%E8%BD%AC%E5%8F%91%E5%85%A5%E5%8F%A3%EF%BC%8C%E4%B8%8D%E5%8A%A0%E8%BD%BD%E4%BB%BB%E4%BD%95%E7%AC%AC%E4%B8%89%E6%96%B9%E8%84%9A%E6%9C%AC&amp;summary=" style="--c:#12b7f5" target="_blank" rel="noopener" title="分享到QQ 好友"><span>QQ 好友</span></a>
+<a href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F21%2Fxfmpress-plugin-share%2F&amp;title=%E5%88%86%E4%BA%AB%E6%8F%92%E4%BB%B6%EF%BC%9A%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%8D%81%E4%BA%8C%E4%B8%AA%E8%BD%AC%E5%8F%91%E5%85%A5%E5%8F%A3%EF%BC%8C%E4%B8%8D%E5%8A%A0%E8%BD%BD%E4%BB%BB%E4%BD%95%E7%AC%AC%E4%B8%89%E6%96%B9%E8%84%9A%E6%9C%AC" style="--c:#f5b60d" target="_blank" rel="noopener" title="分享到QQ 空间"><span>QQ 空间</span></a>
+<a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F21%2Fxfmpress-plugin-share%2F&amp;text=%E5%88%86%E4%BA%AB%E6%8F%92%E4%BB%B6%EF%BC%9A%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%8D%81%E4%BA%8C%E4%B8%AA%E8%BD%AC%E5%8F%91%E5%85%A5%E5%8F%A3%EF%BC%8C%E4%B8%8D%E5%8A%A0%E8%BD%BD%E4%BB%BB%E4%BD%95%E7%AC%AC%E4%B8%89%E6%96%B9%E8%84%9A%E6%9C%AC" style="--c:#000000" target="_blank" rel="noopener" title="分享到X"><span>X</span></a>
+<a href="https://t.me/share/url?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F21%2Fxfmpress-plugin-share%2F&amp;text=%E5%88%86%E4%BA%AB%E6%8F%92%E4%BB%B6%EF%BC%9A%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%8D%81%E4%BA%8C%E4%B8%AA%E8%BD%AC%E5%8F%91%E5%85%A5%E5%8F%A3%EF%BC%8C%E4%B8%8D%E5%8A%A0%E8%BD%BD%E4%BB%BB%E4%BD%95%E7%AC%AC%E4%B8%89%E6%96%B9%E8%84%9A%E6%9C%AC" style="--c:#26a5e4" target="_blank" rel="noopener" title="分享到Telegram"><span>Telegram</span></a>
+<a href="#" style="--c:#5f6368" data-share-copy data-share-url="https://xfm0797.github.io/2026/11/21/xfmpress-plugin-share/" data-share-msg="链接已复制" title="分享到复制链接"><span>复制链接</span></a>
+</section>
+      <nav class="post-pn">
+        <a class="pn-card prev" href="/2026/11/21/xfmpress-plugin-sitemap/"><span class="pn-label">上一篇</span><span class="pn-title">Sitemap 插件：sitemap.xml 与 robots.txt 一次生成</span></a>
+        
+        <a class="pn-card next" href="/2026/11/22/xfmpress-theme-butterfly/"><span class="pn-label">下一篇</span><span class="pn-title">官方新增 butterfly 主题：把 Hexo 那套毛玻璃美学搬进 xfmpress</span></a>
+        
+      </nav>
+
+      
+
+      
+      
+      <section class="post-comments" id="comments">
+        <h2 class="section-title">评论</h2>
+        <div class="post-comments-body" id="waline" data-xfm-comments></div>
+      </section>
+      
+    </div>
+
+    
+    <aside class="post-toc-wrap">
+      
+<nav class="toc" id="toc" aria-label="目录">
+  <div class="toc-title">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+    文章目录
+  </div>
+  <ul>
+    <li class="toc-h2"><a href="#它解决什么">它解决什么</a></li>
+    <li class="toc-h2"><a href="#支持的渠道">支持的渠道</a></li>
+    <li class="toc-h2"><a href="#安装与配置">安装与配置</a></li>
+    <li class="toc-h2"><a href="#挂载规则">挂载规则</a></li>
+    <li class="toc-h2"><a href="#复制类按钮怎么工作">复制类按钮怎么工作</a></li>
+    <li class="toc-h2"><a href="#模板接管与本站做法">模板接管与本站做法</a></li>
+    <li class="toc-h2"><a href="#注意事项">注意事项</a></li>
+    
+  </ul>
+</nav>
+
+
+    </aside>
+    
+  </div>
+<script type="module">import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';init({"el":"#waline","serverURL":"https://waline.xfm.qzz.io","path":"/2026/11/21/xfmpress-plugin-share/","lang":"zh-CN","dark":"html[data-theme=\"dark\"]","requiredMeta":["nick","mail"],"login":"enable","commentSorting":"newest"});</script>
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-icons">
+      <a href="/feed.xml" aria-label="RSS" title="RSS 订阅">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M4 11a9 9 0 0 1 9 9h3A12 12 0 0 0 4 8v3zm0-7a16 16 0 0 1 16 16h3A19 19 0 0 0 4 1v3zm2 13a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>
+      </a>
+      <a href="https://github.com/xfm0797/xfm" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C17 4.7 18 5 18 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6a11.5 11.5 0 0 0 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+    <p class="copyright">© XFMpress · xfm</p>
+    <p class="powered">由 <a href="https://github.com/xfm0797/xfm" target="_blank" rel="noopener">xfmpress</a> <span class="powered-version">0.4.18</span> 强力驱动</p>
+  </div>
+</footer>
+
+
+  <button class="back-top" id="back-top" type="button" aria-label="回到顶部">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <div class="img-mask" id="img-mask" aria-hidden="true"><img src="" alt=""></div>
+
+  <script src="/assets/main.js" defer></script>
+  <script src="/assets/search.js" defer data-index="/search.json"></script>
+  <script>
+    (function(){
+      var k='xfm-theme', r=document.documentElement;
+      var s=localStorage.getItem(k);
+      if(s) r.dataset.theme=s;
+      else if(window.matchMedia('(prefers-color-scheme: dark)').matches) r.dataset.theme='dark';
+    })();
+  </script>
+</body>
+</html>
+<script>
+(function(){
+  function toast(msg){
+    var t=document.querySelector('.xfm-share-toast');
+    if(!t){t=document.createElement('div');t.className='xfm-share-toast';document.body.appendChild(t);}
+    t.textContent=msg;t.classList.add('show');
+    clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('show');},2000);
+  }
+  function legacyCopy(text){
+    var ta=document.createElement('textarea');
+    ta.value=text;ta.setAttribute('readonly','');
+    ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');}catch(e){}
+    document.body.removeChild(ta);
+  }
+  document.addEventListener('click',function(e){
+    var el=e.target.closest('[data-share-copy]');
+    if(!el)return;
+    e.preventDefault();
+    var url=el.getAttribute('data-share-url')||location.href;
+    var done=function(){toast(el.getAttribute('data-share-msg')||'已复制');};
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(done,function(){legacyCopy(url);done();});
+    }else{legacyCopy(url);done();}
+  });
+})();
+</script>

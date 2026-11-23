@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  
+  
+  
+  <title>xfmpress v0.4.6: Six New Plugins — Analytics, Comments, Redirects, PWA, Dead Links, Image Size · XFMpress</title>
+  <meta name="description" content="v0.4.6 adds six zero-dependency plugins (analytics, giscus, redirect, pwa, deadlinks, image-size), growing the official set from nine to fifteen, plus dev-server fixes for directory URLs and MIME types.">
+  <meta name="theme-color" content="#425aef">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/favicon-512.png">
+  <meta property="og:site_name" content="XFMpress">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="xfmpress v0.4.6: Six New Plugins — Analytics, Comments, Redirects, PWA, Dead Links, Image Size · XFMpress">
+  <meta property="og:description" content="v0.4.6 adds six zero-dependency plugins (analytics, giscus, redirect, pwa, deadlinks, image-size), growing the official set from nine to fifteen, plus dev-server fixes for directory URLs and MIME types.">
+  <meta property="og:url" content="https://xfm0797.github.io/en/2026/11/09/xfmpress-v0-4-6/">
+  <meta property="og:image" content="https://xfm0797.github.io/assets/cover-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="alternate" type="application/rss+xml" title="XFMpress" href="/feed.xml">
+  
+  <link rel="alternate" hreflang="en" href="https://xfm0797.github.io/en/2026/11/09/xfmpress-v0-4-6/">
+  <link rel="alternate" hreflang="zh-CN" href="https://xfm0797.github.io/2026/11/09/xfmpress-v0-4-6/">
+  
+  <link rel="stylesheet" href="/assets/style.css">
+  
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css">
+<style>
+.xfm-share{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem;margin:2.5rem 0 0;padding-top:1.25rem;border-top:1px solid var(--border,#e6e6e6)}
+.xfm-share-label{font-size:.88rem;color:var(--muted,#888)}
+.xfm-share a{display:inline-block;padding:.22rem .85rem;border:1px solid var(--border,#d9d9d9);border-radius:999px;font-size:.85rem;line-height:1.5;color:inherit;text-decoration:none;transition:color .15s,border-color .15s}
+.xfm-share a:hover{color:var(--c);border-color:var(--c)}
+.xfm-share-toast{position:fixed;left:50%;bottom:2.5rem;transform:translateX(-50%);background:#333;color:#fff;padding:.4rem 1rem;border-radius:6px;font-size:.85rem;opacity:0;transition:opacity .25s;pointer-events:none;z-index:9999}
+.xfm-share-toast.show{opacity:.92}
+@media (prefers-color-scheme:dark){.xfm-share{border-top-color:var(--border,#333)}.xfm-share a{border-color:var(--border,#3a3a3a)}}
+</style>
+</head>
+<body>
+  <div class="progress-bar" id="progress-bar" aria-hidden="true"></div>
+  <header class="site-nav" id="site-nav">
+  <div class="nav-wrap">
+    <a class="nav-brand" href="/">
+      <span class="nav-avatar" aria-hidden="true">xfm</span>
+      <span class="nav-title">XFMpress</span>
+    </a>
+    <nav class="nav-links" id="nav-links">
+      <a href="/en/">Home</a>
+      <a href="/en/categories/">Categories</a>
+      <a href="/en/archives/">Archives</a>
+      <a href="/en/about/">About</a>
+      
+    </nav>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="nav-menu-btn" type="button" aria-label="菜单" aria-controls="nav-drawer" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <button class="nav-icon-btn" type="button" data-search-open aria-label="搜索" title="搜索（Ctrl+K）">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <a class="nav-icon-btn nav-lang-btn" href="/2026/11/09/xfmpress-v0-4-6/" title="切换到中文"><span class="nav-lang-text">中文</span></a>
+      <button class="nav-icon-btn" id="theme-toggle" type="button" aria-label="切换深浅色" title="切换深浅色">
+        <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="nav-drawer" id="nav-drawer">
+    <a href="/en/">Home</a>
+    <a href="/en/categories/">Categories</a>
+    <a href="/en/archives/">Archives</a>
+    <a href="/en/about/">About</a>
+    
+  </nav>
+</header>
+
+
+  <main class="site-main">
+    
+<article class="post-page">
+  
+  <header class="post-hero" style="background-image:url('/assets/cover-default.png')">
+    <div class="post-hero-mask">
+      <div class="post-hero-crumbs">
+        <a href="/categories/changelog/">changelog</a>
+        <span>Published on 2026-11-09</span>
+      </div>
+      <h1 class="post-hero-title">xfmpress v0.4.6: Six New Plugins — Analytics, Comments, Redirects, PWA, Dead Links, Image Size</h1>
+      <div class="post-hero-meta">
+        
+        <span class="meta-chip">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          9 min read
+        </span>
+        <a class="meta-chip" href="/tags/xfmpress/"># xfmpress</a><a class="meta-chip" href="/tags/changelog/"># changelog</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="post-layout">
+    <div class="post-content-wrap">
+      <div class="post-content-card">
+        <div class="prose"><p>v0.4.6 is the largest plugin expansion of the 0.4.x series: six new plugins, all zero-dependency, growing the official set from nine to fifteen. The last pieces of the &quot;after launch&quot; puzzle — analytics, comments, URL migrations, PWA, dead-link detection, image dimensions — are now built in.</p>
+<h2 id="what-this-release-solves">What this release solves</h2>
+<p>After 0.4.2 opened the plugin ecosystem, the official set still lacked several things you only realize you need once a site is live: analytics code to wire up by hand, comments to integrate yourself, broken inbound links after a URL change, a service worker to write from scratch for PWA support. v0.4.6 turns all six into plugins.</p>
+<h2 id="what-changed">What changed</h2>
+<h3 id="added-six-new-plugins">Added: six new plugins</h3>
+<ul class="md-list"><li><strong><code>xfm-plugin-analytics</code></strong> — one place for page views: Umami, Plausible, Google Analytics, Baidu, or a raw snippet. <code>provider</code> accepts an array, so a migration can run two at once.</li><li><strong><code>xfm-plugin-giscus</code></strong> — GitHub Discussions comments (giscus or utterances) on post pages only. The iframe follows the theme toggle via <code>postMessage</code>, so dark mode stays dark.</li><li><strong><code>xfm-plugin-redirect</code></strong> — writes a redirect page at every alias (<code>redirect_from</code> in front-matter, or a global <code>redirects</code> map): <code>meta refresh</code> + <code>location.replace</code> + a visible link, marked <code>noindex,follow</code>, with the canonical pointing to the new URL. Changing URLs no longer costs you traffic.</li><li><strong><code>xfm-plugin-pwa</code></strong> — <code>manifest.webmanifest</code>, a service worker (network-first for pages, cache-first for assets, with the precache list built from the real theme assets and <code>public/</code>), <code>offline.html</code>, and an <code>icon.svg</code> generated from the site title if you bring no icons.</li><li><strong><code>xfm-plugin-deadlinks</code></strong> — after the build, resolves every internal <code>href</code>/<code>src</code> against the real output set and prints the ones pointing nowhere. <code>strict: true</code> turns failures into build failures for CI; external URLs are never fetched.</li><li><strong><code>xfm-plugin-image-size</code></strong> — parses PNG / JPEG / GIF / WebP / SVG headers and writes <code>width</code>/<code>height</code> onto <code>&lt;img&gt;</code> so the browser reserves space (no CLS). It reads at most the first 64 KB of a local file — no network, no full decode.</li></ul>
+<h3 id="fixed-two-dev-server-blind-spots">Fixed: two dev-server blind spots</h3>
+<ul class="md-list"><li><code>xfm dev</code> only answered plugin output at its exact file path: a redirect page emitted at <code>old/index.html</code> returned 404 for <code>/old/</code> even though the build was correct. Extra files now also answer at their directory URL, and the MIME type comes from the real file (<code>/old/</code> used to be served as <code>application/octet-stream</code>).</li><li>The dev server now knows <code>.webmanifest</code> → <code>application/manifest+json</code>. Chrome refuses to install a manifest served as octet-stream, so this fix is essential for debugging PWA locally.</li></ul>
+<h3 id="changed">Changed</h3>
+<p>README / README_CN reorganized the plugin list into <strong>site output</strong> and <strong>page enhancements</strong> (fifteen packages), and the front-matter switch table gained <code>pwa</code> / <code>comments</code> / <code>analytics</code> / <code>imageSize</code>. The example site enables <code>pwa</code> and <code>deadlinks</code>, so every build of it doubles as a PWA demo and a dead-link self-check.</p>
+<h2 id="should-you-change-anything-on-upgrade">Should you change anything on upgrade?</h2>
+<p>No breaking changes — all six plugins are optional; install what you need with <code>npm i -D xfm-plugin-…</code>. If you want CI to guard against broken links, set <code>deadlinks</code> to <code>strict: true</code>. Full details in the <a href="/en/2026/11/21/xfmpress-plugins/">plugins guide</a> and the <a href="/en/2026/11/21/xfmpress-deploy/">deployment guide</a>.</p></div>
+      </div>
+
+      
+      <section class="xfm-share" data-share-networks="weibo,wechat,qq,qzone,twitter,telegram,copy" aria-label="分享"><span class="xfm-share-label">Share to</span><a href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fxfm0797.github.io%2Fen%2F2026%2F11%2F09%2Fxfmpress-v0-4-6%2F&amp;title=xfmpress%20v0.4.6%3A%20Six%20New%20Plugins%20%E2%80%94%20Analytics%2C%20Comments%2C%20Redirects%2C%20PWA%2C%20Dead%20Links%2C%20Image%20Size" style="--c:#e6162d" target="_blank" rel="noopener" title="Share to Weibo"><span>Weibo</span></a>
+<a href="#" style="--c:#07c160" data-share-copy data-share-url="https://xfm0797.github.io/en/2026/11/09/xfmpress-v0-4-6/" data-share-msg="Link copied — paste it in WeChat to share" title="微信"><span>WeChat</span></a>
+<a href="https://connect.qq.com/widget/shareqq/index.html?url=https%3A%2F%2Fxfm0797.github.io%2Fen%2F2026%2F11%2F09%2Fxfmpress-v0-4-6%2F&amp;title=xfmpress%20v0.4.6%3A%20Six%20New%20Plugins%20%E2%80%94%20Analytics%2C%20Comments%2C%20Redirects%2C%20PWA%2C%20Dead%20Links%2C%20Image%20Size&amp;summary=" style="--c:#12b7f5" target="_blank" rel="noopener" title="Share to QQ"><span>QQ</span></a>
+<a href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https%3A%2F%2Fxfm0797.github.io%2Fen%2F2026%2F11%2F09%2Fxfmpress-v0-4-6%2F&amp;title=xfmpress%20v0.4.6%3A%20Six%20New%20Plugins%20%E2%80%94%20Analytics%2C%20Comments%2C%20Redirects%2C%20PWA%2C%20Dead%20Links%2C%20Image%20Size" style="--c:#f5b60d" target="_blank" rel="noopener" title="Share to Qzone"><span>Qzone</span></a>
+<a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fxfm0797.github.io%2Fen%2F2026%2F11%2F09%2Fxfmpress-v0-4-6%2F&amp;text=xfmpress%20v0.4.6%3A%20Six%20New%20Plugins%20%E2%80%94%20Analytics%2C%20Comments%2C%20Redirects%2C%20PWA%2C%20Dead%20Links%2C%20Image%20Size" style="--c:#1da1f2" target="_blank" rel="noopener" title="Share to X"><span>X</span></a>
+<a href="https://t.me/share/url?url=https%3A%2F%2Fxfm0797.github.io%2Fen%2F2026%2F11%2F09%2Fxfmpress-v0-4-6%2F&amp;text=xfmpress%20v0.4.6%3A%20Six%20New%20Plugins%20%E2%80%94%20Analytics%2C%20Comments%2C%20Redirects%2C%20PWA%2C%20Dead%20Links%2C%20Image%20Size" style="--c:#26a5e4" target="_blank" rel="noopener" title="Share to Telegram"><span>Telegram</span></a>
+<a href="#" style="--c:#5f6368" data-share-copy data-share-url="https://xfm0797.github.io/en/2026/11/09/xfmpress-v0-4-6/" data-share-msg="Link copied" title="复制链接"><span>Copy link</span></a></section>
+      <nav class="post-pn">
+        <a class="pn-card prev" href="/en/2026/11/09/xfmpress-v0-4-5/"><span class="pn-label">Previous</span><span class="pn-title">xfmpress v0.4.5: Quieter, More Accurate xfm create Output</span></a>
+        
+        <a class="pn-card next" href="/en/2026/11/10/xfmpress-v0-4-7/"><span class="pn-label">Next</span><span class="pn-title">xfmpress v0.4.7: the official manual is live</span></a>
+        
+      </nav>
+
+      
+
+      
+      
+      <section class="post-comments" id="comments">
+        <h2 class="section-title">Comments</h2>
+        <div class="post-comments-body" id="waline" data-xfm-comments></div>
+      </section>
+      
+    </div>
+
+    
+    <aside class="post-toc-wrap">
+      
+<nav class="toc" id="toc" aria-label="Table of contents">
+  <div class="toc-title">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+    On This Page
+  </div>
+  <ul>
+    <li class="toc-h2"><a href="#what-this-release-solves">What this release solves</a></li>
+    <li class="toc-h2"><a href="#what-changed">What changed</a></li>
+    <li class="toc-h3"><a href="#added-six-new-plugins">Added: six new plugins</a></li>
+    <li class="toc-h3"><a href="#fixed-two-dev-server-blind-spots">Fixed: two dev-server blind spots</a></li>
+    <li class="toc-h3"><a href="#changed">Changed</a></li>
+    <li class="toc-h2"><a href="#should-you-change-anything-on-upgrade">Should you change anything on upgrade?</a></li>
+    
+  </ul>
+</nav>
+
+
+    </aside>
+    
+  </div>
+<script type="module">import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';init({"el":"#waline","serverURL":"https://waline.xfm.qzz.io","path":"/en/2026/11/09/xfmpress-v0-4-6/","lang":"en","dark":"html[data-theme=\"dark\"]","requiredMeta":["nick","mail"],"login":"enable","commentSorting":"newest"});</script>
+
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-icons">
+      <a href="/feed.xml" aria-label="RSS" title="RSS 订阅">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M4 11a9 9 0 0 1 9 9h3A12 12 0 0 0 4 8v3zm0-7a16 16 0 0 1 16 16h3A19 19 0 0 0 4 1v3zm2 13a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>
+      </a>
+      <a href="https://github.com/xfm0797/xfm" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C17 4.7 18 5 18 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6a11.5 11.5 0 0 0 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+    <p class="copyright">© XFMpress · xfm</p>
+    <p class="powered">Powered by <a href="https://github.com/xfm0797/xfm" target="_blank" rel="noopener">xfmpress</a> <span class="powered-version">0.4.18</span></p>
+  </div>
+</footer>
+
+
+  <button class="back-top" id="back-top" type="button" aria-label="回到顶部">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <div class="img-mask" id="img-mask" aria-hidden="true"><img src="" alt=""></div>
+
+  <script src="/assets/main.js" defer></script>
+  <script src="/assets/search.js" defer data-index="/search.json"></script>
+  <script>
+    (function(){
+      var k='xfm-theme', r=document.documentElement;
+      var s=localStorage.getItem(k);
+      if(s) r.dataset.theme=s;
+      else if(window.matchMedia('(prefers-color-scheme: dark)').matches) r.dataset.theme='dark';
+    })();
+  </script>
+</body>
+</html>
+<script>
+(function(){
+  function toast(msg){
+    var t=document.querySelector('.xfm-share-toast');
+    if(!t){t=document.createElement('div');t.className='xfm-share-toast';document.body.appendChild(t);}
+    t.textContent=msg;t.classList.add('show');
+    clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('show');},2000);
+  }
+  function legacyCopy(text){
+    var ta=document.createElement('textarea');
+    ta.value=text;ta.setAttribute('readonly','');
+    ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');}catch(e){}
+    document.body.removeChild(ta);
+  }
+  document.addEventListener('click',function(e){
+    var el=e.target.closest('[data-share-copy]');
+    if(!el)return;
+    e.preventDefault();
+    var url=el.getAttribute('data-share-url')||location.href;
+    var done=function(){toast(el.getAttribute('data-share-msg')||'已复制');};
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(done,function(){legacyCopy(url);done();});
+    }else{legacyCopy(url);done();}
+  });
+})();
+</script>

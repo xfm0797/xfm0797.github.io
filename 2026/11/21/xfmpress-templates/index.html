@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  
+  
+  
+  <title>模板语法：变量、过滤器与模板继承 · XFMpress</title>
+  <meta name="description" content="Nunjucks 风格的模板语法——输出转义、六种过滤器、条件循环、include 片段、extend/block 继承与完整模板上下文">
+  <meta name="theme-color" content="#425aef">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/favicon-512.png">
+  <meta property="og:site_name" content="XFMpress">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="模板语法：变量、过滤器与模板继承 · XFMpress">
+  <meta property="og:description" content="Nunjucks 风格的模板语法——输出转义、六种过滤器、条件循环、include 片段、extend/block 继承与完整模板上下文">
+  <meta property="og:url" content="https://xfm0797.github.io/2026/11/21/xfmpress-templates/">
+  <meta property="og:image" content="https://xfm0797.github.io/assets/cover-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="alternate" type="application/rss+xml" title="XFMpress" href="/feed.xml">
+  
+  <link rel="alternate" hreflang="zh-CN" href="https://xfm0797.github.io/2026/11/21/xfmpress-templates/">
+  <link rel="alternate" hreflang="en" href="https://xfm0797.github.io/en/2026/11/21/xfmpress-templates/">
+  
+  <link rel="stylesheet" href="/assets/style.css">
+  
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css">
+<style>
+.xfm-share{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem;margin:2.5rem 0 0;padding-top:1.25rem;border-top:1px solid var(--border,#e6e6e6)}
+.xfm-share-label{font-size:.88rem;color:var(--muted,#888)}
+.xfm-share a{display:inline-block;padding:.22rem .85rem;border:1px solid var(--border,#d9d9d9);border-radius:999px;font-size:.85rem;line-height:1.5;color:inherit;text-decoration:none;transition:color .15s,border-color .15s}
+.xfm-share a:hover{color:var(--c);border-color:var(--c)}
+.xfm-share-toast{position:fixed;left:50%;bottom:2.5rem;transform:translateX(-50%);background:#333;color:#fff;padding:.4rem 1rem;border-radius:6px;font-size:.85rem;opacity:0;transition:opacity .25s;pointer-events:none;z-index:9999}
+.xfm-share-toast.show{opacity:.92}
+@media (prefers-color-scheme:dark){.xfm-share{border-top-color:var(--border,#333)}.xfm-share a{border-color:var(--border,#3a3a3a)}}
+</style>
+</head>
+<body>
+  <div class="progress-bar" id="progress-bar" aria-hidden="true"></div>
+  <header class="site-nav" id="site-nav">
+  <div class="nav-wrap">
+    <a class="nav-brand" href="/">
+      <span class="nav-avatar" aria-hidden="true">xfm</span>
+      <span class="nav-title">XFMpress</span>
+    </a>
+    <nav class="nav-links" id="nav-links">
+      <a href="/">首页</a>
+      <a href="/categories/">分类</a>
+      <a href="/archives/">归档</a>
+      <a href="/about/">关于</a>
+      
+    </nav>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="nav-menu-btn" type="button" aria-label="菜单" aria-controls="nav-drawer" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <button class="nav-icon-btn" type="button" data-search-open aria-label="搜索" title="搜索（Ctrl+K）">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <a class="nav-icon-btn nav-lang-btn" href="/en/2026/11/21/xfmpress-templates/" title="Switch to English"><span class="nav-lang-text">EN</span></a>
+      <button class="nav-icon-btn" id="theme-toggle" type="button" aria-label="切换深浅色" title="切换深浅色">
+        <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="nav-drawer" id="nav-drawer">
+    <a href="/">首页</a>
+    <a href="/categories/">分类</a>
+    <a href="/archives/">归档</a>
+    <a href="/about/">关于</a>
+    
+  </nav>
+</header>
+
+
+  <main class="site-main">
+    
+<article class="post-page">
+  
+  <header class="post-hero" style="background-image:url('/assets/cover-default.png')">
+    <div class="post-hero-mask">
+      <div class="post-hero-crumbs">
+        <a href="/categories/xfmpress/">xfmpress</a>
+        <span>发布于 2026-11-21</span>
+      </div>
+      <h1 class="post-hero-title">模板语法：变量、过滤器与模板继承</h1>
+      <div class="post-hero-meta">
+        
+        <span class="meta-chip">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          5 分钟阅读
+        </span>
+        <a class="meta-chip" href="/tags/xfmpress/"># xfmpress</a><a class="meta-chip" href="/tags/教程/"># 教程</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="post-layout">
+    <div class="post-content-wrap">
+      <div class="post-content-card">
+        <div class="prose"><h1 id="模板语法总览">模板语法总览</h1>
+<p>语法与 Nunjucks / Liquid 高度接近，写过 Hexo 主题基本直接迁移。实现方式不同：模板在<strong>构建期一次性编译成 JS 函数</strong>，渲染只做字符串拼接——没有解释器循环，没有 AST 遍历。</p>
+<div class="table-wrap"><table><thead><tr><th>语法</th><th>作用</th></tr></thead><tbody><tr><td><code>{{ expr }}</code></td><td>输出，默认 HTML 转义</td></tr><tr><td>`{{ expr</td><td>safe }}`</td></tr><tr><td><code>{% if %} / {% elif %} / {% else %}</code></td><td>条件</td></tr><tr><td><code>{% for x in list %}</code></td><td>循环</td></tr><tr><td><code>{% set x = expr %}</code></td><td>赋值</td></tr><tr><td><code>{% include &quot;partials/toc.html&quot; %}</code></td><td>引入片段</td></tr><tr><td><code>{% extend &quot;base.html&quot; %}</code> + <code>{% block %}</code></td><td>继承与覆写</td></tr><tr><td><code>{% raw %}…{% endraw %}</code></td><td>原样输出不解析</td></tr><tr><td><code>{# 注释 #}</code></td><td>注释，不进产物</td></tr></tbody></table></div>
+<h2 id="输出与转义">输出与转义</h2>
+<div class="code-block"><pre class="language-html"><code><span class="hl-p">&lt;</span><span class="hl-k">h1</span><span class="hl-p">&gt;</span>{{ page.title }}<span class="hl-p">&lt;/</span><span class="hl-k">h1</span><span class="hl-p">&gt;</span>
+<span class="hl-p">&lt;</span><span class="hl-k">div</span> <span class="hl-a">class</span>=<span class="hl-s">&quot;prose&quot;</span><span class="hl-p">&gt;</span>{{ content | safe }}<span class="hl-p">&lt;/</span><span class="hl-k">div</span><span class="hl-p">&gt;</span></code></pre></div>
+<p><code>{{ }}</code> 默认转义 <code>&amp; &lt; &gt; &quot; '</code>，普通字段直接写；正文 HTML 必须加 <code>| safe</code>。<strong>未定义变量不抛错</strong>，输出空字符串——<code>page.data.prev.title</code> 在 prev 不存在时安静得到 undefined，不会 TypeError。</p>
+<h2 id="过滤器">过滤器</h2>
+<div class="table-wrap"><table><thead><tr><th>过滤器</th><th>作用</th></tr></thead><tbody><tr><td><code>safe</code></td><td>关闭 HTML 转义</td></tr><tr><td><code>length</code></td><td>数组元素数 / 对象键数 / 字符串长度</td></tr><tr><td><code>upper</code> / <code>lower</code></td><td>大小写</td></tr><tr><td><code>trim</code></td><td>去首尾空白</td></tr><tr><td><code>json</code></td><td>序列化成 JSON</td></tr><tr><td><code>default</code></td><td>值为空时给默认值</td></tr></tbody></table></div>
+<p>过滤器用竖线串联：<code>{{ page.title | trim | upper }}</code>。写错过滤器名会<strong>编译期报错</strong>并列出可用清单——拼错 <code>| saft</code> 导致整页内容被转义，比构建失败更难查，所以引擎选了直接报错。</p>
+<h2 id="条件与循环">条件与循环</h2>
+<p>表达式支持 <code>and</code> / <code>or</code> / <code>not</code>、比较运算、成员访问与下标。循环体里有 <code>loop</code> 对象：<code>loop.index</code>（从 1 起）、<code>loop.first</code> / <code>loop.last</code>、<code>loop.length</code>、<code>loop.revindex</code>。空列表用 <code>else</code> 兜底：</p>
+<div class="code-block"><pre class="language-html"><code>{% for post in site.posts %}
+  <span class="hl-p">&lt;</span><span class="hl-k">a</span> <span class="hl-a">href</span>=<span class="hl-s">&quot;{{ post.url }}&quot;</span><span class="hl-p">&gt;</span>{{ post.title }}<span class="hl-p">&lt;/</span><span class="hl-k">a</span><span class="hl-p">&gt;</span>
+{% else %}
+  <span class="hl-p">&lt;</span><span class="hl-k">p</span><span class="hl-p">&gt;</span>还没有文章。<span class="hl-p">&lt;/</span><span class="hl-k">p</span><span class="hl-p">&gt;</span>
+{% endfor %}</code></pre></div>
+<p>被迭代的值做了宽松处理：null 视为空数组；字符串按字符拆；<strong>普通对象按 <code>{ key, value }</code> 拆成条目</strong>。</p>
+<h2 id="include-与-extend">include 与 extend</h2>
+<div class="code-block"><pre class="language-html"><code>{% include &quot;partials/toc.html&quot; %}</code></pre></div>
+<p>解析顺序 <code>layouts/</code> → <code>partials/</code> → 主题根目录，片段与主模板共享上下文，可递归 include。</p>
+<p>继承用 extend + 同名 block 覆盖：</p>
+<div class="code-block"><pre class="language-html"><code>{% extend &quot;base.html&quot; %}
+{% block main %}
+  <span class="hl-p">&lt;</span><span class="hl-k">article</span><span class="hl-p">&gt;</span><span class="hl-p">&lt;</span><span class="hl-k">h1</span><span class="hl-p">&gt;</span>{{ page.title }}<span class="hl-p">&lt;/</span><span class="hl-k">h1</span><span class="hl-p">&gt;</span>{{ content | safe }}<span class="hl-p">&lt;/</span><span class="hl-k">article</span><span class="hl-p">&gt;</span>
+{% endblock %}</code></pre></div>
+<p>约定：只覆盖同名 block；父模板没有同名 block 时子模板内容<strong>追加到末尾</strong>（拼错 block 名不报错但位置不对）；不支持嵌套 block 与 <code>super()</code>；继承链上限 10 层。</p>
+<h2 id="模板上下文">模板上下文</h2>
+<p>每次渲染拿到的顶层键：</p>
+<ul class="md-list"><li><code>site</code>——配置 + 聚合数据：<code>site.posts</code>（文章列表）、<code>site.tags</code> / <code>site.categories</code> / <code>site.series</code>（各含 name/url/count）、<code>site.nav</code>、<code>site.assets</code>、<code>site.base</code></li><li><code>page</code>——当前页：<code>page.url</code> / <code>page.title</code> / <code>page.date</code> / <code>page.tags</code> / <code>page.category</code>、<code>page.excerpt</code>、<code>page.readTime</code>、<code>page.toc</code></li><li><code>page.data</code>——最有用的一层：插件注入的跨页数据（<code>related</code> 相关文章、<code>prev</code> / <code>next</code> 上下篇）都挂这里</li><li><code>content</code>——正文 HTML</li><li><code>headings</code>——标题数组 <code>{ level, text, id }</code></li><li><code>pagination</code>——仅列表页有</li></ul>
+<h2 id="一条重要规则-链接不用拼-base">一条重要规则：链接不用拼 base</h2>
+<p>模板里放心写根绝对路径 <code>&lt;a href=&quot;/about/&quot;&gt;</code>——<code>site.base</code> 前缀由引擎在<strong>渲染出口统一补</strong>，覆盖模板、Markdown、手写 HTML 三类来源。自己拼 <code>site.base + 'about/'</code> 反而会双重前缀。</p>
+<p>下一篇：<a href="/2026/11/21/xfmpress-theme/">主题开发</a>。</p></div>
+      </div>
+
+      
+      <section class="xfm-share" data-share-networks="weibo,wechat,qq,qzone,twitter,telegram,copy" aria-label="分享"><span class="xfm-share-label">分享到</span><a href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F21%2Fxfmpress-templates%2F&amp;title=%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95%EF%BC%9A%E5%8F%98%E9%87%8F%E3%80%81%E8%BF%87%E6%BB%A4%E5%99%A8%E4%B8%8E%E6%A8%A1%E6%9D%BF%E7%BB%A7%E6%89%BF" style="--c:#e6162d" target="_blank" rel="noopener" title="分享到微博"><span>微博</span></a>
+<a href="#" style="--c:#07c160" data-share-copy data-share-url="https://xfm0797.github.io/2026/11/21/xfmpress-templates/" data-share-msg="链接已复制，可在微信中粘贴分享" title="微信"><span>微信</span></a>
+<a href="https://connect.qq.com/widget/shareqq/index.html?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F21%2Fxfmpress-templates%2F&amp;title=%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95%EF%BC%9A%E5%8F%98%E9%87%8F%E3%80%81%E8%BF%87%E6%BB%A4%E5%99%A8%E4%B8%8E%E6%A8%A1%E6%9D%BF%E7%BB%A7%E6%89%BF&amp;summary=" style="--c:#12b7f5" target="_blank" rel="noopener" title="分享到QQ 好友"><span>QQ 好友</span></a>
+<a href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F21%2Fxfmpress-templates%2F&amp;title=%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95%EF%BC%9A%E5%8F%98%E9%87%8F%E3%80%81%E8%BF%87%E6%BB%A4%E5%99%A8%E4%B8%8E%E6%A8%A1%E6%9D%BF%E7%BB%A7%E6%89%BF" style="--c:#f5b60d" target="_blank" rel="noopener" title="分享到QQ 空间"><span>QQ 空间</span></a>
+<a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F21%2Fxfmpress-templates%2F&amp;text=%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95%EF%BC%9A%E5%8F%98%E9%87%8F%E3%80%81%E8%BF%87%E6%BB%A4%E5%99%A8%E4%B8%8E%E6%A8%A1%E6%9D%BF%E7%BB%A7%E6%89%BF" style="--c:#1da1f2" target="_blank" rel="noopener" title="分享到X"><span>X</span></a>
+<a href="https://t.me/share/url?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F21%2Fxfmpress-templates%2F&amp;text=%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95%EF%BC%9A%E5%8F%98%E9%87%8F%E3%80%81%E8%BF%87%E6%BB%A4%E5%99%A8%E4%B8%8E%E6%A8%A1%E6%9D%BF%E7%BB%A7%E6%89%BF" style="--c:#26a5e4" target="_blank" rel="noopener" title="分享到Telegram"><span>Telegram</span></a>
+<a href="#" style="--c:#5f6368" data-share-copy data-share-url="https://xfm0797.github.io/2026/11/21/xfmpress-templates/" data-share-msg="链接已复制" title="复制链接"><span>复制链接</span></a></section>
+      <nav class="post-pn">
+        <a class="pn-card prev" href="/2026/11/21/xfmpress-theme/"><span class="pn-label">上一篇</span><span class="pn-title">主题开发：从零写一个自己的主题</span></a>
+        
+        <a class="pn-card next" href="/2026/11/21/xfmpress-markdown/"><span class="pn-label">下一篇</span><span class="pn-title">Markdown 扩展语法：容器、脚注与代码高亮</span></a>
+        
+      </nav>
+
+      
+
+      
+      
+      <section class="post-comments" id="comments">
+        <h2 class="section-title">评论</h2>
+        <div class="post-comments-body" id="waline" data-xfm-comments></div>
+      </section>
+      
+    </div>
+
+    
+    <aside class="post-toc-wrap">
+      
+<nav class="toc" id="toc" aria-label="目录">
+  <div class="toc-title">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+    文章目录
+  </div>
+  <ul>
+    <li class="toc-h2"><a href="#输出与转义">输出与转义</a></li>
+    <li class="toc-h2"><a href="#过滤器">过滤器</a></li>
+    <li class="toc-h2"><a href="#条件与循环">条件与循环</a></li>
+    <li class="toc-h2"><a href="#include-与-extend">include 与 extend</a></li>
+    <li class="toc-h2"><a href="#模板上下文">模板上下文</a></li>
+    <li class="toc-h2"><a href="#一条重要规则-链接不用拼-base">一条重要规则：链接不用拼 base</a></li>
+    
+  </ul>
+</nav>
+
+
+    </aside>
+    
+  </div>
+<script type="module">import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';init({"el":"#waline","serverURL":"https://waline.xfm.qzz.io","path":"/2026/11/21/xfmpress-templates/","lang":"zh-CN","dark":"html[data-theme=\"dark\"]","requiredMeta":["nick","mail"],"login":"enable","commentSorting":"newest"});</script>
+
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-icons">
+      <a href="/feed.xml" aria-label="RSS" title="RSS 订阅">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M4 11a9 9 0 0 1 9 9h3A12 12 0 0 0 4 8v3zm0-7a16 16 0 0 1 16 16h3A19 19 0 0 0 4 1v3zm2 13a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>
+      </a>
+      <a href="https://github.com/xfm0797/xfm" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C17 4.7 18 5 18 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6a11.5 11.5 0 0 0 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+    <p class="copyright">© XFMpress · xfm</p>
+    <p class="powered">由 <a href="https://github.com/xfm0797/xfm" target="_blank" rel="noopener">xfmpress</a> <span class="powered-version">0.4.18</span> 强力驱动</p>
+  </div>
+</footer>
+
+
+  <button class="back-top" id="back-top" type="button" aria-label="回到顶部">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <div class="img-mask" id="img-mask" aria-hidden="true"><img src="" alt=""></div>
+
+  <script src="/assets/main.js" defer></script>
+  <script src="/assets/search.js" defer data-index="/search.json"></script>
+  <script>
+    (function(){
+      var k='xfm-theme', r=document.documentElement;
+      var s=localStorage.getItem(k);
+      if(s) r.dataset.theme=s;
+      else if(window.matchMedia('(prefers-color-scheme: dark)').matches) r.dataset.theme='dark';
+    })();
+  </script>
+</body>
+</html>
+<script>
+(function(){
+  function toast(msg){
+    var t=document.querySelector('.xfm-share-toast');
+    if(!t){t=document.createElement('div');t.className='xfm-share-toast';document.body.appendChild(t);}
+    t.textContent=msg;t.classList.add('show');
+    clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('show');},2000);
+  }
+  function legacyCopy(text){
+    var ta=document.createElement('textarea');
+    ta.value=text;ta.setAttribute('readonly','');
+    ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');}catch(e){}
+    document.body.removeChild(ta);
+  }
+  document.addEventListener('click',function(e){
+    var el=e.target.closest('[data-share-copy]');
+    if(!el)return;
+    e.preventDefault();
+    var url=el.getAttribute('data-share-url')||location.href;
+    var done=function(){toast(el.getAttribute('data-share-msg')||'已复制');};
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(done,function(){legacyCopy(url);done();});
+    }else{legacyCopy(url);done();}
+  });
+})();
+</script>

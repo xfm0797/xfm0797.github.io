@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>XFMpress</title>
+    <link>https://xfm0797.github.io</link>
+    <description>极致性能的静态站点生成器 —— 零运行时依赖、多线程渲染、Nunjucks 风格模板、即插即用的主题与插件</description>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 23 Nov 2026 14:28:23 GMT</lastBuildDate>
+    <atom:link href="https://xfm0797.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>官方新增 butterfly 主题：把 Hexo 那套毛玻璃美学搬进 xfmpress</title>
+      <link>https://xfm0797.github.io/2026/11/22/xfmpress-theme-butterfly/</link>
+      <guid isPermaLink="true">https://xfm0797.github.io/2026/11/22/xfmpress-theme-butterfly/</guid>
+      <pubDate>Sun, 22 Nov 2026 00:00:00 GMT</pubDate>
+      <description>仓库 themes/butterfly —— 毛玻璃固定导航、渐变横幅、封面在右的横向卡片、作者卡侧栏、时间线归档，零依赖零构建</description>
+      <category>xfmpress</category>
+      <category>主题</category>
+      <content:encoded><![CDATA[<p>官方仓库今天多了一套主题：<code>themes/butterfly</code>。它是照着 <a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener">hexo-theme-butterfly</a> 的视觉风格重写的——如果你从 Hexo 迁过来，见到那套蓝紫渐变、毛玻璃导航、封面在右的横向卡片，应该会有一秒的熟悉感。</p>
+<p>和仓库里另外两套一样，它零依赖、零构建：模板只用 xfm 内置的 <code>{% extend %} / {% block %} / {% include %}</code>，样式和脚本全是手写的 CSS 与原生 JS，没有 Sass 编译，也没有打包步骤。</p>
+<p><img src="/assets/theme-butterfly.png" alt="butterfly 主题首页：毛玻璃导航、蓝紫渐变横幅、封面在右的文章卡片与右侧作者卡" loading="lazy" decoding="async"></p>
+<p>上面是它跑在演示站上的实际效果（截取 1200×630）：顶部固定导航，中间是渐变横幅和站名，下面是横向文章卡片，右侧是作者卡。整套观感只靠一个 29KB 的 <code>style.css</code> 和 7KB 的 <code>main.js</code>。</p>
+<h2 id="怎么启用">怎么启用</h2>
+<p>主题用仓库里的相对路径指定即可：</p>
+<div class="code-block"><pre class="language-js"><code><span class="hl-c">// xfm.config.mjs</span>
+<span class="hl-k">export</span> <span class="hl-k">default</span> {
+  theme: <span class="hl-s">'themes/butterfly'</span>,
+};</code></pre></div>
+<p>一个现实问题：<code>npm i xfmpress</code> 装下来的包里目前只有 <code>default</code> 和 <code>docs</code> 两套主题，butterfly 是在仓库里先行落地的。所以现在要用它，把仓库的 <code>themes/butterfly</code> 整个目录拷到你站点的 <code>themes/</code> 下（或直接克隆仓库跑 <code>examples/blog</code>），配置里写 <code>themes/butterfly</code>；等你站点根目录有同名目录，主题解析会优先用你站点里的那份。</p>
+<p>主题解析的顺序是「站点内路径 → npm 包内置 → 简写补齐」，所以 <code>theme: 'butterfly'</code> 这种简写只对包里自带的那两套生效，拷到站点里之后写全路径最稳妥。</p>
+<h2 id="目录-8-个布局-5-个片段">目录：8 个布局，5 个片段</h2>
+<div class="code-block"><pre class="language-text"><code>themes/butterfly/
+├── layouts/
+│   ├── base.html        # 骨架：进度条、固定导航、横幅插槽、页脚、回到顶部、深浅色脚本
+│   ├── index.html       # 首页：横幅 + 卡片流 + 侧栏
+│   ├── post.html        # 文章页：封面横幅、正文卡、版权框、上下篇、相关推荐、目录
+│   ├── page.html        # 独立页
+│   ├── archives.html    # 时间线归档（按年分组）
+│   ├── categories.html  # 分类索引
+│   ├── taxonomy.html    # 单个分类 / 标签的文章列表
+│   └── collection.html  # 自定义集合列表
+├── partials/            # post-list / pager / sidebar / toc / lang-switcher
+└── assets/              # style.css（29KB）/ main.js（7.4KB）/ search.js</code></pre></div>
+<p>横幅不是每个布局各写一遍，而是 <code>base.html</code> 里留了一个 <code>{% block banner %}</code>：首页与文章页各自覆盖它，独立页和归档页不覆盖，于是那几页直接没有横幅，也不会留下空白占位。</p>
+<h2 id="四个视觉标志">四个视觉标志</h2>
+<p><strong>毛玻璃固定导航</strong>：<code>backdrop-filter: blur(14px)</code> + 半透明背景，滚动超过 10px 加阴影；窄屏（≤860px）收成抽屉菜单，三条横线做变形动画。</p>
+<p><strong>渐变横幅</strong>：不配 <code>site.banner</code> 时是一块 132 度的蓝紫渐变（<code>#49b1f5 → #8661f5</code>），配了就换成图片加 38% 深色遮罩——遮罩这一步不能省，否则浅色图片上的白字会糊成一片。首页横幅高度是 <code>min(62vh, 560px)</code>，文章页是 <code>min(46vh, 420px)</code>，手机端再压一档。</p>
+<p><strong>封面在右的横向卡片</strong>：卡片左边是日期、分类胶囊、标题、两行截断的摘要和标签，右边固定 220px 的一张封面，悬停时封面 <code>scale(1.05)</code>、卡片上浮 3px。文章没写 <code>cover</code> 就落回渐变兜底块，列表不会出现豁口。窄于 560px 时卡片换成竖排，封面跑到上方。</p>
+<p><strong>右侧栏</strong>：作者卡（头像 + 一句话简介 + 文章/分类/标签三个计数 + RSS 按钮）、前 6 个分类带计数、前 16 个标签的胶囊云、最新 5 篇、归档入口。整栏 <code>position: sticky</code>，滚动时跟着走；窄于 1024px 时收成单列，粘性取消。</p>
+<h2 id="文章页的细节">文章页的细节</h2>
+<p>文章页的结构比首页更满：封面横幅（标题、日期、分类、标签、阅读时长都压在遮罩上）→ 白色正文卡 → 版权框 → 上下篇 → 相关推荐 → 右栏目录。</p>
+<p>几个值得说的取舍：</p>
+<ul class="md-list"><li><strong>目录只在有标题时才出现</strong>。<code>headings</code> 为空时整个右栏不渲染，正文卡自动回到 800px 的居中宽度；有目录时容器放宽到 1080px 两栏，窄于 900px 时右栏直接隐藏，不做抽屉。</li><li><strong>版权框只在配了 <code>site.author</code> 时出现</strong>，内容是作者、本文链接、一句「转载请注明出处」。不想显示就别写 <code>site.author</code>。</li><li><strong>相关推荐读 <code>page.data.related</code></strong>，也就是 <code>related</code> 插件算出来的那份；没装插件这块不出现，不会报错。</li><li><strong>代码块带语言标签和复制按钮</strong>，按钮默认透明度 0，鼠标悬停整块代码才浮出来，不干扰阅读。</li></ul>
+<h2 id="可选字段">可选字段</h2>
+<p>全在 <code>site</code> 下，都不配也能跑：</p>
+<div class="table-wrap"><table><thead><tr><th>字段</th><th>作用</th><th>缺省行为</th></tr></thead><tbody><tr><td><code>site.banner</code></td><td>首页横幅背景图</td><td>走蓝紫渐变</td></tr><tr><td><code>site.subtitle</code></td><td>横幅副标题</td><td>回退 <code>site.description</code></td></tr><tr><td><code>site.avatar</code></td><td>作者卡头像</td><td>显示 ✍ 占位</td></tr><tr><td><code>site.author</code></td><td>作者卡名字、文章版权框</td><td>名字用 <code>site.title</code>，版权框整块不渲染</td></tr><tr><td><code>site.copyright</code></td><td>页脚版权行</td><td><code>© 站点标题</code></td></tr></tbody></table></div>
+<p>文章封面走 front-matter：</p>
+<div class="code-block"><pre class="language-yaml"><code>---
+title: 我的第一篇文章
+date: <span class="hl-n">2026</span>-<span class="hl-n">11</span>-<span class="hl-n">22</span>
+cover: /img/hello.jpg   <span class="hl-c"># 建议根绝对路径或外链；Page Bundle 里可写 ./cover.png</span>
+---</code></pre></div>
+<p><code>cover</code> 只影响这套主题的展示，RSS、sitemap 和其它主题都不看它。</p>
+<h2 id="交互与配色">交互与配色</h2>
+<p><code>main.js</code> 七个模块：导航抽屉与滚动阴影、回到顶部、阅读进度、目录高亮、代码复制、图片点击放大、外链自动新窗口。所有滚动相关的计算统一走 <code>requestAnimationFrame</code>，一帧最多算一次；页面上没有对应元素时整段静默跳过，所以你把它塞进任何页面都不会报错。</p>
+<p>深浅色是 <code>data-theme</code> 切换的手写变量，键名 <code>xfm-theme-butterfly</code>，首次访问跟随系统 <code>prefers-color-scheme</code>。要换配色改 <code>style.css</code> 顶部这几行就够：</p>
+<div class="code-block"><pre class="language-css"><code><span class="hl-k">:root </span><span class="hl-p">{</span>
+  <span class="hl-a">--accent</span><span class="hl-p">:</span><span class="hl-s"> #49b1f5</span><span class="hl-p">;</span>    <span class="hl-c">/* 主色：天蓝 */</span>
+  <span class="hl-a">--accent-2</span><span class="hl-p">:</span><span class="hl-s"> #8661f5</span><span class="hl-p">;</span>  <span class="hl-c">/* 副色：紫 */</span>
+  <span class="hl-a">--grad</span><span class="hl-p">:</span><span class="hl-s"> linear-gradient(132deg, #49b1f5 0%, #8661f5 100%)</span><span class="hl-p">;</span>
+  <span class="hl-a">--radius</span><span class="hl-p">:</span><span class="hl-s"> 12px</span><span class="hl-p">;</span>       <span class="hl-c">/* 卡片圆角 */</span>
+  <span class="hl-a">--nav-h</span><span class="hl-p">:</span><span class="hl-s"> 60px</span><span class="hl-p">;</span>        <span class="hl-c">/* 导航高度 */</span>
+<span class="hl-p">}</span></code></pre></div>
+<p>装了 <code>search</code> 插件后，导航右侧会自动多出一个搜索按钮（插件会注入 <code>site.search</code>），<code>Ctrl/⌘ + K</code> 打开纯前端筛选面板；深浅色切换按钮在它右边，两者都是无依赖的原生实现。</p>
+<h2 id="和三套主题怎么选">和三套主题怎么选</h2>
+<div class="table-wrap"><table><thead><tr><th>主题</th><th>观感</th><th>适合</th></tr></thead><tbody><tr><td><code>default</code></td><td>低饱和青玉、大留白</td><td>只想安静写字</td></tr><tr><td><code>docs</code></td><td>左侧栏文档树</td><td>产品手册、知识库</td></tr><tr><td><code>butterfly</code></td><td>蓝紫渐变、卡片瀑布、重装饰</td><td>个人博客、想第一眼就有辨识度</td></tr><tr><td><code>xfmpress-theme-anziyu</code></td><td>玻璃导航 + 封面卡片流（本站私有）</td><td>想要更花哨的博客外观</td></tr></tbody></table></div>
+<p>它和 <code>default</code> 用的是同一套模板语法、同一份内容格式，切换主题不用改任何 Markdown——这也是把主题做成目录而不是内核的一部分的好处：想换皮，改一行 <code>theme</code> 再重新 <code>xfm build</code> 就行。</p>]]></content:encoded>
+    </item>
+    <item>
+      <title>分享插件：一篇文章十二个转发入口，不加载任何第三方脚本</title>
+      <link>https://xfm0797.github.io/2026/11/21/xfmpress-plugin-share/</link>
+      <guid isPermaLink="true">https://xfm0797.github.io/2026/11/21/xfmpress-plugin-share/</guid>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
+      <description>微博、微信、QQ、X、Telegram、邮件、复制链接等十二个渠道，按钮只是普通链接加本地复制，零依赖、零外部请求，按语言自动切换文案</description>
+      <category>xfmpress</category>
+      <category>插件</category>
+      <content:encoded><![CDATA[<p>读者想转发一篇文章时，卡点往往不是「愿不愿意」，而是「找不到按钮」。<code>xfm-plugin-share</code> 在每篇文章结尾加一排分享按钮，十二个渠道可选，全部用原生的分享地址实现——不引 SDK、不加载统计脚本，连复制链接都不依赖任何第三方服务。</p>
+<h2 id="它解决什么">它解决什么</h2>
+<ul class="md-list"><li>一次交互相当于「读者帮你分发」，比任何 SEO 手段都直接，但很多静态站根本没有分享入口</li><li>不用接入 Jiathis、AddThis 这类聚合服务，也就没有外部脚本、没有隐私争议、没有第三方挂了按钮跟着失效</li><li>所有按钮都是普通 <code>&lt;a&gt;</code> 链接，微信这种「不能直接分享」的渠道改为复制链接 + 提示文案，不依赖二维码服务</li></ul>
+<h2 id="支持的渠道">支持的渠道</h2>
+<div class="table-wrap"><table><thead><tr><th>网络</th><th>标签</th><th>说明</th></tr></thead><tbody><tr><td><code>weibo</code></td><td>微博</td><td>微博分享地址</td></tr><tr><td><code>wechat</code></td><td>微信</td><td>复制链接后提示去微信粘贴，不需要二维码服务</td></tr><tr><td><code>qq</code></td><td>QQ 好友</td><td>QQ 好友分享</td></tr><tr><td><code>qzone</code></td><td>QQ 空间</td><td>QQ 空间分享</td></tr><tr><td><code>twitter</code></td><td>X</td><td>推特/X intent，别名 <code>x</code></td></tr><tr><td><code>facebook</code> / <code>linkedin</code></td><td>—</td><td>sharer / share-offsite</td></tr><tr><td><code>telegram</code></td><td>Telegram</td><td>t.me 分享</td></tr><tr><td><code>whatsapp</code> / <code>reddit</code></td><td>—</td><td>各自官方分享地址</td></tr><tr><td><code>email</code></td><td>邮件</td><td><code>mailto:</code> 链接，别名 <code>mail</code></td></tr><tr><td><code>copy</code></td><td>复制链接</td><td>Clipboard API，失败回退 <code>execCommand</code>，附两秒提示</td></tr></tbody></table></div>
+<h2 id="安装与配置">安装与配置</h2>
+<div class="code-block"><pre class="language-bash"><code>npm i -D xfm-plugin-share</code></pre></div>
+<p>生成器会自动加载 <code>package.json</code> 里所有 <code>xfm-plugin-*</code> 依赖；如果 <code>xfm dev</code> 正在运行，重启一下。</p>
+<div class="code-block"><pre class="language-js"><code><span class="hl-c">// xfm.config.mjs</span>
+<span class="hl-k">export</span> <span class="hl-k">default</span> {
+  share: {
+    <span class="hl-c">// 顺序即渲染顺序，默认：weibo, wechat, qq, twitter, telegram, copy</span>
+    networks: [<span class="hl-s">'weibo'</span>, <span class="hl-s">'wechat'</span>, <span class="hl-s">'qq'</span>, <span class="hl-s">'qzone'</span>, <span class="hl-s">'twitter'</span>, <span class="hl-s">'telegram'</span>, <span class="hl-s">'copy'</span>],
+    title: <span class="hl-s">'分享到'</span>, <span class="hl-c">// 按钮前的文案，'' 则隐藏</span>
+    dev: <span class="hl-k">false</span>,     <span class="hl-c">// 开发模式下也渲染，默认只在生产构建出现</span>
+  },
+};</code></pre></div>
+<p>不写这段配置也能用，默认六个渠道。<code>site.url</code> 必须配置——分享链接要是完整地址，否则插件只能给出相对路径，并在构建时提醒一次。</p>
+<h2 id="挂载规则">挂载规则</h2>
+<p>默认挂在<strong>文章</strong>结尾：有 <code>date</code>、且不是 <code>type: page</code> 的页面。首页、归档页、分类/标签页、关于页这类独立页面一律跳过。单篇不想出现分享栏，在 front-matter 写 <code>share: false</code> 即可。</p>
+<p>样式只有几行内联 CSS，注入在有分享栏的页面 <code>&lt;head&gt;</code> 里，跟随主题的 <code>--border</code> / <code>--muted</code> 变量。主题若只定义了 <code>--line</code> 之类的命名，补一行 <code>--border: var(--line)</code> 就能对上色。</p>
+<h2 id="复制类按钮怎么工作">复制类按钮怎么工作</h2>
+<p><code>copy</code> 与 <code>wechat</code> 两个按钮不会跳转，它们把完整地址写进 <code>data-share-url</code>，点击时先试 <code>navigator.clipboard</code>，再回退到 <code>document.execCommand('copy')</code>，成功后弹一个两秒消失的提示（文案在 <code>data-share-msg</code>）。整个过程没有网络请求，断网也能用。</p>
+<h2 id="模板接管与本站做法">模板接管与本站做法</h2>
+<p>模板里放一个 <code>&lt;div data-xfm-share&gt;&lt;/div&gt;</code> 可以让插件只注入样式与脚本、不自动插入分享栏，由主题自己渲染——适合想把分享栏做进卡片侧边或浮动条的场景。</p>
+<p>本站没有走这条路：直接让插件自动挂载，再用本地插件 <code>plugins/share-lang.js</code> 做两件事——把分享栏从 <code>&lt;/article&gt;</code> 前挪到正文结尾（插件默认落点在文章卡片之外），以及按 <code>page.lang</code> 把中文标签换成英文。因为插件的标签是站点级常量，多语言站点若不做这一步，英文页会出现「微博」「复制链接」。</p>
+<h2 id="注意事项">注意事项</h2>
+<ul class="md-list"><li>微信没有网页分享接口，只能复制链接，这是平台限制而非实现取巧；想要扫码分享得自己接第三方二维码服务</li><li>分享数、点击量这类统计不在插件范围内，需要的话配合 <code>analytics</code> 插件用事件埋点</li><li>渠道并非越多越好：中英混排的站建议按主要读者选 5–7 个，铺满十二个反而稀释点击</li></ul>
+<p>插件系统怎么加载、配置文件的完整写法，分别见<a href="/2026/11/21/xfmpress-plugins/">插件系统总览</a>与<a href="/2026/11/21/xfmpress-config/">配置指南</a>。</p>]]></content:encoded>
+    </item>
+    <item>
+      <title>Sitemap 插件：sitemap.xml 与 robots.txt 一次生成</title>
+      <link>https://xfm0797.github.io/2026/11/21/xfmpress-plugin-sitemap/</link>
+      <guid isPermaLink="true">https://xfm0797.github.io/2026/11/21/xfmpress-plugin-sitemap/</guid>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
+      <description>零配置遍历全部文档生成 sitemap.xml，updated 字段转 lastmod、weight 可调 priority，robots.txt 自动指向站点地图，sitemap: false 逐页排除</description>
+      <category>xfmpress</category>
+      <category>插件</category>
+      <content:encoded><![CDATA[<p>sitemap.xml 与 robots.txt 是搜索引擎抓取一个站点的两份入口文件。<code>xfm-plugin-sitemap</code> 在每次构建末尾遍历全部文档，同时产出这两份文件，没有任何插件级配置。</p>
+<h2 id="它解决什么">它解决什么</h2>
+<p>手写 sitemap 很容易漏页、过期。插件直接以 <code>site.documents</code> 为准生成，页面集合与实际产物永远一致；URL 由 <code>site.url</code> 与 <code>site.base</code> 拼成绝对地址，子路径部署自动正确。配套的 robots.txt 会在配了 <code>site.url</code> 后自动追加一行指向站点地图的 <code>Sitemap:</code>，两个文件不需要分开维护。</p>
+<h2 id="安装与配置">安装与配置</h2>
+<div class="code-block"><pre class="language-bash"><code>npm i -D xfm-plugin-sitemap</code></pre></div>
+<p>装了即生效，插件本身没有可调项，需要的只是站点基础信息（见<a href="/2026/11/21/xfmpress-config/">配置</a>）：</p>
+<div class="code-block"><pre class="language-js"><code><span class="hl-c">// xfm.config.mjs</span>
+<span class="hl-k">export</span> <span class="hl-k">default</span> {
+  site: {
+    url: <span class="hl-s">'https://xfm0797.github.io'</span>,
+    base: <span class="hl-s">''</span>,  <span class="hl-c">// 子路径部署时写 '/blog' 之类</span>
+  },
+};</code></pre></div>
+<h2 id="产物与字段">产物与字段</h2>
+<p>输出两个文件：</p>
+<ul class="md-list"><li><code>sitemap.xml</code>：每个 <code>&lt;url&gt;</code> 含 <code>&lt;loc&gt;</code> 绝对地址；页面 front-matter 有 <code>updated</code>（或 <code>date</code>）时输出 <code>&lt;lastmod&gt;</code>；页面写了 <code>weight</code> 时计算 <code>&lt;priority&gt;</code>（公式为 <code>1 - weight/100</code>，限制在 0.1–1 之间，保留一位小数）。</li><li><code>robots.txt</code>：<code>User-agent: *</code> 加 <code>Allow: /</code>，配了 <code>site.url</code> 时再追加 <code>Sitemap: &lt;绝对地址&gt;</code>。</li></ul>
+<p>front-matter 写 <code>sitemap: false</code> 可把某一页排除——关于页、标签聚合页这类不希望单独被抓取的页面常用。</p>
+<h2 id="注意事项">注意事项</h2>
+<ul class="md-list"><li><code>lastmod</code> 取 <code>updated || date</code>，两处都没写日期的页面不会输出 <code>lastmod</code>。</li><li><code>sitemap: false</code> 只是不进站点地图，不等于不被索引；需要 <code>noindex</code> 请配合 <a href="/2026/11/21/xfmpress-plugin-seo/">seo 插件</a>或主题里写 meta。</li><li>本站就启用了 sitemap，<code>sitemap.xml</code> 与 <code>robots.txt</code> 随每次构建同步更新，见<a href="/2026/11/21/xfmpress-seo-search/">SEO 与站内搜索</a>。</li></ul>]]></content:encoded>
+    </item>
+    <item>
+      <title>SEO 插件：canonical、Open Graph、Twitter Card 与 JSON-LD</title>
+      <link>https://xfm0797.github.io/2026/11/21/xfmpress-plugin-seo/</link>
+      <guid isPermaLink="true">https://xfm0797.github.io/2026/11/21/xfmpress-plugin-seo/</guid>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
+      <description>按页面类型注入爬虫与社交平台需要的 head 标记：文章得 Article 结构化数据，首页得 WebSite 与 SearchAction，多语言站自动补 hreflang，手写标签永不重复</description>
+      <category>xfmpress</category>
+      <category>插件</category>
+      <content:encoded><![CDATA[<p>搜索引擎的收录与社交平台的分享卡片都依赖 <code>&lt;head&gt;</code> 里的元信息。<code>xfm-plugin-seo</code> 在每个页面渲染后注入 canonical、Open Graph、Twitter Card 与 JSON-LD，并且尊重模板里手写的标签——已有的部分绝不重复注入。</p>
+<h2 id="它解决什么">它解决什么</h2>
+<p>这些标记手写繁琐、页面间还要变化：文章要有发布与修改时间、标签与作者，首页要有站点级结构化数据。插件按页面类型自动区分——文章得到 <code>og:type: article</code> 与 <code>Article</code> 结构化数据，首页得到 <code>WebSite</code>；站点配置了搜索时，首页还会附上 <code>SearchAction</code>。</p>
+<h2 id="安装与配置">安装与配置</h2>
+<div class="code-block"><pre class="language-bash"><code>npm i -D xfm-plugin-seo</code></pre></div>
+<div class="code-block"><pre class="language-js"><code><span class="hl-c">// xfm.config.mjs</span>
+<span class="hl-k">export</span> <span class="hl-k">default</span> {
+  seo: {
+    image: <span class="hl-s">'/og.png'</span>,    <span class="hl-c">// 默认分享图（相对路径自动拼绝对地址）</span>
+    twitter: <span class="hl-s">'@handle'</span>,  <span class="hl-c">// 输出 twitter:site</span>
+    jsonLd: <span class="hl-k">true</span>,        <span class="hl-c">// 设为 false 可整体关闭 JSON-LD</span>
+  },
+};</code></pre></div>
+<h2 id="产物与字段">产物与字段</h2>
+<p>插件不生成文件，只在每个页面 <code>&lt;/head&gt;</code> 前插入一段标记：</p>
+<ul class="md-list"><li><code>&lt;link rel=&quot;canonical&quot;&gt;</code>：默认取页面绝对地址，front-matter 的 <code>canonical</code> 可覆盖；</li><li>Open Graph：<code>og:title/description/url/site_name/locale</code>，文章另有 <code>article:published_time</code>、<code>article:modified_time</code> 与每条标签一个 <code>article:tag</code>；页面 <code>image</code> 或配置的默认图转为 <code>og:image</code>；</li><li>Twitter Card：有图用 <code>summary_large_image</code>，没图退回 <code>summary</code>，配了 <code>twitter</code> 再加 <code>twitter:site</code>；</li><li>JSON-LD：文章是 <code>Article</code>（含 <code>author</code>、<code>publisher</code>、<code>keywords</code>，作者取 <code>site.author</code>），首页是 <code>WebSite</code>。</li></ul>
+<p>多语言站会在页面存在翻译版本时自动注入 <code>hreflang</code> 与 <code>og:locale:alternate</code>，<code>x-default</code> 指向默认语言；单语站完全不输出，产物零变化。description 的回退顺序是：front-matter <code>description</code> → 摘要前 160 字 → <code>site.description</code>。</p>
+<p>页面级开关：<code>image</code> 覆盖分享图、<code>canonical</code> 覆盖规范地址、<code>noindex: true</code> 输出 <code>noindex, follow</code>、<code>seo: false</code> 整页跳过本插件。</p>
+<h2 id="注意事项">注意事项</h2>
+<ul class="md-list"><li>模板里已手写 <code>rel=&quot;canonical&quot;</code> 或 <code>og:title</code> 时，对应部分不再注入，主题可以自行接管。</li><li>日期只写到天时按当天 00:00:00 UTC 输出，避免不同运行环境解析出前一天。</li><li>配合 <a href="/2026/11/21/xfmpress-plugin-sitemap/">sitemap 插件</a>可一并解决抓取入口问题，背景见<a href="/2026/11/21/xfmpress-seo-search/">SEO 与站内搜索</a>。</li></ul>]]></content:encoded>
+    </item>
+    <item>
+      <title>站内搜索插件：构建期生成索引，Ctrl/⌘+K 全站检索</title>
+      <link>https://xfm0797.github.io/2026/11/21/xfmpress-plugin-search/</link>
+      <guid isPermaLink="true">https://xfm0797.github.io/2026/11/21/xfmpress-plugin-search/</guid>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
+      <description>构建期把全站压缩成一份 search.json，纯前端筛选，没有服务端、不引入依赖；主题自带 Ctrl/⌘+K 搜索面板</description>
+      <category>xfmpress</category>
+      <category>插件</category>
+      <content:encoded><![CDATA[<p>静态站的搜索通常卡在两件事上：要么接一个外部搜索服务，要么自己写服务端。<code>xfm-plugin-search</code> 走第三条路——构建期把全部页面压成一份 <code>search.json</code>，浏览器打开面板时按需拉取、纯前端筛选。没有服务端，没有第三方依赖，搜索能力跟着构建产物走。</p>
+<h2 id="它解决什么">它解决什么</h2>
+<ul class="md-list"><li>零依赖、零服务：索引是构建产物的一部分，GitHub Pages 这类纯静态托管照样能用</li><li>构建期生成，访客首次打开面板才下载 <code>search.json</code>，不影响首屏</li><li>索引里存了标题、摘要、标签、分类和正文前若干字符，站内全文检索开箱即用</li></ul>
+<h2 id="安装与配置">安装与配置</h2>
+<div class="code-block"><pre class="language-bash"><code>npm i -D xfm-plugin-search</code></pre></div>
+<p>装完即生效——生成器会自动加载 <code>package.json</code> 里所有 <code>xfm-plugin-*</code> 依赖（若 <code>xfm dev</code> 正在运行，需重启）。也可以显式声明：</p>
+<div class="code-block"><pre class="language-js"><code><span class="hl-c">// xfm.config.mjs</span>
+<span class="hl-k">export</span> <span class="hl-k">default</span> {
+  plugins: [<span class="hl-s">'search'</span>],
+  search: {
+    path: <span class="hl-s">'search.json'</span>,  <span class="hl-c">// 索引文件路径</span>
+    maxChars: <span class="hl-n">1500</span>,       <span class="hl-c">// 每页收录的正文长度，默认 1500</span>
+    hint: <span class="hl-s">''</span>,             <span class="hl-c">// 搜索框占位文案</span>
+  },
+};</code></pre></div>
+<p>三个配置项都有合理默认，不配也能直接用。</p>
+<h2 id="产物与行为">产物与行为</h2>
+<p>构建结束后插件写出一份 <code>search.json</code>，内容是 <code>{ version, generated, count, items }</code>，每条 item 包含页面地址、标题、描述、标签、分类、日期和正文摘录。同时它会往模板上下文注入 <code>site.search</code>，主题据此决定是否渲染搜索入口、索引在哪个地址。</p>
+<p>本站就装着它：装好之后主题导航栏出现搜索按钮，按 <code>Ctrl/⌘+K</code>（macOS 下 <code>⌘+K</code>）打开面板即可检索全站。索引只收内容页——首页、标签/分类等聚合页、分页页都不会进索引。</p>
+<h2 id="注意事项">注意事项</h2>
+<ul class="md-list"><li>某个页面不想被搜到，在它的 front-matter 写 <code>search: false</code> 即可退出索引。本站的 404 页就是这么处理的</li><li><code>maxChars</code> 决定索引体积：文章长、站点大时可以调小摘录长度，换取更小的 <code>search.json</code></li><li>索引地址可通过 <code>path</code> 调整，改动后主题会通过 <code>site.search</code> 拿到新地址，不需要改模板</li></ul>
+<p>搜索引擎收录是 <code>seo</code> 插件的事，这个插件只负责「访客在你的站里找内容」这一段。如果你还没装任何插件，建议从<a href="/2026/11/21/xfmpress-plugins/">插件系统总览</a>读起，配置文件的写法见<a href="/2026/11/21/xfmpress-config/">配置指南</a>。</p>]]></content:encoded>
+    </item>
+    <item>
+      <title>RSS 插件：一个依赖生成全文订阅源 feed.xml</title>
+      <link>https://xfm0797.github.io/2026/11/21/xfmpress-plugin-rss/</link>
+      <guid isPermaLink="true">https://xfm0797.github.io/2026/11/21/xfmpress-plugin-rss/</guid>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
+      <description>安装即生效的 RSS 2.0 输出：content:encoded 打包全文、标签进 category、链接全绝对化，多语言站默认只收默认语言的流，limit 可调收录条数</description>
+      <category>xfmpress</category>
+      <category>插件</category>
+      <content:encoded><![CDATA[<p>订阅是博客最老也最可靠的分发渠道。<code>xfm-plugin-rss</code> 在构建末尾扫描全部文档，产出一份标准 RSS 2.0 的 <code>feed.xml</code>，正文全文打包，读者在阅读器里不用点开链接就能读完整篇。</p>
+<h2 id="它解决什么">它解决什么</h2>
+<p>不少生成器的订阅源只输出摘要，阅读器里永远差最后一跳。这个插件把每篇的完整 HTML 放进 <code>content:encoded</code>（CDATA 包裹），同时保留 <code>description</code> 与标签（转为 <code>&lt;category&gt;</code>）；所有链接由 <code>site.url</code> 与 <code>site.base</code> 拼成绝对地址，子路径部署也不会出现相对链接。频道级的标题、描述、语言直接取自 <code>site</code> 配置。</p>
+<h2 id="安装与配置">安装与配置</h2>
+<div class="code-block"><pre class="language-bash"><code>npm i -D xfm-plugin-rss</code></pre></div>
+<p>装了即生效——生成器自动发现 <code>package.json</code> 里所有 <code>xfm-plugin-*</code> 依赖（也可在 <code>plugins</code> 里写短名 <code>'rss'</code> 固定顺序）。唯一可调项是收录条数：</p>
+<div class="code-block"><pre class="language-js"><code><span class="hl-c">// xfm.config.mjs</span>
+<span class="hl-k">export</span> <span class="hl-k">default</span> {
+  site: {
+    url: <span class="hl-s">'https://example.com'</span>,  <span class="hl-c">// 没配则退回带 base 的相对路径</span>
+    rss: { limit: <span class="hl-n">20</span> },          <span class="hl-c">// 默认 20</span>
+  },
+};</code></pre></div>
+<p>要上阅读器就务必配 <code>site.url</code>，见<a href="/2026/11/21/xfmpress-deploy/">部署</a>。</p>
+<h2 id="产物与字段">产物与字段</h2>
+<p>输出一个文件 <code>feed.xml</code>，channel 节点带站点标题、链接、描述、语言（<code>site.lang</code>，默认 <code>zh-CN</code>）、<code>lastBuildDate</code> 和指向自身的 <code>atom:link</code>。每个 item 包含：</p>
+<ul class="md-list"><li><code>title</code>、<code>link</code>、<code>guid</code>（permalink）</li><li><code>pubDate</code>（UTC 格式）</li><li><code>description</code>：front-matter 的 <code>description</code>，没有则用摘要</li><li><code>category</code>：文章标签</li><li><code>content:encoded</code>：正文全文 HTML</li></ul>
+<p>收录规则：有 <code>date</code>、不是 <code>type: page</code>、front-matter 没写 <code>rss: false</code>、URL 不是首页。0.4.17 之后还按 <code>inStream</code> 过滤——多语言站的翻译版本（<code>inStream: false</code>）不会混进默认语言的订阅源。</p>
+<h2 id="注意事项">注意事项</h2>
+<ul class="md-list"><li>本站（xfmpress 官网）就启用了这个插件，<code>feed.xml</code> 只收录中文默认流，英文页面不在其中。</li><li>想单独排除某篇文章，front-matter 写 <code>rss: false</code>。</li><li>插件在启动时解析，装完要重启 <code>xfm dev</code>。</li></ul>]]></content:encoded>
+    </item>
+    <item>
+      <title>相关文章插件：按标签、分类与系列加权推荐</title>
+      <link>https://xfm0797.github.io/2026/11/21/xfmpress-plugin-related/</link>
+      <guid isPermaLink="true">https://xfm0797.github.io/2026/11/21/xfmpress-plugin-related/</guid>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
+      <description>渲染前为每篇文章算出相关推荐，标签 3 分、分类 2 分、系列 3 分加权打分，0.4.17 起只推荐同语言文章</description>
+      <category>xfmpress</category>
+      <category>插件</category>
+      <content:encoded><![CDATA[<p>「读完这篇，下一篇读什么」是内容站留住读者的关键一环。<code>xfm-plugin-related</code> 在渲染前为每篇文章算出相关推荐，写进 <code>page.data.related</code>，主题里有这个键就自动渲染推荐区块——不需要写一行模板代码。</p>
+<h2 id="它解决什么">它解决什么</h2>
+<p>相关文章本质是全站两两比较，放在单页钩子里算会把渲染拖回单线程。这个插件用 <code>afterCollect</code> 钩子：全部页面就位后一次性算完，worker 池不受影响，增量构建也不会留下过期的推荐（推荐列表参与页面缓存哈希）。</p>
+<h2 id="加权规则">加权规则</h2>
+<p>相关性按三处重合打分：</p>
+<div class="table-wrap"><table><thead><tr><th>重合点</th><th>分值</th></tr></thead><tbody><tr><td>标签</td><td>每个共有的标签 3 分</td></tr><tr><td>分类</td><td>2 分</td></tr><tr><td>系列</td><td>3 分</td></tr></tbody></table></div>
+<p>得分达到 <code>minScore</code> 的文章按分数排序，同分按日期新到旧，取前 <code>limit</code> 篇。只推荐文章——首页、聚合页和普通页面不参与。从 0.4.17 起，多语言站点只在同语言文章之间推荐，中文文章不会推荐出它的英文版本。另外单个标签下最多考察最近 200 篇，避免「随笔」这类大标签淹没结果。</p>
+<h2 id="安装与配置">安装与配置</h2>
+<div class="code-block"><pre class="language-bash"><code>npm i -D xfm-plugin-related</code></pre></div>
+<div class="code-block"><pre class="language-js"><code><span class="hl-c">// xfm.config.mjs</span>
+<span class="hl-k">export</span> <span class="hl-k">default</span> {
+  plugins: [<span class="hl-s">'related'</span>],
+  related: {
+    limit: <span class="hl-n">3</span>,      <span class="hl-c">// 每篇最多推荐几篇，默认 3</span>
+    minScore: <span class="hl-n">2</span>,   <span class="hl-c">// 最低得分门槛，默认 2</span>
+  },
+};</code></pre></div>
+<p>装完即生效（<code>xfm dev</code> 运行中需重启）。本站也装了它，两套内置主题都会在有推荐数据时渲染推荐区块。</p>
+<h2 id="页面级控制">页面级控制</h2>
+<p>front-matter 可以逐篇干预：</p>
+<div class="code-block"><pre class="language-yaml"><code>---
+related: <span class="hl-k">false</span>              <span class="hl-c"># 这篇不显示推荐</span>
+related:                    <span class="hl-c"># 手动指定推荐列表（写站内地址）</span>
+  - /<span class="hl-n">2026</span>/<span class="hl-n">11</span>/<span class="hl-n">21</span>/xfmpress-quick-start/
+  - /<span class="hl-n">2026</span>/<span class="hl-n">11</span>/<span class="hl-n">21</span>/xfmpress-config/
+---</code></pre></div>
+<p>手动列表会覆盖自动计算的结果，仍然受 <code>limit</code> 截断。</p>
+<h2 id="注意事项">注意事项</h2>
+<ul class="md-list"><li>推荐质量取决于元数据质量：标签、分类、系列填得越准，推荐越对味。系列（<code>series</code>）权重最高，写连载教程时尤其值得用，系列概念见<a href="/2026/11/21/xfmpress-content/">内容组织</a></li><li><code>minScore: 2</code> 意味着只共用一个分类（2 分）也会上榜；想更严格可调到 3</li><li>插件只负责算数据，推荐区块的样式由主题决定，想改样式看<a href="/2026/11/21/xfmpress-theme-default/">默认主题</a></li></ul>]]></content:encoded>
+    </item>
+    <item>
+      <title>跳转插件：旧地址生成跳转页，链接永不 404</title>
+      <link>https://xfm0797.github.io/2026/11/21/xfmpress-plugin-redirect/</link>
+      <guid isPermaLink="true">https://xfm0797.github.io/2026/11/21/xfmpress-plugin-redirect/</guid>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
+      <description>在每个旧地址生成极小的跳转页，meta refresh、JS 跳转与可见链接三条腿走路，带 rel=canonical 与 noindex,follow</description>
+      <category>xfmpress</category>
+      <category>插件</category>
+      <content:encoded><![CDATA[<p>文章换了地址，旧链接不会跟着消失：外站引用、搜索引擎索引、读者的书签都还指着老地方。<code>xfm-plugin-redirect</code> 在每个旧地址生成一个极小的跳转页，让这些入口照常工作，而不是撞上 404。</p>
+<h2 id="它解决什么">它解决什么</h2>
+<p>迁移文章、调整 URL 结构、从其他博客系统搬家，都会制造一批失效地址。这个插件在构建时把旧地址映射到新地址，产物是真正的 HTML 文件，静态托管直接可用。</p>
+<p>跳转页做了三层保险，任何环境都能跳：</p>
+<ol><li><code>meta refresh</code>——禁 JS 的浏览器也能跳</li><li><code>location.replace</code>——JS 环境下瞬时跳转且不污染历史记录</li><li>一个可见链接——万一都没生效，读者手动点一下就能过去</li></ol>
+<h2 id="安装与配置">安装与配置</h2>
+<div class="code-block"><pre class="language-bash"><code>npm i -D xfm-plugin-redirect</code></pre></div>
+<p>两种声明方式，按场景选：</p>
+<div class="code-block"><pre class="language-js"><code><span class="hl-c">// xfm.config.mjs</span>
+<span class="hl-k">export</span> <span class="hl-k">default</span> {
+  plugins: [<span class="hl-s">'redirect'</span>],
+  redirects: {
+    <span class="hl-s">'/old-post/'</span>: <span class="hl-s">'/posts/new-post/'</span>,
+    <span class="hl-s">'/2020/01/hello.html'</span>: <span class="hl-s">'https://example.com/hello/'</span>,
+  },
+};</code></pre></div>
+<ul class="md-list"><li><strong>全局映射</strong>：在配置的 <code>redirects</code> 里写死「旧地址 → 新地址」，适合整站级别的规则。目标可以是站内路径，也可以是 <code>https://</code> 外链</li><li><strong>跟着页面走</strong>：在文章自己的 front-matter 写 <code>redirect_from</code>（或其别名 <code>aliases</code>），改地址时最顺手——删掉文章，跳转也跟着消失：</li></ul>
+<div class="code-block"><pre class="language-yaml"><code>---
+redirect_from:
+  - /old-post/
+  - /<span class="hl-n">2020</span>/<span class="hl-n">01</span>/hello.html
+---</code></pre></div>
+<h2 id="产物与行为">产物与行为</h2>
+<p>每个旧地址生成一个 HTML 文件，按内核的 URL 规则落盘（<code>/x/</code> 对应 <code>x/index.html</code>，<code>.html</code> 结尾原样保留）。跳转页带 <code>rel=canonical</code> 指向新地址、<code>robots</code> 为 <code>noindex,follow</code>——搜索引擎会更新索引而不是收录一堆重复页。</p>
+<p>旧地址会先规范化（补前导斜杠、去掉 query 和 hash、<code>/x</code> 视作 <code>/x/</code>），写的时候不用纠结格式。</p>
+<h2 id="注意事项">注意事项</h2>
+<ul class="md-list"><li>如果某个旧地址上本来就有真实页面，插件会跳过并告警，绝不覆盖真实内容</li><li>某篇想临时关掉跳转，front-matter 写 <code>redirect: false</code></li><li>跳转页解决的是「人还能找到内容」，搜索引擎权重迁移建议配合 <code>seo</code> 插件的 canonical 输出；本站从 Hexo 迁来后下掉了不少旧文章，这类场景正适合它。URL 规则的细节见<a href="/2026/11/21/xfmpress-content/">内容组织</a></li></ul>]]></content:encoded>
+    </item>
+    <item>
+      <title>阅读统计：字数与时长零配置生成</title>
+      <link>https://xfm0797.github.io/2026/11/21/xfmpress-plugin-reading-stats/</link>
+      <guid isPermaLink="true">https://xfm0797.github.io/2026/11/21/xfmpress-plugin-reading-stats/</guid>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
+      <description>xfm-plugin-reading-stats 在构建时为每页统计字数（中文按字、英文按词）并估算阅读分钟数，生成 stats.json 供榜单或报告使用，同时注入 site.stats 模板变量</description>
+      <category>xfmpress</category>
+      <category>插件</category>
+      <content:encoded><![CDATA[<p>「这篇文章多少字、要读几分钟」是文章页常见的元信息，放构建期算好比运行时估算更可靠。<code>xfm-plugin-reading-stats</code> 零配置：装上就在构建时给每个页面算字数和预计阅读时长，并生成一份整站统计文件。</p>
+<h2 id="它解决什么">它解决什么</h2>
+<ul class="md-list"><li>字数统计分语种：中文按字计，英文按词计，不是简单按字符数除以常数。统计前会剥掉 <code>&lt;pre&gt;</code>、<code>&lt;script&gt;</code>、<code>&lt;style&gt;</code> 块和所有 HTML 标签，代码块不会虚增字数。</li><li>阅读分钟数按每分钟 400 字估算，不足 1 分钟按 1 分钟计。</li><li>它同时是 <code>extendContext</code> 钩子的官方示例：整站统计注入模板上下文，想给自己的插件加模板数据，照它抄就行。</li></ul>
+<h2 id="安装与配置">安装与配置</h2>
+<div class="code-block"><pre class="language-bash"><code>npm i -D xfm-plugin-reading-stats</code></pre></div>
+<p>没有任何配置项——<code>xfm.config.mjs</code> 里没有 <code>reading-stats</code> 键，也没有 front-matter 开关，装上即全站生效。</p>
+<h2 id="运行时行为-产物">运行时行为 / 产物</h2>
+<p>构建结束后生成 <code>stats.json</code>：<code>totalWords</code>（整站总字数）、<code>totalPages</code>（页数）、<code>pages</code>（按字数从多到少排列的前 200 页，每条含 <code>url</code>、<code>title</code>、<code>words</code>、<code>minutes</code>）。拿它做「字数最多」榜单、构建报告或前端展示都行。</p>
+<p>模板侧通过 <code>site.stats</code> 拿整站概览的 <code>words</code> 与 <code>minutes</code>，比如在页脚显示全站规模：</p>
+<div class="code-block"><pre class="language-liquid"><code>{{ site.stats.words }} 字 / 约 {{ site.stats.minutes }} 分钟读完</code></pre></div>
+<p>注意口径差异：<code>site.stats.words</code> 基于各页摘要与标题聚合，是整站量级的概览数字；单页的精确字数看 <code>stats.json</code> 里的逐页数据，那才是基于渲染后 HTML 全文的统计。</p>
+<h2 id="注意事项">注意事项</h2>
+<ul class="md-list"><li>字数口径是「中文字数 + 英文单词数」，与字处理软件的「字符数」不是一回事，别拿它对外宣称精确字数。</li><li>阅读速度 400 字/分钟是写死的常数估算，无法按页面调整。</li><li><code>stats.json</code> 的 <code>pages</code> 明细最多记录 200 页，超出的页面只计入总量，不出现在明细里。</li></ul>]]></content:encoded>
+    </item>
+    <item>
+      <title>PWA 插件：manifest、Service Worker 与离线页</title>
+      <link>https://xfm0797.github.io/2026/11/21/xfmpress-plugin-pwa/</link>
+      <guid isPermaLink="true">https://xfm0797.github.io/2026/11/21/xfmpress-plugin-pwa/</guid>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
+      <description>构建期生成 manifest.webmanifest、sw.js 与 offline.html，没准备图标时自动用站点标题首字生成 icon.svg</description>
+      <category>xfmpress</category>
+      <category>插件</category>
+      <content:encoded><![CDATA[<p>让博客「可以安装到主屏幕、断网也能读」听起来要写不少样板代码。<code>xfm-plugin-pwa</code> 把这些活全部挪到构建期：一次安装，产物里多出 manifest、Service Worker 和离线兜底页，页面头部自动注入对应的链接与标签。</p>
+<h2 id="它解决什么">它解决什么</h2>
+<ul class="md-list"><li><strong>可安装</strong>：生成 <code>manifest.webmanifest</code>（名称、图标、主题色、独立窗口），手机浏览器会把站点当作可安装应用</li><li><strong>离线可读</strong>：Service Worker 缓存页面与静态资源，断网时回退缓存或离线页</li><li><strong>零图标依赖</strong>：如果你没准备任何图标，插件会用站点标题的首字生成一个 <code>icon.svg</code>，不会因为缺图而装不起来</li></ul>
+<h2 id="安装与配置">安装与配置</h2>
+<div class="code-block"><pre class="language-bash"><code>npm i -D xfm-plugin-pwa</code></pre></div>
+<div class="code-block"><pre class="language-js"><code><span class="hl-c">// xfm.config.mjs</span>
+<span class="hl-k">export</span> <span class="hl-k">default</span> {
+  plugins: [<span class="hl-s">'pwa'</span>],
+  pwa: {
+    name: <span class="hl-s">'我的站点'</span>,           <span class="hl-c">// 默认取 site.title</span>
+    shortName: <span class="hl-s">'站点'</span>,          <span class="hl-c">// 默认取 site.title，过长会截断</span>
+    themeColor: <span class="hl-s">'#3b82f6'</span>,     <span class="hl-c">// 浏览器地址栏 / 状态栏颜色，默认 #3b82f6</span>
+    backgroundColor: <span class="hl-s">'#ffffff'</span>, <span class="hl-c">// 默认 #ffffff</span>
+    display: <span class="hl-s">'standalone'</span>,     <span class="hl-c">// 默认 standalone</span>
+    offline: <span class="hl-k">true</span>,             <span class="hl-c">// 生成离线兜底页，默认开启</span>
+    cacheExtra: [<span class="hl-s">'/assets/font.woff2'</span>], <span class="hl-c">// 额外要预缓存的地址</span>
+  },
+};</code></pre></div>
+<p>多数配置默认取自站点的 <code>site</code> 配置，最小配置（只装插件、不写 <code>pwa</code> 段）就能跑。</p>
+<h2 id="产物与行为">产物与行为</h2>
+<p>构建产物新增四个文件：</p>
+<div class="table-wrap"><table><thead><tr><th>文件</th><th>作用</th></tr></thead><tbody><tr><td><code>manifest.webmanifest</code></td><td>安装清单：名称、图标、主题色、启动地址</td></tr><tr><td><code>sw.js</code></td><td>Service Worker，导航请求网络优先、静态资源缓存优先</td></tr><tr><td><code>offline.html</code></td><td>断网且无缓存时的兜底页</td></tr><tr><td><code>icon.svg</code></td><td>未提供图标时自动生成的首字图标</td></tr></tbody></table></div>
+<p>页面头部会被注入 <code>&lt;link rel=&quot;manifest&quot;&gt;</code>、<code>&lt;meta name=&quot;theme-color&quot;&gt;</code> 和 <code>apple-touch-icon</code>，生产环境还会自动注册 Service Worker。缓存清单包含首页、主题资源与 <code>public</code> 里的静态资源（css/js/字体/图片），缓存版本号由清单内容摘要生成——清单一变，用户端自动换新缓存，不会卡在旧版本上。想强制预缓存某几个文件，用 <code>cacheExtra</code>。</p>
+<h2 id="注意事项">注意事项</h2>
+<ul class="md-list"><li><strong>Service Worker 只在 https 或 localhost 下生效</strong>；构建产物直接用 <code>file://</code> 打开无效</li><li>manifest 链接默认只在生产构建注入，开发阶段想看效果设 <code>dev: true</code></li><li>某个页面不想注入 manifest 链接，front-matter 写 <code>pwa: false</code></li><li>提供了 <code>icons</code> 时插件不再生成 <code>icon.svg</code>，避免覆盖你自己的文件</li></ul>
+<p>本站没有安装这个插件——是否要离线能力取决于站点性质，对以阅读为主的博客来说它是低成本加分项。部署环境要求见<a href="/2026/11/21/xfmpress-deploy/">部署指南</a>。</p>]]></content:encoded>
+    </item>
+    <item>
+      <title>HTML 压缩插件：只删安全空白，代码块原样保留</title>
+      <link>https://xfm0797.github.io/2026/11/21/xfmpress-plugin-minify/</link>
+      <guid isPermaLink="true">https://xfm0797.github.io/2026/11/21/xfmpress-plugin-minify/</guid>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
+      <description>xfm-plugin-minify 在生产构建时删除 HTML 注释、行尾空白与缩进，pre、code、textarea、script、style 整体跳过，dev 模式不压缩</description>
+      <category>xfmpress</category>
+      <category>插件</category>
+      <content:encoded><![CDATA[<p>静态站点的 HTML 往往带着大量缩进、空行和模板注释——它们对浏览器毫无意义，却实打实占着传输体积。xfm-plugin-minify 是 xfmpress 官方的 HTML 压缩插件，在<strong>生产构建</strong>时把这些死重清掉，同时小心避开所有不该碰的内容。它和 <a href="/2026/11/21/xfmpress-seo-search/">SEO 插件</a> 一样属于「装上就受益」的收尾型插件。</p>
+<h2 id="它解决什么">它解决什么</h2>
+<p>压缩器最大的风险是误伤：删错一个空格，行内元素的间距就没了；碰一下 <code>&lt;pre&gt;</code>，代码格式就乱了。本插件的做法是先把保护名单里的块整体摘出、压完再放回去，其余部分只删确定安全的空白。</p>
+<h2 id="安装与配置">安装与配置</h2>
+<div class="code-block"><pre class="language-bash"><code>npm i -D xfm-plugin-minify</code></pre></div>
+<p>装完即生效，或在 <a href="/2026/11/21/xfmpress-config/">配置文件</a> 里显式声明：</p>
+<div class="code-block"><pre class="language-js"><code><span class="hl-c">// xfm.config.mjs</span>
+<span class="hl-k">export</span> <span class="hl-k">default</span> {
+  plugins: [<span class="hl-s">'minify'</span>],
+  minify: {
+    enabled: <span class="hl-k">true</span>,     <span class="hl-c">// 默认开启，写 false 可整体关闭</span>
+    aggressive: <span class="hl-k">false</span>, <span class="hl-c">// true 时额外折叠标签之间的换行</span>
+  },
+};</code></pre></div>
+<h2 id="产物与行为">产物与行为</h2>
+<p>默认模式做四件事：</p>
+<ul class="md-list"><li>删除 HTML 注释，但保留 <code>&lt;!--[if ...]&gt;</code> 条件注释</li><li>删除行尾空白与只含空白的行</li><li>删除行首缩进（保留换行符，渲染结果不变）</li><li>合并连续空行</li></ul>
+<p><strong>保护名单</strong>：<code>&lt;pre&gt;</code>、<code>&lt;code&gt;</code>、<code>&lt;textarea&gt;</code>、<code>&lt;script&gt;</code>、<code>&lt;style&gt;</code> 五类元素整体跳过，内容一字不动——代码缩进、脚本换行、CSS 格式都保持原样。</p>
+<p><strong>默认模式为什么保守</strong>：它只折叠「跨行」的空白，不碰同一行里的单个空格。<code>&lt;a&gt;甲&lt;/a&gt; &lt;b&gt;乙&lt;/b&gt;</code> 中间那个空格是行内元素之间的语义间距，删掉会让文字粘成一坨，所以默认模式绝不碰它。</p>
+<p><strong>dev 模式完全不压缩</strong>：<code>xfm dev</code> 下源码保持可读，热更新和调试时看生成的 HTML 更直观。压缩只发生在 <code>xfm build</code>。</p>
+<h2 id="注意事项">注意事项</h2>
+<p><code>aggressive: true</code> 会额外把标签之间的换行折叠掉（<code>&gt;\n&lt;</code> 变 <code>&gt;&lt;</code>），产物更小，但可能影响依赖标签间距的行内布局——如果你不确定主题是否依赖这些换行，先保持默认的 <code>false</code>，用浏览器开发者工具对比一下再决定。与其他插件的先后配合无需操心：压缩作用于最终 HTML，对 <a href="/2026/11/21/xfmpress-plugin-math/">math</a> 产出的 KaTeX 片段同样安全。插件生态总览见<a href="/2026/11/21/xfmpress-plugins/">官方插件</a>。</p>]]></content:encoded>
+    </item>
+    <item>
+      <title>图表插件：mermaid 代码块变图表，按页注入</title>
+      <link>https://xfm0797.github.io/2026/11/21/xfmpress-plugin-mermaid/</link>
+      <guid isPermaLink="true">https://xfm0797.github.io/2026/11/21/xfmpress-plugin-mermaid/</guid>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
+      <description>xfm-plugin-mermaid 把 ```mermaid 围栏代码块变成流程图、时序图等 SVG 图表，渲染脚本只在真正含图表的页面注入，默认本地自托管</description>
+      <category>xfmpress</category>
+      <category>插件</category>
+      <content:encoded><![CDATA[<p>画架构图、时序图、流程图，最省事的方式是直接在 Markdown 里写 mermaid 代码。xfm-plugin-mermaid 是 xfmpress 官方图表插件，与 0.4.15 同期推出的<a href="/2026/11/21/xfmpress-plugin-math/">数学公式插件</a>互为补充：公式走构建期渲染，图表则交由浏览器渲染成 SVG。你只管写一个 <code> </code><code></code>mermaid ` 围栏代码块，浏览器把它画出来。</p>
+<h2 id="它解决什么">它解决什么</h2>
+<p>不装插件时，mermaid 代码块只是一段普通代码展示；逐页手写 <code>&lt;script&gt;</code> 引入 mermaid 又会在不需要图表的页面白载一个 5 MB 的包。本插件在构建时扫描每页 HTML，<strong>只给真正含图表的页面</strong>注入渲染脚本和一小段样式，其余页面保持干净。</p>
+<h2 id="安装与配置">安装与配置</h2>
+<div class="code-block"><pre class="language-bash"><code>npm i -D xfm-plugin-mermaid</code></pre></div>
+<p>装完即生效，或在 <a href="/2026/11/21/xfmpress-config/">配置文件</a> 里显式声明：</p>
+<div class="code-block"><pre class="language-js"><code><span class="hl-c">// xfm.config.mjs</span>
+<span class="hl-k">export</span> <span class="hl-k">default</span> {
+  plugins: [<span class="hl-s">'mermaid'</span>],
+  mermaid: {
+    mode: <span class="hl-s">'local'</span>,          <span class="hl-c">// 'local' 复制进产物 | 'cdn' | 'none' 自己引</span>
+    path: <span class="hl-s">'assets/mermaid'</span>, <span class="hl-c">// mode: 'local' 时的产物目录</span>
+    theme: <span class="hl-s">'default'</span>,       <span class="hl-c">// default | neutral | dark | forest | base</span>
+    securityLevel: <span class="hl-s">'loose'</span>, <span class="hl-c">// 允许点击交互与 HTML 标签；不信任内容时用 'strict'</span>
+    option: {},             <span class="hl-c">// 其余选项原样并入 mermaid.initialize()</span>
+  },
+};</code></pre></div>
+<p>所有 mermaid 图类型都支持：流程图、时序图、类图、状态图、ER 图、甘特图、饼图、git graph、脑图、时间线、象限图、桑基图等等。</p>
+<h2 id="产物与写法">产物与写法</h2>
+<div class="code-block"><pre class="language-markdown"><code>```mermaid
+graph TD
+  A[Markdown] --&gt; B{构建}
+  B --&gt;|成功| C[HTML]
+  B --&gt;|失败| D[日志]
+```</code></pre></div>
+<p>构建后代码块变成 <code>&lt;pre class=&quot;mermaid&quot;&gt;…&lt;/pre&gt;</code>，页面 <code>&lt;/body&gt;</code> 前注入 <code>&lt;script src&gt;</code> 和一段调用 <code>mermaid.run()</code> 的引导脚本，路径自动套用站点 <code>base</code>。默认 <code>mode: 'local'</code> 时构建会把 <code>mermaid.min.js</code> 复制到 <code>assets/mermaid/</code>——本地托管，离线可用，无第三方请求。</p>
+<h2 id="注意事项">注意事项</h2>
+<p><strong>为什么选浏览器端渲染</strong>：mermaid 依赖 DOM 与真实文本测量，构建期渲染得挂 jsdom 或无头浏览器，与 xfmpress「零依赖、秒级构建」的承诺相悖。客户端渲染的代价只是含图页面多一次脚本执行，换来构建零依赖，而且图会随页面字体与主题自适应。</p>
+<p><strong>体积与缓存</strong>：<code>mermaid.min.js</code> 未压缩约 5 MB（gzip 后约 1.2 MB），大多数静态托管平台自动压缩，浏览器在访问过第一个含图页面后即缓存。介意体积可改 <code>mode: 'cdn'</code> 走 jsDelivr，产物里不落任何文件；不介意加载来源则维持 <code>local</code>，<a href="/2026/11/21/xfmpress-deploy/">部署</a> 后完全自持。</p>
+<p><strong>逐页关闭</strong>：某页要展示 mermaid 源码本身（比如本插件的教学页），在该页 front-matter 写 <code>mermaid: false</code>，代码块保持普通代码清单原样。页内已手写 mermaid 脚本时插件不会重复注入。插件生态总览见<a href="/2026/11/21/xfmpress-plugins/">官方插件</a>。</p>]]></content:encoded>
+    </item>
+    <item>
+      <title>数学公式插件：构建期 KaTeX 渲染，零客户端 JS</title>
+      <link>https://xfm0797.github.io/2026/11/21/xfmpress-plugin-math/</link>
+      <guid isPermaLink="true">https://xfm0797.github.io/2026/11/21/xfmpress-plugin-math/</guid>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
+      <description>xfm-plugin-math 在构建时用 KaTeX 把 LaTeX 公式渲染成 HTML，页面只有静态 HTML 与本地 CSS，无客户端 JS、无 CDN 请求，代码块与美元转义不受影响</description>
+      <category>xfmpress</category>
+      <category>插件</category>
+      <content:encoded><![CDATA[<p>写技术博客绕不开公式：算法推导、统计口径、损失函数。xfm-plugin-math 是 xfmpress 官方的数学插件，它在<strong>构建期</strong>用 KaTeX 把 LaTeX 公式渲染成 HTML——发布出去的页面里只有静态 HTML 和一段本地 CSS，浏览器不需要加载任何渲染脚本，也不会出现「闪一下未渲染的 LaTeX」的尴尬。这也是它与 0.4.15 同期推出的<a href="/2026/11/21/xfmpress-plugin-mermaid/">图表插件</a>最大的分工差异：公式在构建期解决，图表交给浏览器。</p>
+<h2 id="它解决什么">它解决什么</h2>
+<p>MathJax 一类的方案在浏览器里渲染公式，首屏会先闪现原始 LaTeX 源码；而依赖 CDN 意味着多一个第三方请求、多一个故障点。xfm-plugin-math 把渲染挪到构建期，页面加载即最终形态，样式表和字体也全部自托管进站点产物。</p>
+<h2 id="安装与配置">安装与配置</h2>
+<div class="code-block"><pre class="language-bash"><code>npm i -D xfm-plugin-math</code></pre></div>
+<p>装完即生效——生成器会自动加载站点 <code>package.json</code> 里所有 <code>xfm-plugin-*</code> 依赖。也可以在 <a href="/2026/11/21/xfmpress-config/">配置文件</a> 里显式声明：</p>
+<div class="code-block"><pre class="language-js"><code><span class="hl-c">// xfm.config.mjs</span>
+<span class="hl-k">export</span> <span class="hl-k">default</span> {
+  plugins: [<span class="hl-s">'math'</span>],
+  math: {
+    css: <span class="hl-s">'local'</span>,         <span class="hl-c">// 'local' 复制进产物 | 'cdn' | 'none' 自己引</span>
+    path: <span class="hl-s">'assets/katex'</span>, <span class="hl-c">// css: 'local' 时的产物目录</span>
+    fonts: <span class="hl-s">'woff2'</span>,       <span class="hl-c">// 'woff2'（约 300 KB）| 'all' 连 woff/ttf 一起</span>
+    macros: {},           <span class="hl-c">// 自定义宏，如 { '\\RR': '\\mathbb{R}' }</span>
+    output: <span class="hl-s">'html'</span>,       <span class="hl-c">// 'html' | 'htmlAndMathml'（后者利于读屏，体积更大）</span>
+    strict: <span class="hl-k">false</span>,
+    errorColor: <span class="hl-s">'#cc0000'</span>,
+  },
+};</code></pre></div>
+<p>KaTeX 覆盖分式、根式、求和积分、矩阵、多行对齐、希腊字母、<code>\text{中文}</code> 等绝大多数常用命令，完整列表见 katex.org 的 supported 页。</p>
+<h2 id="产物与写法">产物与写法</h2>
+<p>三种写法，与主流 Markdown 编辑器一致：</p>
+<div class="code-block"><pre class="language-markdown"><code>行内：$a^2 + b^2 = c^2$ 出现在句子中间。
+
+$$
+\int_0^1 x^2 \, dx = \frac{1}{3}
+$$
+
+LaTeX 习惯也支持：\(x^2\) 与 \[x^2\]</code></pre></div>
+<p>块级公式会渲染成居中的 KaTeX HTML，样式只在<strong>真正含公式的页面</strong>注入（且页面已引过 katex.css 时不重复）。<code>css: 'local'</code>（默认）时，构建会把 <code>katex.min.css</code> 和 woff2 字体复制到 <code>assets/katex/</code>，CSS 里的 woff/ttf 回退源会被顺手删掉，产物里不留指向不存在文件的 <code>url()</code>。</p>
+<h2 id="注意事项">注意事项</h2>
+<p><strong>为什么 <code>$a_1$</code> 不会变斜体</strong>：下划线在 Markdown 里是强调记号。插件在 Markdown 解析<strong>之前</strong>就把每个公式换成 Unicode 私用区占位符（公式源码以 base64url 编码在占位符内），Markdown 引擎根本看不到 <code>$...$</code> 里的 <code>_</code> 和 <code>*</code>；页面渲染完成后再把占位符换回 KaTeX HTML。整个过程无跨阶段状态，这是它比「事后正则修补」可靠的根本原因。</p>
+<p><strong>边界保护</strong>：围栏代码块、行内代码、缩进代码块里的 <code>$</code> 原样保留；<code>\$</code> 输出字面美元符号，所以「$5 和 $10」不会被吃掉。行内公式还有额外约束：不跨行、开 <code>$</code> 后不留空白、闭 <code>$</code> 后不接数字，纯数字价格不会被误判。</p>
+<p><strong>构建方式变化</strong>：因为注册了 <code>markdown</code> 钩子，安装本插件后生产构建在主线程渲染而非 worker 池。实测千页站点的额外渲染时间不到一秒，可忽略。</p>
+<p>公式写错了也不会让构建失败——KaTeX 出错时会以红色错误色保留可读片段（可用 <code>errorColor</code> 改色），方便发布前发现。更多插件生态见<a href="/2026/11/21/xfmpress-plugins/">官方插件总览</a>。</p>]]></content:encoded>
+    </item>
+    <item>
+      <title>llms 插件：给大模型读的 llms.txt 与 llms-full.txt</title>
+      <link>https://xfm0797.github.io/2026/11/21/xfmpress-plugin-llms/</link>
+      <guid isPermaLink="true">https://xfm0797.github.io/2026/11/21/xfmpress-plugin-llms/</guid>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
+      <description>按 llmstxt.org 约定生成纯文本索引：分组文章清单带一句话描述，可选全文版附剥离标签后的正文纯文本，多语言站收录所有语言页面</description>
+      <category>xfmpress</category>
+      <category>插件</category>
+      <content:encoded><![CDATA[<p>让大模型了解一个站点，最便宜的方式不是让它解析整站 HTML，而是给它一份 llms.txt。<code>xfm-plugin-llms</code> 按 <a href="https://llmstxt.org" target="_blank" rel="noopener">llmstxt.org</a> 约定在构建末尾生成 <code>llms.txt</code> 与 <code>llms-full.txt</code>，体积远小于整站页面。</p>
+<h2 id="它解决什么">它解决什么</h2>
+<p>整站 HTML 噪音多、体积大，模型抓起来贵、读起来累。<code>llms.txt</code> 是一份分组的文章索引——站点摘要加每篇的标题、绝对链接与一句话描述；<code>llms-full.txt</code> 在此之上附每篇正文的纯文本（构建期去掉 script、style、pre 等标签）。AI 搜索爬虫与「把整个站喂给模型」的场景直接受益，见<a href="/2026/11/21/xfmpress-seo-search/">SEO 与站内搜索</a>。</p>
+<h2 id="安装与配置">安装与配置</h2>
+<div class="code-block"><pre class="language-bash"><code>npm i -D xfm-plugin-llms</code></pre></div>
+<p>装了即生效，四个可调项：</p>
+<div class="code-block"><pre class="language-js"><code><span class="hl-c">// xfm.config.mjs</span>
+<span class="hl-k">export</span> <span class="hl-k">default</span> {
+  llms: {
+    path: <span class="hl-s">'llms.txt'</span>,        <span class="hl-c">// 索引文件路径</span>
+    full: <span class="hl-k">true</span>,              <span class="hl-c">// 设为 false 跳过全文文件</span>
+    fullPath: <span class="hl-s">'llms-full.txt'</span>, <span class="hl-c">// 全文文件路径</span>
+    maxItems: <span class="hl-n">0</span>,             <span class="hl-c">// 清单条数上限，0 = 全部</span>
+  },
+};</code></pre></div>
+<h2 id="产物与字段">产物与字段</h2>
+<p><code>llms.txt</code> 的结构：<code>#</code> 站点标题开头，有 <code>site.description</code> 时跟一行 <code>&gt;</code> 引用，接着是文章数与语言两行统计；正文按 <code>category</code> 分组，每组一个 <code>##</code> 小节，每行格式为 <code>- [标题](绝对链接): 描述</code>。<code>llms-full.txt</code> 先放同一份清单，之后逐篇追加 <code>##</code> 标题、页面链接与正文纯文本。</p>
+<p>收录规则：有 <code>date</code>、不是 <code>type: page</code>、URL 不是首页；front-matter 写 <code>llms: false</code> 可排除某一页。</p>
+<p>值得多语言站留意：与 <a href="/2026/11/21/xfmpress-plugin-rss/">rss 插件</a>不同，<code>llms.txt</code> 不做 <code>inStream</code> 过滤，所有语言的页面都在清单里——和 <code>search.json</code> 一样，这正是它对 AI 场景的价值：模型一次就能看到全站（含各语言）的内容。</p>
+<h2 id="注意事项">注意事项</h2>
+<ul class="md-list"><li>全文文件体积与文章总量成正比，站大可以用 <code>maxItems</code> 收紧清单，或 <code>full: false</code> 只留索引。</li><li>正文转纯文本是够用级实现：<code>pre</code> 代码块会被整段剥掉，依赖代码示例完整呈现的内容自己权衡是否进全文文件。</li><li>没有任何文章时插件不输出文件，不用做空文件判断。</li></ul>]]></content:encoded>
+    </item>
+    <item>
+      <title>图片尺寸插件：补全宽高属性，消除布局抖动</title>
+      <link>https://xfm0797.github.io/2026/11/21/xfmpress-plugin-image-size/</link>
+      <guid isPermaLink="true">https://xfm0797.github.io/2026/11/21/xfmpress-plugin-image-size/</guid>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
+      <description>xfm-plugin-image-size 构建时读取本地图片文件头，为 img 补上 width 与 height 属性并默认加 loading=&quot;lazy&quot;，消除图片加载引起的布局抖动</description>
+      <category>xfmpress</category>
+      <category>插件</category>
+      <content:encoded><![CDATA[<p>图片加载完成时页面突然往下蹦一下——这是布局抖动（CLS），Core Web Vitals 里的扣分项。根因是 <code>&lt;img&gt;</code> 缺少 <code>width</code>/<code>height</code>，浏览器在图片到达前不知道该留多大位置。xfm-plugin-image-size 是 xfmpress 官方的图片尺寸插件，构建时读一下本地图片的文件头，把尺寸写进属性，浏览器据此预留空间，页面从此稳定。</p>
+<h2 id="它解决什么">它解决什么</h2>
+<p>逐篇文章手工标注图片尺寸既繁琐又容易过期。本插件自动化这件事：不联网、不解码整张图，只读文件头几十个字节就能解析出宽高，PNG、JPEG、GIF、WebP、SVG 都支持。SVG 取 <code>width</code>/<code>height</code> 属性，缺失时回退到 <code>viewBox</code>。</p>
+<h2 id="安装与配置">安装与配置</h2>
+<div class="code-block"><pre class="language-bash"><code>npm i -D xfm-plugin-image-size</code></pre></div>
+<p>装完即生效，或在 <a href="/2026/11/21/xfmpress-config/">配置文件</a> 里显式声明：</p>
+<div class="code-block"><pre class="language-js"><code><span class="hl-c">// xfm.config.mjs</span>
+<span class="hl-k">export</span> <span class="hl-k">default</span> {
+  plugins: [<span class="hl-s">'image-size'</span>],
+  imageSize: {
+    publicDir: <span class="hl-s">'public'</span>, <span class="hl-c">// 站点静态资源目录</span>
+    lazy: <span class="hl-k">true</span>,          <span class="hl-c">// 顺带给没有 loading 的图片补 loading=&quot;lazy&quot;</span>
+    dev: <span class="hl-k">false</span>,          <span class="hl-c">// dev 下是否也处理，默认只在生产构建</span>
+  },
+};</code></pre></div>
+<h2 id="产物与行为">产物与行为</h2>
+<p>Markdown 里的 <code>![封面](/img/cover.png)</code> 构建后变成：</p>
+<div class="code-block"><pre class="language-html"><code><span class="hl-p">&lt;</span><span class="hl-k">img</span> <span class="hl-a">src</span>=<span class="hl-s">&quot;/img/cover.png&quot;</span> <span class="hl-a">width</span>=<span class="hl-s">&quot;1280&quot;</span> <span class="hl-a">height</span>=<span class="hl-s">&quot;720&quot;</span> <span class="hl-a">loading</span>=<span class="hl-s">&quot;lazy&quot;</span><span class="hl-p">&gt;</span></code></pre></div>
+<p>图片查找按顺序尝试三处：<code>public/</code> 目录（可用 <code>publicDir</code> 改）、<code>content/</code> 下与文章同目录（支持 Page Bundle 配图）、主题的 <code>assets/</code> 目录。尺寸结果按文件路径缓存，同一张图在一千篇文章里引用也只读一次文件。相对路径如 <code>./cover.png</code> 会按页面 URL 解析成站内绝对路径。</p>
+<h2 id="注意事项">注意事项</h2>
+<p><strong>哪些图片会被放过</strong>：外链图片、<code>data:</code> URI、纯锚点，以及已经同时写有 <code>width</code> 和 <code>height</code> 的 <code>&lt;img&gt;</code> 都原样保留——插件只补缺，不覆盖。路径越出站点目录的引用直接放弃，不会越界读文件。</p>
+<p><strong>dev 与生产</strong>：默认只在生产构建处理（<code>xfm dev</code> 不动 HTML），需要本地预览效果时把 <code>imageSize.dev</code> 设为 <code>true</code>。某页不想被处理（比如图片由自定义模板输出），在该页 front-matter 写 <code>imageSize: false</code> 即可逐页跳过。</p>
+<p><strong>lazy 属性</strong>：默认 <code>lazy: true</code> 会给所有没有 <code>loading</code> 属性的图片补上 <code>loading=&quot;lazy&quot;</code>；不想要这个行为就设为 <code>false</code>，插件便只补尺寸。这个插件与 <a href="/2026/11/21/xfmpress-seo-search/">SEO 插件</a> 搭配使用，对 Core Web Vitals 的两项得分都有帮助。插件生态总览见<a href="/2026/11/21/xfmpress-plugins/">官方插件</a>。</p>]]></content:encoded>
+    </item>
+    <item>
+      <title>feed-json 插件：JSON Feed 1.1 格式的 feed.json</title>
+      <link>https://xfm0797.github.io/2026/11/21/xfmpress-plugin-feed-json/</link>
+      <guid isPermaLink="true">https://xfm0797.github.io/2026/11/21/xfmpress-plugin-feed-json/</guid>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
+      <description>与 rss 插件互补的 JSON 订阅源：content_html 全文、发布与修改时间、标签与作者齐备，前端 fetch 一行即得，rss: false 一个开关同时管住两个 feed</description>
+      <category>xfmpress</category>
+      <category>插件</category>
+      <content:encoded><![CDATA[<p>JSON Feed 1.1 用一份普通 JSON 描述订阅源，不需要解析 XML。<code>xfm-plugin-feed-json</code> 在构建末尾产出 <code>feed.json</code>，与内置的 <a href="/2026/11/21/xfmpress-plugin-rss/">rss 插件</a>互补：阅读器、自动化脚本和浏览器端代码都能直接消费。</p>
+<h2 id="它解决什么">它解决什么</h2>
+<p>XML 是给阅读器的历史包袱，程序消费订阅源时还得引入解析器。有了 <code>feed.json</code>，前端一行 <code>fetch('/feed.json').then(r =&gt; r.json())</code> 就能拿到全部文章数据——做「最新文章」侧栏、构建自动化通知、甚至给 AI 管道喂数据，都比 XML 直接。</p>
+<h2 id="安装与配置">安装与配置</h2>
+<div class="code-block"><pre class="language-bash"><code>npm i -D xfm-plugin-feed-json</code></pre></div>
+<p>装了即生效。两个可调项：</p>
+<div class="code-block"><pre class="language-js"><code><span class="hl-c">// xfm.config.mjs</span>
+<span class="hl-k">export</span> <span class="hl-k">default</span> {
+  feedJson: {
+    path: <span class="hl-s">'feed.json'</span>,  <span class="hl-c">// 输出路径</span>
+    limit: <span class="hl-n">20</span>,          <span class="hl-c">// 收录条数，默认 20</span>
+  },
+};</code></pre></div>
+<h2 id="产物与字段">产物与字段</h2>
+<p>输出一个文件 <code>feed.json</code>（2 空格缩进、末尾带换行的合法 JSON）。顶层字段：<code>version</code>（JSON Feed 1.1）、<code>title</code>、<code>home_page_url</code>、<code>feed_url</code>、<code>description</code>、<code>language</code>（取 <code>site.lang</code>，默认 <code>zh-CN</code>），配了 <code>site.author</code> 时还有 <code>authors</code>。每个 item 包含：</p>
+<ul class="md-list"><li><code>id</code> 与 <code>url</code>：页面绝对地址</li><li><code>title</code>、<code>content_html</code>（正文全文 HTML）、<code>summary</code>（front-matter <code>description</code> 或摘要）</li><li><code>date_published</code> 与 <code>date_modified</code>（取 <code>updated || date</code>，纯日期补成当天 00:00:00 UTC）</li><li><code>tags</code> 与 <code>authors</code>（有才输出）</li></ul>
+<p>收录规则与 rss 插件一致：有 <code>date</code>、不是 <code>type: page</code>、front-matter 没写 <code>rss: false</code>、URL 不是首页。0.4.17 之后同样按 <code>inStream</code> 过滤——多语言站的翻译版本不进默认语言的流，因此 <code>rss: false</code> 这一个开关同时管住 XML 与 JSON 两份订阅源。</p>
+<h2 id="注意事项">注意事项</h2>
+<ul class="md-list"><li>与 rss 插件互不依赖，但订阅源通常成对提供：XML 给阅读器，JSON 给程序。</li><li><code>content_html</code> 是完整正文，整份 feed 体积与文章篇幅成正比，站大可用 <code>limit</code> 控制。</li><li>想单独排除某篇文章，front-matter 写 <code>rss: false</code> 即可。</li></ul>]]></content:encoded>
+    </item>
+    <item>
+      <title>死链检查：构建时揪出站内坏链接</title>
+      <link>https://xfm0797.github.io/2026/11/21/xfmpress-plugin-deadlinks/</link>
+      <guid isPermaLink="true">https://xfm0797.github.io/2026/11/21/xfmpress-plugin-deadlinks/</guid>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
+      <description>xfm-plugin-deadlinks 在构建收尾时扫描每个成品页面，把站内 href 和 src 对着真实产物清单核对，指不上的链接直接在终端列出，可产出 deadlinks.json 或让构建失败</description>
+      <category>xfmpress</category>
+      <category>插件</category>
+      <content:encoded><![CDATA[<p>文章越写越多，手动检查站内链接不现实。<code>xfm-plugin-deadlinks</code> 在构建结束后扫描每个成品页面，把所有站内 <code>href</code> 和 <code>src</code> 对着真实产物清单逐一核对，指不上的就是死链，直接在终端里列出来。外链从不发请求——静态构建不该为了检查去联网。</p>
+<h2 id="它解决什么">它解决什么</h2>
+<ul class="md-list"><li>改名、移动目录之后旧链接悄悄失效，浏览器点到才现形。这个插件把检查挪进构建，写错的链接在构建日志里现形。</li><li>比对对象是真实存在的输出：所有页面 URL、主题资源、<code>public/</code> 文件、内容目录资源，以及其他插件的产物；<code>sitemap.xml</code>、<code>feed.xml</code>、<code>search.json</code>、<code>stats.json</code> 等常见插件产物还有一份内置白名单，即使该插件注册在后面也不会误报。</li><li>相对链接按当前页面 URL 解析；目录形式（<code>/posts/x/</code>）、无斜杠（<code>/posts/x</code>）、带 <code>index.html</code> 三种写法都认；<code>#锚点</code>、<code>http:</code>、<code>mailto:</code>、<code>data:</code>、<code>//cdn</code> 这类地址自动跳过，URL 编码差异也会归一处理。</li></ul>
+<h2 id="安装与配置">安装与配置</h2>
+<div class="code-block"><pre class="language-bash"><code>npm i -D xfm-plugin-deadlinks</code></pre></div>
+<div class="code-block"><pre class="language-js"><code><span class="hl-c">// xfm.config.mjs</span>
+<span class="hl-k">export</span> <span class="hl-k">default</span> {
+  deadlinks: {
+    report: <span class="hl-k">true</span>,        <span class="hl-c">// 产出 deadlinks.json，排查用</span>
+    strict: <span class="hl-k">false</span>,       <span class="hl-c">// true = 发现死链构建直接失败，可当 CI 门禁</span>
+    limit: <span class="hl-n">20</span>,           <span class="hl-c">// 控制台最多列多少条</span>
+    ignore: [            <span class="hl-c">// 前缀字符串或正则</span>
+      <span class="hl-s">'/api/'</span>,
+      /^\/assets\/legacy\<span class="hl-c">//,</span>
+    ],
+    dev: <span class="hl-k">false</span>,
+  },
+};</code></pre></div>
+<h2 id="运行时行为">运行时行为</h2>
+<p>检查在构建收尾阶段执行，生产构建默认开启（<code>dev: true</code> 可让 <code>xfm dev</code> 也查）。没有死链时只在生产构建打一行确认；发现死链时，终端按「链接 ← 来源页面」的格式列出（默认最多 20 条，<code>limit</code> 可调），并生成 <code>deadlinks.json</code> 记录完整清单；<code>strict: true</code> 则直接抛错让构建失败。</p>
+<h2 id="注意事项">注意事项</h2>
+<ul class="md-list"><li>只查站内同源地址，外链是否可达不在职责范围内——那是 CI 里 curl 类工具的活。</li><li>想把死链当部署门禁，开 <code>strict: true</code>，流水线里的构建会非零退出。</li><li>内置白名单只覆盖常见插件产物名；自定义产物如果被误报，用 <code>ignore</code> 的前缀或正则排除。</li></ul>]]></content:encoded>
+    </item>
+    <item>
+      <title>评论系统：十家评论服务一个开关</title>
+      <link>https://xfm0797.github.io/2026/11/21/xfmpress-plugin-comments/</link>
+      <guid isPermaLink="true">https://xfm0797.github.io/2026/11/21/xfmpress-plugin-comments/</guid>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
+      <description>xfm-plugin-comments 把 giscus、beaudar、waline、twikoo、disqus 等十家评论服务收进一个 comments.provider 开关，按 provider 校验必填项，只挂文章页，换服务不改模板</description>
+      <category>xfmpress</category>
+      <category>插件</category>
+      <content:encoded><![CDATA[<p>给静态站加评论，过去要按服务各装一个插件。0.4.16 起，原来的 <code>xfm-plugin-giscus</code> 改名为 <code>xfm-plugin-comments</code>，十家评论服务收进一个 <code>comments.provider</code> 开关——换服务不用换插件、不用动模板。本站自己就在用它挂 Waline。</p>
+<h2 id="它解决什么">它解决什么</h2>
+<p>内置十种 provider：<code>giscus</code>（默认）、<code>beaudar</code>（giscus 的国内可访问版）、<code>utterances</code>、<code>disqus</code>、<code>waline</code>、<code>twikoo</code>、<code>valine</code>、<code>gitalk</code>、<code>artalk</code>、<code>cusdis</code>。写 <code>github</code> 会被当作 <code>giscus</code> 处理。</p>
+<p>必填项按 provider 校验：giscus 和 beaudar 要 <code>repo</code>、<code>repoId</code>；disqus 要 <code>shortname</code>；waline 要 <code>serverURL</code>；twikoo 要 <code>envId</code>；valine 要 <code>appId</code>、<code>appKey</code>；gitalk 要 <code>clientID</code>、<code>clientSecret</code>、<code>repo</code>、<code>owner</code>、<code>admin</code>；artalk 要 <code>server</code>；cusdis 要 <code>appId</code>。缺了或写错 provider，构建日志会警告且页面保持原样——拼错 <code>repoId</code> 不会悄悄上线一个坏掉的小组件。</p>
+<h2 id="安装与配置">安装与配置</h2>
+<div class="code-block"><pre class="language-bash"><code>npm i -D xfm-plugin-comments</code></pre></div>
+<p>如果你在用旧的 <code>xfm-plugin-giscus</code>：卸掉旧包装新包即可，配置键仍是 <code>comments</code>，<code>provider: 'giscus'</code> 的行为完全不变。</p>
+<div class="code-block"><pre class="language-js"><code><span class="hl-c">// xfm.config.mjs</span>
+<span class="hl-k">export</span> <span class="hl-k">default</span> {
+  comments: {
+    provider: <span class="hl-s">'waline'</span>,      <span class="hl-c">// 十选一，默认 giscus</span>
+    serverURL: <span class="hl-s">'https://waline.example.com'</span>,
+    title: <span class="hl-s">'评论'</span>,            <span class="hl-c">// 区块标题，设 '' 隐藏</span>
+    identifier: <span class="hl-s">'path'</span>,      <span class="hl-c">// path（默认）| url | title</span>
+    dev: <span class="hl-k">false</span>,
+  },
+};</code></pre></div>
+<p>各 provider 的专属字段（giscus 的 <code>category</code>、<code>categoryId</code>、<code>mapping</code>、<code>theme</code>、<code>lang</code> 等）也直接写在 <code>comments</code> 下，详见包内 README。</p>
+<h2 id="运行时行为">运行时行为</h2>
+<p>生产构建时，插件在每篇文章的 <code>&lt;/article&gt;</code> 之前（没有就找 <code>&lt;/main&gt;</code>，最后退到 <code>&lt;/body&gt;</code>）插入一个 <code>.comments</code> 区块：标题、挂载点和 provider 脚本都在里面。需要样式表的 provider（Waline、Gitalk、Artalk）会在用到它的页面的 <code>&lt;head&gt;</code> 里注入一次 CSS。giscus 和 beaudar 通过 <code>postMessage</code> 跟随站点明暗主题切换，Waline 按 CSS 选择器切换，Cusdis 走 <code>auto</code>。</p>
+<p>只有文章页会挂评论：页面要有 <code>date</code>，且不是 <code>type: page</code> / <code>type: index</code>——首页、归档、标签页、独立页面一律没有。单页关闭写 front-matter <code>comments: false</code>；想在模板里自定位置就放 <code>&lt;div data-xfm-comments&gt;&lt;/div&gt;</code>，插件此时只补脚本不重复建容器。模板里还能拿到 <code>site.comments</code>（含 <code>provider</code>、<code>title</code>）。</p>
+<h2 id="注意事项">注意事项</h2>
+<ul class="md-list"><li>本站实例：Waline 的 <code>serverURL: 'https://waline.xfm.qzz.io'</code>。末尾不要带斜杠——Waline 客户端会自己拼路径，尾斜杠会拼出 <code>//api/...</code> 被 308 重定向。</li><li><code>identifier</code> 默认 <code>path</code>，评论绑定站点内路径，换域名不影响已有评论；改成 <code>url</code> 绑定完整 URL，改成 <code>title</code> 则跟标题走。</li><li>本地 <code>xfm dev</code> 默认不渲染评论区，<code>comments.dev: true</code> 可打开。</li></ul>]]></content:encoded>
+    </item>
+    <item>
+      <title>访问统计：一行配置接入五类统计服务</title>
+      <link>https://xfm0797.github.io/2026/11/21/xfmpress-plugin-analytics/</link>
+      <guid isPermaLink="true">https://xfm0797.github.io/2026/11/21/xfmpress-plugin-analytics/</guid>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
+      <description>xfm-plugin-analytics 在构建时往每页 body 结束前注入统计脚本，内置 umami、plausible、google、baidu 与自定义片段五种 provider，支持数组并行埋点、按路径排除、单页关闭</description>
+      <category>xfmpress</category>
+      <category>插件</category>
+      <content:encoded><![CDATA[<p>静态站点想知道每天有多少人来读，不必往主题模板里塞第三方 SDK。<code>xfm-plugin-analytics</code> 把统计脚本收进配置：构建时自动注入每个页面，换服务改一行配置就行，模板零改动。</p>
+<h2 id="它解决什么">它解决什么</h2>
+<ul class="md-list"><li>统计代码散落在布局模板里，换一家服务就要改一遍模板。这个插件把脚本生成收进 <code>xfm.config.mjs</code>，配置即切换。</li><li>迁移期常需要两套统计并行跑，<code>provider</code> 直接给数组：<code>provider: ['umami', 'google']</code> 同时埋两套。</li><li>用自建或小众服务？<code>provider: 'custom'</code> 把整段代码贴进 <code>analytics.script</code> 原样插入。</li></ul>
+<p>内置五种 provider：<code>umami</code>、<code>plausible</code>、<code>google</code>（GA4 gtag）、<code>baidu</code>（百度统计）、<code>custom</code>。</p>
+<h2 id="安装与配置">安装与配置</h2>
+<div class="code-block"><pre class="language-bash"><code>npm i -D xfm-plugin-analytics</code></pre></div>
+<p>生成器会自动加载站点 <code>package.json</code> 里所有 <code>xfm-plugin-*</code> 依赖，装完即生效；<code>xfm dev</code> 正在跑的话重启一次。也可以在 <code>plugins: ['analytics']</code> 里显式声明，短名会解析成 <code>xfm-plugin-analytics</code>。</p>
+<div class="code-block"><pre class="language-js"><code><span class="hl-c">// xfm.config.mjs</span>
+<span class="hl-k">export</span> <span class="hl-k">default</span> {
+  analytics: {
+    provider: <span class="hl-s">'umami'</span>,   <span class="hl-c">// umami | plausible | google | baidu | custom</span>
+    umami: { src: <span class="hl-s">'https://umami.example.com/script.js'</span>, id: <span class="hl-s">'网站ID'</span> },
+    <span class="hl-c">// plausible: { domain: 'example.com', src: 'https://plausible.io/js/script.js' }</span>
+    <span class="hl-c">// google: { id: 'G-XXXXXXX' }</span>
+    <span class="hl-c">// baidu: { id: '0123456789abcdef' }</span>
+    <span class="hl-c">// custom 模式：script: '&lt;script&gt;…你的代码…&lt;/script&gt;'</span>
+    dev: <span class="hl-k">false</span>,
+    exclude: [<span class="hl-s">'/draft-preview/'</span>],
+  },
+};</code></pre></div>
+<h2 id="运行时行为">运行时行为</h2>
+<p>生产构建时，插件把统计脚本插到每个页面的 <code>&lt;/body&gt;</code> 之前，并留下一个 <code>&lt;div data-xfm-analytics hidden&gt;&lt;/div&gt;</code> 标记，同一页不会重复注入。脚本片段按配置只计算一次再逐页插入，几百个页面也没有额外构建开销。</p>
+<p>三种情况会跳过注入：</p>
+<ul class="md-list"><li><code>xfm dev</code> 本地预览默认不注入，第三方脚本不该拖慢本地开发（<code>analytics.dev: true</code> 可打开）；</li><li>页面 front-matter 写了 <code>analytics: false</code>；</li><li>页面 URL 以 <code>analytics.exclude</code> 中的某个前缀开头，比如草稿预览目录。</li></ul>
+<h2 id="注意事项">注意事项</h2>
+<ul class="md-list"><li><code>provider</code> 写错不会让构建失败，只在日志里警告一次，页面原样输出——数字突然断了先回头看终端输出。</li><li><code>custom</code> 模式的 <code>script</code> 原样插入 HTML，脚本内容是否合法需要自己把关。</li><li>它提供的是访客行为数据，要看数得去统计服务自己的后台；想在页面上展示整站字数、阅读时长这类构建期数据，配合 reading-stats 插件，两者互不冲突。更多插件见<a href="/2026/11/21/xfmpress-plugins/">官方插件总览</a>。</li></ul>]]></content:encoded>
+    </item>
+    <item>
+      <title>本站主题 xfmpress-theme-anziyu：照着安知鱼写的博客皮肤</title>
+      <link>https://xfm0797.github.io/2026/11/21/xfmpress-theme-anziyu/</link>
+      <guid isPermaLink="true">https://xfm0797.github.io/2026/11/21/xfmpress-theme-anziyu/</guid>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
+      <description>玻璃导航、Hero 横幅、封面卡片流、右侧栏与 Waline 评论——这套 7 布局 6 片段的站点私有主题是怎么搭起来的</description>
+      <category>xfmpress</category>
+      <category>主题</category>
+      <content:encoded><![CDATA[<p>你现在看到的这个站点，用的不是官方 <code>default</code>，而是仓库 <code>themes/</code> 下的站点私有主题 <code>xfmpress-theme-anziyu</code>。起因很简单：从 Hexo 迁过来时最舍不得的是 <a href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" target="_blank" rel="noopener">hexo-theme-anzhiyu</a> 那套观感——固定玻璃导航、顶部横幅、带封面的卡片流、右侧挂件——于是用 xfmpress 的模板语法重写了一遍，顺手把不需要的部分全砍掉。</p>
+<p><img src="/assets/theme-anziyu.png" alt="xfmpress-theme-anziyu 首页：玻璃导航、Hero 横幅、分类快捷条与封面卡片流" loading="lazy" decoding="async"></p>
+<p>上图就是本站首页的真实截图（1200×630）：左侧是文章流，右侧是三组挂件（站点简介 + 语言统计、分类、最近文章）。封面缺失时卡片落回统一的兜底图，所以列表永远是整齐的。</p>
+<h2 id="七个布局-六个片段">七个布局，六个片段</h2>
+<div class="code-block"><pre class="language-text"><code>themes/xfmpress-theme-anziyu/
+├── layouts/
+│   ├── base.html        # 骨架：进度条、导航、main、页脚、回到顶部、图片遮罩
+│   ├── index.html       # 首页：Hero 横幅 + 分类快捷条 + 卡片流 + 侧栏
+│   ├── post.html        # 文章页：封面横幅、正文卡片、目录、评论、相关
+│   ├── page.html        # 独立页（关于）
+│   ├── taxonomy.html    # 标签 / 分类 / 系列聚合
+│   ├── categories.html  # 分类索引
+│   └── archives.html    # 归档
+├── partials/            # navbar / footer / post-card / pager / sidebar / toc
+└── assets/              # style.css（约 31KB）/ main.js / search.js / 封面与图标</code></pre></div>
+<p>没有 <code>collection.html</code>——本站不用自定义集合，需要时再补。</p>
+<h2 id="视觉上的四个标志">视觉上的四个标志</h2>
+<p><strong>玻璃质感导航</strong>：<code>backdrop-filter: blur()</code> + 半透明背景，滚动时降低透明度并加阴影；窄屏收成抽屉式菜单。</p>
+<p><strong>Hero 横幅</strong>：左侧一句「你好，我是」，下面是站名与描述，配两个按钮（全部文章、关于）；右侧是装饰图形加一个 <code>site.langCounts</code> 的文章总数——这个数字在 <code>/en/</code> 会自己变成英文文章数。</p>
+<p><strong>分类快捷条</strong>：横幅下面一排圆角 chip，遍历 <code>site.categoriesZh</code> / <code>site.categoriesEn</code>，点一下直达分类页。</p>
+<p><strong>封面卡片流</strong>：每张卡片顶部是 16:9 封面，没写 <code>cover</code> 的文章自动落回 <code>assets/cover-default.png</code>（1200×630，与 OG 图同款），所以列表永远不会出现空白块。卡片正文用 <code>post.desc</code>，摘要长度由引擎控制。</p>
+<h2 id="文章页-封面当背景">文章页：封面当背景</h2>
+<p>文章页的头部不是白底标题，而是把封面铺满、压一层渐变遮罩，标题浮在遮罩上，顺便带出面包屑（分类 + 发布日期）、阅读时长和话题标签。正文在白色卡片里，右侧是 <code>toc.html</code>——<code>main.js</code> 用 <code>IntersectionObserver</code> 跟随滚动高亮当前小节。</p>
+<p>正文下面三块依次是：Waline 评论区（<code>#waline</code> 挂载点，只在文章页出现）、相关推荐（来自 <code>related</code> 插件）、前后篇文章。</p>
+<h2 id="侧栏与页脚">侧栏与页脚</h2>
+<p>侧栏四组挂件：文章统计（总数 + 语言分布）、分类（按语言取）、标签云、最近文章。所有文案都用 <code>page.lang === 'en'</code> 三元切换，所以英文页不会混进中文字样。</p>
+<p>页脚一行版权、一行「由 xfmpress 0.4.17 强力驱动」——版本号不是手写的，<code>plugins/engine-version.js</code> 每次构建读 <code>node_modules/xfmpress/package.json</code>，升级依赖后页脚自动跟上。</p>
+<h2 id="交互都写在-3-8kb-里">交互都写在 3.8KB 里</h2>
+<p><code>main.js</code> 只做六件事：顶部阅读进度条、回到顶部按钮、移动端菜单抽屉、目录滚动高亮、代码块复制按钮、图片点击放大（<code>#img-mask</code> 遮罩）。没有任何框架，<code>defer</code> 加载，首屏不阻塞。</p>
+<h2 id="想改的话从哪里下手">想改的话从哪里下手</h2>
+<ul class="md-list"><li><strong>换主色</strong>：<code>style.css</code> 顶部的 <code>--ac</code>（安知鱼蓝 <code>#425aef</code>）与 <code>--grad</code>，深浅色各一组，改两行全站生效；</li><li><strong>加挂件</strong>：在 <code>partials/sidebar.html</code> 里加一段 <code>section.widget</code>，样式复用现有类；</li><li><strong>改卡片</strong>：<code>partials/post-card.html</code> 是唯一渲染列表项的地方，首页、分类、标签、归档共用；</li><li><strong>换封面兜底图</strong>：直接替换 <code>assets/cover-default.png</code>，尺寸保持 1200×630 即可。</li></ul>
+<p>有一个坑值得记下来：<code>{% include %}</code> 的片段拿不到父模板 <code>for</code> 循环里的变量，也拿不到 <code>set</code>。所以 <code>post-card.html</code> 里不能指望外面传 <code>post</code> 进来，得自己在片段内部重新取列表（<code>page.data.pagination.posts</code> 或 <code>posts</code>），两套页面都兼容。</p>
+<h2 id="它的定位">它的定位</h2>
+<p>这不是一个发布到 npm 的主题，而是<strong>跟着站点一起长</strong>的私有皮肤：想加什么直接改，不用考虑向后兼容；也不想做通用化——通用化是 <code>default</code> 和 <code>docs</code> 的活。如果你想抄这套观感，把目录拷进自己项目的 <code>themes/</code> 再改配色就行，模板语法和官方主题完全一致。</p>]]></content:encoded>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  
+  
+  
+  <title>docs 主题：把内容站变成带侧栏的文档站 · XFMpress</title>
+  <meta name="description" content="themes/docs —— 顶部导航 + 左侧分组目录 + 正文 + 右侧 TOC 的三栏文档骨架，靠 group 与 weight 自动长出侧栏">
+  <meta name="theme-color" content="#425aef">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/favicon-512.png">
+  <meta property="og:site_name" content="XFMpress">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="docs 主题：把内容站变成带侧栏的文档站 · XFMpress">
+  <meta property="og:description" content="themes/docs —— 顶部导航 + 左侧分组目录 + 正文 + 右侧 TOC 的三栏文档骨架，靠 group 与 weight 自动长出侧栏">
+  <meta property="og:url" content="https://xfm0797.github.io/2026/11/21/xfmpress-theme-docs/">
+  <meta property="og:image" content="/assets/theme-docs.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="alternate" type="application/rss+xml" title="XFMpress" href="/feed.xml">
+  
+  <link rel="alternate" hreflang="zh-CN" href="https://xfm0797.github.io/2026/11/21/xfmpress-theme-docs/">
+  <link rel="alternate" hreflang="en" href="https://xfm0797.github.io/en/2026/11/21/xfmpress-theme-docs/">
+  
+  <link rel="stylesheet" href="/assets/style.css">
+  
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css">
+<style>
+.xfm-share{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem;margin:2.5rem 0 0;padding-top:1.25rem;border-top:1px solid var(--border,#e6e6e6)}
+.xfm-share-label{font-size:.88rem;color:var(--muted,#888)}
+.xfm-share a{display:inline-block;padding:.22rem .85rem;border:1px solid var(--border,#d9d9d9);border-radius:999px;font-size:.85rem;line-height:1.5;color:inherit;text-decoration:none;transition:color .15s,border-color .15s}
+.xfm-share a:hover{color:var(--c);border-color:var(--c)}
+.xfm-share-toast{position:fixed;left:50%;bottom:2.5rem;transform:translateX(-50%);background:#333;color:#fff;padding:.4rem 1rem;border-radius:6px;font-size:.85rem;opacity:0;transition:opacity .25s;pointer-events:none;z-index:9999}
+.xfm-share-toast.show{opacity:.92}
+@media (prefers-color-scheme:dark){.xfm-share{border-top-color:var(--border,#333)}.xfm-share a{border-color:var(--border,#3a3a3a)}}
+</style>
+</head>
+<body>
+  <div class="progress-bar" id="progress-bar" aria-hidden="true"></div>
+  <header class="site-nav" id="site-nav">
+  <div class="nav-wrap">
+    <a class="nav-brand" href="/">
+      <span class="nav-avatar" aria-hidden="true">xfm</span>
+      <span class="nav-title">XFMpress</span>
+    </a>
+    <nav class="nav-links" id="nav-links">
+      <a href="/">首页</a>
+      <a href="/categories/">分类</a>
+      <a href="/archives/">归档</a>
+      <a href="/about/">关于</a>
+      
+    </nav>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="nav-menu-btn" type="button" aria-label="菜单" aria-controls="nav-drawer" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <button class="nav-icon-btn" type="button" data-search-open aria-label="搜索" title="搜索（Ctrl+K）">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <a class="nav-icon-btn nav-lang-btn" href="/en/2026/11/21/xfmpress-theme-docs/" title="Switch to English"><span class="nav-lang-text">EN</span></a>
+      <button class="nav-icon-btn" id="theme-toggle" type="button" aria-label="切换深浅色" title="切换深浅色">
+        <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="nav-drawer" id="nav-drawer">
+    <a href="/">首页</a>
+    <a href="/categories/">分类</a>
+    <a href="/archives/">归档</a>
+    <a href="/about/">关于</a>
+    
+  </nav>
+</header>
+
+
+  <main class="site-main">
+    
+<article class="post-page">
+  
+  <header class="post-hero" style="background-image:url('/assets/theme-docs.png')">
+    <div class="post-hero-mask">
+      <div class="post-hero-crumbs">
+        <a href="/categories/主题模板/">主题模板</a>
+        <span>发布于 2026-11-21</span>
+      </div>
+      <h1 class="post-hero-title">docs 主题：把内容站变成带侧栏的文档站</h1>
+      <div class="post-hero-meta">
+        <span class="meta-chip">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 15 4-4 4 4 5-5 5 5"/></svg>
+          封面图
+        </span>
+        <span class="meta-chip">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          5 分钟阅读
+        </span>
+        <a class="meta-chip" href="/tags/xfmpress/"># xfmpress</a><a class="meta-chip" href="/tags/主题/"># 主题</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="post-layout">
+    <div class="post-content-wrap">
+      <div class="post-content-card">
+        <div class="prose"><p>仓库里另一套官方主题 <code>docs</code> 解决的是另一个问题：博客要的是「按时间倒序的信息流」，文档要的是「按层级组织的知识树」。同一套内容，用 <code>default</code> 渲染像博客，用 <code>docs</code> 渲染就像一本手册——左侧目录常驻，正文更宽，读起来是「查」而不是「刷」。</p>
+<p><img src="/assets/theme-docs.png" alt="docs 主题文章页：左侧分组目录、宽正文与右侧留白" loading="lazy" decoding="async"></p>
+<p>上图是文档页的真实渲染（1200×630）：顶部导航放站名与全局入口，左侧按「开始使用 / 内容与模板 / 扩展」分组列出条目并高亮当前页，主区是文章标题、meta、正文与代码块。没有卡片、没有封面，一切为了扫读。</p>
+<h2 id="三栏骨架">三栏骨架</h2>
+<p><code>base.html</code> 把页面切成三块：</p>
+<ul class="md-list"><li><strong>顶部导航</strong>：<code>nav</code> 配置项 + 语言切换 + 搜索按钮，宽度用 <code>wrap-wide</code>，比博客主题更宽；</li><li><strong>左侧栏 <code>docs-nav</code></strong>：遍历 <code>site.navGroups</code>，每个分组一个标题，组内按 <code>weight</code> 升序排列；</li><li><strong>主区 <code>docs-main</code></strong>：正文 + 右侧 <code>toc.html</code> 目录，页脚缩在主区里而不是横跨整屏。</li></ul>
+<p>配色是冷静的蓝（<code>--accent: #2563eb</code>），无衬线正文，代码块灰底，整页更像 IDE 文档而不是杂志排版。</p>
+<h2 id="侧栏是-长-出来的-不是配出来的">侧栏是「长」出来的，不是配出来的</h2>
+<p>这是 docs 主题最省事也最容易踩的一点：侧栏条目来自文章 front-matter，而不是某个菜单配置文件。</p>
+<div class="code-block"><pre class="language-yaml"><code>---
+title: 安装与升级
+group: 使用指南
+weight: <span class="hl-n">1</span>
+---</code></pre></div>
+<p>引擎在收集阶段把带 <code>group</code>（或等价的 <code>section</code>）的页面按组聚合，排序后注入 <code>site.navGroups</code>。所以：</p>
+<ul class="md-list"><li>想让文章进侧栏，就写 <code>group</code>；</li><li>想让顺序符合阅读逻辑，就写 <code>weight</code>（数字小的在前）；</li><li>不想让它出现在侧栏，写 <code>nav: false</code>；</li><li>漏写 <code>group</code> 的文章不会消失，只是不出现在侧栏里，会集中落到首页的「目录」清单中。</li></ul>
+<p><code>weight</code> 只在组内比较，跨组排序由分组第一次出现的顺序决定——所以多个分组时，建议给分组也留出空档（10、20、30），插入新组时不用改一堆数字。</p>
+<h2 id="首页是一张目录">首页是一张目录</h2>
+<p><code>docs</code> 的 <code>index.html</code> 不渲染文章卡片流，而是把 <code>content/</code> 里的正文当作前言，下面列出所有 <code>navGroups</code> 条目，每条后面标着它所属的分组。对文档站来说这比「最新文章」有用得多：访客第一眼看到的是结构，不是时间线。</p>
+<h2 id="与-default-的四处差别">与 default 的四处差别</h2>
+<div class="table-wrap"><table><thead><tr><th>维度</th><th>default</th><th>docs</th></tr></thead><tbody><tr><td>导航</td><td>顶部水平导航</td><td>顶部 + 左侧分组目录</td></tr><tr><td>首页</td><td>Hero + 卡片流 + 侧栏</td><td>前言 + 目录清单</td></tr><tr><td>归档 / 分类索引</td><td>有 <code>archives.html</code>、<code>categories.html</code></td><td>只有 <code>taxonomy.html</code>、<code>collection.html</code></td></tr><tr><td>深浅色</td><td>右上角按钮切换，记忆在 localStorage</td><td>只有 CSS <code>[data-theme=&quot;dark&quot;]</code> 变量，没有开关</td></tr></tbody></table></div>
+<p>最后一条要特别注意：docs 主题的 <code>style.css</code> 里深色变量是齐的，但模板没有输出切换按钮，也没有读取系统偏好的脚本。想给文档站加深色模式，得自己在 <code>base.html</code> 里补一个按钮和一小段设置 <code>documentElement.dataset.theme</code> 的脚本，或者直接放弃——文档站白天阅读居多。</p>
+<h2 id="从博客切到文档的操作顺序">从博客切到文档的操作顺序</h2>
+<ol><li>配置里改成 <code>theme: 'docs'</code>；</li><li>给要进侧栏的文章补 <code>group</code> 与 <code>weight</code>；</li><li>关掉 <code>indexes</code>（这个主题没有对应布局，开着也只是不生成，但配置更干净）；</li><li>首页 <code>content/index.md</code> 改成前言 + 你希望的第一屏内容；</li><li>构建，看侧栏分组顺序是否符合预期，再微调 <code>weight</code>。</li></ol>
+<h2 id="适合谁">适合谁</h2>
+<p>产品文档、API 手册、系列教程的官方网站——一页一知识点，靠目录而不是时间组织内容。它的长处是「什么都不用装」，短处是视觉上没什么可玩的：想让它好看，得自己写 CSS，而不是换几个变量就行。</p></div>
+      </div>
+
+      
+      <section class="xfm-share" data-share-networks="weibo,wechat,qq,qzone,twitter,telegram,copy" aria-label="分享"><span class="xfm-share-label">分享到</span><a href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F21%2Fxfmpress-theme-docs%2F&amp;title=docs%20%E4%B8%BB%E9%A2%98%EF%BC%9A%E6%8A%8A%E5%86%85%E5%AE%B9%E7%AB%99%E5%8F%98%E6%88%90%E5%B8%A6%E4%BE%A7%E6%A0%8F%E7%9A%84%E6%96%87%E6%A1%A3%E7%AB%99" style="--c:#e6162d" target="_blank" rel="noopener" title="分享到微博"><span>微博</span></a>
+<a href="#" style="--c:#07c160" data-share-copy data-share-url="https://xfm0797.github.io/2026/11/21/xfmpress-theme-docs/" data-share-msg="链接已复制，可在微信中粘贴分享" title="微信"><span>微信</span></a>
+<a href="https://connect.qq.com/widget/shareqq/index.html?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F21%2Fxfmpress-theme-docs%2F&amp;title=docs%20%E4%B8%BB%E9%A2%98%EF%BC%9A%E6%8A%8A%E5%86%85%E5%AE%B9%E7%AB%99%E5%8F%98%E6%88%90%E5%B8%A6%E4%BE%A7%E6%A0%8F%E7%9A%84%E6%96%87%E6%A1%A3%E7%AB%99&amp;summary=" style="--c:#12b7f5" target="_blank" rel="noopener" title="分享到QQ 好友"><span>QQ 好友</span></a>
+<a href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F21%2Fxfmpress-theme-docs%2F&amp;title=docs%20%E4%B8%BB%E9%A2%98%EF%BC%9A%E6%8A%8A%E5%86%85%E5%AE%B9%E7%AB%99%E5%8F%98%E6%88%90%E5%B8%A6%E4%BE%A7%E6%A0%8F%E7%9A%84%E6%96%87%E6%A1%A3%E7%AB%99" style="--c:#f5b60d" target="_blank" rel="noopener" title="分享到QQ 空间"><span>QQ 空间</span></a>
+<a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F21%2Fxfmpress-theme-docs%2F&amp;text=docs%20%E4%B8%BB%E9%A2%98%EF%BC%9A%E6%8A%8A%E5%86%85%E5%AE%B9%E7%AB%99%E5%8F%98%E6%88%90%E5%B8%A6%E4%BE%A7%E6%A0%8F%E7%9A%84%E6%96%87%E6%A1%A3%E7%AB%99" style="--c:#1da1f2" target="_blank" rel="noopener" title="分享到X"><span>X</span></a>
+<a href="https://t.me/share/url?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F21%2Fxfmpress-theme-docs%2F&amp;text=docs%20%E4%B8%BB%E9%A2%98%EF%BC%9A%E6%8A%8A%E5%86%85%E5%AE%B9%E7%AB%99%E5%8F%98%E6%88%90%E5%B8%A6%E4%BE%A7%E6%A0%8F%E7%9A%84%E6%96%87%E6%A1%A3%E7%AB%99" style="--c:#26a5e4" target="_blank" rel="noopener" title="分享到Telegram"><span>Telegram</span></a>
+<a href="#" style="--c:#5f6368" data-share-copy data-share-url="https://xfm0797.github.io/2026/11/21/xfmpress-theme-docs/" data-share-msg="链接已复制" title="复制链接"><span>复制链接</span></a></section>
+      <nav class="post-pn">
+        <a class="pn-card prev" href="/2026/11/21/xfmpress-theme-default/"><span class="pn-label">上一篇</span><span class="pn-title">内置博客主题 default：开箱即用的清雅阅读风</span></a>
+        
+        <a class="pn-card next" href="/2026/11/21/xfmpress-theme-anziyu/"><span class="pn-label">下一篇</span><span class="pn-title">本站主题 xfmpress-theme-anziyu：照着安知鱼写的博客皮肤</span></a>
+        
+      </nav>
+
+      
+
+      
+      
+      <section class="post-comments" id="comments">
+        <h2 class="section-title">评论</h2>
+        <div class="post-comments-body" id="waline" data-xfm-comments></div>
+      </section>
+      
+    </div>
+
+    
+    <aside class="post-toc-wrap">
+      
+<nav class="toc" id="toc" aria-label="目录">
+  <div class="toc-title">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+    文章目录
+  </div>
+  <ul>
+    <li class="toc-h2"><a href="#三栏骨架">三栏骨架</a></li>
+    <li class="toc-h2"><a href="#侧栏是-长-出来的-不是配出来的">侧栏是「长」出来的，不是配出来的</a></li>
+    <li class="toc-h2"><a href="#首页是一张目录">首页是一张目录</a></li>
+    <li class="toc-h2"><a href="#与-default-的四处差别">与 default 的四处差别</a></li>
+    <li class="toc-h2"><a href="#从博客切到文档的操作顺序">从博客切到文档的操作顺序</a></li>
+    <li class="toc-h2"><a href="#适合谁">适合谁</a></li>
+    
+  </ul>
+</nav>
+
+
+    </aside>
+    
+  </div>
+<script type="module">import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';init({"el":"#waline","serverURL":"https://waline.xfm.qzz.io","path":"/2026/11/21/xfmpress-theme-docs/","lang":"zh-CN","dark":"html[data-theme=\"dark\"]","requiredMeta":["nick","mail"],"login":"enable","commentSorting":"newest"});</script>
+
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-icons">
+      <a href="/feed.xml" aria-label="RSS" title="RSS 订阅">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M4 11a9 9 0 0 1 9 9h3A12 12 0 0 0 4 8v3zm0-7a16 16 0 0 1 16 16h3A19 19 0 0 0 4 1v3zm2 13a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>
+      </a>
+      <a href="https://github.com/xfm0797/xfm" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C17 4.7 18 5 18 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6a11.5 11.5 0 0 0 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+    <p class="copyright">© XFMpress · xfm</p>
+    <p class="powered">由 <a href="https://github.com/xfm0797/xfm" target="_blank" rel="noopener">xfmpress</a> <span class="powered-version">0.4.18</span> 强力驱动</p>
+  </div>
+</footer>
+
+
+  <button class="back-top" id="back-top" type="button" aria-label="回到顶部">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <div class="img-mask" id="img-mask" aria-hidden="true"><img src="" alt=""></div>
+
+  <script src="/assets/main.js" defer></script>
+  <script src="/assets/search.js" defer data-index="/search.json"></script>
+  <script>
+    (function(){
+      var k='xfm-theme', r=document.documentElement;
+      var s=localStorage.getItem(k);
+      if(s) r.dataset.theme=s;
+      else if(window.matchMedia('(prefers-color-scheme: dark)').matches) r.dataset.theme='dark';
+    })();
+  </script>
+</body>
+</html>
+<script>
+(function(){
+  function toast(msg){
+    var t=document.querySelector('.xfm-share-toast');
+    if(!t){t=document.createElement('div');t.className='xfm-share-toast';document.body.appendChild(t);}
+    t.textContent=msg;t.classList.add('show');
+    clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('show');},2000);
+  }
+  function legacyCopy(text){
+    var ta=document.createElement('textarea');
+    ta.value=text;ta.setAttribute('readonly','');
+    ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');}catch(e){}
+    document.body.removeChild(ta);
+  }
+  document.addEventListener('click',function(e){
+    var el=e.target.closest('[data-share-copy]');
+    if(!el)return;
+    e.preventDefault();
+    var url=el.getAttribute('data-share-url')||location.href;
+    var done=function(){toast(el.getAttribute('data-share-msg')||'已复制');};
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(done,function(){legacyCopy(url);done();});
+    }else{legacyCopy(url);done();}
+  });
+})();
+</script>

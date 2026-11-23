@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  
+  
+  
+  <title>官方新增 butterfly 主题：把 Hexo 那套毛玻璃美学搬进 xfmpress · XFMpress</title>
+  <meta name="description" content="仓库 themes/butterfly —— 毛玻璃固定导航、渐变横幅、封面在右的横向卡片、作者卡侧栏、时间线归档，零依赖零构建">
+  <meta name="theme-color" content="#425aef">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/favicon-512.png">
+  <meta property="og:site_name" content="XFMpress">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="官方新增 butterfly 主题：把 Hexo 那套毛玻璃美学搬进 xfmpress · XFMpress">
+  <meta property="og:description" content="仓库 themes/butterfly —— 毛玻璃固定导航、渐变横幅、封面在右的横向卡片、作者卡侧栏、时间线归档，零依赖零构建">
+  <meta property="og:url" content="https://xfm0797.github.io/2026/11/22/xfmpress-theme-butterfly/">
+  <meta property="og:image" content="/assets/theme-butterfly.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="alternate" type="application/rss+xml" title="XFMpress" href="/feed.xml">
+  
+  <link rel="alternate" hreflang="zh-CN" href="https://xfm0797.github.io/2026/11/22/xfmpress-theme-butterfly/">
+  <link rel="alternate" hreflang="en" href="https://xfm0797.github.io/en/2026/11/22/xfmpress-theme-butterfly/">
+  
+  <link rel="stylesheet" href="/assets/style.css">
+  
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css">
+<style>
+.xfm-share{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem;margin:2.5rem 0 0;padding-top:1.25rem;border-top:1px solid var(--border,#e6e6e6)}
+.xfm-share-label{font-size:.88rem;color:var(--muted,#888)}
+.xfm-share a{display:inline-block;padding:.22rem .85rem;border:1px solid var(--border,#d9d9d9);border-radius:999px;font-size:.85rem;line-height:1.5;color:inherit;text-decoration:none;transition:color .15s,border-color .15s}
+.xfm-share a:hover{color:var(--c);border-color:var(--c)}
+.xfm-share-toast{position:fixed;left:50%;bottom:2.5rem;transform:translateX(-50%);background:#333;color:#fff;padding:.4rem 1rem;border-radius:6px;font-size:.85rem;opacity:0;transition:opacity .25s;pointer-events:none;z-index:9999}
+.xfm-share-toast.show{opacity:.92}
+@media (prefers-color-scheme:dark){.xfm-share{border-top-color:var(--border,#333)}.xfm-share a{border-color:var(--border,#3a3a3a)}}
+</style>
+</head>
+<body>
+  <div class="progress-bar" id="progress-bar" aria-hidden="true"></div>
+  <header class="site-nav" id="site-nav">
+  <div class="nav-wrap">
+    <a class="nav-brand" href="/">
+      <span class="nav-avatar" aria-hidden="true">xfm</span>
+      <span class="nav-title">XFMpress</span>
+    </a>
+    <nav class="nav-links" id="nav-links">
+      <a href="/">首页</a>
+      <a href="/categories/">分类</a>
+      <a href="/archives/">归档</a>
+      <a href="/about/">关于</a>
+      
+    </nav>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="nav-menu-btn" type="button" aria-label="菜单" aria-controls="nav-drawer" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <button class="nav-icon-btn" type="button" data-search-open aria-label="搜索" title="搜索（Ctrl+K）">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <a class="nav-icon-btn nav-lang-btn" href="/en/2026/11/22/xfmpress-theme-butterfly/" title="Switch to English"><span class="nav-lang-text">EN</span></a>
+      <button class="nav-icon-btn" id="theme-toggle" type="button" aria-label="切换深浅色" title="切换深浅色">
+        <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="nav-drawer" id="nav-drawer">
+    <a href="/">首页</a>
+    <a href="/categories/">分类</a>
+    <a href="/archives/">归档</a>
+    <a href="/about/">关于</a>
+    
+  </nav>
+</header>
+
+
+  <main class="site-main">
+    
+<article class="post-page">
+  
+  <header class="post-hero" style="background-image:url('/assets/theme-butterfly.png')">
+    <div class="post-hero-mask">
+      <div class="post-hero-crumbs">
+        <a href="/categories/主题模板/">主题模板</a>
+        <span>发布于 2026-11-22</span>
+      </div>
+      <h1 class="post-hero-title">官方新增 butterfly 主题：把 Hexo 那套毛玻璃美学搬进 xfmpress</h1>
+      <div class="post-hero-meta">
+        <span class="meta-chip">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 15 4-4 4 4 5-5 5 5"/></svg>
+          封面图
+        </span>
+        <span class="meta-chip">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          7 分钟阅读
+        </span>
+        <a class="meta-chip" href="/tags/xfmpress/"># xfmpress</a><a class="meta-chip" href="/tags/主题/"># 主题</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="post-layout">
+    <div class="post-content-wrap">
+      <div class="post-content-card">
+        <div class="prose"><p>官方仓库今天多了一套主题：<code>themes/butterfly</code>。它是照着 <a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener">hexo-theme-butterfly</a> 的视觉风格重写的——如果你从 Hexo 迁过来，见到那套蓝紫渐变、毛玻璃导航、封面在右的横向卡片，应该会有一秒的熟悉感。</p>
+<p>和仓库里另外两套一样，它零依赖、零构建：模板只用 xfm 内置的 <code>{% extend %} / {% block %} / {% include %}</code>，样式和脚本全是手写的 CSS 与原生 JS，没有 Sass 编译，也没有打包步骤。</p>
+<p><img src="/assets/theme-butterfly.png" alt="butterfly 主题首页：毛玻璃导航、蓝紫渐变横幅、封面在右的文章卡片与右侧作者卡" loading="lazy" decoding="async"></p>
+<p>上面是它跑在演示站上的实际效果（截取 1200×630）：顶部固定导航，中间是渐变横幅和站名，下面是横向文章卡片，右侧是作者卡。整套观感只靠一个 29KB 的 <code>style.css</code> 和 7KB 的 <code>main.js</code>。</p>
+<h2 id="怎么启用">怎么启用</h2>
+<p>主题用仓库里的相对路径指定即可：</p>
+<div class="code-block"><pre class="language-js"><code><span class="hl-c">// xfm.config.mjs</span>
+<span class="hl-k">export</span> <span class="hl-k">default</span> {
+  theme: <span class="hl-s">'themes/butterfly'</span>,
+};</code></pre></div>
+<p>一个现实问题：<code>npm i xfmpress</code> 装下来的包里目前只有 <code>default</code> 和 <code>docs</code> 两套主题，butterfly 是在仓库里先行落地的。所以现在要用它，把仓库的 <code>themes/butterfly</code> 整个目录拷到你站点的 <code>themes/</code> 下（或直接克隆仓库跑 <code>examples/blog</code>），配置里写 <code>themes/butterfly</code>；等你站点根目录有同名目录，主题解析会优先用你站点里的那份。</p>
+<p>主题解析的顺序是「站点内路径 → npm 包内置 → 简写补齐」，所以 <code>theme: 'butterfly'</code> 这种简写只对包里自带的那两套生效，拷到站点里之后写全路径最稳妥。</p>
+<h2 id="目录-8-个布局-5-个片段">目录：8 个布局，5 个片段</h2>
+<div class="code-block"><pre class="language-text"><code>themes/butterfly/
+├── layouts/
+│   ├── base.html        # 骨架：进度条、固定导航、横幅插槽、页脚、回到顶部、深浅色脚本
+│   ├── index.html       # 首页：横幅 + 卡片流 + 侧栏
+│   ├── post.html        # 文章页：封面横幅、正文卡、版权框、上下篇、相关推荐、目录
+│   ├── page.html        # 独立页
+│   ├── archives.html    # 时间线归档（按年分组）
+│   ├── categories.html  # 分类索引
+│   ├── taxonomy.html    # 单个分类 / 标签的文章列表
+│   └── collection.html  # 自定义集合列表
+├── partials/            # post-list / pager / sidebar / toc / lang-switcher
+└── assets/              # style.css（29KB）/ main.js（7.4KB）/ search.js</code></pre></div>
+<p>横幅不是每个布局各写一遍，而是 <code>base.html</code> 里留了一个 <code>{% block banner %}</code>：首页与文章页各自覆盖它，独立页和归档页不覆盖，于是那几页直接没有横幅，也不会留下空白占位。</p>
+<h2 id="四个视觉标志">四个视觉标志</h2>
+<p><strong>毛玻璃固定导航</strong>：<code>backdrop-filter: blur(14px)</code> + 半透明背景，滚动超过 10px 加阴影；窄屏（≤860px）收成抽屉菜单，三条横线做变形动画。</p>
+<p><strong>渐变横幅</strong>：不配 <code>site.banner</code> 时是一块 132 度的蓝紫渐变（<code>#49b1f5 → #8661f5</code>），配了就换成图片加 38% 深色遮罩——遮罩这一步不能省，否则浅色图片上的白字会糊成一片。首页横幅高度是 <code>min(62vh, 560px)</code>，文章页是 <code>min(46vh, 420px)</code>，手机端再压一档。</p>
+<p><strong>封面在右的横向卡片</strong>：卡片左边是日期、分类胶囊、标题、两行截断的摘要和标签，右边固定 220px 的一张封面，悬停时封面 <code>scale(1.05)</code>、卡片上浮 3px。文章没写 <code>cover</code> 就落回渐变兜底块，列表不会出现豁口。窄于 560px 时卡片换成竖排，封面跑到上方。</p>
+<p><strong>右侧栏</strong>：作者卡（头像 + 一句话简介 + 文章/分类/标签三个计数 + RSS 按钮）、前 6 个分类带计数、前 16 个标签的胶囊云、最新 5 篇、归档入口。整栏 <code>position: sticky</code>，滚动时跟着走；窄于 1024px 时收成单列，粘性取消。</p>
+<h2 id="文章页的细节">文章页的细节</h2>
+<p>文章页的结构比首页更满：封面横幅（标题、日期、分类、标签、阅读时长都压在遮罩上）→ 白色正文卡 → 版权框 → 上下篇 → 相关推荐 → 右栏目录。</p>
+<p>几个值得说的取舍：</p>
+<ul class="md-list"><li><strong>目录只在有标题时才出现</strong>。<code>headings</code> 为空时整个右栏不渲染，正文卡自动回到 800px 的居中宽度；有目录时容器放宽到 1080px 两栏，窄于 900px 时右栏直接隐藏，不做抽屉。</li><li><strong>版权框只在配了 <code>site.author</code> 时出现</strong>，内容是作者、本文链接、一句「转载请注明出处」。不想显示就别写 <code>site.author</code>。</li><li><strong>相关推荐读 <code>page.data.related</code></strong>，也就是 <code>related</code> 插件算出来的那份；没装插件这块不出现，不会报错。</li><li><strong>代码块带语言标签和复制按钮</strong>，按钮默认透明度 0，鼠标悬停整块代码才浮出来，不干扰阅读。</li></ul>
+<h2 id="可选字段">可选字段</h2>
+<p>全在 <code>site</code> 下，都不配也能跑：</p>
+<div class="table-wrap"><table><thead><tr><th>字段</th><th>作用</th><th>缺省行为</th></tr></thead><tbody><tr><td><code>site.banner</code></td><td>首页横幅背景图</td><td>走蓝紫渐变</td></tr><tr><td><code>site.subtitle</code></td><td>横幅副标题</td><td>回退 <code>site.description</code></td></tr><tr><td><code>site.avatar</code></td><td>作者卡头像</td><td>显示 ✍ 占位</td></tr><tr><td><code>site.author</code></td><td>作者卡名字、文章版权框</td><td>名字用 <code>site.title</code>，版权框整块不渲染</td></tr><tr><td><code>site.copyright</code></td><td>页脚版权行</td><td><code>© 站点标题</code></td></tr></tbody></table></div>
+<p>文章封面走 front-matter：</p>
+<div class="code-block"><pre class="language-yaml"><code>---
+title: 我的第一篇文章
+date: <span class="hl-n">2026</span>-<span class="hl-n">11</span>-<span class="hl-n">22</span>
+cover: /img/hello.jpg   <span class="hl-c"># 建议根绝对路径或外链；Page Bundle 里可写 ./cover.png</span>
+---</code></pre></div>
+<p><code>cover</code> 只影响这套主题的展示，RSS、sitemap 和其它主题都不看它。</p>
+<h2 id="交互与配色">交互与配色</h2>
+<p><code>main.js</code> 七个模块：导航抽屉与滚动阴影、回到顶部、阅读进度、目录高亮、代码复制、图片点击放大、外链自动新窗口。所有滚动相关的计算统一走 <code>requestAnimationFrame</code>，一帧最多算一次；页面上没有对应元素时整段静默跳过，所以你把它塞进任何页面都不会报错。</p>
+<p>深浅色是 <code>data-theme</code> 切换的手写变量，键名 <code>xfm-theme-butterfly</code>，首次访问跟随系统 <code>prefers-color-scheme</code>。要换配色改 <code>style.css</code> 顶部这几行就够：</p>
+<div class="code-block"><pre class="language-css"><code><span class="hl-k">:root </span><span class="hl-p">{</span>
+  <span class="hl-a">--accent</span><span class="hl-p">:</span><span class="hl-s"> #49b1f5</span><span class="hl-p">;</span>    <span class="hl-c">/* 主色：天蓝 */</span>
+  <span class="hl-a">--accent-2</span><span class="hl-p">:</span><span class="hl-s"> #8661f5</span><span class="hl-p">;</span>  <span class="hl-c">/* 副色：紫 */</span>
+  <span class="hl-a">--grad</span><span class="hl-p">:</span><span class="hl-s"> linear-gradient(132deg, #49b1f5 0%, #8661f5 100%)</span><span class="hl-p">;</span>
+  <span class="hl-a">--radius</span><span class="hl-p">:</span><span class="hl-s"> 12px</span><span class="hl-p">;</span>       <span class="hl-c">/* 卡片圆角 */</span>
+  <span class="hl-a">--nav-h</span><span class="hl-p">:</span><span class="hl-s"> 60px</span><span class="hl-p">;</span>        <span class="hl-c">/* 导航高度 */</span>
+<span class="hl-p">}</span></code></pre></div>
+<p>装了 <code>search</code> 插件后，导航右侧会自动多出一个搜索按钮（插件会注入 <code>site.search</code>），<code>Ctrl/⌘ + K</code> 打开纯前端筛选面板；深浅色切换按钮在它右边，两者都是无依赖的原生实现。</p>
+<h2 id="和三套主题怎么选">和三套主题怎么选</h2>
+<div class="table-wrap"><table><thead><tr><th>主题</th><th>观感</th><th>适合</th></tr></thead><tbody><tr><td><code>default</code></td><td>低饱和青玉、大留白</td><td>只想安静写字</td></tr><tr><td><code>docs</code></td><td>左侧栏文档树</td><td>产品手册、知识库</td></tr><tr><td><code>butterfly</code></td><td>蓝紫渐变、卡片瀑布、重装饰</td><td>个人博客、想第一眼就有辨识度</td></tr><tr><td><code>xfmpress-theme-anziyu</code></td><td>玻璃导航 + 封面卡片流（本站私有）</td><td>想要更花哨的博客外观</td></tr></tbody></table></div>
+<p>它和 <code>default</code> 用的是同一套模板语法、同一份内容格式，切换主题不用改任何 Markdown——这也是把主题做成目录而不是内核的一部分的好处：想换皮，改一行 <code>theme</code> 再重新 <code>xfm build</code> 就行。</p></div>
+      </div>
+
+      
+      <section class="xfm-share" data-share-networks="weibo,wechat,qq,qzone,twitter,telegram,copy" aria-label="分享"><span class="xfm-share-label">分享到</span><a href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F22%2Fxfmpress-theme-butterfly%2F&amp;title=%E5%AE%98%E6%96%B9%E6%96%B0%E5%A2%9E%20butterfly%20%E4%B8%BB%E9%A2%98%EF%BC%9A%E6%8A%8A%20Hexo%20%E9%82%A3%E5%A5%97%E6%AF%9B%E7%8E%BB%E7%92%83%E7%BE%8E%E5%AD%A6%E6%90%AC%E8%BF%9B%20xfmpress" style="--c:#e6162d" target="_blank" rel="noopener" title="分享到微博"><span>微博</span></a>
+<a href="#" style="--c:#07c160" data-share-copy data-share-url="https://xfm0797.github.io/2026/11/22/xfmpress-theme-butterfly/" data-share-msg="链接已复制，可在微信中粘贴分享" title="微信"><span>微信</span></a>
+<a href="https://connect.qq.com/widget/shareqq/index.html?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F22%2Fxfmpress-theme-butterfly%2F&amp;title=%E5%AE%98%E6%96%B9%E6%96%B0%E5%A2%9E%20butterfly%20%E4%B8%BB%E9%A2%98%EF%BC%9A%E6%8A%8A%20Hexo%20%E9%82%A3%E5%A5%97%E6%AF%9B%E7%8E%BB%E7%92%83%E7%BE%8E%E5%AD%A6%E6%90%AC%E8%BF%9B%20xfmpress&amp;summary=" style="--c:#12b7f5" target="_blank" rel="noopener" title="分享到QQ 好友"><span>QQ 好友</span></a>
+<a href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F22%2Fxfmpress-theme-butterfly%2F&amp;title=%E5%AE%98%E6%96%B9%E6%96%B0%E5%A2%9E%20butterfly%20%E4%B8%BB%E9%A2%98%EF%BC%9A%E6%8A%8A%20Hexo%20%E9%82%A3%E5%A5%97%E6%AF%9B%E7%8E%BB%E7%92%83%E7%BE%8E%E5%AD%A6%E6%90%AC%E8%BF%9B%20xfmpress" style="--c:#f5b60d" target="_blank" rel="noopener" title="分享到QQ 空间"><span>QQ 空间</span></a>
+<a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F22%2Fxfmpress-theme-butterfly%2F&amp;text=%E5%AE%98%E6%96%B9%E6%96%B0%E5%A2%9E%20butterfly%20%E4%B8%BB%E9%A2%98%EF%BC%9A%E6%8A%8A%20Hexo%20%E9%82%A3%E5%A5%97%E6%AF%9B%E7%8E%BB%E7%92%83%E7%BE%8E%E5%AD%A6%E6%90%AC%E8%BF%9B%20xfmpress" style="--c:#1da1f2" target="_blank" rel="noopener" title="分享到X"><span>X</span></a>
+<a href="https://t.me/share/url?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F22%2Fxfmpress-theme-butterfly%2F&amp;text=%E5%AE%98%E6%96%B9%E6%96%B0%E5%A2%9E%20butterfly%20%E4%B8%BB%E9%A2%98%EF%BC%9A%E6%8A%8A%20Hexo%20%E9%82%A3%E5%A5%97%E6%AF%9B%E7%8E%BB%E7%92%83%E7%BE%8E%E5%AD%A6%E6%90%AC%E8%BF%9B%20xfmpress" style="--c:#26a5e4" target="_blank" rel="noopener" title="分享到Telegram"><span>Telegram</span></a>
+<a href="#" style="--c:#5f6368" data-share-copy data-share-url="https://xfm0797.github.io/2026/11/22/xfmpress-theme-butterfly/" data-share-msg="链接已复制" title="复制链接"><span>复制链接</span></a></section>
+      <nav class="post-pn">
+        <a class="pn-card prev" href="/2026/11/21/xfmpress-plugin-share/"><span class="pn-label">上一篇</span><span class="pn-title">分享插件：一篇文章十二个转发入口，不加载任何第三方脚本</span></a>
+        
+        <span class="pn-card is-empty"></span>
+      </nav>
+
+      
+
+      
+      
+      <section class="post-comments" id="comments">
+        <h2 class="section-title">评论</h2>
+        <div class="post-comments-body" id="waline" data-xfm-comments></div>
+      </section>
+      
+    </div>
+
+    
+    <aside class="post-toc-wrap">
+      
+<nav class="toc" id="toc" aria-label="目录">
+  <div class="toc-title">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+    文章目录
+  </div>
+  <ul>
+    <li class="toc-h2"><a href="#怎么启用">怎么启用</a></li>
+    <li class="toc-h2"><a href="#目录-8-个布局-5-个片段">目录：8 个布局，5 个片段</a></li>
+    <li class="toc-h2"><a href="#四个视觉标志">四个视觉标志</a></li>
+    <li class="toc-h2"><a href="#文章页的细节">文章页的细节</a></li>
+    <li class="toc-h2"><a href="#可选字段">可选字段</a></li>
+    <li class="toc-h2"><a href="#交互与配色">交互与配色</a></li>
+    <li class="toc-h2"><a href="#和三套主题怎么选">和三套主题怎么选</a></li>
+    
+  </ul>
+</nav>
+
+
+    </aside>
+    
+  </div>
+<script type="module">import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';init({"el":"#waline","serverURL":"https://waline.xfm.qzz.io","path":"/2026/11/22/xfmpress-theme-butterfly/","lang":"zh-CN","dark":"html[data-theme=\"dark\"]","requiredMeta":["nick","mail"],"login":"enable","commentSorting":"newest"});</script>
+
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-icons">
+      <a href="/feed.xml" aria-label="RSS" title="RSS 订阅">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M4 11a9 9 0 0 1 9 9h3A12 12 0 0 0 4 8v3zm0-7a16 16 0 0 1 16 16h3A19 19 0 0 0 4 1v3zm2 13a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>
+      </a>
+      <a href="https://github.com/xfm0797/xfm" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C17 4.7 18 5 18 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6a11.5 11.5 0 0 0 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+    <p class="copyright">© XFMpress · xfm</p>
+    <p class="powered">由 <a href="https://github.com/xfm0797/xfm" target="_blank" rel="noopener">xfmpress</a> <span class="powered-version">0.4.18</span> 强力驱动</p>
+  </div>
+</footer>
+
+
+  <button class="back-top" id="back-top" type="button" aria-label="回到顶部">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <div class="img-mask" id="img-mask" aria-hidden="true"><img src="" alt=""></div>
+
+  <script src="/assets/main.js" defer></script>
+  <script src="/assets/search.js" defer data-index="/search.json"></script>
+  <script>
+    (function(){
+      var k='xfm-theme', r=document.documentElement;
+      var s=localStorage.getItem(k);
+      if(s) r.dataset.theme=s;
+      else if(window.matchMedia('(prefers-color-scheme: dark)').matches) r.dataset.theme='dark';
+    })();
+  </script>
+</body>
+</html>
+<script>
+(function(){
+  function toast(msg){
+    var t=document.querySelector('.xfm-share-toast');
+    if(!t){t=document.createElement('div');t.className='xfm-share-toast';document.body.appendChild(t);}
+    t.textContent=msg;t.classList.add('show');
+    clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('show');},2000);
+  }
+  function legacyCopy(text){
+    var ta=document.createElement('textarea');
+    ta.value=text;ta.setAttribute('readonly','');
+    ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');}catch(e){}
+    document.body.removeChild(ta);
+  }
+  document.addEventListener('click',function(e){
+    var el=e.target.closest('[data-share-copy]');
+    if(!el)return;
+    e.preventDefault();
+    var url=el.getAttribute('data-share-url')||location.href;
+    var done=function(){toast(el.getAttribute('data-share-msg')||'已复制');};
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(done,function(){legacyCopy(url);done();});
+    }else{legacyCopy(url);done();}
+  });
+})();
+</script>

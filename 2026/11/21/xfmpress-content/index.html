@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  
+  
+  
+  <title>内容组织：目录即 URL 与 front-matter · XFMpress</title>
+  <meta name="description" content="content 目录与 URL 的对应规则、front-matter 全部字段、文章页面草稿三种角色、Page Bundle 与定时发布">
+  <meta name="theme-color" content="#425aef">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/favicon-512.png">
+  <meta property="og:site_name" content="XFMpress">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="内容组织：目录即 URL 与 front-matter · XFMpress">
+  <meta property="og:description" content="content 目录与 URL 的对应规则、front-matter 全部字段、文章页面草稿三种角色、Page Bundle 与定时发布">
+  <meta property="og:url" content="https://xfm0797.github.io/2026/11/21/xfmpress-content/">
+  <meta property="og:image" content="https://xfm0797.github.io/assets/cover-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="alternate" type="application/rss+xml" title="XFMpress" href="/feed.xml">
+  
+  <link rel="alternate" hreflang="zh-CN" href="https://xfm0797.github.io/2026/11/21/xfmpress-content/">
+  <link rel="alternate" hreflang="en" href="https://xfm0797.github.io/en/2026/11/21/xfmpress-content/">
+  
+  <link rel="stylesheet" href="/assets/style.css">
+  
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css">
+<style>
+.xfm-share{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem;margin:2.5rem 0 0;padding-top:1.25rem;border-top:1px solid var(--border,#e6e6e6)}
+.xfm-share-label{font-size:.88rem;color:var(--muted,#888)}
+.xfm-share a{display:inline-block;padding:.22rem .85rem;border:1px solid var(--border,#d9d9d9);border-radius:999px;font-size:.85rem;line-height:1.5;color:inherit;text-decoration:none;transition:color .15s,border-color .15s}
+.xfm-share a:hover{color:var(--c);border-color:var(--c)}
+.xfm-share-toast{position:fixed;left:50%;bottom:2.5rem;transform:translateX(-50%);background:#333;color:#fff;padding:.4rem 1rem;border-radius:6px;font-size:.85rem;opacity:0;transition:opacity .25s;pointer-events:none;z-index:9999}
+.xfm-share-toast.show{opacity:.92}
+@media (prefers-color-scheme:dark){.xfm-share{border-top-color:var(--border,#333)}.xfm-share a{border-color:var(--border,#3a3a3a)}}
+</style>
+</head>
+<body>
+  <div class="progress-bar" id="progress-bar" aria-hidden="true"></div>
+  <header class="site-nav" id="site-nav">
+  <div class="nav-wrap">
+    <a class="nav-brand" href="/">
+      <span class="nav-avatar" aria-hidden="true">xfm</span>
+      <span class="nav-title">XFMpress</span>
+    </a>
+    <nav class="nav-links" id="nav-links">
+      <a href="/">首页</a>
+      <a href="/categories/">分类</a>
+      <a href="/archives/">归档</a>
+      <a href="/about/">关于</a>
+      
+    </nav>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="nav-menu-btn" type="button" aria-label="菜单" aria-controls="nav-drawer" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <button class="nav-icon-btn" type="button" data-search-open aria-label="搜索" title="搜索（Ctrl+K）">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <a class="nav-icon-btn nav-lang-btn" href="/en/2026/11/21/xfmpress-content/" title="Switch to English"><span class="nav-lang-text">EN</span></a>
+      <button class="nav-icon-btn" id="theme-toggle" type="button" aria-label="切换深浅色" title="切换深浅色">
+        <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="nav-drawer" id="nav-drawer">
+    <a href="/">首页</a>
+    <a href="/categories/">分类</a>
+    <a href="/archives/">归档</a>
+    <a href="/about/">关于</a>
+    
+  </nav>
+</header>
+
+
+  <main class="site-main">
+    
+<article class="post-page">
+  
+  <header class="post-hero" style="background-image:url('/assets/cover-default.png')">
+    <div class="post-hero-mask">
+      <div class="post-hero-crumbs">
+        <a href="/categories/xfmpress/">xfmpress</a>
+        <span>发布于 2026-11-21</span>
+      </div>
+      <h1 class="post-hero-title">内容组织：目录即 URL 与 front-matter</h1>
+      <div class="post-hero-meta">
+        
+        <span class="meta-chip">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          4 分钟阅读
+        </span>
+        <a class="meta-chip" href="/tags/xfmpress/"># xfmpress</a><a class="meta-chip" href="/tags/教程/"># 教程</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="post-layout">
+    <div class="post-content-wrap">
+      <div class="post-content-card">
+        <div class="prose"><h1 id="目录与-url-的对应">目录与 URL 的对应</h1>
+<p>内容全部放 <code>content/</code> 下，支持 <code>.md</code>、<code>.markdown</code>、<code>.html</code>、<code>.htm</code>。规则三句话：<strong><code>index</code> 折叠成目录本身；去掉扩展名后补尾斜杠；<code>.html</code> 保持原样</strong>。</p>
+<div class="table-wrap"><table><thead><tr><th>源文件</th><th>生成的 URL</th></tr></thead><tbody><tr><td><code>content/index.md</code></td><td><code>/</code></td></tr><tr><td><code>content/about.md</code></td><td><code>/about/</code></td></tr><tr><td><code>content/posts/hello.md</code></td><td><code>/posts/hello/</code></td></tr><tr><td><code>content/2026/11/21/a.md</code></td><td><code>/2026/11/21/a/</code></td></tr></tbody></table></div>
+<p>想固定某个地址，在 front-matter 里直接指定，<code>url</code> / <code>permalink</code> / <code>slug</code> 三个字段都认：</p>
+<div class="code-block"><pre class="language-yaml"><code>---
+title: 关于
+url: /about-me/
+---</code></pre></div>
+<p>非 ASCII 路径同样可用，落盘时会还原成真实目录名，中文文件名不会 404。</p>
+<h2 id="front-matter-全部字段">front-matter 全部字段</h2>
+<div class="table-wrap"><table><thead><tr><th>字段</th><th>说明</th></tr></thead><tbody><tr><td><code>title</code></td><td>标题，不写则用文件名</td></tr><tr><td><code>date</code> / <code>published</code></td><td>发布日期，RSS 与排序依赖它</td></tr><tr><td><code>updated</code></td><td>更新时间，进 sitemap 的 lastmod</td></tr><tr><td><code>description</code> / <code>summary</code></td><td>摘要，优先于自动截取的 excerpt</td></tr><tr><td><code>tags</code></td><td>数组或逗号串，<code>[a, b]</code> 与 <code>a, b</code> 都接受</td></tr><tr><td><code>category</code></td><td>分类，单个字符串</td></tr><tr><td><code>series</code></td><td>系列，单个字符串</td></tr><tr><td><code>layout</code></td><td>布局文件名，默认取 <code>defaults.layout</code></td></tr><tr><td><code>weight</code> / <code>order</code></td><td>排序权重，小的在前</td></tr><tr><td><code>draft</code></td><td><code>true</code> 时生产构建跳过</td></tr><tr><td><code>toc</code></td><td><code>false</code> 时不生成目录</td></tr><tr><td><code>type</code></td><td>设为 <code>page</code> 不进文章列表、RSS 与上下篇</td></tr></tbody></table></div>
+<p>两个日期细节：只有日期的值（<code>2026-11-10</code>）按<strong>本地日历日</strong>解释，不会因为时区漂移早一天；带时区偏移的时间戳保持原值。Windows 编辑器的 UTF-8 BOM 不影响解析。</p>
+<h2 id="文章-页面与草稿">文章、页面与草稿</h2>
+<p>内容只有三种角色，差别全在 front-matter：</p>
+<ul class="md-list"><li><strong>文章</strong>：有 <code>date</code>，进首页列表、RSS、搜索索引、上下篇与相关推荐</li><li><strong>页面</strong>：<code>type: page</code>，有独立 URL，但<strong>不进</strong>任何列表与 feed——关于页、友链页用它；想让页面进导航要自己加进 <code>site.nav</code></li><li><strong>草稿</strong>：<code>draft: true</code>，<code>xfm dev</code> 照常渲染，<code>xfm build</code> 跳过，删掉那行就发布</li></ul>
+<h2 id="page-bundle-附件与页面放一起">Page Bundle：附件与页面放一起</h2>
+<p><code>content/</code> 下不是页面的文件（图片、PDF 等）会原样复制到输出：</p>
+<div class="code-block"><pre class="language-text"><code>content/posts/hello/
+├── index.md      → /posts/hello/
+└── cover.png     → /posts/hello/cover.png</code></pre></div>
+<p>在 <code>index.md</code> 里写 <code>![cover](./cover.png)</code> 即可。相对 URL 会解析到页面自身 URL 之下，同一份源码换任何 <code>site.base</code> 都能用。</p>
+<h2 id="定时发布">定时发布</h2>
+<p>把 <code>date</code> 设为未来时间，生产构建会暂缓发布——不进页面、RSS、sitemap 与文章列表计数，到点自动发布；<code>dev</code> 模式下依然可见方便预览。强制发布用 <code>xfm build --scheduled</code> 或配置 <code>buildScheduled: true</code>。</p>
+<h2 id="摘要与阅读时长">摘要与阅读时长</h2>
+<p>没有 <code>description</code> 时，引擎把渲染后的正文截到约 140 字作为 <code>excerpt</code>（自动剔除代码块、链接定义等噪音）；阅读时长按每分钟 350 字估算。模板里统一用 <code>page.desc</code>（= <code>description || excerpt</code>）与 <code>page.readTime</code>。</p>
+<p>下一篇：<a href="/2026/11/21/xfmpress-markdown/">Markdown 扩展语法</a>。</p></div>
+      </div>
+
+      
+      <section class="xfm-share" data-share-networks="weibo,wechat,qq,qzone,twitter,telegram,copy" aria-label="分享"><span class="xfm-share-label">分享到</span><a href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F21%2Fxfmpress-content%2F&amp;title=%E5%86%85%E5%AE%B9%E7%BB%84%E7%BB%87%EF%BC%9A%E7%9B%AE%E5%BD%95%E5%8D%B3%20URL%20%E4%B8%8E%20front-matter" style="--c:#e6162d" target="_blank" rel="noopener" title="分享到微博"><span>微博</span></a>
+<a href="#" style="--c:#07c160" data-share-copy data-share-url="https://xfm0797.github.io/2026/11/21/xfmpress-content/" data-share-msg="链接已复制，可在微信中粘贴分享" title="微信"><span>微信</span></a>
+<a href="https://connect.qq.com/widget/shareqq/index.html?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F21%2Fxfmpress-content%2F&amp;title=%E5%86%85%E5%AE%B9%E7%BB%84%E7%BB%87%EF%BC%9A%E7%9B%AE%E5%BD%95%E5%8D%B3%20URL%20%E4%B8%8E%20front-matter&amp;summary=" style="--c:#12b7f5" target="_blank" rel="noopener" title="分享到QQ 好友"><span>QQ 好友</span></a>
+<a href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F21%2Fxfmpress-content%2F&amp;title=%E5%86%85%E5%AE%B9%E7%BB%84%E7%BB%87%EF%BC%9A%E7%9B%AE%E5%BD%95%E5%8D%B3%20URL%20%E4%B8%8E%20front-matter" style="--c:#f5b60d" target="_blank" rel="noopener" title="分享到QQ 空间"><span>QQ 空间</span></a>
+<a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F21%2Fxfmpress-content%2F&amp;text=%E5%86%85%E5%AE%B9%E7%BB%84%E7%BB%87%EF%BC%9A%E7%9B%AE%E5%BD%95%E5%8D%B3%20URL%20%E4%B8%8E%20front-matter" style="--c:#1da1f2" target="_blank" rel="noopener" title="分享到X"><span>X</span></a>
+<a href="https://t.me/share/url?url=https%3A%2F%2Fxfm0797.github.io%2F2026%2F11%2F21%2Fxfmpress-content%2F&amp;text=%E5%86%85%E5%AE%B9%E7%BB%84%E7%BB%87%EF%BC%9A%E7%9B%AE%E5%BD%95%E5%8D%B3%20URL%20%E4%B8%8E%20front-matter" style="--c:#26a5e4" target="_blank" rel="noopener" title="分享到Telegram"><span>Telegram</span></a>
+<a href="#" style="--c:#5f6368" data-share-copy data-share-url="https://xfm0797.github.io/2026/11/21/xfmpress-content/" data-share-msg="链接已复制" title="复制链接"><span>复制链接</span></a></section>
+      <nav class="post-pn">
+        <a class="pn-card prev" href="/2026/11/21/xfmpress-v0-4-16/"><span class="pn-label">上一篇</span><span class="pn-title">xfmpress v0.4.16：评论插件统一为 xfm-plugin-comments，一站接入十种评论系统</span></a>
+        
+        <a class="pn-card next" href="/2026/11/21/xfmpress-config/"><span class="pn-label">下一篇</span><span class="pn-title">配置详解：xfm.config.mjs 所有字段</span></a>
+        
+      </nav>
+
+      
+
+      
+      
+      <section class="post-comments" id="comments">
+        <h2 class="section-title">评论</h2>
+        <div class="post-comments-body" id="waline" data-xfm-comments></div>
+      </section>
+      
+    </div>
+
+    
+    <aside class="post-toc-wrap">
+      
+<nav class="toc" id="toc" aria-label="目录">
+  <div class="toc-title">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+    文章目录
+  </div>
+  <ul>
+    <li class="toc-h2"><a href="#front-matter-全部字段">front-matter 全部字段</a></li>
+    <li class="toc-h2"><a href="#文章-页面与草稿">文章、页面与草稿</a></li>
+    <li class="toc-h2"><a href="#page-bundle-附件与页面放一起">Page Bundle：附件与页面放一起</a></li>
+    <li class="toc-h2"><a href="#定时发布">定时发布</a></li>
+    <li class="toc-h2"><a href="#摘要与阅读时长">摘要与阅读时长</a></li>
+    
+  </ul>
+</nav>
+
+
+    </aside>
+    
+  </div>
+<script type="module">import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';init({"el":"#waline","serverURL":"https://waline.xfm.qzz.io","path":"/2026/11/21/xfmpress-content/","lang":"zh-CN","dark":"html[data-theme=\"dark\"]","requiredMeta":["nick","mail"],"login":"enable","commentSorting":"newest"});</script>
+
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-icons">
+      <a href="/feed.xml" aria-label="RSS" title="RSS 订阅">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M4 11a9 9 0 0 1 9 9h3A12 12 0 0 0 4 8v3zm0-7a16 16 0 0 1 16 16h3A19 19 0 0 0 4 1v3zm2 13a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>
+      </a>
+      <a href="https://github.com/xfm0797/xfm" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C17 4.7 18 5 18 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6a11.5 11.5 0 0 0 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+    <p class="copyright">© XFMpress · xfm</p>
+    <p class="powered">由 <a href="https://github.com/xfm0797/xfm" target="_blank" rel="noopener">xfmpress</a> <span class="powered-version">0.4.18</span> 强力驱动</p>
+  </div>
+</footer>
+
+
+  <button class="back-top" id="back-top" type="button" aria-label="回到顶部">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <div class="img-mask" id="img-mask" aria-hidden="true"><img src="" alt=""></div>
+
+  <script src="/assets/main.js" defer></script>
+  <script src="/assets/search.js" defer data-index="/search.json"></script>
+  <script>
+    (function(){
+      var k='xfm-theme', r=document.documentElement;
+      var s=localStorage.getItem(k);
+      if(s) r.dataset.theme=s;
+      else if(window.matchMedia('(prefers-color-scheme: dark)').matches) r.dataset.theme='dark';
+    })();
+  </script>
+</body>
+</html>
+<script>
+(function(){
+  function toast(msg){
+    var t=document.querySelector('.xfm-share-toast');
+    if(!t){t=document.createElement('div');t.className='xfm-share-toast';document.body.appendChild(t);}
+    t.textContent=msg;t.classList.add('show');
+    clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('show');},2000);
+  }
+  function legacyCopy(text){
+    var ta=document.createElement('textarea');
+    ta.value=text;ta.setAttribute('readonly','');
+    ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');}catch(e){}
+    document.body.removeChild(ta);
+  }
+  document.addEventListener('click',function(e){
+    var el=e.target.closest('[data-share-copy]');
+    if(!el)return;
+    e.preventDefault();
+    var url=el.getAttribute('data-share-url')||location.href;
+    var done=function(){toast(el.getAttribute('data-share-msg')||'已复制');};
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(done,function(){legacyCopy(url);done();});
+    }else{legacyCopy(url);done();}
+  });
+})();
+</script>
