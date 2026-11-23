@@ -7,7 +7,7 @@
       <div class="hero-text">
         <p class="hero-hello">{{ page.lang == 'en' ? 'Hi, I am' : '你好，我是' }} <span class="hero-name">{{ site.author | default(site.title) }}</span> <span class="hero-emoji">🙋‍♂️</span></p>
         <h1 class="hero-title">{{ site.title }}</h1>
-        {% if site.description %}<p class="hero-desc">{{ page.lang == 'en' ? 'The official website of XFMpress — a zero-dependency static site generator' : site.description }}</p>{% endif %}
+        {% if site.description %}<p class="hero-desc">{{ page.lang == 'en' and site.i18n and site.i18n.en and site.i18n.en.description ? site.i18n.en.description : site.description }}</p>{% endif %}
         <div class="hero-links">
           <a class="hero-btn" href="/archives/">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 7h18M3 12h18M3 17h10"/></svg>

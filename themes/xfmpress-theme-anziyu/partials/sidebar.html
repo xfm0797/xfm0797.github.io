@@ -5,7 +5,7 @@
       <span class="side-avatar" aria-hidden="true">{{ site.author | default(site.title) }}</span>
       <div class="side-author-info">
         <span class="side-author-name">{{ site.author | default(site.title) }}</span>
-        <span class="side-author-desc">{{ page.lang == 'en' ? 'The official website of XFMpress' : site.description }}</span>
+        <span class="side-author-desc">{{ page.lang == 'en' and site.i18n and site.i18n.en and site.i18n.en.description ? site.i18n.en.description : site.description }}</span>
       </div>
     </div>
     <div class="side-author-stats">

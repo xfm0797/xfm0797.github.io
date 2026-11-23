@@ -2,6 +2,14 @@ export default {
   site: {
     title: 'XFMpress',
     description: '极致性能的静态站点生成器 —— 零运行时依赖、多线程渲染、Nunjucks 风格模板、即插即用的主题与插件',
+    // 多语言站点文案：site.i18n.<lang>.<字段>，模板按 page.lang 解析。
+    // 引擎把 ...site 展开进 siteContext，所以模板里直接读 site.i18n.<lang>.<字段>；
+    // 页面自己的 front-matter description（page.desc）优先级更高，只在页面没写时才用这里的翻译。
+    i18n: {
+      en: {
+        description: 'A performance-first static site generator — zero runtime dependencies, multi-threaded rendering, Nunjucks-style templates, drop-in themes and plugins',
+      },
+    },
     url: 'https://xfm0797.github.io',
     lang: 'zh-CN',
     languages: ['zh-CN', 'en'],
